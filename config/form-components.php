@@ -10,10 +10,15 @@ return [
 
     /**
      * The fully qualified class name of the components.
-     * Here you can override them and define your own.
+     * Here you can override them and/or define your own.
      * Make sure your component extends the Okipa\LaravelFormComponents\Components\AbstractComponent abstract class.
      */
     'components' => [
+        // Partials
+        Okipa\LaravelFormComponents\Components\Addon::class,
+        Okipa\LaravelFormComponents\Components\Caption::class,
+        Okipa\LaravelFormComponents\Components\Label::class,
+        // Form
         Okipa\LaravelFormComponents\Components\Input::class,
     ],
 

@@ -7,16 +7,12 @@
     @endunless
     <input {{ $attributes->merge(array_merge([
         'id' => $id,
-        'class' => 'form-control ' . $validationClass($errors ?? null, $locale ?? null)
+        'class' => 'form-control ' . $validationClass($errors ?? null, $locale ?? null),
+        'placeholder' => $placeholder,
     ], $caption ? ['aria-describedby' => $id . '-caption'] : [])) }}
            type="{{ $type }}"
            name="{{ $name }}"
            value="{{ $value }}"/>
-    @isset($append)
-        <div class="input-group-text">
-            {!! $append !!}
-        </div>
-    @endisset
     @if($floatingLabel)
         <x-label :id="$id" :label="$label"/>
     @else
@@ -24,8 +20,6 @@
             <x-addon :addon="$append"/>
         @endisset
     @endif
-    <x-caption :caption="$caption"/>
-    @if($hasErrorAndShow($name))
-        <x-form-errors :name="$name" />
-    @endif
+    <x-caption :inputId="$id" :caption="$caption"/>
+{{--    <x-error-message :errors="$errors" :locale="$locale" />--}}
 </div>

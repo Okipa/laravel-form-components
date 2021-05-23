@@ -16,9 +16,7 @@ class LaravelFormComponentsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/form-components'),
         ], 'form-components:views');
-        // B
-        foreach (config('form-components.components') as $component)
-        {
+        foreach (config('form-components.components') as $component) {
             Blade::component($component);
         }
     }

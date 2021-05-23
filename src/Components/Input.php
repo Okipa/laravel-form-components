@@ -4,98 +4,51 @@ namespace Okipa\LaravelFormComponents\Components;
 
 use Closure;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\MessageBag;
-use Illuminate\Support\Str;
-use Illuminate\Support\ViewErrorBag;
+use Okipa\LaravelFormComponents\Components\Traits\HasAddon;
+use Okipa\LaravelFormComponents\Components\Traits\HasId;
+use Okipa\LaravelFormComponents\Components\Traits\HasLabel;
+use Okipa\LaravelFormComponents\Components\Traits\HasName;
+use Okipa\LaravelFormComponents\Components\Traits\HasPlaceholder;
+use Okipa\LaravelFormComponents\Components\Traits\HasValidation;
+use Okipa\LaravelFormComponents\Components\Traits\HasValue;
 
 class Input extends AbstractComponent
 {
-    public bool $floatingLabel;
+    use HasId;
+    use HasName;
+    use HasLabel;
+    use HasValue;
+    use HasPlaceholder;
+    use HasAddon;
+    use HasValidation;
 
     public function __construct(
         public string $name,
+        public string|null $id = null,
         public string $type = 'text',
         public Model|null $model = null,
-        public int|string|null $value = null,
         public string|null $label = null,
         public bool $hideLabel = false,
-        public string|Closure|null $prepend = null,
-        public string|Closure|null $append = null,
+        public bool|null $floatingLabel = null,
         public string|null $placeholder = null,
         public bool $hidePlaceholder = false,
+        public string|Closure|null $prepend = null,
+        public string|Closure|null $append = null,
+        public string|int|array|Closure|null $value = null,
         public string|null $caption = null,
-        protected bool|null $displaySuccess = null,
-        protected bool|null $displayFailure = null,
+        public bool|null $displaySuccess = null,
+        public bool|null $displayFailure = null,
         public string $errorBag = 'default',
+        public string|null $locale = null,
     ) {
-        $this->id = $this->getAttribute() ?: $this->getDefaultId();
-        $this->label = $this->label ?: $this->getValidationTranslation();
-        $this->placeholder = $this->placeholder ?: $this->getValidationTranslation();
-        $this->floatingLabel = config('form-components.floating_label', false);
-    }
-
-    protected function shouldDisplayFailedValidation(): bool
-    {
-        return is_null($this->displayFailure)
-            ? config('form-components.display_failed_validation', true)
-            : $this->displayFailure;
-    }
-
-    protected function shouldDisplaySucceededValidation(): bool
-    {
-        return is_null($this->displayFailure)
-            ? config('form-components.display_succeeded_validation', true)
-            : $this->displayFailure;
-    }
-
-    protected function getErrorMessageBag(ViewErrorBag $errors): MessageBag
-    {
-        return $errors->{$this->errorBag};
-    }
-
-    public function validationClass(?ViewErrorBag $errors): string|null
-    {
-        // Do not highlight field if no errors are found.
-        if (! $errors) {
-            return null;
-        }
-        if ($this->getErrorMessageBag($errors)->isEmpty()) {
-            return null;
-        }
-        // Highlight field with `is-invalid` class when it has an error.
-        if ($this->getErrorMessageBag($errors)->has($this->convertArrayNameInNotation())) {
-            return $this->shouldDisplayFailedValidation() ? 'is-invalid' : null;
-        }
-
-        // Highlight field with `is-valid` class when other errors are detected but not for this field.
-        return $this->shouldDisplaySucceededValidation() ? 'is-valid' : null;
-    }
-
-    public function errorMessage(?ViewErrorBag $errors): string|null
-    {
-        if (! $errors) {
-            return null;
-        }
-        if (! $this->shouldDisplayFailedValidation()) {
-            return null;
-        }
-
-        return $this->getErrorMessageBag($errors)->first($this->convertArrayNameInNotation());
-    }
-
-    protected function getDefaultId(): string
-    {
-        return $this->type . '-' . Str::slug(Str::snake($this->convertArrayNameInNotation('-'), '-'));
-    }
-
-    protected function convertArrayNameInNotation(string $notation = '.'): string
-    {
-        return str_replace(['[', ']'], [$notation, ''], $this->name);
-    }
-
-    protected function getValidationTranslation(): string
-    {
-        return __('validation.attributes.' . $this->name);
+        $this->id = $this->getId();
+        $this->label = $this->getLabel();
+        $this->floatingLabel = $this->getFloatingLabel();
+        $this->placeholder = $this->getPlaceholder();
+        $this->prepend = $this->getPrepend();
+        $this->append = $this->getAppend();
+        $this->value = $this->getValue();
+        parent::__construct();
     }
 
     protected function setViewPath(): string

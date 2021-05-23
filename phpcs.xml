@@ -17,7 +17,7 @@
 	<rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
 		<exclude-pattern>./tests/*</exclude-pattern>
 	</rule>
-    <rule ref="PSR1.Methods.CamelCapsMethodName">
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
         <exclude-pattern>./tests/*</exclude-pattern>
     </rule>
 	<rule ref="PSR12"/>
