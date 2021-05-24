@@ -7,7 +7,7 @@
     @endunless
     <input {{ $attributes->merge(array_merge([
         'id' => $id,
-        'class' => 'form-control ' . $validationClass($errors ?? null, $locale ?? null),
+        'class' => 'form-control ' . $validationClass($errors, $locale),
         'placeholder' => $placeholder,
     ], $caption ? ['aria-describedby' => $id . '-caption'] : [])) }}
            type="{{ $type }}"
@@ -21,5 +21,5 @@
         @endisset
     @endif
     <x-caption :inputId="$id" :caption="$caption"/>
-{{--    <x-error-message :errors="$errors" :locale="$locale" />--}}
+    <x-error-message :message="$errorMessage($errors)"/>
 </div>

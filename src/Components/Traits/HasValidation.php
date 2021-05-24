@@ -7,11 +7,16 @@ use Illuminate\Support\ViewErrorBag;
 
 trait HasValidation
 {
-    protected function shouldDisplayFailedValidation(): bool
+    public function validationClass(ViewErrorBag $errors): string|null
     {
-        return is_null($this->displayFailure)
-            ? config('form-components.display_failed_validation', true)
-            : $this->displayFailure;
+        if ($this->getErrorMessageBag($errors)->isEmpty()) {
+            return null;
+        }
+        if ($this->getErrorMessageBag($errors)->has($this->getNameWithArrayNotationConvertedInto())) {
+            return $this->displayValidationFailure ? 'is-invalid' : null;
+        }
+
+        return $this->displayValidationSuccess ? 'is-valid' : null;
     }
 
     protected function getErrorMessageBag(ViewErrorBag $errors): MessageBag
@@ -19,21 +24,26 @@ trait HasValidation
         return $errors->{$this->errorBag};
     }
 
-    public function validationClass(?ViewErrorBag $errors): string|null
+    public function errorMessage(ViewErrorBag $errors): string|null
     {
-        // Do not highlight field if no errors are found.
-        if (! $errors) {
+        if (! $this->displayValidationFailure) {
             return null;
-        }
-        if ($this->getErrorMessageBag($errors)->isEmpty()) {
-            return null;
-        }
-        // Highlight field with `is-invalid` class when it has an error.
-        if ($this->getErrorMessageBag($errors)->has($this->getNameWithArrayNotationConvertedInto())) {
-            return $this->shouldDisplayFailedValidation() ? 'is-invalid' : null;
         }
 
-        // Highlight field with `is-valid` class when other errors are detected but not for this field.
-        return $this->shouldDisplaySucceededValidation() ? 'is-valid' : null;
+        return $this->getErrorMessageBag($errors)->first($this->getNameWithArrayNotationConvertedInto());
+    }
+
+    protected function shouldDisplayValidationFailure(): bool
+    {
+        return is_null($this->displayValidationFailure)
+            ? config('form-components.display_validation_failure', true)
+            : $this->displayValidationFailure;
+    }
+
+    protected function shouldDisplayValidationSuccess(): bool
+    {
+        return is_null($this->displayValidationSuccess)
+            ? config('form-components.display_validation_success', true)
+            : $this->displayValidationSuccess;
     }
 }

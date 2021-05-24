@@ -1,5 +1,3 @@
-@if($errorMessage)
-    <div class="invalid-feedback">
-        {!! $errorMessage !!}
-    </div>
+@if($message)
+    <div {{ $attributes->merge(['class' => 'invalid-feedback']) }}>{{ $message }}</div>
 @endif

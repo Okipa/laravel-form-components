@@ -2,8 +2,9 @@
 
 namespace Okipa\LaravelFormComponents\Tests;
 
-use Orchestra\Testbench\TestCase as Orchestra;
+use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\LaravelFormComponentsServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
@@ -12,8 +13,21 @@ class TestCase extends Orchestra
         return [LaravelFormComponentsServiceProvider::class];
     }
 
-    public function getEnvironmentSetUp($app)
+    //    public function getEnvironmentSetUp($app): void
+    //    {
+    //        config()->set('database.default', 'testing');
+    //    }
+
+    protected function executeWebMiddlewareGroup(): void
     {
-        config()->set('database.default', 'testing');
+        $this->app['router']->get('test', ['middleware' => 'web']);
+        $this->call('GET', 'test');
+    }
+
+    protected function renderComponent(array $data): string
+    {
+        $input = app(Input::class, $data);
+
+        return $input->render()->with($input->data())->render();
     }
 }

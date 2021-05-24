@@ -3,23 +3,24 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit;
 
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
 use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class InputTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->executeWebMiddlewareGroup();
+    }
+
     /** @test */
     public function it_can_set_name(): void
     {
         $html = $this->renderComponent(['name' => 'first_name']);
         self::assertStringContainsString(' name="first_name"', $html);
-    }
-
-    protected function renderComponent(array $data)
-    {
-        $input = app(Input::class, $data);
-
-        return $input->render()->with($input->data())->toHtml();
     }
 
     /** @test */
@@ -291,5 +292,77 @@ class InputTest extends TestCase
         $this->call('GET', 'test');
         $html = $this->renderComponent(['name' => 'first_name[fr]', 'value' => 'Test first name']);
         self::assertStringContainsString(' value="Test old first name"', $html);
+    }
+
+    /** @test */
+    public function it_can_globally_set_display_validation_success(): void
+    {
+        config()->set('form-components.display_validation_success', true);
+        $input = app(Input::class, ['name' => 'first_name']);
+        self::assertTrue($input->displayValidationSuccess);
+        config()->set('form-components.display_validation_success', false);
+        $input = app(Input::class, ['name' => 'first_name']);
+        self::assertFalse($input->displayValidationSuccess);
+    }
+
+    /** @test */
+    public function it_can_display_validation_success_when_allowed(): void
+    {
+        config()->set('form-components.display_validation_success', false);
+        $messageBag = app(MessageBag::class)->add('other_field', 'Error test');
+        $errors = app(ViewErrorBag::class)->put('default', $messageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        $html = $this->renderComponent(['name' => 'first_name', 'displayValidationSuccess' => true]);
+        self::assertStringContainsString(' is-valid', $html);
+    }
+
+    /** @test */
+    public function it_cant_display_validation_success_when_disallowed(): void
+    {
+        config()->set('form-components.display_validation_success', true);
+        $messageBag = app(MessageBag::class)->add('other_field', 'Error test');
+        $errors = app(ViewErrorBag::class)->put('default', $messageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        $html = $this->renderComponent(['name' => 'first_name', 'displayValidationSuccess' => false]);
+        self::assertStringNotContainsString(' is-valid', $html);
+    }
+
+    /** @test */
+    public function it_can_globally_set_display_validation_failure(): void
+    {
+        config()->set('form-components.display_validation_failure', true);
+        $input = app(Input::class, ['name' => 'first_name']);
+        self::assertTrue($input->displayValidationFailure);
+        config()->set('form-components.display_validation_failure', false);
+        $input = app(Input::class, ['name' => 'first_name']);
+        self::assertFalse($input->displayValidationFailure);
+    }
+
+    /** @test */
+    public function it_can_display_validation_failure_when_allowed(): void
+    {
+        config()->set('form-components.display_validation_failure', false);
+        $messageBag = app(MessageBag::class)->add('first_name', 'Error test');
+        $errors = app(ViewErrorBag::class)->put('default', $messageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        $html = $this->renderComponent(['name' => 'first_name', 'displayValidationFailure' => true]);
+        self::assertStringContainsString(' is-invalid', $html);
+        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+    }
+
+    /** @test */
+    public function it_cant_display_validation_failure_when_disallowed(): void
+    {
+        config()->set('form-components.display_validation_failure', true);
+        $messageBag = app(MessageBag::class)->add('first_name', 'Error test');
+        $errors = app(ViewErrorBag::class)->put('default', $messageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        $html = $this->renderComponent(['name' => 'first_name', 'displayValidationFailure' => false]);
+        self::assertStringNotContainsString(' is-invalid', $html);
+        self::assertStringNotContainsString('<div class="invalid-feedback">Error test</div>', $html);
     }
 }
