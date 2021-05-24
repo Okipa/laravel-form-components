@@ -7,7 +7,7 @@ use Illuminate\Support\ViewErrorBag;
 
 trait HasValidation
 {
-    public function validationClass(ViewErrorBag $errors): string|null
+    public function validationClass(ViewErrorBag $errors, string|null $locale): string|null
     {
         if ($this->getErrorMessageBag($errors)->isEmpty()) {
             return null;

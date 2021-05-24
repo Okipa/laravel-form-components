@@ -3,6 +3,10 @@
 namespace Okipa\LaravelFormComponents\Components;
 
 use Closure;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Okipa\LaravelFormComponents\Components\Traits\HasAddon;
 use Okipa\LaravelFormComponents\Components\Traits\HasId;
@@ -40,7 +44,7 @@ class Input extends AbstractComponent
         public bool|null $displayValidationSuccess = null,
         public bool|null $displayValidationFailure = null,
         public string $errorBag = 'default',
-        public string|null $locale = null
+        public array|null $locales = [null]
     ) {
         $this->id = $this->getId();
         $this->label = $this->getLabel();
@@ -48,7 +52,6 @@ class Input extends AbstractComponent
         $this->placeholder = $this->getPlaceholder();
         $this->prepend = $this->getPrepend();
         $this->append = $this->getAppend();
-        $this->value = $this->getValue();
         $this->displayValidationSuccess = $this->shouldDisplayValidationSuccess();
         $this->displayValidationFailure = $this->shouldDisplayValidationFailure();
         parent::__construct();

@@ -6,19 +6,23 @@ use Closure;
 
 trait HasValue
 {
-    protected function getValue(): mixed
+    public function getValue(string|null $locale): mixed
     {
-        $oldValue = $this->getOldValue();
+        $oldValue = $this->getOldValue($locale);
         if (isset($oldValue)) {
             return $oldValue;
         }
         if ($this->value instanceof Closure) {
-            return ($this->value)(app()->getLocale());
+            return ($this->value)($locale ?: app()->getLocale());
         }
+        if ($locale) {
+            return $this->value ?? data_get($this->model, $this->name . '.' . $locale);
+        }
+
         return $this->value ?? $this->model?->getAttribute($this->name);
     }
 
-    protected function getOldValue(): mixed
+    protected function getOldValue(string|null $locale): mixed
     {
         if (! old()) {
             return null;

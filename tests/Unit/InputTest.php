@@ -2,6 +2,7 @@
 
 namespace Okipa\LaravelFormComponents\Tests\Unit;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
@@ -28,6 +29,16 @@ class InputTest extends TestCase
     {
         $html = $this->renderComponent(['name' => 'first_name']);
         self::assertStringContainsString(' type="text"', $html);
+    }
+
+    /** @test */
+    public function it_can_set_localized_names(): void
+    {
+        $html = $this->renderComponent(['name' => 'first_name', 'locales' => ['fr', 'en']]);
+        self::assertStringContainsString(' data-locale="fr"', $html);
+        self::assertStringContainsString(' name="first_name[fr]"', $html);
+        self::assertStringContainsString(' data-locale="en"', $html);
+        self::assertStringContainsString(' name="first_name[en]"', $html);
     }
 
     /** @test */
@@ -220,6 +231,27 @@ class InputTest extends TestCase
     }
 
     /** @test */
+    public function it_can_retrieve_localized_value_from_model(): void
+    {
+        $user = app(User::class)->forceFill(['first_name' => [
+            'fr' => 'Test first name FR',
+            'en' => 'Test first name EN',
+        ]]);
+        $html = $this->renderComponent(['name' => 'first_name', 'model' => $user, 'locales' => ['fr', 'en']]);
+        self::assertStringContainsString('value="Test first name FR"', $html);
+        self::assertStringContainsString('value="Test first name EN"', $html);
+    }
+
+    /** @test */
+    public function it_can_keep_null_localized_value(): void
+    {
+        $user = app(User::class)->forceFill(['first_name' => ['fr' => 'Test first name FR']]);
+        $html = $this->renderComponent(['name' => 'first_name', 'model' => $user, 'locales' => ['fr', 'en']]);
+        self::assertStringContainsString('name="first_name[fr]" value="Test first name FR"', $html);
+        self::assertStringContainsString('name="first_name[en]" value=""', $html);
+    }
+
+    /** @test */
     public function it_can_set_value_and_override_model_value(): void
     {
         $user = app(User::class)->forceFill(['first_name' => 'Test first name']);
@@ -364,5 +396,35 @@ class InputTest extends TestCase
         $html = $this->renderComponent(['name' => 'first_name', 'displayValidationFailure' => false]);
         self::assertStringNotContainsString(' is-invalid', $html);
         self::assertStringNotContainsString('<div class="invalid-feedback">Error test</div>', $html);
+    }
+
+    /** @test */
+    public function it_can_display_validation_failure_from_array_name(): void
+    {
+        config()->set('form-components.display_validation_failure', false);
+        $messageBag = app(MessageBag::class)->add('first_name.fr', 'Error test');
+        $errors = app(ViewErrorBag::class)->put('default', $messageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        $html = $this->renderComponent(['name' => 'first_name[fr]', 'displayValidationFailure' => true]);
+        self::assertStringContainsString(' is-invalid', $html);
+        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+    }
+
+    /** @test */
+    public function it_can_display_validation_failure_from_custom_error_bag(): void
+    {
+        config()->set('form-components.display_validation_failure', false);
+        $messageBag = app(MessageBag::class)->add('first_name', 'Error test');
+        $errors = app(ViewErrorBag::class)->put('test_error_bag', $messageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        $html = $this->renderComponent([
+            'name' => 'first_name',
+            'displayValidationFailure' => true,
+            'errorBag' => 'test_error_bag',
+        ]);
+        self::assertStringContainsString(' is-invalid', $html);
+        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
     }
 }

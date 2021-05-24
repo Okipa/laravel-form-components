@@ -13,11 +13,6 @@ class TestCase extends Orchestra
         return [LaravelFormComponentsServiceProvider::class];
     }
 
-    //    public function getEnvironmentSetUp($app): void
-    //    {
-    //        config()->set('database.default', 'testing');
-    //    }
-
     protected function executeWebMiddlewareGroup(): void
     {
         $this->app['router']->get('test', ['middleware' => 'web']);
