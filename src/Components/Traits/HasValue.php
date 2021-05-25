@@ -27,12 +27,11 @@ trait HasValue
         if (! old()) {
             return null;
         }
-        $name = $this->getNameWithArrayNotationConvertedInto();
-        $oldValue = data_get(old(), $name);
+        $oldValue = data_get(old(), $this->name . ($locale ? '.' . $locale : ''));
         if ($oldValue) {
             return $oldValue;
         }
 
-        return array_key_exists($name, old()) ? '' : null;
+        return array_key_exists($this->name, old()) ? '' : null;
     }
 }

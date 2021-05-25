@@ -6,19 +6,19 @@ use Closure;
 
 trait HasAddon
 {
-    protected function getPrepend(): string|null
+    public function getPrepend(string|null $locale): string|null
     {
         if ($this->prepend instanceof Closure) {
-            return ($this->prepend)(app()->getLocale());
+            return ($this->prepend)($locale ?: app()->getLocale());
         }
 
         return $this->prepend;
     }
 
-    protected function getAppend(): string|null
+    public function getAppend(string|null $locale): string|null
     {
         if ($this->append instanceof Closure) {
-            return ($this->append)(app()->getLocale());
+            return ($this->append)($locale ?: app()->getLocale());
         }
 
         return $this->append;

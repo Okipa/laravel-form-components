@@ -4,13 +4,16 @@ namespace Okipa\LaravelFormComponents\Components\Traits;
 
 trait HasLabel
 {
-    protected function getLabel(): string|null
+    public function getLabel(string|null $locale): string|null
     {
         if ($this->hideLabel) {
             return null;
         }
+        if ($this->label) {
+            return $this->label . ($locale ? ' (' . strtoupper($locale) . ')' : '');
+        }
 
-        return $this->label ?: $this->getNameTranslationFromValidation();
+        return $this->getNameTranslationFromValidation($locale);
     }
 
     protected function getFloatingLabel(): bool

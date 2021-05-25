@@ -6,13 +6,15 @@ use Illuminate\Support\Str;
 
 trait HasId
 {
-    protected function getId(): string|null
+    public function getId(string|null $locale): string|null
     {
-        return $this->id ?: $this->getDefaultId();
+        return $this->id ? $this->id . ($locale ? '-' . $locale : '') : $this->getDefaultId($locale);
     }
 
-    protected function getDefaultId(): string
+    protected function getDefaultId(string|null $locale): string
     {
-        return $this->type . '-' . Str::slug(Str::snake($this->getNameWithArrayNotationConvertedInto('-'), '-'));
+        return $this->type . '-'
+            . Str::slug(Str::snake($this->getNameWithArrayNotationConvertedInto('-'), '-'))
+            . ($locale ? '-' . $locale : '');
     }
 }

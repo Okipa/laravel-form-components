@@ -4,18 +4,15 @@ namespace Okipa\LaravelFormComponents\Components\Traits;
 
 trait HasPlaceholder
 {
-    protected function getPlaceholder(): string|null
+    public function getPlaceholder(string|null $locale, string|null $label): string|null
     {
         if ($this->hidePlaceholder) {
             return null;
         }
         if ($this->placeholder) {
-            return $this->placeholder;
-        }
-        if ($this->label) {
-            return $this->label;
+            return $this->placeholder . ($locale ? ' (' . strtoupper($locale) . ')' : '');
         }
 
-        return $this->getNameTranslationFromValidation();
+        return $label ?: $this->getNameTranslationFromValidation($locale);
     }
 }

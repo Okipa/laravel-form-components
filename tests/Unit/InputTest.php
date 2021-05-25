@@ -2,7 +2,6 @@
 
 namespace Okipa\LaravelFormComponents\Tests\Unit;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
@@ -11,12 +10,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class InputTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_set_name(): void
     {
@@ -56,10 +49,26 @@ class InputTest extends TestCase
     }
 
     /** @test */
+    public function it_can_setup_default_localized_id_when_none_is_defined(): void
+    {
+        $html = $this->renderComponent(['name' => 'first_name', 'locales' => ['fr', 'en']]);
+        self::assertStringContainsString(' id="text-first-name-fr"', $html);
+        self::assertStringContainsString(' id="text-first-name-en"', $html);
+    }
+
+    /** @test */
     public function it_can_set_id(): void
     {
         $html = $this->renderComponent(['name' => 'first_name', 'id' => 'test-id']);
         self::assertStringContainsString(' id="test-id"', $html);
+    }
+
+    /** @test */
+    public function it_can_set_localized_id(): void
+    {
+        $html = $this->renderComponent(['name' => 'first_name', 'id' => 'test-id', 'locales' => ['fr', 'en']]);
+        self::assertStringContainsString(' id="test-id-fr"', $html);
+        self::assertStringContainsString(' id="test-id-en"', $html);
     }
 
     /** @test */
@@ -78,6 +87,24 @@ class InputTest extends TestCase
         $html = $this->renderComponent(['name' => 'first_name', 'label' => 'Test label']);
         self::assertStringContainsString(
             '<label for="text-first-name" class="form-label">Test label</label>',
+            $html
+        );
+    }
+
+    /** @test */
+    public function it_can_set_localized_label(): void
+    {
+        $html = $this->renderComponent([
+            'name' => 'first_name',
+            'label' => 'Test label',
+            'locales' => ['fr', 'en'],
+        ]);
+        self::assertStringContainsString(
+            '<label for="text-first-name-fr" class="form-label">Test label (FR)</label>',
+            $html
+        );
+        self::assertStringContainsString(
+            '<label for="text-first-name-en" class="form-label">Test label (EN)</label>',
             $html
         );
     }
@@ -141,9 +168,17 @@ class InputTest extends TestCase
     }
 
     /** @test */
+    public function it_can_setup_default_localized_placeholder_with_string_name_when_none_is_defined(): void
+    {
+        $html = $this->renderComponent(['name' => 'first_name', 'locales' => ['fr', 'en']]);
+        self::assertStringContainsString('placeholder="validation.attributes.first_name (FR)"', $html);
+        self::assertStringContainsString('placeholder="validation.attributes.first_name (EN)"', $html);
+    }
+
+    /** @test */
     public function it_can_setup_default_placeholder_with_array_name_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(['name' => 'first_name[fr]']);
+        $html = $this->renderComponent(['name' => 'first_name[0]']);
         self::assertStringContainsString('placeholder="validation.attributes.first_name"', $html);
     }
 
@@ -180,7 +215,7 @@ class InputTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_closure_prepend_addon(): void
+    public function it_can_set_closure_prepend_addon_with_disabled_multilingual(): void
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent([
@@ -188,6 +223,19 @@ class InputTest extends TestCase
             'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
         ]);
         self::assertStringContainsString('Test prepend ' . app()->getLocale(), $html);
+    }
+
+    /** @test */
+    public function it_can_set_localized_prepend_addon(): void
+    {
+        config()->set('form-components.floating_label', false);
+        $html = $this->renderComponent([
+            'name' => 'first_name',
+            'locales' => ['fr', 'en'],
+            'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
+        ]);
+        self::assertStringContainsString('Test prepend fr', $html);
+        self::assertStringContainsString('Test prepend en', $html);
     }
 
     public function it_can_set_append_addon(): void
@@ -201,7 +249,7 @@ class InputTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_closure_append_addon(): void
+    public function it_can_set_closure_append_addon_with_disabled_multilingual(): void
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent([
@@ -209,6 +257,19 @@ class InputTest extends TestCase
             'append' => fn(string $locale) => 'Test append ' . $locale,
         ]);
         self::assertStringContainsString('Test append ' . app()->getLocale(), $html);
+    }
+
+    /** @test */
+    public function it_can_set_localized_append_addon(): void
+    {
+        config()->set('form-components.floating_label', false);
+        $html = $this->renderComponent([
+            'name' => 'first_name',
+            'locales' => ['fr', 'en'],
+            'append' => fn(string $locale) => 'Test append ' . $locale,
+        ]);
+        self::assertStringContainsString('Test append fr', $html);
+        self::assertStringContainsString('Test append en', $html);
     }
 
     /** @test */
@@ -233,10 +294,12 @@ class InputTest extends TestCase
     /** @test */
     public function it_can_retrieve_localized_value_from_model(): void
     {
-        $user = app(User::class)->forceFill(['first_name' => [
-            'fr' => 'Test first name FR',
-            'en' => 'Test first name EN',
-        ]]);
+        $user = app(User::class)->forceFill([
+            'first_name' => [
+                'fr' => 'Test first name FR',
+                'en' => 'Test first name EN',
+            ],
+        ]);
         $html = $this->renderComponent(['name' => 'first_name', 'model' => $user, 'locales' => ['fr', 'en']]);
         self::assertStringContainsString('value="Test first name FR"', $html);
         self::assertStringContainsString('value="Test first name EN"', $html);
@@ -291,6 +354,18 @@ class InputTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_localized_value(): void
+    {
+        $html = $this->renderComponent([
+            'name' => 'first_name',
+            'locales' => ['fr', 'en'],
+            'value' => fn(string $locale) => 'Test value ' . $locale,
+        ]);
+        self::assertStringContainsString(' value="Test value fr"', $html);
+        self::assertStringContainsString(' value="Test value en"', $html);
+    }
+
+    /** @test */
     public function it_can_retrieve_old_value_from_string(): void
     {
         $this->app['router']->get('test', [
@@ -303,7 +378,19 @@ class InputTest extends TestCase
     }
 
     /** @test */
-    public function it_can_take_old_value_from_null(): void
+    public function it_can_retrieve_old_value_from_array(): void
+    {
+        $this->app['router']->get('test', [
+            'middleware' => 'web',
+            'uses' => fn() => request()->merge(['first_name[0]' => 'Test old first name'])->flash(),
+        ]);
+        $this->call('GET', 'test');
+        $html = $this->renderComponent(['name' => 'first_name[0]', 'value' => 'Test old first name']);
+        self::assertStringContainsString(' value="Test old first name"', $html);
+    }
+
+    /** @test */
+    public function it_can_retrieve_old_value_from_null(): void
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
@@ -315,15 +402,41 @@ class InputTest extends TestCase
     }
 
     /** @test */
-    public function it_can_retrieve_old_value_from_array(): void
+    public function it_can_retrieve_old_localized_values_from_string(): void
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['first_name' => ['fr' => 'Test old first name']])->flash(),
+            'uses' => fn() => request()->merge([
+                'first_name' => [
+                    'fr' => 'Test old first name FR',
+                    'en' => 'Test old first name EN',
+                ],
+            ])->flash(),
         ]);
         $this->call('GET', 'test');
-        $html = $this->renderComponent(['name' => 'first_name[fr]', 'value' => 'Test first name']);
-        self::assertStringContainsString(' value="Test old first name"', $html);
+        $html = $this->renderComponent([
+            'name' => 'first_name',
+            'locales' => ['fr', 'en'],
+            'value' => fn(string $locale) => 'Test value ' . $locale,
+        ]);
+        self::assertStringContainsString(' name="first_name[fr]" value="Test old first name FR"', $html);
+        self::assertStringContainsString(' name="first_name[en]" value="Test old first name EN"', $html);
+    }
+
+    public function it_can_retrieve_old_localized_values_from_null(): void
+    {
+        $this->app['router']->get('test', [
+            'middleware' => 'web',
+            'uses' => fn() => request()->merge(['first_name' => ['fr' => null, 'en' => null]])->flash(),
+        ]);
+        $this->call('GET', 'test');
+        $html = $this->renderComponent([
+            'name' => 'first_name',
+            'locales' => ['fr', 'en'],
+            'value' => fn(string $locale) => 'Test value ' . $locale,
+        ]);
+        self::assertStringContainsString(' name="first_name[fr]" value=""', $html);
+        self::assertStringContainsString(' name="first_name[en]" value=""', $html);
     }
 
     /** @test */
@@ -386,6 +499,22 @@ class InputTest extends TestCase
     }
 
     /** @test */
+    public function it_can_display_localized_validation_failure(): void
+    {
+        $messageBag = app(MessageBag::class)->add('first_name.fr', 'Error test FR');
+        $errors = app(ViewErrorBag::class)->put('default', $messageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        $html = $this->renderComponent([
+            'name' => 'first_name',
+            'displayValidationFailure' => true,
+            'locales' => ['fr', 'en']
+        ]);
+        self::assertStringContainsString('<div class="invalid-feedback">Error test FR</div>', $html);
+        self::assertStringNotContainsString('<div class="invalid-feedback">Error test EN</div>', $html);
+    }
+
+    /** @test */
     public function it_cant_display_validation_failure_when_disallowed(): void
     {
         config()->set('form-components.display_validation_failure', true);
@@ -402,11 +531,11 @@ class InputTest extends TestCase
     public function it_can_display_validation_failure_from_array_name(): void
     {
         config()->set('form-components.display_validation_failure', false);
-        $messageBag = app(MessageBag::class)->add('first_name.fr', 'Error test');
+        $messageBag = app(MessageBag::class)->add('first_name.0', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
-        $html = $this->renderComponent(['name' => 'first_name[fr]', 'displayValidationFailure' => true]);
+        $html = $this->renderComponent(['name' => 'first_name[0]', 'displayValidationFailure' => true]);
         self::assertStringContainsString(' is-invalid', $html);
         self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
     }
@@ -426,5 +555,11 @@ class InputTest extends TestCase
         ]);
         self::assertStringContainsString(' is-invalid', $html);
         self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->executeWebMiddlewareGroup();
     }
 }
