@@ -2,6 +2,7 @@
 
 namespace Okipa\LaravelFormComponents;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,13 +17,28 @@ class LaravelFormComponentsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/form-components'),
         ], 'form-components:views');
-        foreach (config('form-components.components') as $component) {
-            Blade::component($component);
-        }
+        $this->declareComponents();
+        $this->declareBladeDirectives();
+    }
+
+    protected function declareComponents(): void
+    {
+        Blade::componentNamespace('Okipa\\LaravelFormComponents\\Components', 'form');
+    }
+
+    protected function declareBladeDirectives(): void
+    {
+        Blade::directive('model', function (Model $model) {
+            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->bindModel(' . $model . ') ?>';
+        });
+        Blade::directive('endmodel', function () {
+            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->unbindLastModel() ?>';
+        });
     }
 
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/form-components.php', 'form-components');
+        $this->app->singleton(FormBinder::class, fn() => new FormBinder());
     }
 }

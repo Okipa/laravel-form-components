@@ -3,6 +3,7 @@
 namespace Okipa\LaravelFormComponents\Components\Traits;
 
 use Closure;
+use Okipa\LaravelFormComponents\FormBinder;
 
 trait HasValue
 {
@@ -15,11 +16,12 @@ trait HasValue
         if ($this->value instanceof Closure) {
             return ($this->value)($locale ?: app()->getLocale());
         }
+        $model = $this->model ?: app(FormBinder::class)->getBoundModel();
         if ($locale) {
-            return $this->value ?? data_get($this->model, $this->name . '.' . $locale);
+            return $this->value ?? data_get($model, $this->name . '.' . $locale);
         }
 
-        return $this->value ?? $this->model?->getAttribute($this->name);
+        return $this->value ?? $model?->getAttribute($this->name);
     }
 
     protected function getOldValue(string|null $locale): mixed

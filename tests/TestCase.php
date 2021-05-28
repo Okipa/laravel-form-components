@@ -2,7 +2,6 @@
 
 namespace Okipa\LaravelFormComponents\Tests;
 
-use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\LaravelFormComponentsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -19,10 +18,11 @@ class TestCase extends Orchestra
         $this->call('GET', 'test');
     }
 
-    protected function renderComponent(array $data): string
+    protected function renderComponent(string $componentClass, array $componentData = [], array $viewData = []): string
     {
-        $input = app(Input::class, $data);
+        /** @var \Illuminate\View\Component $input */
+        $input = app($componentClass, $componentData);
 
-        return $input->render()->with($input->data())->render();
+        return $input->render()->with(array_merge($input->data(), $viewData))->render();
     }
 }

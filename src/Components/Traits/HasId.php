@@ -8,12 +8,12 @@ trait HasId
 {
     public function getId(string|null $locale): string|null
     {
-        return $this->id ? $this->id . ($locale ? '-' . $locale : '') : $this->getDefaultId($locale);
+        return $this->id ? $this->id . ($locale ? '-' . $locale : '') : null;
     }
 
-    protected function getDefaultId(string|null $locale): string
+    public function getDefaultId(string $prefix, string|null $locale): string
     {
-        return $this->type . '-'
+        return Str::slug(Str::snake($prefix)) . '-'
             . Str::slug(Str::snake($this->getNameWithArrayNotationConvertedInto('-'), '-'))
             . ($locale ? '-' . $locale : '');
     }

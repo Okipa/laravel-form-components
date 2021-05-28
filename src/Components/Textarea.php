@@ -13,7 +13,7 @@ use Okipa\LaravelFormComponents\Components\Traits\HasPlaceholder;
 use Okipa\LaravelFormComponents\Components\Traits\HasValidation;
 use Okipa\LaravelFormComponents\Components\Traits\HasValue;
 
-class Input extends AbstractComponent
+class Textarea extends AbstractComponent
 {
     use HasId;
     use HasName;
@@ -27,7 +27,6 @@ class Input extends AbstractComponent
     public function __construct(
         public string $name,
         public string|null $id = null,
-        public string $type = 'text',
         public Model|null $model = null,
         public string|null $label = null,
         public bool $hideLabel = false,
@@ -51,6 +50,6 @@ class Input extends AbstractComponent
 
     protected function setViewPath(): string
     {
-        return 'input';
+        return 'textarea';
     }
 }

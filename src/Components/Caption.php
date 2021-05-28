@@ -2,6 +2,8 @@
 
 namespace Okipa\LaravelFormComponents\Components;
 
+use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
+
 class Caption extends AbstractComponent
 {
     public function __construct(public string $inputId, public string|null $caption)

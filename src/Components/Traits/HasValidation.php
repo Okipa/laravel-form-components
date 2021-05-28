@@ -7,30 +7,41 @@ use Illuminate\Support\ViewErrorBag;
 
 trait HasValidation
 {
-    public function validationClass(ViewErrorBag $errors, string|null $locale): string|null
+    public function getValidationClass(ViewErrorBag $errors): string|null
     {
-        if ($this->getErrorMessageBag($errors)->isEmpty()) {
+        if ($this->getErrorBag($errors)->isEmpty()) {
             return null;
         }
-        if ($this->getErrorMessageBag($errors)->has($this->getNameWithArrayNotationConvertedInto())) {
+        if ($this->getErrorBag($errors)->has($this->getNameWithArrayNotationConvertedInto())) {
             return $this->displayValidationFailure ? 'is-invalid' : null;
         }
 
         return $this->displayValidationSuccess ? 'is-valid' : null;
     }
 
-    protected function getErrorMessageBag(ViewErrorBag $errors): MessageBag
+    protected function getErrorBag(ViewErrorBag $errors): MessageBag
     {
         return $errors->{$this->errorBag};
     }
 
-    public function getErrorMessage(ViewErrorBag $errors): string|null
+    public function getErrorMessage(ViewErrorBag $errors, string|null $locale): string|null
     {
         if (! $this->displayValidationFailure) {
             return null;
         }
+        $errorBag = $this->getErrorBag($errors);
+        if ($locale) {
+            $errorKey = $this->name . '.' . $locale;
+            $rawMessage = $errorBag->first($errorKey);
 
-        return $this->getErrorMessageBag($errors)->first($this->getNameWithArrayNotationConvertedInto());
+            return $rawMessage ? str_replace(
+                str_replace('_', ' ', $this->name) . '.' . $locale,
+                __('validation.attributes.' . $this->name) . ' (' . strtoupper($locale) . ')',
+                $rawMessage
+            ) : null;
+        }
+
+        return $errorBag->first($this->getNameWithArrayNotationConvertedInto());
     }
 
     protected function shouldDisplayValidationFailure(): bool

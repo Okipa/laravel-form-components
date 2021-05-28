@@ -3,6 +3,7 @@
 namespace Okipa\LaravelFormComponents\Components;
 
 use Closure;
+use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 
 class Addon extends AbstractComponent
 {

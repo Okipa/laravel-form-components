@@ -4,15 +4,16 @@ namespace Okipa\LaravelFormComponents\Components;
 
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 
-class Label extends AbstractComponent
+class Form extends AbstractComponent
 {
-    public function __construct(public string $id, public string|null $label)
+    public function __construct(public string $method = 'GET')
     {
+        $this->method = strtoupper($method);
         parent::__construct();
     }
 
     protected function setViewPath(): string
     {
-        return 'label';
+        return 'form';
     }
 }
