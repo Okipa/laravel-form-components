@@ -32,8 +32,8 @@ Found this package helpful? Please consider supporting my work!
 ## Compatibility
 
 | Laravel | PHP | Package |
-|---|---|---|---|
-| ^7.0 | ^8.0 | ^1.0 |
+|---|---|---|
+| ^8.0 | ^8.0 | ^1.0 |
 
 ## Upgrade guide
 
