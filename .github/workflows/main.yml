@@ -48,7 +48,7 @@ jobs:
 
       - name: PHPUnit
         if: matrix.php != '8.0' || matrix.laravel != '8.*'
-        run: vendor/bin/phpunit
+        run: vendor/bin/testbench package:test --parallel --no-coverage
 
       # Last PHP and laravel versions.
 
@@ -63,7 +63,7 @@ jobs:
         if: matrix.php == '8.0' && matrix.laravel == '8.*'
         run: |
           mkdir -p build/logs
-          vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
+          vendor/bin/testbench package:test --parallel --coverage-text --coverage-clover build/logs/clover.xml
 
       - name: Code coverage upload to Coveralls
         if: matrix.php == '8.0' && matrix.laravel == '8.*'
