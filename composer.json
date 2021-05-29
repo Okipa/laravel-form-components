@@ -24,7 +24,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^8.0"
+        "illuminate/contracts": "^7.0||^8.0"
     },
     "require-dev": {
         "nunomaduro/larastan": "^0.6",
