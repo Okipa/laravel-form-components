@@ -18,22 +18,22 @@ class ValidationFailureTest extends TestCase
     public function it_can_globally_set_display_input_validation_failure(): void
     {
         config()->set('form-components.display_validation_failure', true);
-        $input = app(Input::class, ['name' => 'first_name']);
-        self::assertTrue($input->displayValidationFailure);
+        $component = app(Input::class, ['name' => 'first_name']);
+        self::assertTrue($component->displayValidationFailure);
         config()->set('form-components.display_validation_failure', false);
-        $input = app(Input::class, ['name' => 'first_name']);
-        self::assertFalse($input->displayValidationFailure);
+        $component = app(Input::class, ['name' => 'first_name']);
+        self::assertFalse($component->displayValidationFailure);
     }
 
     /** @test */
     public function it_can_globally_set_display_textarea_validation_failure(): void
     {
         config()->set('form-components.display_validation_failure', true);
-        $textarea = app(Textarea::class, ['name' => 'first_name']);
-        self::assertTrue($textarea->displayValidationFailure);
+        $component = app(Textarea::class, ['name' => 'first_name']);
+        self::assertTrue($component->displayValidationFailure);
         config()->set('form-components.display_validation_failure', false);
-        $textarea = app(Textarea::class, ['name' => 'first_name']);
-        self::assertFalse($textarea->displayValidationFailure);
+        $component = app(Textarea::class, ['name' => 'first_name']);
+        self::assertFalse($component->displayValidationFailure);
     }
 
     /** @test */

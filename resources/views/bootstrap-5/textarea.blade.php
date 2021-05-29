@@ -8,29 +8,29 @@
         $append = $getAppend($locale);
         $errorMessage = $getErrorMessage($errors, $locale);
     @endphp
-    <div class="mb-3{{  $floatingLabel ? ' form-floating' : null }}{{ $prepend || $append ? ' input-group' : null }}">
+    <div class="component-container mb-3{{  $floatingLabel ? ' form-floating' : null }}{{ $prepend || $append ? ' input-group' : null }}">
         @unless($floatingLabel)
-            <x-form::label :id="$id" :label="$getLabel($locale)"/>
+            <x-form::partials.label :id="$id" :label="$getLabel($locale)"/>
             @if($prepend)
-                <x-form::addon :addon="$prepend"/>
+                <x-form::partials.addon :addon="$prepend"/>
             @endisset
         @endunless
         <textarea {{ $attributes->merge([
             'id' => $id,
-            'class' => 'form-control ' . $getValidationClass($errors, $locale),
+            'class' => 'component form-control ' . $getValidationClass($errors, $locale),
             'name' => $locale ? $name . '[' . $locale . ']' : $name,
             'placeholder' => $placeholder,
             'data-locale' => $locale,
             'aria-describedby' => $caption ? $id . '-caption' : null,
         ])}}>{{ $value }}</textarea>
         @if($floatingLabel)
-            <x-form::label :id="$id" :label="$label"/>
+            <x-form::partials.label :id="$id" :label="$label"/>
         @else
             @if($append)
-                <x-form::addon :addon="$append"/>
+                <x-form::partials.addon :addon="$append"/>
             @endisset
         @endif
-        <x-form::caption :inputId="$id" :caption="$caption"/>
-        <x-form::error-message :message="$errorMessage"/>
+        <x-form::partials.caption :inputId="$id" :caption="$caption"/>
+        <x-form::partials.error-message :message="$errorMessage"/>
     </div>
 @endforeach

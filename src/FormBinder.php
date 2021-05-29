@@ -9,7 +9,7 @@ class FormBinder
 {
     protected array $boundModels = [];
 
-    public function bindModel(Model $model): void
+    public function bindNewModel(Model $model): void
     {
         $this->boundModels[] = $model;
     }

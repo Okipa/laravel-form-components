@@ -1,29 +1,89 @@
-# Ready-to-use and customizable form components.
+![Laravel Form Components](/docs/laravel-form-components.png)
+<p align="center">
+    <a href="https://github.com/Okipa/laravel-form-components/releases" title="Latest Stable Version">
+        <img src="https://img.shields.io/github/release/Okipa/laravel-form-components.svg?style=flat-square" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/Okipa/laravel-form-components" title="Total Downloads">
+        <img src="https://img.shields.io/packagist/dt/okipa/laravel-form-components.svg?style=flat-square" alt="Total Downloads">
+    </a>
+    <a href="https://github.com/Okipa/laravel-form-components/actions" title="Build Status">
+        <img src="https://github.com/Okipa/laravel-form-components/workflows/CI/badge.svg" alt="Build Status">
+    </a>
+    <a href="https://coveralls.io/github/Okipa/laravel-form-components?branch=master" title="Coverage Status">
+        <img src="https://coveralls.io/repos/github/Okipa/laravel-form-components/badge.svg?branch=master" alt="Coverage Status">
+    </a>
+    <a href="/LICENSE.md" title="License: MIT">
+        <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
+    </a>
+</p>
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/okipa/laravel-form-components.svg?style=flat-square)](https://packagist.org/packages/okipa/laravel-form-components)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/okipa/laravel-form-components/run-tests?label=tests)](https://github.com/okipa/laravel-form-components/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/okipa/laravel-form-components/Check%20&%20fix%20styling?label=code%20style)](https://github.com/okipa/laravel-form-components/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/okipa/laravel-form-components.svg?style=flat-square)](https://packagist.org/packages/okipa/laravel-form-components)
+Save time and take advantage of a set of dynamical, ready-to-use and fully customizable form components.
 
----
-This repo can be used as to scaffold a Laravel package. Follow these steps to get started:
+Components are Livewire compatible and can be used with the following UI frameworks:
+* Bootstrap 5
+* Bootstrap 4 (coming soon, help welcomed)
+* TailwindCSS 2 (coming soon, help welcomed)
 
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this laravel-form-components
-2. Run "./configure-laravel-form-components.sh" to run a script that will replace all placeholders throughout all the files
-3. Remove this block of text.
-4. Have fun creating your package.
-5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
+Found this package helpful? Please consider supporting my work!
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+[![Donate](https://img.shields.io/badge/Buy_me_a-Ko--fi-ff5f5f.svg)](https://ko-fi.com/arthurlorent)
+[![Donate](https://img.shields.io/badge/Donate_on-PayPal-green.svg)](https://paypal.me/arthurlorent)
 
-## Support us
+## Compatibility
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-form-components.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-form-components)
+| Laravel | PHP | Package |
+|---|---|---|---|
+| ^7.0 | ^8.0 | ^1.0 |
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+## Upgrade guide
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+* [From okipa/laravel-bootstrap-components to okipa/laravel-form-components](/docs/upgrade-guides/from-laravel-bootstrap-components-to-laravel-form-components.md)
+
+## Usage
+
+Just call the components you need in your views and let this package take care of the HTML generation annoying part.
+
+### Monolingual input use case with Bootstrap 5
+
+Call this component in your view:
+
+```blade
+<x-form::input name="first_name"/>
+```
+
+And get this component displayed:
+
+ToDo: screenshot
+
+```blade
+ToDo: code
+```
+
+### Multilingual input use case with Bootstrap 5
+
+Call this component in your view:
+
+```blade
+<x-form::input name="first_name"/>
+```
+
+And get this component displayed:
+
+ToDo: screenshot
+
+```blade
+ToDo: code
+```
+
+## Table of Contents
+
+* [Installation](#installation)
+* [How to](#how-to)
+* [Testing](#testing)
+* [Changelog](#changelog)
+* [Contributing](#contributing)
+* [Credits](#credits)
+* [Licence](#license)
 
 ## Installation
 
@@ -33,31 +93,47 @@ You can install the package via composer:
 composer require okipa/laravel-form-components
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --provider="Okipa\LaravelFormComponents\LaravelFormComponentsServiceProvider" --tag="laravel-form-components-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
+
 ```bash
-php artisan vendor:publish --provider="Okipa\LaravelFormComponents\LaravelFormComponentsServiceProvider" --tag="laravel-form-components-config"
+php artisan vendor:publish --tag=form-components:config
 ```
 
-This is the contents of the published config file:
+You can publish the package views to customize them if necessary:
 
-```php
-return [
-];
+```bash
+php artisan vendor:publish --tag=form-components:views
 ```
 
-## Usage
+## How to
 
-```php
-$laravel-form-components = new Okipa\LaravelFormComponents();
-echo $laravel-form-components->echoPhrase('Hello, Spatie!');
-```
+### Set label
+
+### Set floating label mode
+
+### Set ID
+
+### Set CSS classes
+
+### Set type
+
+### Set name
+
+### Set placeholder
+
+### Set addons
+
+### Set caption
+
+### Get value from model
+
+### Set custom value
+
+### Deal with old data
+
+### Display validation success and failure
+
+### Configure Livewire
 
 ## Testing
 

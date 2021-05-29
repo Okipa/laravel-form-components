@@ -24,8 +24,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/contracts": "^8.0",
-        "okipa/laravel-html-helper": "^2.0"
+        "illuminate/contracts": "^8.0"
     },
     "require-dev": {
         "nunomaduro/larastan": "^0.6",

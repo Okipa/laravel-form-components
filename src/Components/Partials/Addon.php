@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Components;
+namespace Okipa\LaravelFormComponents\Components\Partials;
 
 use Closure;
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
@@ -14,6 +14,6 @@ class Addon extends AbstractComponent
 
     protected function setViewPath(): string
     {
-        return 'addon';
+        return 'partials.addon';
     }
 }

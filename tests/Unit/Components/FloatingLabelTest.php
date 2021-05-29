@@ -16,22 +16,22 @@ class FloatingLabelTest extends TestCase
     public function it_can_globally_set_input_floating_label_mode_from_config(): void
     {
         config()->set('form-components.floating_label', true);
-        $input = app(Input::class, ['name' => 'first_name']);
-        self::assertTrue($input->floatingLabel);
+        $component = app(Input::class, ['name' => 'first_name']);
+        self::assertTrue($component->floatingLabel);
         config()->set('form-components.floating_label', false);
-        $input = app(Input::class, ['name' => 'first_name']);
-        self::assertFalse($input->floatingLabel);
+        $component = app(Input::class, ['name' => 'first_name']);
+        self::assertFalse($component->floatingLabel);
     }
 
     /** @test */
     public function it_can_globally_set_textarea_floating_label_mode_from_config(): void
     {
         config()->set('form-components.floating_label', true);
-        $textarea = app(Textarea::class, ['name' => 'first_name']);
-        self::assertTrue($textarea->floatingLabel);
+        $component = app(Textarea::class, ['name' => 'first_name']);
+        self::assertTrue($component->floatingLabel);
         config()->set('form-components.floating_label', false);
-        $textarea = app(Textarea::class, ['name' => 'first_name']);
-        self::assertFalse($textarea->floatingLabel);
+        $component = app(Textarea::class, ['name' => 'first_name']);
+        self::assertFalse($component->floatingLabel);
     }
 
     /** @test */

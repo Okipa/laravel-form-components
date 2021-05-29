@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Components;
+namespace Okipa\LaravelFormComponents\Components\Partials;
 
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 
@@ -13,6 +13,6 @@ class Caption extends AbstractComponent
 
     protected function setViewPath(): string
     {
-        return 'caption';
+        return 'partials.caption';
     }
 }
