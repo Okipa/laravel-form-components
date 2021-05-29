@@ -7,6 +7,7 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     protected function getPackageProviders($app): array
     {
         return [LaravelFormComponentsServiceProvider::class];
