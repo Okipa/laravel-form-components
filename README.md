@@ -64,7 +64,9 @@ And get this component displayed:
 * [Configuration](#configuration)
 * [Views](#views)
 * [Components](#components)
-* [How to](#how-to)
+  * [Form](#form)
+  * [Input](#input)
+  * [Textarea](#textarea)
 * [Testing](#testing)
 * [Changelog](#changelog)
 * [Contributing](#contributing)
@@ -180,10 +182,6 @@ Usage:
 ### Switch
 
 ### Radio
-
-## How to
-
-### Configure Livewire
 
 ## Testing
 
