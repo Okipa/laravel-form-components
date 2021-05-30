@@ -78,6 +78,9 @@ ToDo: code
 ## Table of Contents
 
 * [Installation](#installation)
+* [Configuration](#configuration)
+* [Views](#views)
+* [Components](#components)
 * [How to](#how-to)
 * [Testing](#testing)
 * [Changelog](#changelog)
@@ -93,17 +96,49 @@ You can install the package via composer:
 composer require okipa/laravel-form-components
 ```
 
+## Configuration
+
 You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag=form-components:config
 ```
 
+Among its configurations, this package allows you to choose which UI framework will be use.
+
+Please note that you'll have to install and configure the UI framework you want to use before using this package.
+
+## Views
+
 You can publish the package views to customize them if necessary:
 
 ```bash
 php artisan vendor:publish --tag=form-components:views
 ```
+
+## Components
+
+### Form
+
+You can use the `form` component as shown in the example below:
+
+```Blade
+<x-form::form method="" action="{{ route('user.update', $user) }}">
+    {{!-- Form body --}}
+</x-form::form>
+```
+
+**Notes:**
+
+* This component will set a `GET` method by default if you do not set a custom method.
+* This component will set a `GET` method by default if you do not set a custom method.
+
+* Input
+* Textarea
+* Select
+* Checkbox
+* Switch
+* Radio
 
 ## How to
 

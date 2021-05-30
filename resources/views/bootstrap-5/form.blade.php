@@ -1,7 +1,7 @@
 @php
     $methodSpoofing = in_array($method, ['PUT', 'PATCH', 'DELETE']);
 @endphp
-<form method="{{ $methodSpoofing ? 'POST' : $method }}" novalidate>
+<form {{ $attributes->merge(['method' => $methodSpoofing ? 'POST' : $method]) }} novalidate>
     @unless(in_array($method, ['HEAD', 'GET', 'OPTIONS']))
         @csrf
     @endunless
