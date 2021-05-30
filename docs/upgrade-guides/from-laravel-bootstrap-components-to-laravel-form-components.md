@@ -14,7 +14,11 @@ Follow the steps below to upgrade the package.
 
 ## Replace native HTML form calls
 
-You now can use a [form component](../../README.md#form) that will help you with the method
+You now can use a [form component](../../README.md#form) which will automatically generate CSRF and method spoofing hidden fields for you.
+
+As so, you should:
+* Replace your native HTML form implementations
+* Remove you CSRF and spoofing method hidden fields implementations
 
 ## Update component calls
 
