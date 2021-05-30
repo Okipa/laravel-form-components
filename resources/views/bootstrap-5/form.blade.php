@@ -1,11 +1,12 @@
 @php
-    $methodSpoofing = in_array($method, ['PUT', 'PATCH', 'DELETE']);
+    $requiredCsrfToken = in_array($method, ['POST', 'PUT', 'PATCH', 'DELETE']);
+    $requiredMethodSpoofing = in_array($method, ['PUT', 'PATCH', 'DELETE']);
 @endphp
-<form {{ $attributes->merge(['method' => $methodSpoofing ? 'POST' : $method]) }} novalidate>
-    @unless(in_array($method, ['HEAD', 'GET', 'OPTIONS']))
+<form {{ $attributes->merge(['method' => $requiredMethodSpoofing ? 'POST' : $method]) }} novalidate>
+    @if($requiredCsrfToken)
         @csrf
-    @endunless
-    @if($methodSpoofing)
+    @endif
+    @if($requiredMethodSpoofing)
         @method($method)
     @endif
     {!! $slot ?? null !!}

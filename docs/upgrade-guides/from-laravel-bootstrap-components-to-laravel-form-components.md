@@ -12,6 +12,10 @@ This rewrite has been made for the following reasons:
 
 Follow the steps below to upgrade the package.
 
+## Replace native HTML form calls
+
+You now can use a [form component](../../README.md#form) that will help you with the method
+
 ## Update component calls
 
 For example, replace this code:

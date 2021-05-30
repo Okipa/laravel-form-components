@@ -123,22 +123,22 @@ php artisan vendor:publish --tag=form-components:views
 You can use the `form` component as shown in the example below:
 
 ```Blade
-<x-form::form method="" action="{{ route('user.update', $user) }}">
+<x-form::form method="PUT" action="{{ route('user.update', $user) }}">
     {{!-- Form body --}}
 </x-form::form>
 ```
 
 **Notes:**
 
-* This component will set a `GET` method by default if you do not set a custom method.
-* This component will set a `GET` method by default if you do not set a custom method.
+* A `GET` method by default if you do not set a custom method
+* Hidden CSRF and spoofing method fields will be automatically generated when needed, according to the defined form method
 
-* Input
-* Textarea
-* Select
-* Checkbox
-* Switch
-* Radio
+### Input
+### Textarea
+### Select
+### Checkbox
+### Switch
+### Radio
 
 ## How to
 
