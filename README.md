@@ -116,29 +116,63 @@ You can publish the package views to customize them if necessary:
 php artisan vendor:publish --tag=form-components:views
 ```
 
-## Components
+## Components API
 
 ### Form
 
-You can use the `form` component as shown in the example below:
+**Usage:**
 
 ```Blade
-<x-form::form method="PUT" action="{{ route('user.update', $user) }}">
+<x-form::form 
+    method="PUT" {{-- Override `GET` default method --}}
+    {{-- Add any other HTML attributes --}}>
     {{!-- Form body --}}
 </x-form::form>
 ```
 
-**Notes:**
+**Note:**
 
-* A `GET` method by default if you do not set a custom method
 * Hidden CSRF and spoofing method fields will be automatically generated when needed, according to the defined form method
-* Forms are generated with a `novalidate` attribute, which is preventing browser validation in favor of a server-side validation, which is a good practice
+* Forms are generated with a default `novalidate` HTML attribute, which is preventing browser validation in favor of a server-side validation (which is a good practice)
 
 ### Input
+
+**Usage:**
+
+```Blade
+<x-form::input 
+    id="custom-id" {{-- Override ``<type>-<name>`` default id --}}
+    type="email" {{-- Override `text` default type --}}
+    name="email"
+    label="User email" {{-- Override default `__('validation.attributes.<name>)` label --}}
+    floatingLabel="false" {{-- Override global `config('form-components.floating_label')` floating label mode --}}
+    hideLabel="true" {{-- Override default `false` hiding label mode --}}
+    prepend="<i class="fas fa-code fa-fw"></i>" {{-- Input prepended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
+    append="<i class="fas fa-search fa-fw"></i>" {{-- Input appended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
+    placeholder="Set your email..." {{-- Override `__('validation.attributes.<name>)` default placeholder --}}
+    hidePlaceholder="true" {{-- Override default `false` hiding placeholder mode --}}
+    :model="$user" {{-- Bind model to automatically fill the input value --}}
+    :value="$user->email" {{-- Manually set the value - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
+    caption="Please set a valid email address."
+    displayValidationSuccess="false" {{-- Override global `config('form-components.display_validation_success')` display validation success mode --}}
+    displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
+    errorBag="custom_error_bag"  {{-- Override default `default` error bag --}}
+    :locales="['fr', 'en']"  {{-- Activate multilingual mode with `fr` and `en` locales --}}
+    {{-- Add any other HTML attributes --}}/>
+```
+
+**Note:**
+
+* Checkbox and radio inputs are managed with their own component as they put in motion their proper behaviour
+
 ### Textarea
+
 ### Select
+
 ### Checkbox
+
 ### Switch
+
 ### Radio
 
 ## How to
