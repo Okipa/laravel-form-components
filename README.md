@@ -9,8 +9,8 @@
     <a href="https://github.com/Okipa/laravel-form-components/actions" title="Build Status">
         <img src="https://github.com/Okipa/laravel-form-components/workflows/CI/badge.svg" alt="Build Status">
     </a>
-    <a href="https://coveralls.io/github/Okipa/laravel-form-components?branch=master" title="Coverage Status">
-        <img src="https://coveralls.io/repos/github/Okipa/laravel-form-components/badge.svg?branch=master" alt="Coverage Status">
+    <a href="https://coveralls.io/github/Okipa/laravel-form-components?branch=main" title="Coverage Status">
+        <img src="https://coveralls.io/repos/github/Okipa/laravel-form-components/badge.svg?branch=main" alt="Coverage Status">
     </a>
     <a href="/LICENSE.md" title="License: MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
