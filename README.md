@@ -130,17 +130,17 @@ Usage:
     type="email" {{-- Override `text` default type --}}
     name="email"
     label="User email" {{-- Override default `__('validation.attributes.<name>)` label --}}
-    floatingLabel="false" {{-- Override global `config('form-components.floating_label')` floating label mode --}}
-    hideLabel="true" {{-- Override default `false` hiding label mode --}}
+    :floatingLabel="false" {{-- Override global `config('form-components.floating_label')` floating label mode --}}
+    :hideLabel="true" {{-- Override default `false` hiding label mode --}}
     prepend="<i class="fas fa-code fa-fw"></i>" {{-- Input prepended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
     append="<i class="fas fa-search fa-fw"></i>" {{-- Input appended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
     placeholder="Set your email..." {{-- Override `__('validation.attributes.<name>)` default placeholder --}}
-    hidePlaceholder="true" {{-- Override default `false` hiding placeholder mode --}}
+    :hidePlaceholder="true" {{-- Override default `false` hiding placeholder mode --}}
     :model="$user" {{-- Bind model to automatically fill the input value --}}
     :value="$user->email" {{-- Manually set the value - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
     caption="Please set a valid email address."
-    displayValidationSuccess="false" {{-- Override global `config('form-components.display_validation_success')` display validation success mode --}}
-    displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
+    :displayValidationSuccess="false" {{-- Override global `config('form-components.display_validation_success')` display validation success mode --}}
+    :displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
     errorBag="custom_error_bag"  {{-- Override default `default` error bag --}}
     :locales="['fr', 'en']"  {{-- Activate multilingual mode with `fr` and `en` locales --}}
     />
@@ -159,17 +159,17 @@ Usage:
     id="custom-id" {{-- Override `<type>-<name>` default id --}}
     name="email"
     label="User email" {{-- Override default `__('validation.attributes.<name>)` label --}}
-    floatingLabel="false" {{-- Override global `config('form-components.floating_label')` floating label mode --}}
-    hideLabel="true" {{-- Override default `false` hiding label mode --}}
+    :floatingLabel="false" {{-- Override global `config('form-components.floating_label')` floating label mode --}}
+    :hideLabel="true" {{-- Override default `false` hiding label mode --}}
     prepend="<i class="fas fa-code fa-fw"></i>" {{-- Input prepended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
     append="<i class="fas fa-search fa-fw"></i>" {{-- Input appended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
     placeholder="Set your email..." {{-- Override `__('validation.attributes.<name>)` default placeholder --}}
-    hidePlaceholder="true" {{-- Override default `false` hiding placeholder mode --}}
+    :hidePlaceholder="true" {{-- Override default `false` hiding placeholder mode --}}
     :model="$user" {{-- Bind model to automatically fill the input value --}}
     :value="$user->email" {{-- Manually set the value - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
     caption="Please set a valid email address."
-    displayValidationSuccess="false" {{-- Override global `config('form-components.display_validation_success')` display validation success mode --}}
-    displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
+    :displayValidationSuccess="false" {{-- Override global `config('form-components.display_validation_success')` display validation success mode --}}
+    :displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
     errorBag="custom_error_bag"  {{-- Override default `default` error bag --}}
     :locales="['fr', 'en']"  {{-- Activate multilingual mode with `fr` and `en` locales --}}
     />
