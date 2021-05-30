@@ -132,6 +132,7 @@ You can use the `form` component as shown in the example below:
 
 * A `GET` method by default if you do not set a custom method
 * Hidden CSRF and spoofing method fields will be automatically generated when needed, according to the defined form method
+* Forms are generated with a `novalidate` attribute, which is preventing browser validation in favor of a server-side validation, which is a good practice
 
 ### Input
 ### Textarea
