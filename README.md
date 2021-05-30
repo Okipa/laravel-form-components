@@ -45,35 +45,21 @@ Just call the components you need in your views and let this package take care o
 
 ### Monolingual input use case with Bootstrap 5
 
-Call this component in your view:
+Calling these components in your view:
 
 ```blade
-<x-form::input name="first_name"/>
+<x-form::form method="POST" :action="route('user.update', $user)">
+    @model($user)
+        <x-form::input name="name"/>
+        <x-form::input type="email" name="email"/>
+        <x-form::textarea name="biography"/>
+    @endmodel
+</x-form:form>
 ```
 
 And get this component displayed:
 
 ToDo: screenshot
-
-```blade
-ToDo: code
-```
-
-### Multilingual input use case with Bootstrap 5
-
-Call this component in your view:
-
-```blade
-<x-form::input name="first_name"/>
-```
-
-And get this component displayed:
-
-ToDo: screenshot
-
-```blade
-ToDo: code
-```
 
 ## Table of Contents
 
@@ -116,7 +102,7 @@ You can publish the package views to customize them if necessary:
 php artisan vendor:publish --tag=form-components:views
 ```
 
-## Components API
+## Components
 
 ### Form
 
