@@ -120,28 +120,28 @@ php artisan vendor:publish --tag=form-components:views
 
 ### Form
 
-**Usage:**
+Usage:
 
 ```Blade
 <x-form::form 
     method="PUT" {{-- Override `GET` default method --}}
-    {{-- Add any other HTML attributes --}}>
-    {{!-- Form body --}}
+    >
+    ...
 </x-form::form>
 ```
 
-**Note:**
+Note:
 
 * Hidden CSRF and spoofing method fields will be automatically generated when needed, according to the defined form method
 * Forms are generated with a default `novalidate` HTML attribute, which is preventing browser validation in favor of a server-side validation (which is a good practice)
 
 ### Input
 
-**Usage:**
+Usage:
 
 ```Blade
 <x-form::input 
-    id="custom-id" {{-- Override ``<type>-<name>`` default id --}}
+    id="custom-id" {{-- Override `<type>-<name>` default id --}}
     type="email" {{-- Override `text` default type --}}
     name="email"
     label="User email" {{-- Override default `__('validation.attributes.<name>)` label --}}
@@ -158,10 +158,10 @@ php artisan vendor:publish --tag=form-components:views
     displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
     errorBag="custom_error_bag"  {{-- Override default `default` error bag --}}
     :locales="['fr', 'en']"  {{-- Activate multilingual mode with `fr` and `en` locales --}}
-    {{-- Add any other HTML attributes --}}/>
+    />
 ```
 
-**Note:**
+Note:
 
 * Checkbox and radio inputs are managed with their own component as they put in motion their proper behaviour
 
