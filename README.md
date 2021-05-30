@@ -46,9 +46,10 @@ Just call the components you need in your views and let this package take care o
 ```blade
 <x-form::form method="POST" :action="route('user.update', $user)">
     @model($user)
+        <x-form::input type="file" name="avatar"/>
         <x-form::input name="name"/>
         <x-form::input type="email" name="email"/>
-        <x-form::textarea name="biography"/>
+        <x-form::textarea name="biography" :locale="['fr', 'en]"/>
     @endmodel
 </x-form:form>
 ```
@@ -149,6 +150,29 @@ Note:
 
 ### Textarea
 
+Usage:
+
+```Blade
+<x-form::textarea 
+    id="custom-id" {{-- Override `<type>-<name>` default id --}}
+    name="email"
+    label="User email" {{-- Override default `__('validation.attributes.<name>)` label --}}
+    floatingLabel="false" {{-- Override global `config('form-components.floating_label')` floating label mode --}}
+    hideLabel="true" {{-- Override default `false` hiding label mode --}}
+    prepend="<i class="fas fa-code fa-fw"></i>" {{-- Input prepended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
+    append="<i class="fas fa-search fa-fw"></i>" {{-- Input appended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
+    placeholder="Set your email..." {{-- Override `__('validation.attributes.<name>)` default placeholder --}}
+    hidePlaceholder="true" {{-- Override default `false` hiding placeholder mode --}}
+    :model="$user" {{-- Bind model to automatically fill the input value --}}
+    :value="$user->email" {{-- Manually set the value - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
+    caption="Please set a valid email address."
+    displayValidationSuccess="false" {{-- Override global `config('form-components.display_validation_success')` display validation success mode --}}
+    displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
+    errorBag="custom_error_bag"  {{-- Override default `default` error bag --}}
+    :locales="['fr', 'en']"  {{-- Activate multilingual mode with `fr` and `en` locales --}}
+    />
+```
+
 ### Select
 
 ### Checkbox
@@ -158,32 +182,6 @@ Note:
 ### Radio
 
 ## How to
-
-### Set label
-
-### Set floating label mode
-
-### Set ID
-
-### Set CSS classes
-
-### Set type
-
-### Set name
-
-### Set placeholder
-
-### Set addons
-
-### Set caption
-
-### Get value from model
-
-### Set custom value
-
-### Deal with old data
-
-### Display validation success and failure
 
 ### Configure Livewire
 
