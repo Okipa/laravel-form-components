@@ -39,13 +39,9 @@ Found this package helpful? Please consider supporting my work!
 
 * [From okipa/laravel-bootstrap-components to okipa/laravel-form-components](/docs/upgrade-guides/from-laravel-bootstrap-components-to-laravel-form-components.md)
 
-## Usage
+## Usage example
 
 Just call the components you need in your views and let this package take care of the HTML generation annoying part.
-
-### Monolingual input use case with Bootstrap 5
-
-Calling these components in your view:
 
 ```blade
 <x-form::form method="POST" :action="route('user.update', $user)">
@@ -59,7 +55,7 @@ Calling these components in your view:
 
 And get this component displayed:
 
-ToDo: screenshot
+<screenshot>
 
 ## Table of Contents
 
