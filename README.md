@@ -142,14 +142,14 @@ Data binding can be overridden by setting custom values on components.
 
 ### Handling validation statuses
 
-You have the ability to choose if you want components to display validation success/error statuses and error message:
+Components will be able to display or hide their success/error statuses and error message when a validation error is triggered:
+* If validation success displaying is activated, components will only be marked as valid when other components in the form are detected as invalid
+* If validation failure displaying is activated, components in error will be marked as invalid and will display their related error message
+
+You can control this behaviour at different levels:
 * Define the global default behaviour with `config('form-components.display_validation_success')` and `config('form-components.display_validation_failure')`
 * Customize the behaviour on a form and override for all the contained components
 * Set a specific behaviour directly on a component
-
-Components will behave following these rules:
-* If validation success displaying is activated, components will only be marked as valid when other components in the form are detected as invalid
-* If validation failure displaying is activated, components in error will be marked as invalid and will display their related error message
 
 ```blade
 <x-form::form displayValidationSuccess="false" displayValidationFailure="false">
