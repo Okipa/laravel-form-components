@@ -16,6 +16,7 @@ class FormBinder
 
     public function getBoundModel(): Model|null
     {
+        data_get();
         return Arr::last($this->boundModels);
     }
 

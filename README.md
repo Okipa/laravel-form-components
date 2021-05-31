@@ -101,6 +101,74 @@ You can publish the package views to customize them if necessary:
 php artisan vendor:publish --tag=form-components:views
 ```
 
+## How to
+
+### 
+
+### Data binding
+
+You can bind Eloquent Models, objects, collections or arrays in order to autofill bound components.
+
+Binding data on the form component will trigger the binding of all of its contained components.
+
+You also can bind data directly on a component and override the form binding.
+
+```blade
+@php($data = ['description' => 'A wonderful description'];)
+<x-form::form :bind="$user">
+    <x-form::input name="email"/> {{-- Will set the value from `$user->email` --}}
+    <x-form::textarea
+        name="description"
+        :bind="$data"/> {{-- Will set the value from `$data['description`] --}}
+</x-form::form>
+```
+
+### Setting custom value
+
+Data binding can be overridden by setting custom values on components.
+
+```blade
+@php($data = ['description' => 'A wonderful description'];)
+<x-form::form :bind="$user">
+    ...
+    <x-form::textarea
+        name="description"
+        :bind="$user"
+        :value="$data['description']"/> {{-- Will set the value from `$data['description`] --}}
+</x-form::form>
+```
+
+### Handling validation
+
+In case of validation error, components will automatically be repopulated by old values.
+
+You can choose if you want this package to display for you validation success/error statuses and error message:
+* Define the default behaviour with `config('form-components.display_validation_success')` and `config('form-components.display_validation_failure')`
+* Customize the behaviour on a form and override the default behaviour for all the contained components
+* Set a specific behaviour directly on a component
+
+If validation success displaying is activated, components will be marked as valid when other components in the form are detected as invalid.
+
+If validation failure displaying is activated, components with rejected data will be marked as invalid and will display their related error message.
+
+```blade
+<x-form::form displayValidationSuccess="false" displayValidationFailure="false">
+    <x-form::input name="email"/> {{-- Disabled success/error statuses and error message --}}
+    <x-form::textarea
+        name="description"
+        displayValidationSuccess="true"
+        displayValidationFailure="true"/> {{-- Enabled success/error statuses and error message --}}
+</x-form::form>
+```
+
+You also can customize the error bag that should be used to determine components success/error statuses and error messages.
+
+```blade
+<x-form::form errorBag="profile_update">
+    ...
+</x-form::form>
+```
+
 ## Components
 
 ### Form
