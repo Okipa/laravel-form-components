@@ -113,6 +113,8 @@ Binding data on the form component will trigger the binding of all of its contai
 
 You also can bind data directly on a component and override the form binding.
 
+In case of validation error, components will be repopulated by old values that will override bound values.
+
 ```blade
 @php($data = ['description' => 'A wonderful description'];)
 <x-form::form :bind="$user">
@@ -122,8 +124,6 @@ You also can bind data directly on a component and override the form binding.
         :bind="$data"/> {{-- Will set the value from `$data['description`] --}}
 </x-form::form>
 ```
-
-In case of validation error, components will automatically be repopulated by old values.
 
 ### Setting custom value
 
