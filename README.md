@@ -103,9 +103,13 @@ php artisan vendor:publish --tag=form-components:views
 
 ## How to
 
-### 
+### Define ids and classes
 
-### Data binding
+### Manage label and placeholder
+
+### Set addons
+
+### Bind data
 
 You can bind Eloquent Models, objects, collections or arrays in order to autofill bound components values.
 
@@ -118,14 +122,14 @@ In case of validation error, components will be repopulated by old values that w
 ```blade
 @php($data = ['description' => 'A wonderful description'];)
 <x-form::form :bind="$user">
-    <x-form::input name="email"/> {{-- Will set the value from `$user->email` --}}
+    <x-form::input type="email" name="email"/> {{-- Will set the value from `$user->email` --}}
     <x-form::textarea
         name="description"
         :bind="$data"/> {{-- Will set the value from `$data['description`] --}}
 </x-form::form>
 ```
 
-### Setting custom value
+### Set custom value
 
 Data binding can be overridden by setting custom values on components.
 
@@ -140,7 +144,7 @@ Data binding can be overridden by setting custom values on components.
 </x-form::form>
 ```
 
-### Handling validation statuses
+### Handle validation statuses and errors
 
 Components will be able to display or hide their success/error statuses and error message when a validation error is triggered:
 * If the validation success displaying is activated, components will only be marked as valid when other components in the form are detected as invalid
@@ -153,7 +157,7 @@ You can control this behaviour at different levels:
 
 ```blade
 <x-form::form displayValidationSuccess="false" displayValidationFailure="false">
-    <x-form::input name="email"/> {{-- Disabled success/error statuses and error message --}}
+    <x-form::input type="email" name="email"/> {{-- Disabled success/error statuses and error message --}}
     <x-form::textarea
         name="description"
         displayValidationSuccess="true"
@@ -168,6 +172,10 @@ You also can customize the error bag that should be used to determine components
     ...
 </x-form::form>
 ```
+
+### Add captions
+
+### Activate multilingual mode
 
 ## Components
 
