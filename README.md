@@ -107,7 +107,7 @@ php artisan vendor:publish --tag=form-components:views
 
 ### Data binding
 
-You can bind Eloquent Models, objects, collections or arrays in order to autofill bound components.
+You can bind Eloquent Models, objects, collections or arrays in order to autofill bound components values.
 
 Binding data on the form component will trigger the binding of all of its contained components.
 
