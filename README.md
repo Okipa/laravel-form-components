@@ -148,7 +148,7 @@ Components will be able to display or hide their success/error statuses and erro
 
 You can control this behaviour at different levels:
 * Define the global default behaviour with `config('form-components.display_validation_success')` and `config('form-components.display_validation_failure')`
-* Customize the behaviour on a form and override for all the contained components
+* Customize this behaviour on a form and apply it locally for all its contained components
 * Set a specific behaviour directly on a component
 
 ```blade
