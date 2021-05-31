@@ -123,6 +123,8 @@ You also can bind data directly on a component and override the form binding.
 </x-form::form>
 ```
 
+In case of validation error, components will automatically be repopulated by old values.
+
 ### Setting custom value
 
 Data binding can be overridden by setting custom values on components.
@@ -138,9 +140,7 @@ Data binding can be overridden by setting custom values on components.
 </x-form::form>
 ```
 
-### Handling validation
-
-In case of validation error, components will automatically be repopulated by old values.
+### Handling validation statuses
 
 You can choose if you want this package to display for you validation success/error statuses and error message:
 * Define the default behaviour with `config('form-components.display_validation_success')` and `config('form-components.display_validation_failure')`
