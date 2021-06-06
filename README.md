@@ -41,16 +41,19 @@ Found this package helpful? Please consider supporting my work!
 
 ## Usage example
 
-Just call the components you need in your views and let this package take care of the HTML generation annoying part.
+Just call the components you need in your views and let this package take care of the HTML generation time-consuming part.
 
 ```blade
-<x-form::form method="POST" :action="route('user.update', $user)">
-    @model($user)
-        <x-form::input type="file" name="avatar"/>
-        <x-form::input name="name"/>
-        <x-form::input type="email" name="email"/>
-        <x-form::textarea name="biography" :locale="['fr', 'en]"/>
-    @endmodel
+<x-form::form method="POST" :action="route('user.update', $user)" :model="$user">
+    <x-form::input type="file" name="avatar" caption="Accepted types: jpg, png and webp."/>
+    <x-form::input name="name"/>
+    <x-form::input type="email" name="email"/>
+    <x-form::textarea name="biography" :locale="['fr', 'en]"/>
+    <x-form::select name="technologies" :options="[1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire']" multiple/>
+    <x-form::checkbox name="hobbies" :group="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']"/>
+    <x-form::radio name="role" :group="[1 => 'Admin', 2 => 'Moderator', 3 => 'User']" inline/>
+    <x-form::switch name="active"/>
+    <x-form::submit>Create</x-form::submit>
 </x-form:form>
 ```
 
@@ -101,13 +104,109 @@ You can publish the package views to customize them if necessary:
 php artisan vendor:publish --tag=form-components:views
 ```
 
+## Components list
+
+Here is the list of the available components:
+* `<x-form::form></x-form::form>`
+* `<x-form::input/>`
+* `<x-form::checkbox/>`
+* `<x-form::switch/>`
+* `<x-form::radio/>`
+* `<x-form::textarea/>`
+* `<x-form::select/>`
+* `<x-form::submit></x-form::submit/>`
+
 ## How to
 
-### Define ids and classes
+### Deal with attributes and classes
+
+Provided component are built using [Blade components](https://laravel.com/docs/blade#components).
+
+Following how Blade components work, you can set any HTML attributes and classes:
+* Attributes will replace default ones
+* Classes will be merged to existing ones
+
+### Declare form
+
+All components can be wrapped into a form component.
+
+If no custom method is set, a `GET` method will be set by default.
+
+Hidden CSRF and spoofing method fields will be automatically generated when needed, according to the defined form method.
+
+Forms are generated with a default `novalidate` HTML attribute, which is preventing browser validation in favor of a server-side validation (which is a good practice for security matters).
+
+```Blade
+<x-form::form method="PUT">
+    <x-form::input name="first_name"/>
+    ...
+</x-form::form>
+```
+
+### Submit form
+
+### Set inputs and textarea components
+
+### Define select component
+
+### Manage checkboxes, switches and radio button components
+
+## Set id
+
+Define components ids as you would do for any HTML element.
+
+If no custom id is set, an id will be generated using the kebab cased `<type>-<name>` values.
+
+```Blade
+<x-form::input id="custom-id" name="first_name"/> {{-- Default id: `input-first-name` --}}
+
+<x-form::textarea id="custom-id" name="first_name"/> {{-- Default id: `textarea-first-name` --}}
+```
 
 ### Manage label and placeholder
 
+You can define labels on all components which are allowing to define the `<label>` attribute.
+
+If no custom label is defined, labels will take the `__('validation.attributes.<name>)` default value.
+
+```Blade
+<x-form::input name="first_name" label="First Name"/>
+```
+
+Following the same behaviour, all components that are allowing the use of the `placeholder` attribute will provide a default placeholder that will take the `label` value.
+
+You can override this default value by setting a custom placeholder.
+
+### Handle floating label displaying
+
+This package allows you to enable or disable floating labels displaying.
+
+You can set the global floating label behaviour with `config('form-components.floating_label')` config.
+
+You will be able to override this global behaviour at form level for all contained components.
+
+```Blade
+<x-form::form :floatingLabel="true">
+    <x-form::input name="first_name"/> {{-- Will display a floating label even if it has been disabled in config --}}
+</x-form::form>
+```
+
+Finally, you'll also can override all other defined behaviour on components themselves.
+
+```Blade
+    <x-form::input name="first_name" :floatingLabel="true"/>
+```
+
 ### Set addons
+
+You can define `prepend` and `append` HTML addons on input and textarea components.
+
+```Blade
+    <x-form::input name="" prepend="<i class="fas fa-code fa-fw"></i>"/>
+    <x-form::input name="search" append="<i class="fas fa-search fa-fw"></i>"/>
+```
+
+Note: you may use HTML directly instead of components for complex addon's management.
 
 ### Bind data
 
@@ -165,7 +264,7 @@ You can control this behaviour at different levels:
 </x-form::form>
 ```
 
-You also can customize the error bag that should be used to determine components success/error statuses and error messages.
+You also can customize the error bag that should be used to determine components success/error statuses and error messages on form components.
 
 ```blade
 <x-form::form errorBag="profile_update">
@@ -175,89 +274,23 @@ You also can customize the error bag that should be used to determine components
 
 ### Add captions
 
+Help users and display additional instructions under you components by adding captions.
+
+```Blade
+    <x-form::input name="name" caption="Please fill this input with your full name."/>
+```
+
 ### Activate multilingual mode
 
-## Components
-
-### Form
-
-Usage:
-
-```Blade
-<x-form::form 
-    method="PUT" {{-- Override `GET` default method --}}
-    >
-    ...
-</x-form::form>
-```
-
-Note:
-
-* Hidden CSRF and spoofing method fields will be automatically generated when needed, according to the defined form method
-* Forms are generated with a default `novalidate` HTML attribute, which is preventing browser validation in favor of a server-side validation (which is a good practice)
-
-### Input
-
-Usage:
+Activate multilingual mode on `input` and `textarea` components to benefit from the following features:
+* Component duplication: one component per locale will be displayed
+* Name localization: `name="description"` will be transformed into `name="description[<locale>]"`
+* Default label and error message localization: `__(validation.attributes.name)` translation used to generate default label and error message will be appended with `(<LOCALE>)`
 
 ```Blade
-<x-form::input 
-    id="custom-id" {{-- Override `<type>-<name>` default id --}}
-    type="email" {{-- Override `text` default type --}}
-    name="email"
-    label="User email" {{-- Override default `__('validation.attributes.<name>)` label --}}
-    :floatingLabel="false" {{-- Override global `config('form-components.floating_label')` floating label mode --}}
-    :hideLabel="true" {{-- Override default `false` hiding label mode --}}
-    prepend="<i class="fas fa-code fa-fw"></i>" {{-- Input prepended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
-    append="<i class="fas fa-search fa-fw"></i>" {{-- Input appended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
-    placeholder="Set your email..." {{-- Override `__('validation.attributes.<name>)` default placeholder --}}
-    :hidePlaceholder="true" {{-- Override default `false` hiding placeholder mode --}}
-    :model="$user" {{-- Bind model to automatically fill the input value --}}
-    :value="$user->email" {{-- Manually set the value - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
-    caption="Please set a valid email address."
-    :displayValidationSuccess="false" {{-- Override global `config('form-components.display_validation_success')` display validation success mode --}}
-    :displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
-    errorBag="custom_error_bag"  {{-- Override default `default` error bag --}}
-    :locales="['fr', 'en']"  {{-- Activate multilingual mode with `fr` and `en` locales --}}
-    />
+<x-form::input name="name" :locales="['fr', 'en']"/>
+<x-form::textarea name="description" :locales="['fr', 'en']"/>
 ```
-
-Note:
-
-* Checkbox and radio inputs are managed with their own component as they put in motion their proper behaviour
-
-### Textarea
-
-Usage:
-
-```Blade
-<x-form::textarea 
-    id="custom-id" {{-- Override `<type>-<name>` default id --}}
-    name="email"
-    label="User email" {{-- Override default `__('validation.attributes.<name>)` label --}}
-    :floatingLabel="false" {{-- Override global `config('form-components.floating_label')` floating label mode --}}
-    :hideLabel="true" {{-- Override default `false` hiding label mode --}}
-    prepend="<i class="fas fa-code fa-fw"></i>" {{-- Input prepended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
-    append="<i class="fas fa-search fa-fw"></i>" {{-- Input appended addon - Will not be displayed with a floating label - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
-    placeholder="Set your email..." {{-- Override `__('validation.attributes.<name>)` default placeholder --}}
-    :hidePlaceholder="true" {{-- Override default `false` hiding placeholder mode --}}
-    :model="$user" {{-- Bind model to automatically fill the input value --}}
-    :value="$user->email" {{-- Manually set the value - Can also be defined with the closure `fn(string $locale) => <your-code>` --}}
-    caption="Please set a valid email address."
-    :displayValidationSuccess="false" {{-- Override global `config('form-components.display_validation_success')` display validation success mode --}}
-    :displayValidationFailure="false" {{-- Override global `config('form-components.display_validation_failure')` display validation failure mode --}}
-    errorBag="custom_error_bag"  {{-- Override default `default` error bag --}}
-    :locales="['fr', 'en']"  {{-- Activate multilingual mode with `fr` and `en` locales --}}
-    />
-```
-
-### Select
-
-### Checkbox
-
-### Switch
-
-### Radio
 
 ## Testing
 
