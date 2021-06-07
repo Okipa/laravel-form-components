@@ -53,7 +53,7 @@ Just call the components you need in your views and let this package take care o
     <x-form::checkbox name="hobbies" :group="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']"/>
     <x-form::radio name="role" :group="[1 => 'Admin', 2 => 'Moderator', 3 => 'User']" inline/>
     <x-form::switch name="active"/>
-    <x-form::submit>Create</x-form::submit>
+    <x-form::submit/>
 </x-form:form>
 ```
 
@@ -107,14 +107,16 @@ php artisan vendor:publish --tag=form-components:views
 ## Components list
 
 Here is the list of the available components:
-* `<x-form::form></x-form::form>`
-* `<x-form::input/>`
-* `<x-form::checkbox/>`
-* `<x-form::switch/>`
-* `<x-form::radio/>`
-* `<x-form::textarea/>`
-* `<x-form::select/>`
-* `<x-form::submit></x-form::submit/>`
+* Form
+* Input
+* Textarea
+* Select
+* Checkbox
+* Switch
+* Radio
+* Submit
+
+See below how to use them.
 
 ## How to
 
@@ -128,7 +130,7 @@ Following how Blade components work, you can set any HTML attributes and classes
 
 ### Declare form
 
-All components can be wrapped into a form component.
+Components can be wrapped into a form component.
 
 If no custom method is set, a `GET` method will be set by default.
 
@@ -143,13 +145,52 @@ Forms are generated with a default `novalidate` HTML attribute, which is prevent
 </x-form::form>
 ```
 
-### Submit form
-
 ### Set inputs and textarea components
+
+Add inputs and textarea into your forms.
+
+If you don't set a custom type to an input, it will take a default `text` type.
+
+Radio, checkbox and button inputs must be used with their own components because of their different behaviour.
+
+Textarea component can be used the same way as an input component but without declaring a type.
+
+```Blade
+<x-form::input type="file" name="avatar"/>
+<x-form::input name="first_name"/>
+<x-form::input type="email" name="email"/>
+...
+<x-form::textarea name="description"/>
+```
 
 ### Define select component
 
-### Manage checkboxes, switches and radio button components
+Set select components in your forms.
+
+Auto generate options by providing an [iterable](https://www.php.net/manual/language.types.iterable.php) element.
+
+HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option, which is a selected, disabled and hidden option that is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
+
+```Blade
+@php($options = [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'])
+<x-form::select name="hobbies" :options="$options" selected="1" placeholder="What is your hobby prefered hobby?"/>
+<x-form::select name="hobbies" :options="$options" :selected="[2, 3]" :hidePlaceholder="true" multiple/>
+```
+
+### Manage checkboxes, switches and radio components
+
+### Submit form
+
+Declare submit components in your forms to trigger them.
+
+If no custom body is defined, `Submit` will be displayed.
+
+```Blade
+<x-form::form>
+    ...
+    <x-form::submit>Submit this form</x-form::submit>
+</x-form::form>
+```
 
 ## Set id
 
@@ -169,13 +210,16 @@ You can define labels on all components which are allowing to define the `<label
 
 If no custom label is defined, labels will take the `__('validation.attributes.<name>)` default value.
 
-```Blade
-<x-form::input name="first_name" label="First Name"/>
-```
+You also can hide a label by setting the `hideLabel` attribute to `true`.
 
 Following the same behaviour, all components that are allowing the use of the `placeholder` attribute will provide a default placeholder that will take the `label` value.
 
-You can override this default value by setting a custom placeholder.
+You can override this default value by setting a custom placeholder. You also can hide a placeholder by setting the `hidePlaceholder` attribute to true.
+
+```Blade
+<x-form::input name="first_name" label="First Name" placeholder="Please fill your first name..."/>
+<x-form::input name="last_name" :hideLabel="true" hidePlaceholder="true"/>
+```
 
 ### Handle floating label displaying
 
