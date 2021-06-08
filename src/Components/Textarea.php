@@ -27,7 +27,7 @@ class Textarea extends AbstractComponent
     public function __construct(
         public string $name,
         public string|null $id = null,
-        public Model|null $model = null,
+        public object|array|null $bind = null,
         public string|null $label = null,
         public bool $hideLabel = false,
         public bool|null $floatingLabel = null,

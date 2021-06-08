@@ -3,7 +3,6 @@
 namespace Okipa\LaravelFormComponents\Components;
 
 use Closure;
-use Illuminate\Database\Eloquent\Model;
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 use Okipa\LaravelFormComponents\Components\Traits\HasAddon;
 use Okipa\LaravelFormComponents\Components\Traits\HasId;
@@ -28,7 +27,7 @@ class Input extends AbstractComponent
         public string $name,
         public string|null $id = null,
         public string $type = 'text',
-        public Model|null $model = null,
+        public array|object|null $bind = null,
         public string|null $label = null,
         public bool|null $floatingLabel = null,
         public bool $hideLabel = false,

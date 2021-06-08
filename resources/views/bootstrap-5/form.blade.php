@@ -9,5 +9,7 @@
     @if($requiredMethodSpoofing)
         @method($method)
     @endif
+    @bind($bind)
     {!! $slot ?? null !!}
+    @endbatch
 </form>

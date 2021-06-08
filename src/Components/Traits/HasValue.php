@@ -16,12 +16,12 @@ trait HasValue
         if ($this->value instanceof Closure) {
             return ($this->value)($locale ?: app()->getLocale());
         }
-        $model = $this->model ?: app(FormBinder::class)->getBoundModel();
+        $dataBatch = $this->bind ?: app(FormBinder::class)->getBoundDataBatch();
         if ($locale) {
-            return $this->value ?? data_get($model, $this->name . '.' . $locale);
+            return $this->value ?? data_get($dataBatch, $this->name . '.' . $locale);
         }
 
-        return $this->value ?? $model?->getAttribute($this->name);
+        return $this->value ?? data_get($dataBatch, $this->name);
     }
 
     protected function getOldValue(string|null $locale): mixed

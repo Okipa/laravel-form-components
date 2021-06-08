@@ -28,11 +28,11 @@ class LaravelFormComponentsServiceProvider extends ServiceProvider
 
     protected function declareBladeDirectives(): void
     {
-        Blade::directive('model', function (Model $model) {
-            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->bindNewModel(' . $model . ') ?>';
+        Blade::directive('bind', function ($dataBatch) {
+            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->bindNewDataBatch(' . $dataBatch . ') ?>';
         });
-        Blade::directive('endmodel', function () {
-            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->unbindLastModel() ?>';
+        Blade::directive('endbind', function () {
+            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->unbindLastDataBatch() ?>';
         });
     }
 

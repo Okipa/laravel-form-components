@@ -3,6 +3,7 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit;
 
 use Okipa\LaravelFormComponents\Components\Form;
+use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class FormTest extends TestCase
@@ -46,5 +47,13 @@ class FormTest extends TestCase
         self::assertStringContainsString('<form method="POST"', $html);
         self::assertStringContainsString('<input type="hidden" name="_token"', $html);
         self::assertStringContainsString('<input type="hidden" name="_method" value="DELETE">', $html);
+    }
+
+    /** @test */
+    public function it_can_bind_data_from_form(): void
+    {
+        $this->renderComponent(Form::class, ['bind' => ['test']]);
+        $boundData = app(FormBinder::class)->getBoundDataBatch();
+        self::assertEquals(['test'], $boundData);
     }
 }

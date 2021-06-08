@@ -2,26 +2,24 @@
 
 namespace Okipa\LaravelFormComponents;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
 class FormBinder
 {
-    protected array $boundModels = [];
+    protected array $boundDataBatches = [];
 
-    public function bindNewModel(Model $model): void
+    public function bindNewDataBatch(array|object|null $dataBatch): void
     {
-        $this->boundModels[] = $model;
+        $this->boundDataBatches[] = $dataBatch;
     }
 
-    public function getBoundModel(): Model|null
+    public function getBoundDataBatch(): array|object|null
     {
-        data_get();
-        return Arr::last($this->boundModels);
+        return Arr::last($this->boundDataBatches);
     }
 
-    public function unbindLastModel(): void
+    public function unbindLastDataBatch(): void
     {
-        array_pop($this->boundModels);
+        array_pop($this->boundDataBatches);
     }
 }

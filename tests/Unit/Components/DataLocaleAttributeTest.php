@@ -4,7 +4,7 @@ use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Components\Textarea;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class DataLocaleTest extends TestCase
+class DataLocaleAttributeTest extends TestCase
 {
     public function setUp(): void
     {

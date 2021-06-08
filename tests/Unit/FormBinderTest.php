@@ -10,14 +10,14 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class FormBinderTest extends TestCase
 {
     /** @test */
-    public function it_can_retrieve_current_binded_model_when_several_are_bound(): void
+    public function it_can_retrieve_current_bound_data_when_several_are_bound(): void
     {
-        $user1 = app(User::class)->forceFill(['first_name' => 'Test first name 1']);
-        $user2 = app(User::class)->forceFill(['first_name' => 'Test first name 2']);
-        app(FormBinder::class)->bindNewModel($user1);
-        app(FormBinder::class)->bindNewModel($user2);
-        self::assertSame($user2, app(FormBinder::class)->getBoundModel());
-        app(FormBinder::class)->unbindLastModel();
-        self::assertSame($user1, app(FormBinder::class)->getBoundModel());
+        $user = app(User::class)->forceFill(['first_name' => 'Test first name 1']);
+        $data = ['Test'];
+        app(FormBinder::class)->bindNewDataBatch($user);
+        app(FormBinder::class)->bindNewDataBatch($data);
+        self::assertSame($data, app(FormBinder::class)->getBoundDataBatch());
+        app(FormBinder::class)->unbindLastDataBatch();
+        self::assertSame($user, app(FormBinder::class)->getBoundDataBatch());
     }
 }

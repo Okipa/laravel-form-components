@@ -6,7 +6,7 @@ use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 
 class Form extends AbstractComponent
 {
-    public function __construct(public string $method = 'GET')
+    public function __construct(public string $method = 'GET', public array|object|null $bind = null)
     {
         $this->method = strtoupper($method);
         parent::__construct();
