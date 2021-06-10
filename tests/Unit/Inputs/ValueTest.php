@@ -1,5 +1,7 @@
 <?php
 
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs;
+
 use Illuminate\Foundation\Auth\User;
 use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Components\Textarea;

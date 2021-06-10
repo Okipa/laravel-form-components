@@ -1,5 +1,7 @@
 <?php
 
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs;
+
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 use Okipa\LaravelFormComponents\Components\Input;

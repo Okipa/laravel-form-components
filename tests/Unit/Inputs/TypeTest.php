@@ -1,5 +1,7 @@
 <?php
 
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs;
+
 use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
