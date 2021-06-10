@@ -11,5 +11,5 @@
     @endif
     @bind($bind)
     {!! $slot ?? null !!}
-    @endbatch
+    @endbind
 </form>
