@@ -1,3 +1,3 @@
 @if($label)
-    <label {{ $attributes->merge(['for' => $id, 'class' => 'form-label']) }}>{{ $label }}</label>
+    <label {{ $attributes->merge(['for' => $id]) }}>{{ $label }}</label>
 @endif

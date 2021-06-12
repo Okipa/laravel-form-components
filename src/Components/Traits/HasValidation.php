@@ -24,7 +24,7 @@ trait HasValidation
         return $errors->{$this->errorBag};
     }
 
-    public function getErrorMessage(ViewErrorBag $errors, string|null $locale): string|null
+    public function getErrorMessage(ViewErrorBag $errors, string|null $locale = null): string|null
     {
         if (! $this->displayValidationFailure) {
             return null;

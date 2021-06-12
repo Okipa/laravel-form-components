@@ -1,11 +1,11 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\Type;
 
 use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class TypeTest extends TestCase
+class InputTypeTest extends TestCase
 {
     public function setUp(): void
     {

@@ -10,7 +10,7 @@
     @endphp
     <div class="component-container mb-3{{  $floatingLabel ? ' form-floating' : null }}{{ $prepend || $append ? ' input-group' : null }}">
         @unless($floatingLabel)
-            <x-form::partials.label :id="$id" :label="$getLabel($locale)"/>
+            <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
             @if($prepend)
                 <x-form::partials.addon :addon="$prepend"/>
             @endisset
@@ -24,7 +24,7 @@
             'aria-describedby' => $caption ? $id . '-caption' : null,
         ])}}>{{ $value }}</textarea>
         @if($floatingLabel)
-            <x-form::partials.label :id="$id" :label="$label"/>
+            <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
         @else
             @if($append)
                 <x-form::partials.addon :addon="$append"/>

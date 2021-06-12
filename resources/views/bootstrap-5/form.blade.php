@@ -10,6 +10,6 @@
         @method($method)
     @endif
     @bind($bind)
-    {!! $slot ?? null !!}
+        {!! $slot ?? null !!}
     @endbind
 </form>
