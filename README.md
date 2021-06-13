@@ -66,8 +66,23 @@ And get this component displayed:
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Views](#views)
-* [Components list](#components-list)
+* [Components](#components)
+  * [Form](#form)
+  * [Input and Textarea](#input-and-textarea)
+  * [Select](#select)
+  * [Checkbox, Switch and Radio](#checkbox-switch-and-radio)
+  * [Buttons](#buttons)
 * [How to](#how-to)
+  * [Deal with attributes and classes](#deal-with-attributes-and-classes)
+  * [Set id](#set-id)
+  * [Manage label and placeholder](#manage-label-and-placeholder)
+  * [Handle floating label displaying](#handle-floating-label-displaying)
+  * [Set addons](#set-addons)
+  * [Bind data](#bind-data)
+  * [Set custom value](#set-custom-value)
+  * [Handle validation statuses and errors](#handle-validation-statuses-and-errors)
+  * [Add captions](#add-captions)
+  * [Activate multilingual mode](#activate-multilingual-mode)
 * [Testing](#testing)
 * [Changelog](#changelog)
 * [Contributing](#contributing)
@@ -102,7 +117,7 @@ You can publish the package views to customize them if necessary:
 php artisan vendor:publish --tag=form-components:views
 ```
 
-## Components list
+## Components
 
 Here is the list of the available components:
 * Form
@@ -113,20 +128,11 @@ Here is the list of the available components:
 * Switch
 * Radio
 * Submit
+* Button
 
 See below how to use them.
 
-## How to
-
-### Deal with attributes and classes
-
-Provided component are built using [Blade components](https://laravel.com/docs/blade#components).
-
-Following how Blade components work, you can set any HTML attributes and classes:
-* Attributes will replace default ones
-* Classes will be merged to existing ones
-
-### Declare form
+### Form
 
 Components can be wrapped into a form component.
 
@@ -143,7 +149,7 @@ Forms are generated with a default `novalidate` HTML attribute, which is prevent
 </x-form::form>
 ```
 
-### Set inputs and textarea components
+### Input and Textarea
 
 Add inputs and textarea into your forms.
 
@@ -161,7 +167,7 @@ Textarea component can be used the same way as an input component but without de
 <x-form::textarea name="description"/>
 ```
 
-### Define select component
+### Select
 
 Set select components in your forms.
 
@@ -175,20 +181,40 @@ HTML select elements natively don't accept placeholder attributes, however the s
 <x-form::select name="hobbies" :options="$options" :selected="[2, 3]" :hidePlaceholder="true" multiple/>
 ```
 
-### Manage checkboxes, switches and radio components
+### Checkbox, Switch and Radio
 
-### Submit form
+### Buttons
 
-Declare submit components in your forms to trigger them.
+Submit and link button components are available.
 
-If no custom body is defined, `Submit` will be displayed.
+Submit button allows you to trigger a form and will provide a default `__('Submit')` body if none is defined.
+
+Link button allows you to set actions like `Back` or `Cancel` in your forms by providing a link with a button-like display. This component will define a default title from the given body.
+
+By default, both components will set a base background color if no custom class attribute is defined.
 
 ```Blade
 <x-form::form>
     ...
-    <x-form::submit>Submit this form</x-form::submit>
+    <div class="d-grid">
+        <x-form::button.submit>Submit this form</x-form::submit> {{-- Will provide `btn-primary` class with Bootstrap UI --}}
+        <x-form::button.link class="btn-secondary" href="{{ back() }}"> {{-- Will auto-generate `title="Back"` --}}
+            <i class="fas fa-undo fa-fw"></i>
+            Back
+        </x-form::submit>
+    </div>
 </x-form::form>
 ```
+
+## How to
+
+### Deal with attributes and classes
+
+Provided component are built using [Blade components](https://laravel.com/docs/blade#components).
+
+Following how Blade components work, you can set any HTML attributes and classes:
+* Attributes will replace default ones
+* Classes will be merged to existing ones
 
 ## Set id
 

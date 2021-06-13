@@ -52,8 +52,9 @@ class FormTest extends TestCase
     /** @test */
     public function it_can_bind_data_from_form(): void
     {
+        $formBinder = $this->mock(FormBinder::class);
+        $formBinder->shouldReceive('bindNewDataBatch')->once()->with(['test']);
+        $formBinder->shouldReceive('unbindLastDataBatch')->once();
         $this->renderComponent(Form::class, ['bind' => ['test']]);
-        $boundData = app(FormBinder::class)->getBoundDataBatch();
-        self::assertEquals(['test'], $boundData);
     }
 }

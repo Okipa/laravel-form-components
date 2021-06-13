@@ -14,15 +14,17 @@ Follow the steps below to upgrade the package.
 
 ## Replace native HTML form calls
 
-You now can use a [form component](../../README.md#form) which will automatically generate CSRF and method spoofing hidden fields for you.
+You now can use a form component which will automatically generate CSRF and method spoofing hidden fields for you.
 
 As so, you should:
 * Replace your native HTML form implementations
 * Remove you CSRF and spoofing method hidden fields implementations
 
-## Update component calls
+See documentation to check [how to use form component](../../README.md#form).
 
-For example, replace this code:
+## Replacing component calls
+
+For example, you'll have to replace this component call:
 
 ```Blade
 {{ inputEmail()->name('email')->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'email']) }}
@@ -34,22 +36,34 @@ By this one:
 ```
 
 You'll have to execute this work for each of the following components:
-* `inputText()->name('...')` should be replaced by `<x-form::input type="text" name="..."/>`
-* `inputEmail()->name('...')` should be replaced by `<x-form::input type="email" name="..."/>`
-* `inputPassword()->name('...')` should be replaced by `<x-form::input type="password" name="..."/>`
-* `inputUrl()->name('...')` should be replaced by `<x-form::input type="url" name="..."/>`
-* `inputTel()->name('...')` should be replaced by `<x-form::input type="tel" name="..."/>`
-* `inputNumber()->name('...')` should be replaced by `<x-form::input type="number" name="..."/>`
-* `inputColor()->name('...')` should be replaced by `<x-form::input type="color" name="..."/>`
-* `inputDate()->name('...')` should be replaced by `<x-form::input type="date" name="..."/>`
-* `inputTime()->name('...')` should be replaced by `<x-form::input type="time" name="..."/>`
-* `inputDateTime()->name('...')` should be replaced by `<x-form::input type="datetime-local" name="..."/>`
-* `inputFile()->name('...')` should be replaced by `<x-form::input type="file" name="..."/>`
-* `inputCheckbox()->name('...')` should be replaced by `<x-form::checkbox name="..."/>`
-* `inputSwitch()->name('...')` should be replaced by `<x-form::switch name="..."/>`
-* `inputRadio()->name('...')` should be replaced by `<x-form::radio name="..."/>`
-* `textarea()->name('...')` should be replaced by `<x-form::input name="..."/>`
-* `select()->name('...')` should be replaced by `<x-form::select name="..."/>`
+
+* All the following components must be replaced by the [<x-form::input/>](../../README.md#input-and-textarea) component
+  * `inputText()`
+  * `inputEmail()`
+  * `inputPassword()`
+  * `inputUrl()`
+  * `inputTel()`
+  * `inputNumber()`
+  * `inputColor()`
+  * `inputDate()`
+  * `inputTime()`
+  * `inputDateTime()`
+  * `inputFile()`
+* The `textarea()` component must be replaced by the [<x-form::textarea/>](../../README.md#input-and-textarea) component   
+* The `select()` component must be replaced by the [<x-form::select/>](../../README.md#select) component
+* The `inputCheckbox()` component must be replaced by the [<x-form::checkbox/>](../../README.md#checkbox-switch-and-radio) component
+* The `inputSwitch()` component must be replaced by the [<x-form::toggle-switch/>](../../README.md#checkbox-switch-and-radio) component
+* The `inputRadio()` component must be replaced by the [<x-form::radio/>](../../README.md#select) component
+* All the following components must be replaced by the [<x-form::button.submit/>](../../README.md#buttons) component
+  * `submit()`
+  * `submitValidate()`
+  * `SubmitCreate()`
+  * `SubmitUpdate()`
+* All the following components must be replaced by the [<x-form::button.link/>](../../README.md#buttons) component
+  * `Button()`
+  * `ButtonBack()`
+  * `ButtonCancel()`
+  * `ButtonLink()`
 
 Of course if you used the Facade way to call these components in your views, you'll have to adapt the treatments reported below.
 

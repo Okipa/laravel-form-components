@@ -6,7 +6,10 @@ use Illuminate\Support\Arr;
 
 class FormBinder
 {
-    protected array $boundDataBatches = [];
+    public function __construct(protected array $boundDataBatches = [])
+    {
+        //
+    }
 
     public function bindNewDataBatch(array|object|null $dataBatch): void
     {

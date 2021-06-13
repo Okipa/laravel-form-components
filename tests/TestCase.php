@@ -19,10 +19,15 @@ class TestCase extends Orchestra
         $this->call('GET', 'test');
     }
 
-    protected function renderComponent(string $componentClass, array $componentData = [], array $viewData = []): string
-    {
+    protected function renderComponent(
+        string $componentClass,
+        array $componentData = [],
+        array $viewData = [],
+        array $attributes = []
+    ): string {
         /** @var \Illuminate\View\Component $input */
         $input = app($componentClass, $componentData);
+        $input->withAttributes($attributes);
 
         return $input->render()->with(array_merge($input->data(), $viewData))->render();
     }

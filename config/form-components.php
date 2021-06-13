@@ -9,7 +9,7 @@ return [
     'ui' => 'bootstrap-5',
 
     /** Whether form components should use floating labels. */
-    'floating_label' => true,
+    'floating_label' => false,
 
     /**
      * Whether form input/textarea/checkbox/radio/switch components should display their validation success.
