@@ -171,14 +171,14 @@ Textarea component can be used the same way as an input component but without de
 
 Set select components in your forms.
 
-Auto generate options by providing an [iterable](https://www.php.net/manual/language.types.iterable.php) element.
+Auto generate options by providing a basic value/label array.
 
 HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option, which is a selected, disabled and hidden option that is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
 
 ```Blade
 @php($options = [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'])
-<x-form::select name="hobbies" :options="$options" selected="1" placeholder="What is your hobby prefered hobby?"/>
-<x-form::select name="hobbies" :options="$options" :selected="[2, 3]" :hidePlaceholder="true" multiple/>
+<x-form::select name="hobbies" placeholder="What is your hobby prefered hobby?" :options="$options" selected="1"/>
+<x-form::select name="hobbies" :hidePlaceholder="true" :options="$options" :selected="[2, 3]" multiple/>
 ```
 
 ### Checkbox, Switch and Radio

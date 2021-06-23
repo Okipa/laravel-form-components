@@ -2,7 +2,7 @@
     @php
         $id = $getId($locale) ?: $getDefaultId('textarea', $locale);
         $label = $getLabel($locale);
-        $placeholder = $getPlaceholder($locale, $label);
+        $placeholder = $getPlaceholder($label, $locale);
         $value = $getValue($locale);
         $prepend = $getPrepend($locale);
         $append = $getAppend($locale);

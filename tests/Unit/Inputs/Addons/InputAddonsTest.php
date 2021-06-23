@@ -61,6 +61,7 @@ class InputAddonsTest extends TestCase
         self::assertStringContainsString('Test prepend en', $html);
     }
 
+    /** @test */
     public function it_can_set_input_append_addon(): void
     {
         config()->set('form-components.floating_label', false);

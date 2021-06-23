@@ -6,7 +6,7 @@ use Closure;
 
 trait HasAddon
 {
-    public function getPrepend(string|null $locale): string|null
+    public function getPrepend(string $locale = null): string|null
     {
         if ($this->prepend instanceof Closure) {
             return ($this->prepend)($locale ?: app()->getLocale());
@@ -15,7 +15,7 @@ trait HasAddon
         return $this->prepend;
     }
 
-    public function getAppend(string|null $locale): string|null
+    public function getAppend(string $locale = null): string|null
     {
         if ($this->append instanceof Closure) {
             return ($this->append)($locale ?: app()->getLocale());
