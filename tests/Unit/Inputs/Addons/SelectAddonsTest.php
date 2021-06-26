@@ -14,11 +14,11 @@ class SelectAddonsTest extends TestCase
     }
 
     /** @test */
-    public function it_cant_display_textarea_addons_with_floating_label(): void
+    public function it_cant_display_select_addons_with_floating_label(): void
     {
         config()->set('form-components.floating_label', true);
         $html = $this->renderComponent(Select::class, [
-            'name' => 'first_name',
+            'name' => 'hobby_id',
             'options' => [],
             'prepend' => 'Test prepend',
             'append' => 'Test append',
@@ -28,11 +28,11 @@ class SelectAddonsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_textarea_prepend_addon(): void
+    public function it_can_set_select_prepend_addon(): void
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Select::class, [
-            'name' => 'first_name',
+            'name' => 'hobby_id',
             'options' => [],
             'prepend' => 'Test prepend',
         ]);
@@ -43,11 +43,11 @@ class SelectAddonsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_textarea_closure_prepend_addon_with_disabled_multilingual(): void
+    public function it_can_set_select_closure_prepend_addon_with_disabled_multilingual(): void
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Select::class, [
-            'name' => 'first_name',
+            'name' => 'hobby_id',
             'options' => [],
             'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
         ]);
@@ -55,11 +55,11 @@ class SelectAddonsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_textarea_append_addon(): void
+    public function it_can_set_select_append_addon(): void
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Select::class, [
-            'name' => 'first_name',
+            'name' => 'hobby_id',
             'options' => [],
             'append' => 'Test append',
         ]);
@@ -70,11 +70,11 @@ class SelectAddonsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_textarea_closure_append_addon_with_disabled_multilingual(): void
+    public function it_can_set_select_closure_append_addon_with_disabled_multilingual(): void
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Select::class, [
-            'name' => 'first_name',
+            'name' => 'hobby_id',
             'options' => [],
             'append' => fn(string $locale) => 'Test append ' . $locale,
         ]);

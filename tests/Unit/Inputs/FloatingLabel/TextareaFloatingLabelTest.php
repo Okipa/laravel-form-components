@@ -2,7 +2,6 @@
 
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\FloatingLabel;
 
-use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Components\Textarea;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
@@ -28,6 +27,7 @@ class TextareaFloatingLabelTest extends TestCase
     /** @test */
     public function it_can_set_textarea_non_floating_label_mode_and_override_config(): void
     {
+        config()->set('form-components.floating_label', true);
         $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'floatingLabel' => false]);
         self::assertStringNotContainsString(' form-floating', $html);
         $labelPosition = strrpos($html, '<label');
@@ -38,6 +38,7 @@ class TextareaFloatingLabelTest extends TestCase
     /** @test */
     public function it_can_set_textarea_floating_label_mode_and_override_config(): void
     {
+        config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'floatingLabel' => true]);
         self::assertStringContainsString(' form-floating', $html);
         $labelPosition = strrpos($html, '<label');

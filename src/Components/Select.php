@@ -11,7 +11,6 @@ use Okipa\LaravelFormComponents\Components\Traits\HasName;
 use Okipa\LaravelFormComponents\Components\Traits\HasOptions;
 use Okipa\LaravelFormComponents\Components\Traits\HasPlaceholder;
 use Okipa\LaravelFormComponents\Components\Traits\HasValidation;
-use Okipa\LaravelFormComponents\Components\Traits\HasValue;
 
 class Select extends AbstractComponent
 {

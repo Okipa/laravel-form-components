@@ -2,12 +2,34 @@
 
 namespace Okipa\LaravelFormComponents\Components\Traits;
 
+use Okipa\LaravelFormComponents\FormBinder;
+
 trait HasOptions
 {
-    public function isSelected(string|int $value, bool $multipleMode): bool
+    public function isSelected(string $name, string|int $value): bool
     {
-        return $multipleMode
-            ? in_array($value, $this->selected, false)
-            : (string) $value === (string) $this->selected;
+        $oldValue = $this->getOldValue();
+        if (isset($oldValue)) {
+            return in_array($value, (array) $oldValue, false);
+        }
+        if ($this->selected) {
+            return in_array($value, (array) $this->selected, false);
+        }
+        $dataBatch = $this->bind ?: app(FormBinder::class)->getBoundDataBatch();
+
+        return in_array($value, (array) data_get($dataBatch, $name), false);
+    }
+
+    protected function getOldValue(): mixed
+    {
+        if (! old()) {
+            return null;
+        }
+        $oldValue = data_get(old(), $this->name);
+        if ($oldValue) {
+            return $oldValue;
+        }
+
+        return array_key_exists($this->name, old()) ? '' : null;
     }
 }

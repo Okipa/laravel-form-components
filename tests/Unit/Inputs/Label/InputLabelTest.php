@@ -55,7 +55,7 @@ class InputLabelTest extends TestCase
     /** @test */
     public function it_can_hide_input_label(): void
     {
-        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'hideLabel' => 'Test label']);
+        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'hideLabel' => true]);
         self::assertStringNotContainsString('<label', $html);
     }
 }

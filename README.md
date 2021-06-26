@@ -171,7 +171,7 @@ Textarea component can be used the same way as an input component but without de
 
 Set select components in your forms.
 
-Auto generate options by providing a basic value/label array.
+Auto generate options by providing a basic key/value array.
 
 HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option, which is a selected, disabled and hidden option that is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
 

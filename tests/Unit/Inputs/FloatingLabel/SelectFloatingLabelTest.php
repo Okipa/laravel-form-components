@@ -2,10 +2,10 @@
 
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\FloatingLabel;
 
-use Okipa\LaravelFormComponents\Components\Input;
+use Okipa\LaravelFormComponents\Components\Select;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class InputFloatingLabelTest extends TestCase
+class SelectFloatingLabelTest extends TestCase
 {
     public function setUp(): void
     {
@@ -14,35 +14,43 @@ class InputFloatingLabelTest extends TestCase
     }
 
     /** @test */
-    public function it_can_globally_set_input_floating_label_mode_from_config(): void
+    public function it_can_globally_set_select_floating_label_mode_from_config(): void
     {
         config()->set('form-components.floating_label', true);
-        $component = app(Input::class, ['name' => 'first_name']);
+        $component = app(Select::class, ['name' => 'hobby_id', 'options' => []]);
         self::assertTrue($component->floatingLabel);
         config()->set('form-components.floating_label', false);
-        $component = app(Input::class, ['name' => 'first_name']);
+        $component = app(Select::class, ['name' => 'hobby_id', 'options' => []]);
         self::assertFalse($component->floatingLabel);
     }
 
     /** @test */
-    public function it_can_set_input_non_floating_label_mode_and_override_config(): void
+    public function it_can_set_select_non_floating_label_mode_and_override_config(): void
     {
         config()->set('form-components.floating_label', true);
-        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'floatingLabel' => false]);
+        $html = $this->renderComponent(Select::class, [
+            'name' => 'hobby_id',
+            'options' => [],
+            'floatingLabel' => false,
+        ]);
         self::assertStringNotContainsString(' form-floating', $html);
         $labelPosition = strrpos($html, '<label');
-        $inputPosition = strrpos($html, '<input');
+        $inputPosition = strrpos($html, '<select');
         self::assertLessThan($inputPosition, $labelPosition);
     }
 
     /** @test */
-    public function it_can_set_input_floating_label_mode_and_override_config(): void
+    public function it_can_set_select_floating_label_mode_and_override_config(): void
     {
         config()->set('form-components.floating_label', false);
-        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'floatingLabel' => true]);
+        $html = $this->renderComponent(Select::class, [
+            'name' => 'hobby_id',
+            'options' => [],
+            'floatingLabel' => true,
+        ]);
         self::assertStringContainsString(' form-floating', $html);
         $labelPosition = strrpos($html, '<label');
-        $inputPosition = strrpos($html, '<input');
+        $inputPosition = strrpos($html, '<select');
         self::assertLessThan($labelPosition, $inputPosition);
     }
 }

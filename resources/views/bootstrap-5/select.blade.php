@@ -5,6 +5,7 @@
     $prepend = $getPrepend();
     $append = $getAppend();
     $errorMessage = $getErrorMessage($errors);
+    $multipleMode =  (bool) $attributes->filter(fn($value) => $value === 'multiple')->first();
 @endphp
 <div class="component-container mb-3{{  $floatingLabel ? ' form-floating' : null }}{{ $prepend || $append ? ' input-group' : null }}">
     @unless($floatingLabel)
@@ -15,13 +16,16 @@
     @endunless
     <select {{ $attributes->merge([
         'id' => $id,
+        'name' => $name . ($multipleMode ? '[]' : null),
         'class' => 'component form-select ' . $getValidationClass($errors),
         'placeholder' => $placeholder,
         'aria-describedby' => $caption ? $id . '-caption' : null,
     ]) }}>
-        <option value="" disabled hidden>{{ $placeholder }}</option>
+        @if($placeholder)
+            <option value="" selected disabled hidden>{{ $placeholder }}</option>
+        @endif
         @foreach($options as $value => $label)
-            <option value="id"{!! $isSelected($value, $attribute->has('multiple')) ? ' selected="selected"' : null !!}>{{ $label }}</option>
+            <option value="{{ $value }}"{!! $isSelected($name, $value) ? ' selected="selected"' : null !!}>{{ $label }}</option>
         @endforeach
     </select>
     @if($floatingLabel)
