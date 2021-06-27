@@ -2,5 +2,5 @@
     'class' => 'btn' . ($attributes->has('class') ? null : ' btn-primary'),
     'type' => 'submit',
 ]) !!}>
-    {!! $slot ?? __('Submit') !!}
+    {{ $slot ?? __('Submit') }}
 </button>

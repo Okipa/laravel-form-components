@@ -17,10 +17,14 @@ class SelectLabelTest extends TestCase
     public function it_can_setup_select_default_label_when_none_is_defined(): void
     {
         $html = $this->renderComponent(Select::class, ['name' => 'hobby_id', 'options' => []]);
-        self::assertStringContainsString(
-            '<label for="select-hobby-id" class="form-label">validation.attributes.hobby_id</label>',
-            $html
-        );
+        self::assertStringContainsString(' class="form-label">validation.attributes.hobby_id</label>', $html);
+    }
+
+    /** @test */
+    public function it_can_setup_select_default_label_with_array_name_when_none_is_defined(): void
+    {
+        $html = $this->renderComponent(Select::class, ['name' => 'hobby_id[0]', 'options' => []]);
+        self::assertStringContainsString(' class="form-label">validation.attributes.hobby_id</label>', $html);
     }
 
     /** @test */
@@ -31,10 +35,7 @@ class SelectLabelTest extends TestCase
             'label' => 'Test label',
             'options' => [],
         ]);
-        self::assertStringContainsString(
-            '<label for="select-hobby-id" class="form-label">Test label</label>',
-            $html
-        );
+        self::assertStringContainsString(' class="form-label">Test label</label>', $html);
     }
 
     /** @test */
@@ -42,7 +43,7 @@ class SelectLabelTest extends TestCase
     {
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
-            'hideLabel' => 'Test label',
+            'hideLabel' => true,
             'options' => [],
         ]);
         self::assertStringNotContainsString('<label', $html);

@@ -21,6 +21,13 @@ class SelectIdTest extends TestCase
     }
 
     /** @test */
+    public function it_can_setup_select_default_id_with_array_name_when_none_is_defined(): void
+    {
+        $html = $this->renderComponent(Select::class, ['name' => 'hobby_id[0]', 'options' => []]);
+        self::assertStringContainsString(' id="select-hobby-id-0"', $html);
+    }
+
+    /** @test */
     public function it_can_set_select_id(): void
     {
         $html = $this->renderComponent(Select::class, [

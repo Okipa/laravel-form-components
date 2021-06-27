@@ -14,14 +14,14 @@ class InputPlaceholderTest extends TestCase
     }
 
     /** @test */
-    public function it_can_setup_input_default_placeholder_with_string_name_when_none_is_defined(): void
+    public function it_can_setup_input_default_placeholder_when_none_is_defined(): void
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name']);
         self::assertStringContainsString(' placeholder="validation.attributes.first_name"', $html);
     }
 
     /** @test */
-    public function it_can_setup_input_default_localized_placeholder_with_string_name_when_none_is_defined(): void
+    public function it_can_setup_input_default_localized_placeholder_when_none_is_defined(): void
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'locales' => ['fr', 'en']]);
         self::assertStringContainsString(' placeholder="validation.attributes.first_name (FR)"', $html);
@@ -40,6 +40,13 @@ class InputPlaceholderTest extends TestCase
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'label' => 'Test label']);
         self::assertStringContainsString(' placeholder="Test label"', $html);
+    }
+
+    /** @test */
+    public function it_can_setup_input_default_placeholder_when_label_is_hidden(): void
+    {
+        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'hideLabel' => true]);
+        self::assertStringContainsString(' placeholder="validation.attributes.first_name"', $html);
     }
 
     /** @test */

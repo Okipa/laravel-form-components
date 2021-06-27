@@ -8,5 +8,5 @@
         : ($slot ? strip_tags($slot) : null),
     'role' => 'button',
 ]) !!}>
-    {!! $slot !!}
+    {{ $slot }}
 </a>

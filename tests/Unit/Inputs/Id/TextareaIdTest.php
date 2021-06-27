@@ -22,6 +22,13 @@ class TextareaIdTest extends TestCase
     }
 
     /** @test */
+    public function it_can_setup_textarea_default_id_with_array_name_when_none_is_defined(): void
+    {
+        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name[0]']);
+        self::assertStringContainsString(' id="textarea-first-name-0"', $html);
+    }
+
+    /** @test */
     public function it_can_setup_textarea_default_localized_id_when_none_is_defined(): void
     {
         $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'locales' => ['fr', 'en']]);

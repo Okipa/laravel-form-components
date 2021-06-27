@@ -14,7 +14,7 @@ class SelectPlaceholderTest extends TestCase
     }
 
     /** @test */
-    public function it_can_setup_select_default_placeholder_with_string_name_when_none_is_defined(): void
+    public function it_can_setup_select_default_placeholder_when_none_is_defined(): void
     {
         $html = $this->renderComponent(Select::class, ['name' => 'hobby_id', 'options' => []]);
         self::assertStringContainsString(
@@ -43,6 +43,20 @@ class SelectPlaceholderTest extends TestCase
         ]);
         self::assertStringContainsString(
             '<option value="" selected disabled hidden>Test label</option>',
+            $html
+        );
+    }
+
+    /** @test */
+    public function it_can_setup_select_default_placeholder_when_label_is_hidden(): void
+    {
+        $html = $this->renderComponent(Select::class, [
+            'name' => 'hobby_id',
+            'hideLabel' => true,
+            'options' => [],
+        ]);
+        self::assertStringContainsString(
+            '<option value="" selected disabled hidden>validation.attributes.hobby_id</option>',
             $html
         );
     }

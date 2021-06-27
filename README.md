@@ -189,7 +189,7 @@ Submit and link button components are available.
 
 Submit button allows you to trigger a form and will provide a default `__('Submit')` body if none is defined.
 
-Link button allows you to set actions like `Back` or `Cancel` in your forms by providing a link with a button-like display. This component will define a default title from the given body.
+Link button allows you to set actions like `Back` or `Cancel` in your forms by providing a link with a button-like display. As this component is an HTML link, it will provide a default title by analysing its body.
 
 By default, both components will set a base background color if no custom class attribute is defined.
 

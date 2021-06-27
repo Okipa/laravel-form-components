@@ -34,4 +34,11 @@ class ButtonLinkTest extends TestCase
         $html = $this->renderComponent(Link::class);
         self::assertStringNotContainsString('title="', $html);
     }
+
+    /** @test */
+    public function it_can_set_custom_title(): void
+    {
+        $html = $this->renderComponent(Link::class, attributes: ['title' => 'Test title']);
+        self::assertStringContainsString('title="Test title"', $html);
+    }
 }
