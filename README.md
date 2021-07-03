@@ -139,7 +139,7 @@ Components can be wrapped into a form component.
 If no custom method is set, a `GET` method will be set by default.
 
 Hidden CSRF and spoofing method fields will be automatically generated when needed, according to the defined form method :
-* You won't need to define a `@method()` directive, declare your `PUT`, `PATCH` and `DELETE` actions directly in the `action` attribute
+* You won't need to define a `@method()` directive, declare your `PUT`, `PATCH` or `DELETE` action directly in the `action` attribute
 * You won't need to define a `@csrf()` directive, it will be automatically declared with `POST`, `PUT`, `PATCH` and `DELETE` actions
 
 Forms are generated with a default `novalidate` HTML attribute, which is preventing browser validation in favor of a server-side validation (which is a good practice for security matters).
