@@ -54,7 +54,6 @@ class FormTest extends TestCase
     {
         $formBinder = $this->mock(FormBinder::class);
         $formBinder->shouldReceive('bindNewDataBatch')->once()->with(['test']);
-        $formBinder->shouldReceive('unbindLastDataBatch')->once();
         $this->renderComponent(Form::class, ['bind' => ['test']]);
     }
 }

@@ -9,7 +9,5 @@
     @if($requiredMethodSpoofing)
         @method($method)
     @endif
-    @bind($bind)
-        {{ $slot ?? null }}
-    @endbind
+    {{ $slot ?? null }}
 </form>
