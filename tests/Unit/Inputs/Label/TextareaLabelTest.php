@@ -16,21 +16,21 @@ class TextareaLabelTest extends TestCase
     /** @test */
     public function it_can_setup_textarea_default_label_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name']);
-        self::assertStringContainsString(' class="form-label">validation.attributes.first_name</label>', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description']);
+        self::assertStringContainsString(' class="form-label">validation.attributes.description</label>', $html);
     }
 
     /** @test */
     public function it_can_setup_textarea_default_label_with_array_name_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name[0]']);
-        self::assertStringContainsString(' class="form-label">validation.attributes.first_name</label>', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description[0]']);
+        self::assertStringContainsString(' class="form-label">validation.attributes.description</label>', $html);
     }
 
     /** @test */
     public function it_can_set_textarea_label(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'label' => 'Test label']);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'label' => 'Test label']);
         self::assertStringContainsString(' class="form-label">Test label</label>', $html);
     }
 
@@ -38,7 +38,7 @@ class TextareaLabelTest extends TestCase
     public function it_can_set_textarea_localized_label(): void
     {
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
+            'name' => 'description',
             'label' => 'Test label',
             'locales' => ['fr', 'en'],
         ]);
@@ -49,7 +49,7 @@ class TextareaLabelTest extends TestCase
     /** @test */
     public function it_can_hide_textarea_label(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'hideLabel' => true]);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'hideLabel' => true]);
         self::assertStringNotContainsString('<label', $html);
     }
 }

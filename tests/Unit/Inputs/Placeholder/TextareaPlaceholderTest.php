@@ -16,43 +16,43 @@ class TextareaPlaceholderTest extends TestCase
     /** @test */
     public function it_can_setup_textarea_default_placeholder_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name']);
-        self::assertStringContainsString(' placeholder="validation.attributes.first_name"', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description']);
+        self::assertStringContainsString(' placeholder="validation.attributes.description"', $html);
     }
 
     /** @test */
     public function it_can_setup_textarea_default_localized_placeholder_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'locales' => ['fr', 'en']]);
-        self::assertStringContainsString(' placeholder="validation.attributes.first_name (FR)"', $html);
-        self::assertStringContainsString(' placeholder="validation.attributes.first_name (EN)"', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'locales' => ['fr', 'en']]);
+        self::assertStringContainsString(' placeholder="validation.attributes.description (FR)"', $html);
+        self::assertStringContainsString(' placeholder="validation.attributes.description (EN)"', $html);
     }
 
     /** @test */
     public function it_can_setup_textarea_default_placeholder_with_array_name_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name[0]']);
-        self::assertStringContainsString(' placeholder="validation.attributes.first_name"', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description[0]']);
+        self::assertStringContainsString(' placeholder="validation.attributes.description"', $html);
     }
 
     /** @test */
     public function it_can_setup_textarea_default_placeholder_from_defined_label(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'label' => 'Test label']);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'label' => 'Test label']);
         self::assertStringContainsString(' placeholder="Test label"', $html);
     }
 
     /** @test */
     public function it_can_setup_textarea_default_placeholder_when_label_is_hidden(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'hideLabel' => true]);
-        self::assertStringContainsString(' placeholder="validation.attributes.first_name"', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'hideLabel' => true]);
+        self::assertStringContainsString(' placeholder="validation.attributes.description"', $html);
     }
 
     /** @test */
     public function it_can_hide_textarea_placeholder(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'hidePlaceholder' => true]);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'hidePlaceholder' => true]);
         self::assertStringNotContainsString('placeholder', $html);
     }
 
@@ -61,7 +61,7 @@ class TextareaPlaceholderTest extends TestCase
     {
         $html = $this->renderComponent(
             Textarea::class,
-            ['name' => 'first_name', 'placeholder' => 'Test placeholder']
+            ['name' => 'description', 'placeholder' => 'Test placeholder']
         );
         self::assertStringContainsString(' placeholder="Test placeholder"', $html);
     }

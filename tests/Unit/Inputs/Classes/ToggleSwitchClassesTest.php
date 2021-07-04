@@ -17,7 +17,7 @@ class ToggleSwitchClassesTest extends TestCase
     public function it_can_setup_component_classes_on_toggle_switch(): void
     {
         $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active']);
-        self::assertStringContainsString('class="component-container ', $html);
-        self::assertStringContainsString('class="component ', $html);
+        self::assertStringContainsString(' class="component-container ', $html);
+        self::assertStringContainsString(' class="component ', $html);
     }
 }

@@ -18,7 +18,7 @@ class InputLabelTest extends TestCase
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name']);
         self::assertStringContainsString(
-            'class="form-label">validation.attributes.first_name</label>',
+            ' class="form-label">validation.attributes.first_name</label>',
             $html
         );
     }

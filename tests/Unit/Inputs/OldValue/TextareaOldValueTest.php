@@ -18,14 +18,14 @@ class TextareaOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['first_name' => 'Test old first name'])->flash(),
+            'uses' => fn() => request()->merge(['description' => 'Test old description'])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
-            'value' => 'Test old first name',
+            'name' => 'description',
+            'value' => 'Test old description',
         ]);
-        self::assertStringContainsString('>Test old first name</textarea>', $html);
+        self::assertStringContainsString('>Test old description</textarea>', $html);
     }
 
     /** @test */
@@ -33,14 +33,14 @@ class TextareaOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['first_name[0]' => 'Test old first name'])->flash(),
+            'uses' => fn() => request()->merge(['description[0]' => 'Test old description'])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name[0]',
-            'value' => 'Test old first name',
+            'name' => 'description[0]',
+            'value' => 'Test old description',
         ]);
-        self::assertStringContainsString('>Test old first name</textarea>', $html);
+        self::assertStringContainsString('>Test old description</textarea>', $html);
     }
 
     /** @test */
@@ -48,12 +48,12 @@ class TextareaOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['first_name' => null])->flash(),
+            'uses' => fn() => request()->merge(['description' => null])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
-            'value' => 'Test first name',
+            'name' => 'description',
+            'value' => 'Test description',
         ]);
         self::assertStringContainsString('></textarea>', $html);
     }
@@ -64,20 +64,20 @@ class TextareaOldValueTest extends TestCase
         $this->app['router']->get('test', [
             'middleware' => 'web',
             'uses' => fn() => request()->merge([
-                'first_name' => [
-                    'fr' => 'Test old first name FR',
-                    'en' => 'Test old first name EN',
+                'description' => [
+                    'fr' => 'Test old description FR',
+                    'en' => 'Test old description EN',
                 ],
             ])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
+            'name' => 'description',
             'locales' => ['fr', 'en'],
             'value' => fn(string $locale) => 'Test value ' . $locale,
         ]);
-        self::assertStringContainsString('>Test old first name FR</textarea>', $html);
-        self::assertStringContainsString('>Test old first name EN</textarea>', $html);
+        self::assertStringContainsString('>Test old description FR</textarea>', $html);
+        self::assertStringContainsString('>Test old description EN</textarea>', $html);
     }
 
     public function it_can_retrieve_textarea_old_localized_values_from_null(): void
@@ -85,19 +85,19 @@ class TextareaOldValueTest extends TestCase
         $this->app['router']->get('test', [
             'middleware' => 'web',
             'uses' => fn() => request()->merge([
-                'first_name' => [
-                    'fr' => 'Test old first name FR',
+                'description' => [
+                    'fr' => 'Test old description FR',
                     'en' => null,
                 ],
             ])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
+            'name' => 'description',
             'locales' => ['fr', 'en'],
             'value' => fn(string $locale) => 'Test value ' . $locale,
         ]);
-        self::assertStringContainsString('>Test old first name FR</textarea>', $html);
+        self::assertStringContainsString('>Test old description FR</textarea>', $html);
         self::assertStringContainsString('></textarea>', $html);
     }
 }

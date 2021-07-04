@@ -17,7 +17,7 @@ class SelectClassesTest extends TestCase
     public function it_can_setup_component_classes_on_select(): void
     {
         $html = $this->renderComponent(Select::class, ['name' => 'hobby_id', 'options' => []]);
-        self::assertStringContainsString('class="component-container ', $html);
-        self::assertStringContainsString('class="component ', $html);
+        self::assertStringContainsString(' class="component-container"', $html);
+        self::assertStringContainsString(' class="component ', $html);
     }
 }

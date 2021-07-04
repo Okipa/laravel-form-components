@@ -27,6 +27,28 @@ class InputAddonsTest extends TestCase
     }
 
     /** @test */
+    public function it_can_position_label_above_input_group_with_prepend_input_addon(): void
+    {
+        config()->set('form-components.floating_label', false);
+        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'prepend' => 'Test prepend']);
+        self::assertStringContainsString('<label', $html);
+        $labelPosition = strrpos($html, '<label');
+        $inputGroupPosition = strrpos($html, ' input-group">');
+        self::assertLessThan($inputGroupPosition, $labelPosition);
+    }
+
+    /** @test */
+    public function it_can_position_label_above_input_group_with_append_input_addon(): void
+    {
+        config()->set('form-components.floating_label', false);
+        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'append' => 'Test append']);
+        self::assertStringContainsString('<label', $html);
+        $labelPosition = strrpos($html, '<label');
+        $inputGroupPosition = strrpos($html, ' input-group">');
+        self::assertLessThan($inputGroupPosition, $labelPosition);
+    }
+
+    /** @test */
     public function it_can_set_input_prepend_addon(): void
     {
         config()->set('form-components.floating_label', false);

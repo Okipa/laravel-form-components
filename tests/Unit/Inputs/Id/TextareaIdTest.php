@@ -17,29 +17,29 @@ class TextareaIdTest extends TestCase
     /** @test */
     public function it_can_setup_textarea_default_id_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name']);
-        self::assertStringContainsString(' id="textarea-first-name"', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description']);
+        self::assertStringContainsString(' id="textarea-description"', $html);
     }
 
     /** @test */
     public function it_can_setup_textarea_default_id_with_array_name_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name[0]']);
-        self::assertStringContainsString(' id="textarea-first-name-0"', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description[0]']);
+        self::assertStringContainsString(' id="textarea-description-0"', $html);
     }
 
     /** @test */
     public function it_can_setup_textarea_default_localized_id_when_none_is_defined(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'locales' => ['fr', 'en']]);
-        self::assertStringContainsString(' id="textarea-first-name-fr"', $html);
-        self::assertStringContainsString(' id="textarea-first-name-en"', $html);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'locales' => ['fr', 'en']]);
+        self::assertStringContainsString(' id="textarea-description-fr"', $html);
+        self::assertStringContainsString(' id="textarea-description-en"', $html);
     }
 
     /** @test */
     public function it_can_set_textarea_id(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'id' => 'test-id']);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'id' => 'test-id']);
         self::assertStringContainsString(' id="test-id"', $html);
     }
 
@@ -47,7 +47,7 @@ class TextareaIdTest extends TestCase
     public function it_can_set_textarea_localized_id(): void
     {
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
+            'name' => 'description',
             'id' => 'test-id',
             'locales' => ['fr', 'en'],
         ]);

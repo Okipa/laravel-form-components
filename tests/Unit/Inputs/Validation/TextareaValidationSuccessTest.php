@@ -19,10 +19,10 @@ class TextareaValidationSuccessTest extends TestCase
     public function it_can_globally_set_display_textarea_validation_success(): void
     {
         config()->set('form-components.display_validation_success', true);
-        $component = app(Textarea::class, ['name' => 'first_name']);
+        $component = app(Textarea::class, ['name' => 'description']);
         self::assertTrue($component->displayValidationSuccess);
         config()->set('form-components.display_validation_success', false);
-        $component = app(Textarea::class, ['name' => 'first_name']);
+        $component = app(Textarea::class, ['name' => 'description']);
         self::assertFalse($component->displayValidationSuccess);
     }
 
@@ -35,7 +35,7 @@ class TextareaValidationSuccessTest extends TestCase
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
+            'name' => 'description',
             'displayValidationSuccess' => true,
         ]);
         self::assertStringContainsString(' is-valid', $html);
@@ -50,7 +50,7 @@ class TextareaValidationSuccessTest extends TestCase
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
+            'name' => 'description',
             'displayValidationSuccess' => false,
         ]);
         self::assertStringNotContainsString(' is-valid', $html);
