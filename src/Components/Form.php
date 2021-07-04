@@ -9,9 +9,7 @@ class Form extends AbstractComponent
 {
     public function __construct(public string $method = 'GET', public array|object|null $bind = null)
     {
-        if ($bind) {
-            app(FormBinder::class)->bindNewDataBatch($bind);
-        }
+        app(FormBinder::class)->bindNewDataBatch($bind);
         $this->method = strtoupper($method);
         parent::__construct();
     }
