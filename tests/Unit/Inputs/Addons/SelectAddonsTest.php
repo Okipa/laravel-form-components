@@ -38,7 +38,7 @@ class SelectAddonsTest extends TestCase
         ]);
         self::assertStringContainsString('<label', $html);
         $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, ' input-group">');
+        $inputGroupPosition = strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 
@@ -53,7 +53,7 @@ class SelectAddonsTest extends TestCase
         ]);
         self::assertStringContainsString('<label', $html);
         $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, ' input-group">');
+        $inputGroupPosition = strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 

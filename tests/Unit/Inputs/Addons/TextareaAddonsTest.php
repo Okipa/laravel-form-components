@@ -33,7 +33,7 @@ class TextareaAddonsTest extends TestCase
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'prepend' => 'Test prepend']);
         self::assertStringContainsString('<label', $html);
         $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, ' input-group">');
+        $inputGroupPosition = strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 
@@ -44,7 +44,7 @@ class TextareaAddonsTest extends TestCase
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'append' => 'Test append']);
         self::assertStringContainsString('<label', $html);
         $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, ' input-group">');
+        $inputGroupPosition = strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 

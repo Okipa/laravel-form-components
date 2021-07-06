@@ -7,11 +7,11 @@
     $errorMessage = $getErrorMessage($errors);
     $multipleMode =  (bool) $attributes->filter(fn($value) => $value === 'multiple')->first();
 @endphp
-<div class="component-container">
-    @if($prepend || $append)
+<div class="component-container mb-3{{ $floatingLabel ? ' form-floating' : null }}">
+    @if(($prepend || $append) && ! $floatingLabel)
         <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
+        <div class="input-group">
     @endif
-    <div class="mb-3{{  $floatingLabel ? ' form-floating' : null }}{{ $prepend || $append ? ' input-group' : null }}">
         @if(! $prepend && ! $append && ! $floatingLabel)
             <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
         @endif
@@ -40,5 +40,7 @@
         @endif
         <x-form::partials.caption :inputId="$id" :caption="$caption"/>
         <x-form::partials.error-message :message="$errorMessage"/>
-    </div>
+    @if(($prepend || $append) && ! $floatingLabel)
+        </div>
+    @endif
 </div>

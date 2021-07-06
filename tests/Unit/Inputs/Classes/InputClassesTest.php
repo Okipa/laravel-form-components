@@ -19,7 +19,7 @@ class InputClassesTest extends TestCase
     public function it_can_setup_component_classes_on_input(): void
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name']);
-        self::assertStringContainsString(' class="component-container"', $html);
+        self::assertStringContainsString(' class="component-container mb-3"', $html);
         self::assertStringContainsString(' class="component ', $html);
     }
 }

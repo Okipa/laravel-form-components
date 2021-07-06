@@ -5,10 +5,10 @@ This package is a full rewrite of the [okipa/laravel-bootstrap-components](https
 This rewrite has been made for the following reasons:
 * Migrating to a new repository with a name that would give a better representation of the package purpose
 * Allowing choosing which UI framework is used to render components
-* Taking advantage of the power of X Blade components which are allowing us to manipulate HTML directly instead of having to use PHP methods
+* Taking advantage of the power of X Blade components which are allowing us to manipulate HTML directly instead of having to manipulate PHP
 * Migrating code to PHP 8.0
+* Adding and improving features
 * Adding Livewire compatibility
-* Adding a form component which would allow global model binding and global Livewire configuration
 
 Follow the steps below to upgrade the package.
 

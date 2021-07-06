@@ -33,7 +33,7 @@ class InputAddonsTest extends TestCase
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'prepend' => 'Test prepend']);
         self::assertStringContainsString('<label', $html);
         $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, ' input-group">');
+        $inputGroupPosition = strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 
@@ -44,7 +44,7 @@ class InputAddonsTest extends TestCase
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'append' => 'Test append']);
         self::assertStringContainsString('<label', $html);
         $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, ' input-group">');
+        $inputGroupPosition = strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 
