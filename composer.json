@@ -24,7 +24,8 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/contracts": "^8.0"
+        "illuminate/contracts": "^8.0",
+        "phpstan/phpstan-mockery": "^0.12.14"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",

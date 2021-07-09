@@ -3,6 +3,7 @@
 namespace Okipa\LaravelFormComponents\Components\Traits;
 
 use Closure;
+use Illuminate\Database\Eloquent\Model;
 use Okipa\LaravelFormComponents\FormBinder;
 
 trait HasValue
@@ -18,6 +19,12 @@ trait HasValue
         }
         $dataBatch = $this->bind ?: app(FormBinder::class)->getBoundDataBatch();
         if ($locale) {
+            // Prevent packages like spatie/laravel-translatable to automatically get the current locale
+            // value from a model, even if `data_get` is being used.
+            if ($dataBatch instanceof Model) {
+                return $this->value ?? data_get($dataBatch->toArray(), $this->name . '.' . $locale);
+            }
+
             return $this->value ?? data_get($dataBatch, $this->name . '.' . $locale);
         }
 

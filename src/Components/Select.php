@@ -5,6 +5,7 @@ namespace Okipa\LaravelFormComponents\Components;
 use Closure;
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 use Okipa\LaravelFormComponents\Components\Traits\HasAddon;
+use Okipa\LaravelFormComponents\Components\Traits\HasFloatingLabel;
 use Okipa\LaravelFormComponents\Components\Traits\HasId;
 use Okipa\LaravelFormComponents\Components\Traits\HasLabel;
 use Okipa\LaravelFormComponents\Components\Traits\HasName;
@@ -17,6 +18,7 @@ class Select extends AbstractComponent
     use HasId;
     use HasName;
     use HasLabel;
+    use HasFloatingLabel;
     use HasPlaceholder;
     use HasAddon;
     use HasOptions;
