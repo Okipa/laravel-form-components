@@ -8,7 +8,7 @@
         $prepend = $getPrepend($locale);
         $append = $getAppend($locale);
         $errorMessage = $getErrorMessage($errors, $locale);
-        $validationClass = $getValidationClass($errors);
+        $validationClass = $getValidationClass($errors, $locale);
     @endphp
     <div class="component-container mb-3{{ $displayFloatingLabel ? ' form-floating' : null }}">
         @if(($prepend || $append) && ! $displayFloatingLabel)
