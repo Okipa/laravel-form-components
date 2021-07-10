@@ -8,6 +8,7 @@
         $prepend = $getPrepend($locale);
         $append = $getAppend($locale);
         $errorMessage = $getErrorMessage($errors, $locale);
+        $validationClass = $getValidationClass($errors);
     @endphp
     <div class="component-container mb-3{{ $displayFloatingLabel ? ' form-floating' : null }}">
         @if(($prepend || $append) && ! $displayFloatingLabel)
@@ -22,7 +23,7 @@
             @endif
             <textarea {{ $attributes->merge([
                 'id' => $id,
-                'class' => 'component form-control ' . $getValidationClass($errors, $locale),
+                'class' => 'component form-control' . ($validationClass ? ' ' . $validationClass : null),
                 'name' => $locale ? $name . '[' . $locale . ']' : $name,
                 'placeholder' => $placeholder,
                 'data-locale' => $locale,

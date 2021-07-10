@@ -6,7 +6,8 @@
     $prepend = $getPrepend();
     $append = $getAppend();
     $errorMessage = $getErrorMessage($errors);
-    $multipleMode =  (bool) $attributes->filter(fn($value) => $value === 'multiple')->first();
+    $multipleMode = (bool) $attributes->filter(fn($value) => $value === 'multiple')->first();
+    $validationClass = $getValidationClass($errors);
 @endphp
 <div class="component-container mb-3{{ $displayFloatingLabel ? ' form-floating' : null }}">
     @if(($prepend || $append) && ! $displayFloatingLabel)
@@ -22,7 +23,7 @@
         <select {{ $attributes->merge([
             'id' => $id,
             'name' => $name . ($multipleMode ? '[]' : null),
-            'class' => 'component form-select ' . $getValidationClass($errors),
+            'class' => 'component form-select' . ($validationClass ? ' ' . $validationClass : null),
             'placeholder' => $placeholder,
             'aria-describedby' => $caption ? $id . '-caption' : null,
         ]) }}>
