@@ -18,10 +18,10 @@ class SelectFloatingLabelTest extends TestCase
     {
         config()->set('form-components.floating_label', true);
         $component = app(Select::class, ['name' => 'hobby_id', 'options' => []]);
-        self::assertTrue($component->floatingLabel);
+        self::assertTrue($component->shouldDisplayFloatingLabel());
         config()->set('form-components.floating_label', false);
         $component = app(Select::class, ['name' => 'hobby_id', 'options' => []]);
-        self::assertFalse($component->floatingLabel);
+        self::assertFalse($component->shouldDisplayFloatingLabel());
     }
 
     /** @test */

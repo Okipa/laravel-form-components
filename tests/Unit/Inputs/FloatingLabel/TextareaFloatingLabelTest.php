@@ -18,10 +18,10 @@ class TextareaFloatingLabelTest extends TestCase
     {
         config()->set('form-components.floating_label', true);
         $component = app(Textarea::class, ['name' => 'description']);
-        self::assertTrue($component->floatingLabel);
+        self::assertTrue($component->shouldDisplayFloatingLabel());
         config()->set('form-components.floating_label', false);
         $component = app(Textarea::class, ['name' => 'description']);
-        self::assertFalse($component->floatingLabel);
+        self::assertFalse($component->shouldDisplayFloatingLabel());
     }
 
     /** @test */

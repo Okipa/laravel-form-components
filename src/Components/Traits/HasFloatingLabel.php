@@ -4,7 +4,7 @@ namespace Okipa\LaravelFormComponents\Components\Traits;
 
 trait HasFloatingLabel
 {
-    protected function getFloatingLabel(): bool
+    public function shouldDisplayFloatingLabel(): bool
     {
         return is_null($this->floatingLabel)
             ? config('form-components.floating_label', false)

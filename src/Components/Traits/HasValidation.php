@@ -7,16 +7,20 @@ use Illuminate\Support\ViewErrorBag;
 
 trait HasValidation
 {
-    public function getValidationClass(ViewErrorBag $errors): string|null
+    public function getValidationClass(ViewErrorBag $errors, string|null $locale = null): string|null
     {
-        if ($this->getErrorBag($errors)->isEmpty()) {
+        $errorBag = $this->getErrorBag($errors);
+        if ($errorBag->isEmpty()) {
             return null;
         }
-        if ($this->getErrorBag($errors)->has($this->getNameWithArrayNotationConvertedInto())) {
-            return $this->displayValidationFailure ? 'is-invalid' : null;
+        if ($locale && $errorBag->has($this->name . '.' . $locale)) {
+            return $this->shouldDisplayValidationFailure() ? 'is-invalid' : null;
+        }
+        if ($errorBag->has($this->getNameWithArrayNotationConvertedInto())) {
+            return $this->shouldDisplayValidationFailure() ? 'is-invalid' : null;
         }
 
-        return $this->displayValidationSuccess ? 'is-valid' : null;
+        return $this->shouldDisplayValidationSuccess() ? 'is-valid' : null;
     }
 
     protected function getErrorBag(ViewErrorBag $errors): MessageBag
@@ -24,9 +28,19 @@ trait HasValidation
         return $errors->{$this->errorBag};
     }
 
+    public function shouldDisplayValidationFailure(): bool
+    {
+        return $this->displayValidationFailure ?? config('form-components.display_validation_failure', true);
+    }
+
+    public function shouldDisplayValidationSuccess(): bool
+    {
+        return $this->displayValidationSuccess ?? config('form-components.display_validation_success', true);
+    }
+
     public function getErrorMessage(ViewErrorBag $errors, string|null $locale = null): string|null
     {
-        if (! $this->displayValidationFailure) {
+        if (! $this->shouldDisplayValidationFailure()) {
             return null;
         }
         $errorBag = $this->getErrorBag($errors);
@@ -42,19 +56,5 @@ trait HasValidation
         }
 
         return $errorBag->first($this->getNameWithArrayNotationConvertedInto());
-    }
-
-    protected function shouldDisplayValidationFailure(): bool
-    {
-        return is_null($this->displayValidationFailure)
-            ? config('form-components.display_validation_failure', true)
-            : $this->displayValidationFailure;
-    }
-
-    protected function shouldDisplayValidationSuccess(): bool
-    {
-        return is_null($this->displayValidationSuccess)
-            ? config('form-components.display_validation_success', true)
-            : $this->displayValidationSuccess;
     }
 }

@@ -91,7 +91,7 @@ class TextareaDataBindingTest extends TestCase
         $directBoundModel = app(User::class)->forceFill(['description' => 'Test description component']);
         app(FormBinder::class)->bindNewDataBatch($globallyBoundModel);
         $component = app(Textarea::class, ['name' => 'description', 'bind' => $directBoundModel]);
-        self::assertSame($directBoundModel, $component->bind);
+        self::assertEquals($directBoundModel->description, $component->getValue());
     }
 
     /** @test */

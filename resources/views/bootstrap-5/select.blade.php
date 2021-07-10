@@ -1,21 +1,22 @@
 @php
     $id = $getId() ?: $getDefaultId('select');
     $label = $getLabel();
+    $displayFloatingLabel = $shouldDisplayFloatingLabel();
     $placeholder = $getPlaceholder($label);
     $prepend = $getPrepend();
     $append = $getAppend();
     $errorMessage = $getErrorMessage($errors);
     $multipleMode =  (bool) $attributes->filter(fn($value) => $value === 'multiple')->first();
 @endphp
-<div class="component-container mb-3{{ $floatingLabel ? ' form-floating' : null }}">
-    @if(($prepend || $append) && ! $floatingLabel)
+<div class="component-container mb-3{{ $displayFloatingLabel ? ' form-floating' : null }}">
+    @if(($prepend || $append) && ! $displayFloatingLabel)
         <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
         <div class="input-group">
     @endif
-        @if(! $prepend && ! $append && ! $floatingLabel)
+        @if(! $prepend && ! $append && ! $displayFloatingLabel)
             <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
         @endif
-        @if($prepend && ! $floatingLabel)
+        @if($prepend && ! $displayFloatingLabel)
             <x-form::partials.addon :addon="$prepend"/>
         @endif
         <select {{ $attributes->merge([
@@ -32,15 +33,15 @@
                 <option value="{{ $value }}"{!! $isSelected($name, $value) ? ' selected="selected"' : null !!}>{{ $label }}</option>
             @endforeach
         </select>
-        @if(! $prepend && ! $append && $floatingLabel)
+        @if(! $prepend && ! $append && $displayFloatingLabel)
             <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
         @endif
-        @if($append && ! $floatingLabel)
+        @if($append && ! $displayFloatingLabel)
             <x-form::partials.addon :addon="$append"/>
         @endif
         <x-form::partials.caption :inputId="$id" :caption="$caption"/>
         <x-form::partials.error-message :message="$errorMessage"/>
-    @if(($prepend || $append) && ! $floatingLabel)
+    @if(($prepend || $append) && ! $displayFloatingLabel)
         </div>
     @endif
 </div>

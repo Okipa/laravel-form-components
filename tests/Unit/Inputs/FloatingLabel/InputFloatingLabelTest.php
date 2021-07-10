@@ -18,10 +18,10 @@ class InputFloatingLabelTest extends TestCase
     {
         config()->set('form-components.floating_label', true);
         $component = app(Input::class, ['name' => 'first_name']);
-        self::assertTrue($component->floatingLabel);
+        self::assertTrue($component->shouldDisplayFloatingLabel());
         config()->set('form-components.floating_label', false);
         $component = app(Input::class, ['name' => 'first_name']);
-        self::assertFalse($component->floatingLabel);
+        self::assertFalse($component->shouldDisplayFloatingLabel());
     }
 
     /** @test */

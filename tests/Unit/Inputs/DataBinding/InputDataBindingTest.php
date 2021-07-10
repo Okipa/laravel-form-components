@@ -89,8 +89,8 @@ class InputDataBindingTest extends TestCase
         $globallyBoundModel = app(User::class)->forceFill(['first_name' => 'Test first name globally bound']);
         $directBoundModel = app(User::class)->forceFill(['first_name' => 'Test first name directly bound']);
         app(FormBinder::class)->bindNewDataBatch($globallyBoundModel);
-        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'bind' => $directBoundModel]);
-        self::assertStringContainsString(' value="Test first name directly bound"', $html);
+        $component = app(Input::class, ['name' => 'first_name', 'bind' => $directBoundModel]);
+        self::assertEquals($directBoundModel->first_name, $component->getValue());
     }
 
     /** @test */

@@ -20,10 +20,10 @@ class SelectValidationSuccessTest extends TestCase
     {
         config()->set('form-components.display_validation_success', true);
         $component = app(Select::class, ['name' => 'hobby_id', 'options' => []]);
-        self::assertTrue($component->displayValidationSuccess);
+        self::assertTrue($component->shouldDisplayValidationSuccess());
         config()->set('form-components.display_validation_success', false);
         $component = app(Select::class, ['name' => 'hobby_id', 'options' => []]);
-        self::assertFalse($component->displayValidationSuccess);
+        self::assertFalse($component->shouldDisplayValidationSuccess());
     }
 
     /** @test */

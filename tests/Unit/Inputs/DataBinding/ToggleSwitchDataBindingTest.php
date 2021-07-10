@@ -3,6 +3,7 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataBindings;
 
 use Illuminate\Foundation\Auth\User;
+use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Components\ToggleSwitch;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
@@ -90,6 +91,6 @@ class ToggleSwitchDataBindingTest extends TestCase
         $directBoundModel = app(User::class)->forceFill(['active' => true]);
         app(FormBinder::class)->bindNewDataBatch($globallyBoundModel);
         $component = app(ToggleSwitch::class, ['name' => 'active', 'bind' => $directBoundModel]);
-        self::assertSame($directBoundModel, $component->bind);
+        self::assertEquals($directBoundModel->active, $component->getChecked());
     }
 }

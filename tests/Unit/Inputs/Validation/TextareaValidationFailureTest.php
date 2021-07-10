@@ -20,10 +20,10 @@ class TextareaValidationFailureTest extends TestCase
     {
         config()->set('form-components.display_validation_failure', true);
         $component = app(Textarea::class, ['name' => 'description']);
-        self::assertTrue($component->displayValidationFailure);
+        self::assertTrue($component->shouldDisplayValidationFailure());
         config()->set('form-components.display_validation_failure', false);
         $component = app(Textarea::class, ['name' => 'description']);
-        self::assertFalse($component->displayValidationFailure);
+        self::assertFalse($component->shouldDisplayValidationFailure());
     }
 
     /** @test */
@@ -55,6 +55,7 @@ class TextareaValidationFailureTest extends TestCase
             'displayValidationFailure' => true,
             'locales' => ['fr', 'en'],
         ]);
+        self::assertEquals(2, substr_count($html, ' is-invalid'));
         self::assertStringContainsString(
             '<div class="invalid-feedback">Test validation.attributes.description (FR) error message.</div>',
             $html

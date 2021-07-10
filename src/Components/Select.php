@@ -28,24 +28,21 @@ class Select extends AbstractComponent
     public function __construct(
         public string $name,
         public array $options,
-        public string|null $id = null,
-        public array|object|null $bind = null,
-        public string|null $label = null,
-        public bool|null $floatingLabel = null,
-        public bool $hideLabel = false,
-        public string|null $placeholder = null,
-        public bool $hidePlaceholder = false,
-        public string|Closure|null $prepend = null,
-        public string|Closure|null $append = null,
-        public int|string|array|null $selected = null,
+        protected string|null $id = null,
+        protected array|object|null $bind = null,
+        protected string|null $label = null,
+        protected bool|null $floatingLabel = null,
+        protected bool $hideLabel = false,
+        protected string|null $placeholder = null,
+        protected bool $hidePlaceholder = false,
+        protected string|Closure|null $prepend = null,
+        protected string|Closure|null $append = null,
+        protected int|string|array|null $selected = null,
         public string|null $caption = null,
-        public bool|null $displayValidationSuccess = null,
-        public bool|null $displayValidationFailure = null,
-        public string $errorBag = 'default',
+        protected bool|null $displayValidationSuccess = null,
+        protected bool|null $displayValidationFailure = null,
+        protected string $errorBag = 'default',
     ) {
-        $this->floatingLabel = $this->getFloatingLabel();
-        $this->displayValidationSuccess = $this->shouldDisplayValidationSuccess();
-        $this->displayValidationFailure = $this->shouldDisplayValidationFailure();
         parent::__construct();
     }
 

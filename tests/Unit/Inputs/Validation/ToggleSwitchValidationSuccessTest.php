@@ -20,10 +20,10 @@ class ToggleSwitchValidationSuccessTest extends TestCase
     {
         config()->set('form-components.display_validation_success', true);
         $component = app(ToggleSwitch::class, ['name' => 'active']);
-        self::assertTrue($component->displayValidationSuccess);
+        self::assertTrue($component->shouldDisplayValidationSuccess());
         config()->set('form-components.display_validation_success', false);
         $component = app(ToggleSwitch::class, ['name' => 'active']);
-        self::assertFalse($component->displayValidationSuccess);
+        self::assertFalse($component->shouldDisplayValidationSuccess());
     }
 
     /** @test */

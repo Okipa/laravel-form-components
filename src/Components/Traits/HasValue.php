@@ -8,7 +8,7 @@ use Okipa\LaravelFormComponents\FormBinder;
 
 trait HasValue
 {
-    public function getValue(string|null $locale): mixed
+    public function getValue(string|null $locale = null): mixed
     {
         $oldValue = $this->getOldValue($locale);
         if (isset($oldValue)) {

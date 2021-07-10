@@ -20,10 +20,10 @@ class SelectValidationFailureTest extends TestCase
     {
         config()->set('form-components.display_validation_failure', true);
         $component = app(Select::class, ['name' => 'hobby_id', 'options' => []]);
-        self::assertTrue($component->displayValidationFailure);
+        self::assertTrue($component->shouldDisplayValidationFailure());
         config()->set('form-components.display_validation_failure', false);
         $component = app(Select::class, ['name' => 'hobby_id',  'options' => []]);
-        self::assertFalse($component->displayValidationFailure);
+        self::assertFalse($component->shouldDisplayValidationFailure());
     }
 
     /** @test */

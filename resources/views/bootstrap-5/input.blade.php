@@ -2,21 +2,22 @@
     @php
         $id = $getId($locale) ?: $getDefaultId($type, $locale);
         $label = $getLabel($locale);
+        $displayFloatingLabel = $shouldDisplayFloatingLabel();
         $placeholder = $getPlaceholder($label, $locale);
         $value = $getValue($locale);
         $prepend = $getPrepend($locale);
         $append = $getAppend($locale);
         $errorMessage = $getErrorMessage($errors, $locale);
     @endphp
-    <div class="component-container{{ $type === 'hidden' ? ' d-none' : ' mb-3'}}{{ $floatingLabel ? ' form-floating' : null }}">
-        @if(($prepend || $append) && ! $floatingLabel)
+    <div class="component-container{{ $type === 'hidden' ? ' d-none' : ' mb-3'}}{{ $displayFloatingLabel ? ' form-floating' : null }}">
+        @if(($prepend || $append) && ! $displayFloatingLabel)
             <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
             <div class="input-group">
         @endif
-            @if(! $prepend && ! $append && ! $floatingLabel)
+            @if(! $prepend && ! $append && ! $displayFloatingLabel)
                 <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
             @endif
-            @if($prepend && ! $floatingLabel)
+            @if($prepend && ! $displayFloatingLabel)
                 <x-form::partials.addon :addon="$prepend"/>
             @endif
             <input {{ $attributes->merge([
@@ -28,15 +29,15 @@
                 'data-locale' => $locale,
                 'aria-describedby' => $caption ? $id . '-caption' : null,
             ]) }} value="{{ $value }}"/>
-            @if(! $prepend && ! $append && $floatingLabel)
+            @if(! $prepend && ! $append && $displayFloatingLabel)
                 <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
             @endif
-            @if($append && ! $floatingLabel)
+            @if($append && ! $displayFloatingLabel)
                 <x-form::partials.addon :addon="$append"/>
             @endif
             <x-form::partials.caption :inputId="$id" :caption="$caption"/>
             <x-form::partials.error-message :message="$errorMessage"/>
-        @if(($prepend || $append) && ! $floatingLabel)
+        @if(($prepend || $append) && ! $displayFloatingLabel)
             </div>
         @endif
     </div>
