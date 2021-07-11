@@ -13,7 +13,7 @@ parameters:
     level: 5
 
     ignoreErrors:
-        #- '#Error to be ignored#'
+        - '#Access to an undefined property Illuminate\\Foundation\\Auth\\User#'
 
     excludePaths:
         - ./*/*/FileToBeExcluded.php
