@@ -287,17 +287,24 @@ You can bind Eloquent Models, objects, collections or arrays in order to autofil
 
 Binding data on the form component will trigger the binding of all of its contained components.
 
-You also can bind data directly on a component and override the form binding.
+You can bind data directly on a component and override the form binding.
 
 In case of validation error, components will be repopulated by old values that will override bound values.
 
+For specific use case, you also can use the `@bind(<boundDataBatch>)` and the `$endbind` Blade directives to bind a group of components.
+
 ```blade
-@php($data = ['description' => 'A wonderful description'];)
+@php
+    $dataBatch1 = ['description' => 'A wonderful description'];
+    $dataBatch2 = ['first_name' => 'John', 'last_name' => 'Bonham'];
+@endphp
 <x-form::form :bind="$user">
     <x-form::input type="email" name="email"/> {{-- Will set the value from `$user->email` --}}
-    <x-form::textarea
-        name="description"
-        :bind="$data"/> {{-- Will set the value from `$data['description`] --}}
+    <x-form::textarea name="description" :bind="$dataBatch1"/> {{-- Will set the value from `$dataBatch1['description`] --}}
+    @bind($dataBatch2)
+        <x-form::input name="first_name"/> {{-- Will set the value from `$dataBatch2['first_name`] --}}
+        <x-form::input name="last_name"/> {{-- Will set the value from `$dataBatch2['last_name`] --}}
+    @endbind
 </x-form::form>
 ```
 
