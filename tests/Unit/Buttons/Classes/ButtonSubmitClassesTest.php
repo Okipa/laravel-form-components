@@ -1,11 +1,11 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Buttons;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Buttons\Classes;
 
 use Okipa\LaravelFormComponents\Components\Button\Submit;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class ButtonSubmitTest extends TestCase
+class ButtonSubmitClassesTest extends TestCase
 {
     /** @test */
     public function it_can_setup_default_classes_when_none_are_defined(): void

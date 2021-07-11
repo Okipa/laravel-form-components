@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Buttons;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Buttons\Slot;
 
 use Okipa\LaravelFormComponents\Components\Button\Submit;
 use Okipa\LaravelFormComponents\Tests\TestCase;

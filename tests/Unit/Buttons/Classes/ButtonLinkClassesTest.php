@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Buttons;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Buttons\Classes;
 
 use Okipa\LaravelFormComponents\Components\Button\Link;
 use Okipa\LaravelFormComponents\Tests\TestCase;
