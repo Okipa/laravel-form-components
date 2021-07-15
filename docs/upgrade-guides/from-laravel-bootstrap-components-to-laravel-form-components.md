@@ -60,10 +60,10 @@ You'll have to execute this work for each of the following components:
   * `SubmitCreate()`
   * `SubmitUpdate()`
 * All the following components must be replaced by the [<x-form::button.link/>](../../README.md#buttons) component
-  * `Button()`
-  * `ButtonBack()`
-  * `ButtonCancel()`
-  * `ButtonLink()`
+  * `button()`
+  * `buttonBack()`
+  * `buttonCancel()`
+  * `buttonLink()`
 
 Of course if you used the Facade way to call these components in your views, you'll have to adapt the treatments reported below.
 
