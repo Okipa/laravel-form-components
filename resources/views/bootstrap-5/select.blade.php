@@ -9,7 +9,7 @@
     $multipleMode = (bool) $attributes->filter(fn($value) => $value === 'multiple')->first();
     $validationClass = $getValidationClass($errors);
 @endphp
-<div class="component-container mb-3{{ $displayFloatingLabel ? ' form-floating' : null }}">
+<div class="mb-3{{ $displayFloatingLabel ? ' form-floating' : null }}">
     @if(($prepend || $append) && ! $displayFloatingLabel)
         <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
         <div class="input-group">
@@ -23,7 +23,7 @@
         <select {{ $attributes->merge([
             'id' => $id,
             'name' => $name . ($multipleMode ? '[]' : null),
-            'class' => 'component form-select' . ($validationClass ? ' ' . $validationClass : null),
+            'class' => 'form-select' . ($validationClass ? ' ' . $validationClass : null),
             'placeholder' => $placeholder,
             'aria-describedby' => $caption ? $id . '-caption' : null,
         ]) }}>

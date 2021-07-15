@@ -10,7 +10,7 @@
         $errorMessage = $getErrorMessage($errors, $locale);
         $validationClass = $getValidationClass($errors, $locale);
     @endphp
-    <div class="component-container{{ $type === 'hidden' ? ' d-none' : ' mb-3'}}{{ $displayFloatingLabel ? ' form-floating' : null }}">
+    <div class="{{ $type === 'hidden' ? ' d-none' : ' mb-3'}}{{ $displayFloatingLabel ? ' form-floating' : null }}">
         @if(($prepend || $append) && ! $displayFloatingLabel)
             <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
             <div class="input-group">
@@ -23,7 +23,7 @@
             @endif
             <input {{ $attributes->merge([
                 'id' => $id,
-                'class' => 'component form-control' . ($validationClass ? ' ' . $validationClass : null),
+                'class' => 'form-control' . ($validationClass ? ' ' . $validationClass : null),
                 'type' => $type,
                 'name' => $locale ? $name . '[' . $locale . ']' : $name,
                 'placeholder' => $placeholder,

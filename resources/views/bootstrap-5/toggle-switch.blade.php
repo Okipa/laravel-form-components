@@ -5,10 +5,10 @@
     $errorMessage = $getErrorMessage($errors);
     $validationClass = $getValidationClass($errors);
 @endphp
-<div class="component-container form-check form-switch mb-3">
+<div class="form-check form-switch mb-3">
     <input type="checkbox" {{ $attributes->merge([
         'id' => $id,
-        'class' => 'component form-check-input' . ($validationClass ? ' ' . $validationClass : null),
+        'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),
         'name' => $name,
         'aria-describedby' => $caption ? $id . '-caption' : null,
         'checked' => $checked
