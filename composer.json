@@ -46,13 +46,11 @@
         }
     },
     "scripts": {
-        "test": [
-            "vendor/bin/phpcbf",
-            "vendor/bin/phpcs",
-            "vendor/bin/phpmd config,src,tests text phpmd.xml",
-            "vendor/bin/phpstan analyse --memory-limit=2G",
-            "vendor/bin/testbench package:test --parallel --no-coverage"
-        ]
+        "phpcs": ["vendor/bin/phpcbf", "vendor/bin/phpcs"],
+        "phpmd": "vendor/bin/phpmd config,src,tests text phpmd.xml",
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
+        "phpunit" : "vendor/bin/testbench package:test --parallel --no-coverage",
+        "test": ["@phpcs", "@phpstan", "@phpunit"]
     },
     "extra": {
         "laravel": {

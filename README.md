@@ -188,6 +188,18 @@ HTML select elements natively don't accept placeholder attributes, however the s
 
 ### Checkbox, Switch and Radio
 
+Checkbox, radio and toggle switch components can be used in single mode or in group mode.
+
+Just declare a single component to use a checkbox, radio or toggle switch in single mode.
+
+To trigger the group mode, you'll simply have to provide a basic key/value array to the `group` attribute, and you'll get your chekboxes, radio or toggle switches generated. 
+
+```Blade
+<x-form::checkbox name="hobbies" :group="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']"/>
+<x-form::radio name="role" :group="[1 => 'Admin', 2 => 'Moderator', 3 => 'User']" inline/>
+<x-form::switch name="active"/>
+```
+
 ### Buttons
 
 Submit and link button components are available.

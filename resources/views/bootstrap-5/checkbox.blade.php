@@ -1,11 +1,11 @@
 @php
-    $id = $getId() ?: $getDefaultId('toggle-switch');
+    $id = $getId() ?: $getDefaultId('checkbox');
     $label = $getLabel();
     $checked = $getChecked();
     $errorMessage = $getErrorMessage($errors);
     $validationClass = $getValidationClass($errors);
 @endphp
-<div class="form-check form-switch">
+<div class="form-check">
     <input type="checkbox" {{ $attributes->merge([
         'id' => $id,
         'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),
