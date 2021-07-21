@@ -19,6 +19,7 @@ class TextareaIdTest extends TestCase
     {
         $html = $this->renderComponent(Textarea::class, ['name' => 'description']);
         self::assertStringContainsString(' id="textarea-description"', $html);
+        self::assertStringContainsString(' for="textarea-description"', $html);
     }
 
     /** @test */
@@ -26,6 +27,7 @@ class TextareaIdTest extends TestCase
     {
         $html = $this->renderComponent(Textarea::class, ['name' => 'description[0]']);
         self::assertStringContainsString(' id="textarea-description-0"', $html);
+        self::assertStringContainsString(' for="textarea-description-0"', $html);
     }
 
     /** @test */
@@ -33,7 +35,9 @@ class TextareaIdTest extends TestCase
     {
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'locales' => ['fr', 'en']]);
         self::assertStringContainsString(' id="textarea-description-fr"', $html);
+        self::assertStringContainsString(' for="textarea-description-fr"', $html);
         self::assertStringContainsString(' id="textarea-description-en"', $html);
+        self::assertStringContainsString(' for="textarea-description-en"', $html);
     }
 
     /** @test */
@@ -41,6 +45,7 @@ class TextareaIdTest extends TestCase
     {
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'id' => 'test-id']);
         self::assertStringContainsString(' id="test-id"', $html);
+        self::assertStringContainsString(' for="test-id"', $html);
     }
 
     /** @test */
@@ -52,6 +57,8 @@ class TextareaIdTest extends TestCase
             'locales' => ['fr', 'en'],
         ]);
         self::assertStringContainsString(' id="test-id-fr"', $html);
+        self::assertStringContainsString(' for="test-id-fr"', $html);
         self::assertStringContainsString(' id="test-id-en"', $html);
+        self::assertStringContainsString(' for="test-id-en"', $html);
     }
 }

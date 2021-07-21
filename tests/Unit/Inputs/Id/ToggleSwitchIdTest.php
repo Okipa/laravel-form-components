@@ -18,6 +18,7 @@ class ToggleSwitchIdTest extends TestCase
     {
         $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active']);
         self::assertStringContainsString(' id="toggle-switch-active"', $html);
+        self::assertStringContainsString(' for="toggle-switch-active"', $html);
     }
 
     /** @test */
@@ -25,6 +26,7 @@ class ToggleSwitchIdTest extends TestCase
     {
         $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active[0]']);
         self::assertStringContainsString(' id="toggle-switch-active-0"', $html);
+        self::assertStringContainsString(' for="toggle-switch-active-0"', $html);
     }
 
     /** @test */
@@ -32,5 +34,6 @@ class ToggleSwitchIdTest extends TestCase
     {
         $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active', 'id' => 'test-id']);
         self::assertStringContainsString(' id="test-id"', $html);
+        self::assertStringContainsString(' for="test-id"', $html);
     }
 }

@@ -18,6 +18,7 @@ class SelectIdTest extends TestCase
     {
         $html = $this->renderComponent(Select::class, ['name' => 'hobby_id', 'options' => []]);
         self::assertStringContainsString(' id="select-hobby-id"', $html);
+        self::assertStringContainsString(' for="select-hobby-id"', $html);
     }
 
     /** @test */
@@ -25,6 +26,7 @@ class SelectIdTest extends TestCase
     {
         $html = $this->renderComponent(Select::class, ['name' => 'hobby_id[0]', 'options' => []]);
         self::assertStringContainsString(' id="select-hobby-id-0"', $html);
+        self::assertStringContainsString(' for="select-hobby-id-0"', $html);
     }
 
     /** @test */
@@ -36,5 +38,6 @@ class SelectIdTest extends TestCase
             'options' => [],
         ]);
         self::assertStringContainsString(' id="test-id"', $html);
+        self::assertStringContainsString(' for="test-id"', $html);
     }
 }

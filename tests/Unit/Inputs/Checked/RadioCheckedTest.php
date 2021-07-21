@@ -1,0 +1,44 @@
+<?php
+
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\Checked;
+
+use Illuminate\Foundation\Auth\User;
+use Okipa\LaravelFormComponents\Components\Checkbox;
+use Okipa\LaravelFormComponents\Components\Radio;
+use Okipa\LaravelFormComponents\Tests\TestCase;
+
+class RadioCheckedTest extends TestCase
+{
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->executeWebMiddlewareGroup();
+    }
+
+    /** @test */
+    public function it_can_set_radio_checked_from_int_and_override_bound_model_value(): void
+    {
+        $user = app(User::class)->forceFill(['gender' => 1]);
+        $html = $this->renderComponent(Radio::class, [
+            'name' => 'gender',
+            'group' => [1 => 'Male', 2 => 'Female'],
+            'bind' => $user,
+            // Should work with string against int
+            'checked' => '2',
+        ]);
+        self::assertStringContainsString(' value="2" checked="checked"', $html);
+    }
+
+    /** @test */
+    public function it_can_set_radio_checked_from_string_and_override_bound_model_value(): void
+    {
+        $user = app(User::class)->forceFill(['gender' => 'female']);
+        $html = $this->renderComponent(Radio::class, [
+            'name' => 'gender',
+            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'bind' => $user,
+            'checked' => 'male',
+        ]);
+        self::assertStringContainsString(' value="male" checked="checked"', $html);
+    }
+}

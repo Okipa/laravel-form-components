@@ -19,6 +19,7 @@ class InputIdTest extends TestCase
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name']);
         self::assertStringContainsString(' id="text-first-name"', $html);
+        self::assertStringContainsString(' for="text-first-name"', $html);
     }
 
     /** @test */
@@ -26,6 +27,7 @@ class InputIdTest extends TestCase
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name[0]']);
         self::assertStringContainsString(' id="text-first-name-0"', $html);
+        self::assertStringContainsString(' for="text-first-name-0"', $html);
     }
 
     /** @test */
@@ -33,7 +35,9 @@ class InputIdTest extends TestCase
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'locales' => ['fr', 'en']]);
         self::assertStringContainsString(' id="text-first-name-fr"', $html);
+        self::assertStringContainsString(' for="text-first-name-fr"', $html);
         self::assertStringContainsString(' id="text-first-name-en"', $html);
+        self::assertStringContainsString(' for="text-first-name-en"', $html);
     }
 
     /** @test */
@@ -41,6 +45,7 @@ class InputIdTest extends TestCase
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'id' => 'test-id']);
         self::assertStringContainsString(' id="test-id"', $html);
+        self::assertStringContainsString(' for="test-id"', $html);
     }
 
     /** @test */
@@ -52,6 +57,8 @@ class InputIdTest extends TestCase
             'locales' => ['fr', 'en'],
         ]);
         self::assertStringContainsString(' id="test-id-fr"', $html);
+        self::assertStringContainsString(' for="test-id-fr"', $html);
         self::assertStringContainsString(' id="test-id-en"', $html);
+        self::assertStringContainsString(' for="test-id-en"', $html);
     }
 }

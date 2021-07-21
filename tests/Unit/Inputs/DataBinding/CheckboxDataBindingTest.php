@@ -18,40 +18,40 @@ class CheckboxDataBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_checkbox_checked_status_from_direct_bound_model(): void
     {
-        $user = app(User::class)->forceFill(['active' => true]);
-        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'bind' => $user]);
+        $bind = app(User::class)->forceFill(['active' => true]);
+        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'bind' => $bind]);
         self::assertStringContainsString(' checked="checked"', $html);
     }
 
     /** @test */
     public function it_can_retrieve_checkbox_value_from_direct_bound_array(): void
     {
-        $data = ['active' => true];
-        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'bind' => $data]);
+        $bind = ['active' => true];
+        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'bind' => $bind]);
         self::assertStringContainsString(' checked="checked"', $html);
     }
 
     /** @test */
     public function it_can_retrieve_checkbox_value_from_direct_bound_collection(): void
     {
-        $data = collect(['active' => true]);
-        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'bind' => $data]);
+        $bind = collect(['active' => true]);
+        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'bind' => $bind]);
         self::assertStringContainsString(' checked="checked"', $html);
     }
 
     /** @test */
     public function it_can_retrieve_checkbox_value_from_direct_bound_object(): void
     {
-        $data = (object) ['active' => true];
-        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'bind' => $data]);
+        $bind = (object) ['active' => true];
+        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'bind' => $bind]);
         self::assertStringContainsString(' checked="checked"', $html);
     }
 
     /** @test */
     public function it_can_retrieve_checkbox_value_from_global_bound_model(): void
     {
-        $user = app(User::class)->forceFill(['active' => true]);
-        app(FormBinder::class)->bindNewDataBatch($user);
+        $bind = app(User::class)->forceFill(['active' => true]);
+        app(FormBinder::class)->bindNewDataBatch($bind);
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
         self::assertStringContainsString(' checked="checked"', $html);
     }
@@ -59,8 +59,8 @@ class CheckboxDataBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_checkbox_value_from_global_bound_array(): void
     {
-        $data = ['active' => true];
-        app(FormBinder::class)->bindNewDataBatch($data);
+        $bind = ['active' => true];
+        app(FormBinder::class)->bindNewDataBatch($bind);
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
         self::assertStringContainsString(' checked="checked"', $html);
     }
@@ -68,8 +68,8 @@ class CheckboxDataBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_checkbox_value_from_global_bound_collection(): void
     {
-        $data = collect(['active' => true]);
-        app(FormBinder::class)->bindNewDataBatch($data);
+        $bind = collect(['active' => true]);
+        app(FormBinder::class)->bindNewDataBatch($bind);
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
         self::assertStringContainsString(' checked="checked"', $html);
     }
@@ -77,8 +77,8 @@ class CheckboxDataBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_checkbox_value_from_global_bound_object(): void
     {
-        $data = (object) ['active' => true];
-        app(FormBinder::class)->bindNewDataBatch($data);
+        $bind = (object) ['active' => true];
+        app(FormBinder::class)->bindNewDataBatch($bind);
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
         self::assertStringContainsString(' checked="checked"', $html);
     }

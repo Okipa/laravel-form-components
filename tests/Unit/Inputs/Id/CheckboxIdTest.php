@@ -18,6 +18,7 @@ class CheckboxIdTest extends TestCase
     {
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
         self::assertStringContainsString(' id="checkbox-active"', $html);
+        self::assertStringContainsString(' for="checkbox-active"', $html);
     }
 
     /** @test */
@@ -25,6 +26,7 @@ class CheckboxIdTest extends TestCase
     {
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active[0]']);
         self::assertStringContainsString(' id="checkbox-active-0"', $html);
+        self::assertStringContainsString(' for="checkbox-active-0"', $html);
     }
 
     /** @test */
@@ -32,5 +34,6 @@ class CheckboxIdTest extends TestCase
     {
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'id' => 'test-id']);
         self::assertStringContainsString(' id="test-id"', $html);
+        self::assertStringContainsString(' for="test-id"', $html);
     }
 }
