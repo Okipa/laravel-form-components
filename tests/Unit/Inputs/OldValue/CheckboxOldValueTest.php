@@ -22,10 +22,7 @@ class CheckboxOldValueTest extends TestCase
             'uses' => fn() => request()->merge(['active' => true])->flash(),
         ]);
         $this->call('GET', 'test');
-        $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'active',
-            'value' => true,
-        ]);
+        $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
         self::assertStringContainsString(' checked="checked"', $html);
     }
 
@@ -37,10 +34,7 @@ class CheckboxOldValueTest extends TestCase
             'uses' => fn() => request()->merge(['active[0]' => true])->flash(),
         ]);
         $this->call('GET', 'test');
-        $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'active[0]',
-            'value' => true,
-        ]);
+        $html = $this->renderComponent(Checkbox::class, ['name' => 'active[0]']);
         self::assertStringContainsString(' checked="checked"', $html);
     }
 }
