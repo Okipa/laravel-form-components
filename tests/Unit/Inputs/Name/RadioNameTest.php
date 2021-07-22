@@ -19,7 +19,7 @@ class RadioNameTest extends TestCase
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(' name="gender"', $html);
     }

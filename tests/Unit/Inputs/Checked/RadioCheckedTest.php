@@ -35,7 +35,7 @@ class RadioCheckedTest extends TestCase
         $user = app(User::class)->forceFill(['gender' => 'female']);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
             'bind' => $user,
             'checked' => 'male',
         ]);

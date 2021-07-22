@@ -21,7 +21,7 @@ class RadioDataBindingTest extends TestCase
         $bind = app(User::class)->forceFill(['gender' => 'female']);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
             'bind' => $bind,
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);
@@ -33,7 +33,7 @@ class RadioDataBindingTest extends TestCase
         $bind = ['gender' => 'female'];
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
             'bind' => $bind,
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);
@@ -45,7 +45,7 @@ class RadioDataBindingTest extends TestCase
         $bind = collect(['gender' => 'female']);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
             'bind' => $bind,
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);
@@ -57,7 +57,7 @@ class RadioDataBindingTest extends TestCase
         $bind = (object) ['gender' => 'female'];
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
             'bind' => $bind,
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);
@@ -70,7 +70,7 @@ class RadioDataBindingTest extends TestCase
         app(FormBinder::class)->bindNewDataBatch($bind);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);
     }
@@ -82,7 +82,7 @@ class RadioDataBindingTest extends TestCase
         app(FormBinder::class)->bindNewDataBatch($bind);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);
     }
@@ -94,7 +94,7 @@ class RadioDataBindingTest extends TestCase
         app(FormBinder::class)->bindNewDataBatch($bind);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);
     }
@@ -106,7 +106,7 @@ class RadioDataBindingTest extends TestCase
         app(FormBinder::class)->bindNewDataBatch($bind);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);
     }
@@ -119,7 +119,7 @@ class RadioDataBindingTest extends TestCase
         app(FormBinder::class)->bindNewDataBatch($globallyBoundModel);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
             'bind' => $directBoundModel
         ]);
         self::assertStringContainsString(' value="female" checked="checked"', $html);

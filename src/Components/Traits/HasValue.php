@@ -33,9 +33,6 @@ trait HasValue
 
     protected function getOldValue(string|null $locale): mixed
     {
-        if (! old()) {
-            return null;
-        }
         $oldValue = data_get(old(), $this->name . ($locale ? '.' . $locale : ''));
         if ($oldValue) {
             return $oldValue;

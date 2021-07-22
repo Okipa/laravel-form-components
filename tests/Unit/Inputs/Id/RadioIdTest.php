@@ -18,7 +18,7 @@ class RadioIdTest extends TestCase
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(' id="radio-gender-male"', $html);
         self::assertStringContainsString(' for="radio-gender-male"', $html);
@@ -31,7 +31,7 @@ class RadioIdTest extends TestCase
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender[0]',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(' id="radio-gender-0-male"', $html);
         self::assertStringContainsString(' for="radio-gender-0-male"', $html);
@@ -45,7 +45,7 @@ class RadioIdTest extends TestCase
         $html = $this->renderComponent(Radio::class, [
             'id' => 'test-id',
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(' id="test-id-male"', $html);
         self::assertStringContainsString(' for="test-id-male"', $html);

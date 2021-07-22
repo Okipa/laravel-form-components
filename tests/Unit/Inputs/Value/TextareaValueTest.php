@@ -17,7 +17,7 @@ class TextareaValueTest extends TestCase
     /** @test */
     public function it_can_set_textarea_value_and_override_bound_model_value(): void
     {
-        $user = app(User::class)->forceFill(['first_name' => 'Test first name']);
+        $user = app(User::class)->forceFill(['description' => 'Test description']);
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'first_name',
             'bind' => $user,
@@ -29,21 +29,21 @@ class TextareaValueTest extends TestCase
     /** @test */
     public function it_can_set_textarea_zero_value(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'value' => 0]);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'value' => 0]);
         self::assertStringContainsString('>0</textarea>', $html);
     }
 
     /** @test */
     public function it_can_set_textarea_empty_string_value(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'value' => '']);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'value' => '']);
         self::assertStringContainsString('></textarea>', $html);
     }
 
     /** @test */
     public function it_can_set_textarea_null_value(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'first_name', 'value' => null]);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'value' => null]);
         self::assertStringContainsString('></textarea>', $html);
     }
 
@@ -51,7 +51,7 @@ class TextareaValueTest extends TestCase
     public function it_can_set_textarea_value_from_closure_with_disabled_multilingual(): void
     {
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
+            'name' => 'description',
             'value' => fn(string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString('>Test value ' . app()->getLocale() . '</textarea>', $html);
@@ -61,7 +61,7 @@ class TextareaValueTest extends TestCase
     public function it_can_set_textarea_localized_value(): void
     {
         $html = $this->renderComponent(Textarea::class, [
-            'name' => 'first_name',
+            'name' => 'description',
             'locales' => ['fr', 'en'],
             'value' => fn(string $locale) => 'Test value ' . $locale,
         ]);

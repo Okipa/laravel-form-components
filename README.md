@@ -176,9 +176,9 @@ Textarea component can be used the same way as an input component but without de
 
 Set select components in your forms.
 
-Auto generate options by providing a basic key/value array.
+Auto generate options by providing an associative value/label array.
 
-HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option, which is a selected, disabled and hidden option that is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
+HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option: a selected, disabled and hidden option that is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
 
 ```Blade
 @php($options = [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'])
@@ -188,16 +188,14 @@ HTML select elements natively don't accept placeholder attributes, however the s
 
 ### Checkbox, Switch and Radio
 
-Checkbox, radio and toggle switch components can be used in single mode or in group mode.
+Checkbox, radio and toggle switch components are available for you to use.
 
-Just declare a single component to use a checkbox, radio or toggle switch in single mode.
-
-To trigger the group mode, you'll simply have to provide a basic key/value array to the `group` attribute, and you'll get your chekboxes, radio or toggle switches generated. 
+When declaring a radio, you'll have to declare a `group` attribute, providing an value/label associative array from which the radio fields will be generated.
 
 ```Blade
-<x-form::checkbox name="hobbies" :group="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']"/>
-<x-form::radio name="gender" :group="[1 => 'Male', 2 => 'Female']"/>
-<x-form::switch name="active"/>
+<x-form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male"/>
+<x-form::checkbox name="newsletter_subscription" :checked="true"/>
+<x-form::switch name="active" :checked="false"/>
 ```
 
 ### Buttons

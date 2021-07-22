@@ -18,7 +18,7 @@ class RadioLabelTest extends TestCase
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
-            'group' => ['male' => 'Male', 'female' => 'Female'],
+            'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
         self::assertStringContainsString(
             ' class="form-check-label">Male</label>',
