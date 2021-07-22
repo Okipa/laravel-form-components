@@ -24,10 +24,10 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/contracts": "^8.0",
-        "phpstan/phpstan-mockery": "^0.12.14"
+        "illuminate/contracts": "^8.0"
     },
     "require-dev": {
+        "phpstan/phpstan-mockery": "^0.12.14",
         "brianium/paratest": "^6.2",
         "nunomaduro/collision": "^5.3",
         "nunomaduro/larastan": "^0.7",
