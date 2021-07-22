@@ -301,7 +301,7 @@ You can bind data directly on a component and override the form binding.
 
 In case of validation error, components will be repopulated by old values that will override bound values.
 
-For specific use case, you also can use the `@bind(<boundDataBatch>)` and the `$endbind` Blade directives to bind a group of components.
+For specific use case, you also can use the `@bind($boundDataBatch)` and the `@endbind` Blade directives to bind a group of components.
 
 ```blade
 @php

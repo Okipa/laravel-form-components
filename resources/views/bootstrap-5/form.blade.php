@@ -11,3 +11,4 @@
     @endif
     {{ $slot ?? null }}
 </form>
+@endbind
