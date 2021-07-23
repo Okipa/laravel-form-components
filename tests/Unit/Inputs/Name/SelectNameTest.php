@@ -26,7 +26,7 @@ class SelectNameTest extends TestCase
         $html = $this->renderComponent(
             Select::class,
             ['name' => 'hobby_ids', 'options' => []],
-            attributes: ['multiple']
+            attributes: ['multiple' => 'multiple']
         );
         self::assertStringContainsString(' name="hobby_ids[]"', $html);
     }

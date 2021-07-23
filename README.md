@@ -180,10 +180,12 @@ Auto generate options by providing an associative value/label array.
 
 HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option: a selected, disabled and hidden option that is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
 
+Easily switch between single and multiple mode, this package takes care about converting the name into an array name if it has not been manually added.
+
 ```Blade
 @php($options = [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'])
 <x-form::select name="hobbies" placeholder="What is your hobby prefered hobby?" :options="$options" selected="1"/>
-<x-form::select name="hobbies" :hidePlaceholder="true" :options="$options" :selected="[2, 3]" multiple/>
+<x-form::select name="hobbies" :hidePlaceholder="true" :options="$options" :selected="[2, 3]" multiple/> {{-- The name will be converted to hobbies[] --}}
 ```
 
 ### Checkbox, Switch and Radio

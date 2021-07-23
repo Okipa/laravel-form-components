@@ -6,7 +6,7 @@
     $prepend = $getPrepend();
     $append = $getAppend();
     $errorMessage = $getErrorMessage($errors);
-    $multipleMode = (bool) $attributes->filter(fn($value) => $value === 'multiple')->first();
+    $multipleMode = (bool) $attributes->filter(fn($value, $key) => $key === 'multiple')->first();
     $validationClass = $getValidationClass($errors);
 @endphp
 <div class="mb-3{{ $displayFloatingLabel ? ' form-floating' : null }}">
