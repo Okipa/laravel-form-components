@@ -71,10 +71,14 @@ And get this component displayed:
 * [Views](#views)
 * [Components](#components)
   * [Form](#form)
-  * [Input and Textarea](#input-and-textarea)
+  * [Input](#input-and-textarea)
+  * [Textarea](#input-and-textarea)
   * [Select](#select)
-  * [Checkbox, Switch and Radio](#checkbox-switch-and-radio)
-  * [Buttons](#buttons)
+  * [Checkbox](#checkbox-switch-and-radio)
+  * [Switch](#checkbox-switch-and-radio)
+  * [Radio](#checkbox-switch-and-radio)
+  * [Submit](#buttons)
+  * [Button](#buttons)
 * [How to](#how-to)
   * [Deal with attributes and classes](#deal-with-attributes-and-classes)
   * [Set id](#set-id)
@@ -121,19 +125,6 @@ php artisan vendor:publish --tag=form-components:views
 ```
 
 ## Components
-
-Here is the list of the available components:
-* [Form](#form)
-* [Input](#input-and-textarea)
-* [Textarea](#input-and-textarea)
-* [Select](#select)
-* [Checkbox](#checkbox-switch-and-radio)
-* [Switch](#checkbox-switch-and-radio)
-* [Radio](#checkbox-switch-and-radio)
-* [Submit](#buttons)
-* [Button](#buttons)
-
-See below how to use them.
 
 ### Form
 
@@ -359,7 +350,8 @@ You can control this behaviour at different levels:
 You also can customize the error bag that should be used to determine components success/error statuses and error messages on form components.
 
 ```blade
-<x-form::form errorBag="profile_update">
+<x-form::form errorBag="profile_update"> {{-- Global error bag for all the form --}}
+    <x-form::input type="email" name="email" errorBag="email_update"/> {{-- Custom error bag for a specific component --}}
     ...
 </x-form::form>
 ```

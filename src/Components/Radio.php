@@ -25,7 +25,7 @@ class Radio extends AbstractComponent
         public string|null $caption = null,
         protected bool|null $displayValidationSuccess = null,
         protected bool|null $displayValidationFailure = null,
-        protected string $errorBag = 'default',
+        protected string|null $errorBag = null,
     ) {
         $this->displayValidationSuccess = $this->shouldDisplayValidationSuccess();
         $this->displayValidationFailure = $this->shouldDisplayValidationFailure();

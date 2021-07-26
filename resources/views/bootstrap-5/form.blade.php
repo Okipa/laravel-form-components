@@ -11,4 +11,7 @@
     @endif
     {{ $slot ?? null }}
 </form>
-@endbind
+@php
+    app(Okipa\LaravelFormComponents\FormBinder::class)->unbindLastDataBatch();
+    app(Okipa\LaravelFormComponents\FormBinder::class)->unbindErrorBag();
+@endphp

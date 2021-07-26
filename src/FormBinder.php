@@ -6,7 +6,7 @@ use Illuminate\Support\Arr;
 
 class FormBinder
 {
-    public function __construct(protected array $boundDataBatches = [])
+    public function __construct(protected array $boundDataBatches = [], protected string|null $errorBagKey = null)
     {
         //
     }
@@ -24,5 +24,20 @@ class FormBinder
     public function unbindLastDataBatch(): void
     {
         array_pop($this->boundDataBatches);
+    }
+
+    public function bindNewErrorBag(string|null $errorBagKey): void
+    {
+        $this->errorBagKey = $errorBagKey;
+    }
+
+    public function getBoundErrorBag(): string|null
+    {
+        return $this->errorBagKey;
+    }
+
+    public function unbindErrorBag(): void
+    {
+        $this->errorBagKey = null;
     }
 }

@@ -20,4 +20,24 @@ class FormBinderTest extends TestCase
         app(FormBinder::class)->unbindLastDataBatch();
         self::assertSame($user, app(FormBinder::class)->getBoundDataBatch());
     }
+
+    /** @test */
+    public function it_can_bind_and_unbind_data_from_directive(): void
+    {
+        view()->addNamespace('laravel-form-components', 'tests/views');
+        $formBinder = $this->mock(FormBinder::class);
+        $formBinder->shouldReceive('bindNewDataBatch')->once()->with(['test']);
+        $formBinder->shouldReceive('unbindLastDataBatch')->once();
+        view('laravel-form-components::bind-directive')->toHtml();
+    }
+
+    /** @test */
+    public function it_can_bind_and_unbind_error_bag_from_directive(): void
+    {
+        view()->addNamespace('laravel-form-components', 'tests/views');
+        $formBinder = $this->mock(FormBinder::class);
+        $formBinder->shouldReceive('bindNewErrorBag')->once()->with('error_bag_test');
+        $formBinder->shouldReceive('unbindErrorBag')->once();
+        view('laravel-form-components::error-bag-directive')->toHtml();
+    }
 }
