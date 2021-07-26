@@ -350,8 +350,12 @@ You can control this behaviour at different levels:
 You also can customize the error bag that should be used to determine components success/error statuses and error messages on form components.
 
 ```blade
-<x-form::form errorBag="profile_update"> {{-- Global error bag for all the form --}}
-    <x-form::input type="email" name="email" errorBag="email_update"/> {{-- Custom error bag for a specific component --}}
+<x-form::form errorBag="form_error_bag"> {{-- Error bag for all components within the form --}}
+    @errorbag('group_error_bag') {{-- Error bag for a group of components --}}
+        <x-form::input name="first_name"/>
+        <x-form::input name="last_name"/>
+    @enderrorbag
+    <x-form::input type="email" name="email" errorBag="component_error_bag"/> {{-- Error bag for a specific component --}}
     ...
 </x-form::form>
 ```
