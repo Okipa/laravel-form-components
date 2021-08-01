@@ -6,7 +6,7 @@
         $errorMessage = $getErrorMessage($errors);
         $validationClass = $getValidationClass($errors);
     @endphp
-    <div class="form-check mb-3">
+    <div @class(['form-check', 'mb-3' => $marginBottom])>
         <input {{ $attributes->merge([
             'id' => $radioId,
             'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),

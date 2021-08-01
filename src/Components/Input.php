@@ -8,6 +8,7 @@ use Okipa\LaravelFormComponents\Components\Traits\HasAddon;
 use Okipa\LaravelFormComponents\Components\Traits\HasFloatingLabel;
 use Okipa\LaravelFormComponents\Components\Traits\HasId;
 use Okipa\LaravelFormComponents\Components\Traits\HasLabel;
+use Okipa\LaravelFormComponents\Components\Traits\HasMarginBottom;
 use Okipa\LaravelFormComponents\Components\Traits\HasName;
 use Okipa\LaravelFormComponents\Components\Traits\HasPlaceholder;
 use Okipa\LaravelFormComponents\Components\Traits\HasValidation;
@@ -42,7 +43,8 @@ class Input extends AbstractComponent
         protected bool|null $displayValidationSuccess = null,
         protected bool|null $displayValidationFailure = null,
         protected string|null $errorBag = null,
-        public array $locales = [null]
+        public array $locales = [null],
+        public bool $marginBottom = true
     ) {
         parent::__construct();
     }

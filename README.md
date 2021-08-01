@@ -236,6 +236,18 @@ If no custom id is set, an id will be generated using the kebab cased `<type>-<n
 <x-form::textarea id="custom-id" name="first_name"/> {{-- Default id: `textarea-first-name` --}}
 ```
 
+### Enable or disable inputs margin bottom
+
+By default, all input components will declare a bottom margin in order to correctly position themselves in a form.
+
+You'll sometimes need to disable this default bottom margin: you'll can do this by setting the `marginBottom` attribute to `false`.
+
+```Blade
+<x-form::input name="first_name"/> {{-- Will declare a bottom margin --}}
+
+<x-form::textarea name="first_name" :marginBottom="false"/> {{-- Will not declare any bottom margin --}}
+```
+
 ### Manage label and placeholder
 
 You can define labels on all components which are allowing to define the `<label>` attribute.

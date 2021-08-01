@@ -9,7 +9,7 @@
     $multipleMode = (bool) $attributes->filter(fn($value, $key) => $key === 'multiple')->first();
     $validationClass = $getValidationClass($errors);
 @endphp
-<div class="mb-3{{ $displayFloatingLabel ? ' form-floating' : null }}">
+<div @class(['form-floating' => $displayFloatingLabel, 'mb-3' => $marginBottom])>
     @if(($prepend || $append) && ! $displayFloatingLabel)
         <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
         <div class="input-group">
