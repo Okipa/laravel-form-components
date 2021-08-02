@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: ['8.0']
+        php: ['8.0', '8.1']
         laravel: ['8.*']
         include:
           - laravel: '8.*'
@@ -52,13 +52,12 @@ jobs:
 
       # Last PHP and laravel versions.
 
-      # Temporary disabled as PHPMD has compatibility issues with PHP8
-      #- name: Code analysis
-      #  if: matrix.php == '8.0' && matrix.laravel == '8.*'
-      #  run: |
-      #    vendor/bin/phpcs
-      #    vendor/bin/phpmd config,src,tests text phpmd.xml
-      #    vendor/bin/phpstan analyse
+      - name: Code analysis
+        if: matrix.php == '8.0' && matrix.laravel == '8.*'
+        run: |
+          vendor/bin/phpcs
+          vendor/bin/phpmd config,src,tests text phpmd.xml
+          vendor/bin/phpstan analyse
 
       - name: PHPUnit + Code coverage
         if: matrix.php == '8.0' && matrix.laravel == '8.*'

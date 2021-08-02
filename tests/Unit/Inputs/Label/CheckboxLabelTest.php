@@ -37,7 +37,7 @@ class CheckboxLabelTest extends TestCase
     /** @test */
     public function it_can_hide_checkbox_label(): void
     {
-        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'hideLabel' => true]);
+        $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'label' => false]);
         self::assertStringNotContainsString('<label', $html);
     }
 }

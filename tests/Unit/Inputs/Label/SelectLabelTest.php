@@ -43,7 +43,7 @@ class SelectLabelTest extends TestCase
     {
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
-            'hideLabel' => true,
+            'label' => false,
             'options' => [],
         ]);
         self::assertStringNotContainsString('<label', $html);

@@ -52,7 +52,7 @@ class SelectPlaceholderTest extends TestCase
     {
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
-            'hideLabel' => true,
+            'label' => false,
             'options' => [],
         ]);
         self::assertStringContainsString(
@@ -67,7 +67,7 @@ class SelectPlaceholderTest extends TestCase
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
             'options' => [],
-            'hidePlaceholder' => true,
+            'placeholder' => false,
         ]);
         self::assertStringNotContainsString('<option value="" selected disabled hidden>', $html);
     }

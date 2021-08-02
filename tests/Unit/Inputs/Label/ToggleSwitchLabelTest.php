@@ -37,7 +37,7 @@ class ToggleSwitchLabelTest extends TestCase
     /** @test */
     public function it_can_hide_toggle_switch_label(): void
     {
-        $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active', 'hideLabel' => true]);
+        $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active', 'label' => false]);
         self::assertStringNotContainsString('<label', $html);
     }
 }

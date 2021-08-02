@@ -14,13 +14,13 @@ class Radio extends AbstractComponent
     use HasName;
     use HasValidation;
 
+    /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(
         public string $name,
         public array $group,
         protected string|null $id = null,
         protected array|object|null $bind = null,
-        protected string|null $label = null,
-        protected bool $hideLabel = false,
+        protected string|false|null $label = null,
         protected int|string|null $checked = null,
         public string|null $caption = null,
         protected bool|null $displayValidationSuccess = null,

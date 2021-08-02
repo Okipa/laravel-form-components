@@ -45,14 +45,14 @@ class InputPlaceholderTest extends TestCase
     /** @test */
     public function it_can_setup_input_default_placeholder_when_label_is_hidden(): void
     {
-        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'hideLabel' => true]);
+        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'label' => false]);
         self::assertStringContainsString(' placeholder="validation.attributes.first_name"', $html);
     }
 
     /** @test */
     public function it_can_hide_input_placeholder(): void
     {
-        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'hidePlaceholder' => true]);
+        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'placeholder' => false]);
         self::assertStringNotContainsString('placeholder', $html);
     }
 

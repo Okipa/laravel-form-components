@@ -49,7 +49,7 @@ class TextareaLabelTest extends TestCase
     /** @test */
     public function it_can_hide_textarea_label(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'hideLabel' => true]);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'label' => false]);
         self::assertStringNotContainsString('<label', $html);
     }
 }

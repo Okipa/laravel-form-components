@@ -2,7 +2,7 @@
 
 namespace Okipa\LaravelFormComponents\Components\Traits;
 
-use Illuminate\Support\MessageBag;
+use Illuminate\Contracts\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 use Okipa\LaravelFormComponents\FormBinder;
 
@@ -27,14 +27,14 @@ trait HasValidation
     protected function getErrorBag(ViewErrorBag $errors): MessageBag
     {
         if ($this->errorBag) {
-            return $errors->{$this->errorBag};
+            return $errors->getBag($this->errorBag);
         }
         $boundErrorBag = app(FormBinder::class)->getBoundErrorBag();
         if ($boundErrorBag) {
             return $errors->{$boundErrorBag};
         }
 
-        return $errors->default;
+        return $errors->getBag('default');
     }
 
     public function shouldDisplayValidationFailure(): bool

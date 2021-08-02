@@ -6,7 +6,7 @@ trait HasPlaceholder
 {
     public function getPlaceholder(string|null $label, string $locale = null): string|null
     {
-        if ($this->hidePlaceholder) {
+        if ($this->placeholder === false) {
             return null;
         }
         if ($this->placeholder) {

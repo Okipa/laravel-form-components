@@ -17,12 +17,12 @@ class Checkbox extends AbstractComponent
     use HasValidation;
     use CanBeChecked;
 
+    /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(
         public string $name,
         protected string|null $id = null,
         protected array|object|null $bind = null,
-        protected string|null $label = null,
-        protected bool $hideLabel = false,
+        protected string|false|null $label = null,
         protected bool|null $checked = null,
         public string|null $caption = null,
         protected bool|null $displayValidationSuccess = null,

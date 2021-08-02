@@ -4,9 +4,9 @@ namespace Okipa\LaravelFormComponents\Components\Traits;
 
 trait HasLabel
 {
-    public function getLabel(string|null $locale = null): string|null
+    public function getLabel(string|false|null $locale = null): string|null
     {
-        if ($this->hideLabel) {
+        if ($this->label === false) {
             return null;
         }
         if ($this->label) {

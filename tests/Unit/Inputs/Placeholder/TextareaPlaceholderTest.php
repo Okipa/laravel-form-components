@@ -45,14 +45,14 @@ class TextareaPlaceholderTest extends TestCase
     /** @test */
     public function it_can_setup_textarea_default_placeholder_when_label_is_hidden(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'hideLabel' => true]);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'label' => false]);
         self::assertStringContainsString(' placeholder="validation.attributes.description"', $html);
     }
 
     /** @test */
     public function it_can_hide_textarea_placeholder(): void
     {
-        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'hidePlaceholder' => true]);
+        $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'placeholder' => false]);
         self::assertStringNotContainsString('placeholder', $html);
     }
 
