@@ -10,9 +10,7 @@
         $errorMessage = $getErrorMessage($errors, $locale);
         $validationClass = $getValidationClass($errors, $locale);
     @endphp
-    @if($type !== 'hidden' || $displayFloatingLabel || $marginBottom)
-        <div @class(['d-none' => $type === 'hidden', 'form-floating' => $displayFloatingLabel, 'mb-3' => $marginBottom])>
-    @endif
+    <div @class(['d-none' => $type === 'hidden', 'form-floating' => $displayFloatingLabel, 'mb-3' => $marginBottom])>
         @if(($prepend || $append) && ! $displayFloatingLabel)
             <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
             <div class="input-group">
@@ -43,7 +41,5 @@
         @if(($prepend || $append) && ! $displayFloatingLabel)
             </div>
         @endif
-    @if($type !== 'hidden' || $displayFloatingLabel || $marginBottom)
-        </div>
-    @endif
+    </div>
 @endforeach
