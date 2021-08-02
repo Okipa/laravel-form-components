@@ -17,8 +17,7 @@
     </a>
 </p>
 
-**PACKAGE IN DEVELOPMENT**  
-**DON'T USE IN PRODUCTION**
+**PACKAGE IN BETA-TEST**  
 
 Save time and take advantage of a set of dynamical, ready-to-use and fully customizable form components.
 
