@@ -250,19 +250,20 @@ You'll sometimes need to disable this default bottom margin: you'll can do this 
 
 ### Manage label and placeholder
 
-You can define labels on all components which are allowing to define the `<label>` attribute.
+You can define labels on all input components (except for [Radio](#checkbox-switch-and-radio)).
 
 If no custom label is defined, labels will take the `__('validation.attributes.<name>)` default value.
 
-You also can hide a label by setting the `hideLabel` attribute to `true`.
+Following the same behaviour, all input components that are allowing the use of a `placeholder` ([Select](#select) included) will provide a default placeholder that will take the `label` value.
 
-Following the same behaviour, all components that are allowing the use of the `placeholder` attribute will provide a default placeholder that will take the `label` value.
+You can override this default value by setting a custom placeholder.
 
-You can override this default value by setting a custom placeholder. You also can hide a placeholder by setting the `hidePlaceholder` attribute to true.
+You also can hide auto-generated label and placeholder by them to `false`.
 
 ```Blade
-<x-form::input name="first_name" label="First Name" placeholder="Please fill your first name..."/>
-<x-form::input name="last_name" :hideLabel="true" hidePlaceholder="true"/>
+<x-form::input name="first_name" label="First Name" placeholder="Please fill your first name..."/> {{-- Will display the custom label and placeholder --}}
+<x-form::input name="last_name" :label="false" :placeholder="false"/> {{-- Will hide the label and placeholder --}}
+<x-form::input type="tel" name="phone_number"/> {{-- Will display default auto-generated label and placeholder --}}
 ```
 
 ### Handle floating label displaying
