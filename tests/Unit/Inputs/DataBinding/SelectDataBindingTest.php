@@ -11,12 +11,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class SelectDataBindingTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_retrieve_select_selected_option_in_single_mode_from_direct_bound_model(): void
     {
@@ -142,10 +136,14 @@ class SelectDataBindingTest extends TestCase
     {
         $bind = app(User::class)->forceFill(['hobby_id' => 2]);
         app(FormBinder::class)->bindNewDataBatch($bind);
-        $html = $this->renderComponent(Select::class, [
-            'name' => 'hobby_id',
-            'options' => [1 => 'Music', 2 => 'Travels', 3 => 'Movies', 4 => 'Literature'],
-        ], attributes: ['multiple']);
+        $html = $this->renderComponent(
+            componentClass: Select::class,
+            componentData: [
+                'name' => 'hobby_id',
+                'options' => [1 => 'Music', 2 => 'Travels', 3 => 'Movies', 4 => 'Literature'],
+            ],
+            attributes: ['multiple']
+        );
         self::assertStringContainsString('<option value="1">Music</option>', $html);
         self::assertStringContainsString('<option value="2" selected="selected">Travels</option>', $html);
         self::assertStringContainsString('<option value="3">Movies</option>', $html);
@@ -157,10 +155,14 @@ class SelectDataBindingTest extends TestCase
     {
         $bind = ['hobby_id' => 2];
         app(FormBinder::class)->bindNewDataBatch($bind);
-        $html = $this->renderComponent(Select::class, [
-            'name' => 'hobby_id',
-            'options' => [1 => 'Music', 2 => 'Travels', 3 => 'Movies', 4 => 'Literature'],
-        ], attributes: ['multiple']);
+        $html = $this->renderComponent(
+            componentClass: Select::class,
+            componentData: [
+                'name' => 'hobby_id',
+                'options' => [1 => 'Music', 2 => 'Travels', 3 => 'Movies', 4 => 'Literature'],
+            ],
+            attributes: ['multiple']
+        );
         self::assertStringContainsString('<option value="1">Music</option>', $html);
         self::assertStringContainsString('<option value="2" selected="selected">Travels</option>', $html);
         self::assertStringContainsString('<option value="3">Movies</option>', $html);
@@ -224,7 +226,7 @@ class SelectDataBindingTest extends TestCase
         $errors->put('component_error_bag', $componentMessageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
-        app(FormBinder::class)->bindNewErrorBag('global_error_bag');
+        app(FormBinder::class)->bindErrorBag('global_error_bag');
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
             'options' => [1 => 'Music', 2 => 'Travels', 3 => 'Movies', 4 => 'Literature'],

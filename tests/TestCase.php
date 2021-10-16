@@ -7,16 +7,22 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
-    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
-    protected function getPackageProviders($app): array
+    protected function setUp(): void
     {
-        return [LaravelFormComponentsServiceProvider::class];
+        parent::setUp();
+        $this->executeWebMiddlewareGroup();
     }
 
     protected function executeWebMiddlewareGroup(): void
     {
         $this->app['router']->get('test', ['middleware' => 'web']);
         $this->call('GET', 'test');
+    }
+
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
+    protected function getPackageProviders($app): array
+    {
+        return [LaravelFormComponentsServiceProvider::class];
     }
 
     protected function renderComponent(

@@ -9,12 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class InputValidationSuccessTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_globally_set_display_input_validation_success(): void
     {
@@ -33,7 +27,6 @@ class InputValidationSuccessTest extends TestCase
         $messageBag = app(MessageBag::class)->add('other_field', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
-        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'displayValidationSuccess' => true,
@@ -48,7 +41,6 @@ class InputValidationSuccessTest extends TestCase
         $messageBag = app(MessageBag::class)->add('other_field', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
-        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'displayValidationSuccess' => false,

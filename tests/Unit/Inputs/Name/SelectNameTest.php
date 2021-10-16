@@ -7,12 +7,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class SelectNameTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_set_select_name_in_single_mode(): void
     {
@@ -24,8 +18,8 @@ class SelectNameTest extends TestCase
     public function it_can_set_select_name_in_multiple_mode(): void
     {
         $html = $this->renderComponent(
-            Select::class,
-            ['name' => 'hobby_ids', 'options' => []],
+            componentClass: Select::class,
+            componentData: ['name' => 'hobby_ids', 'options' => []],
             attributes: ['multiple' => 'multiple']
         );
         self::assertStringContainsString(' name="hobby_ids[]"', $html);

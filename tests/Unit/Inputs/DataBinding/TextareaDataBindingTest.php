@@ -11,12 +11,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class TextareaDataBindingTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_retrieve_textarea_value_from_direct_bound_model(): void
     {
@@ -214,7 +208,7 @@ class TextareaDataBindingTest extends TestCase
         $errors->put('component_error_bag', $componentMessageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
-        app(FormBinder::class)->bindNewErrorBag('global_error_bag');
+        app(FormBinder::class)->bindErrorBag('global_error_bag');
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'errorBag' => 'component_error_bag']);
         self::assertStringContainsString('<div class="invalid-feedback">Component error test</div>', $html);
     }

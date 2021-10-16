@@ -10,12 +10,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class RadioValidationFailureTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_globally_set_display_radio_validation_failure(): void
     {
@@ -40,7 +34,6 @@ class RadioValidationFailureTest extends TestCase
         $messageBag = app(MessageBag::class)->add('gender', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
-        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],
@@ -57,7 +50,6 @@ class RadioValidationFailureTest extends TestCase
         $messageBag = app(MessageBag::class)->add('gender', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
-        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],

@@ -6,8 +6,11 @@ use Illuminate\Support\Arr;
 
 class FormBinder
 {
-    public function __construct(protected array $boundDataBatches = [], protected string|null $errorBagKey = null)
-    {
+    public function __construct(
+        protected array $boundDataBatches = [],
+        protected string|null $errorBagKey = null,
+        protected string|null $livewireModifier = null,
+    ) {
         //
     }
 
@@ -26,7 +29,7 @@ class FormBinder
         array_pop($this->boundDataBatches);
     }
 
-    public function bindNewErrorBag(string|null $errorBagKey): void
+    public function bindErrorBag(string|null $errorBagKey): void
     {
         $this->errorBagKey = $errorBagKey;
     }
@@ -39,5 +42,20 @@ class FormBinder
     public function unbindErrorBag(): void
     {
         $this->errorBagKey = null;
+    }
+
+    public function bindLivewireModifier($livewireModifier = 'default'): void
+    {
+        $this->livewireModifier = $livewireModifier;
+    }
+
+    public function getBoundLivewireModifer(): string|null
+    {
+        return $this->livewireModifier;
+    }
+
+    public function unbindLivewireModifier(): void
+    {
+        $this->livewireModifier = null;
     }
 }

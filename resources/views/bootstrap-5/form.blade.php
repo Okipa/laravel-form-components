@@ -14,4 +14,5 @@
 @php
     app(Okipa\LaravelFormComponents\FormBinder::class)->unbindLastDataBatch();
     app(Okipa\LaravelFormComponents\FormBinder::class)->unbindErrorBag();
+    app(Okipa\LaravelFormComponents\FormBinder::class)->unbindLivewireModifier();
 @endphp

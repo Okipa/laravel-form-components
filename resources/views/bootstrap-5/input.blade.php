@@ -9,6 +9,8 @@
         $append = $getAppend($locale);
         $errorMessage = $getErrorMessage($errors, $locale);
         $validationClass = $getValidationClass($errors, $locale);
+        $formLivewireModifier = app(Okipa\LaravelFormComponents\FormBinder::class)->getBoundLivewireModifer();
+        $hasComponentLivewireModelModifier = (bool) $attributes->whereStartsWith('wire:model')->first();
     @endphp
     <div @class(['d-none' => $type === 'hidden', 'form-floating' => $displayFloatingLabel, 'mb-3' => $marginBottom])>
         @if(($prepend || $append) && ! $displayFloatingLabel)
@@ -25,11 +27,15 @@
                 'id' => $id,
                 'class' => 'form-control' . ($validationClass ? ' ' . $validationClass : null),
                 'type' => $type,
-                'name' => $locale ? $name . '[' . $locale . ']' : $name,
+                'name' => $formLivewireModifier ? null : ($locale ? $name . '[' . $locale . ']' : $name),
                 'placeholder' => $placeholder,
                 'data-locale' => $locale,
                 'aria-describedby' => $caption ? $id . '-caption' : null,
-            ]) }} value="{{ $value }}"/>
+                'value' => $formLivewireModifier || $hasComponentLivewireModelModifier ? null : ($value ?? ''),
+                'wire:model.' . $formLivewireModifier => $hasComponentLivewireModelModifier
+                    ? null
+                    : ($formLivewireModifier ? $name : null),
+            ]) }}/>
             @if(! $prepend && ! $append && $displayFloatingLabel)
                 <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
             @endif
