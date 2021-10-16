@@ -27,6 +27,7 @@ class InputValidationFailureTest extends TestCase
         $messageBag = app(MessageBag::class)->add('first_name', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'displayValidationFailure' => true,
@@ -42,6 +43,7 @@ class InputValidationFailureTest extends TestCase
         $messageBag->add('first_name.en', 'Test first name.en error message.');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'displayValidationFailure' => true,
@@ -65,6 +67,7 @@ class InputValidationFailureTest extends TestCase
         $messageBag = app(MessageBag::class)->add('first_name', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'displayValidationFailure' => false,
@@ -80,6 +83,7 @@ class InputValidationFailureTest extends TestCase
         $messageBag = app(MessageBag::class)->add('first_name.0', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name[0]',
             'displayValidationFailure' => true,
@@ -95,6 +99,7 @@ class InputValidationFailureTest extends TestCase
         $messageBag = app(MessageBag::class)->add('first_name', 'Error test');
         $errors = app(ViewErrorBag::class)->put('test_error_bag', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'displayValidationFailure' => true,

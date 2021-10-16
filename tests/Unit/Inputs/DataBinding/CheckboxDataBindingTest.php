@@ -99,6 +99,7 @@ class CheckboxDataBindingTest extends TestCase
         $errors->put('component_error_bag', $componentMessageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
+        $this->executeWebMiddlewareGroup();
         app(FormBinder::class)->bindErrorBag('global_error_bag');
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'errorBag' => 'component_error_bag']);
         self::assertStringContainsString('<div class="invalid-feedback">Component error test</div>', $html);

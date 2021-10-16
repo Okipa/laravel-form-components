@@ -28,6 +28,7 @@ class TextareaValidationSuccessTest extends TestCase
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
             'displayValidationSuccess' => true,
@@ -42,6 +43,7 @@ class TextareaValidationSuccessTest extends TestCase
         $messageBag = app(MessageBag::class)->add('other_field', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',

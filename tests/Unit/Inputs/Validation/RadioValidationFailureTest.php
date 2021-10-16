@@ -34,6 +34,7 @@ class RadioValidationFailureTest extends TestCase
         $messageBag = app(MessageBag::class)->add('gender', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],
@@ -50,6 +51,7 @@ class RadioValidationFailureTest extends TestCase
         $messageBag = app(MessageBag::class)->add('gender', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],

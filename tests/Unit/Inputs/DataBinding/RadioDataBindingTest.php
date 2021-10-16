@@ -144,6 +144,7 @@ class RadioDataBindingTest extends TestCase
         $errors->put('component_error_bag', $componentMessageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
+        $this->executeWebMiddlewareGroup();
         app(FormBinder::class)->bindErrorBag('global_error_bag');
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',

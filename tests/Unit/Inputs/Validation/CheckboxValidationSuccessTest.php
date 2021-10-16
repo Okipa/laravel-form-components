@@ -27,6 +27,7 @@ class CheckboxValidationSuccessTest extends TestCase
         $messageBag = app(MessageBag::class)->add('other_field', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Checkbox::class, [
             'name' => 'active',
             'displayValidationSuccess' => true,
@@ -41,6 +42,7 @@ class CheckboxValidationSuccessTest extends TestCase
         $messageBag = app(MessageBag::class)->add('other_field', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Checkbox::class, [
             'name' => 'active',
             'displayValidationSuccess' => false,

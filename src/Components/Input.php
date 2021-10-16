@@ -4,7 +4,6 @@ namespace Okipa\LaravelFormComponents\Components;
 
 use Closure;
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
-use Okipa\LaravelFormComponents\Components\Traits\CanBeWired;
 use Okipa\LaravelFormComponents\Components\Traits\HasAddon;
 use Okipa\LaravelFormComponents\Components\Traits\HasFloatingLabel;
 use Okipa\LaravelFormComponents\Components\Traits\HasId;
