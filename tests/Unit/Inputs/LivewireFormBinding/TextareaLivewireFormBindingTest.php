@@ -2,7 +2,6 @@
 
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireFormBinding;
 
-use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Components\Textarea;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;

@@ -2,7 +2,6 @@
 
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireFormBinding;
 
-use Okipa\LaravelFormComponents\Components\Checkbox;
 use Okipa\LaravelFormComponents\Components\ToggleSwitch;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
