@@ -8,12 +8,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class TextareaIdTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_setup_textarea_default_id_when_none_is_defined(): void
     {

@@ -9,12 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class RadioCheckedTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_set_radio_checked_from_int_and_override_bound_model_value(): void
     {

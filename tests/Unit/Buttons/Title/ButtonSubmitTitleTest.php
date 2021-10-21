@@ -17,7 +17,7 @@ class ButtonSubmitTitleTest extends TestCase
     /** @test */
     public function it_can_set_button_submit_custom_title(): void
     {
-        $html = $this->renderComponent(Submit::class, attributes: ['title' => 'Test title']);
+        $html = $this->renderComponent(componentClass: Submit::class, attributes: ['title' => 'Test title']);
         self::assertStringContainsString('title="Test title"', $html);
     }
 }

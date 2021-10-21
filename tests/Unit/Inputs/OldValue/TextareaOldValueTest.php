@@ -7,12 +7,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class TextareaOldValueTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_retrieve_textarea_old_value(): void
     {

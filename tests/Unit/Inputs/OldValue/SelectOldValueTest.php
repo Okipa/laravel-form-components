@@ -7,12 +7,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class SelectOldValueTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_retrieve_select_old_value(): void
     {

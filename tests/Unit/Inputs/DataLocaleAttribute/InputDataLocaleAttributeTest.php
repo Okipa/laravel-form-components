@@ -8,12 +8,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class InputDataLocaleAttributeTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_cant_setup_data_locale_attribute_on_input_when_not_multilingual(): void
     {

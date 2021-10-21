@@ -9,12 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class InputValidationFailureTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_globally_set_display_input_validation_failure(): void
     {

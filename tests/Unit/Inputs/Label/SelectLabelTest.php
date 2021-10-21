@@ -7,12 +7,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class SelectLabelTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_setup_select_default_label_when_none_is_defined(): void
     {

@@ -7,12 +7,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class RadioLabelTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_set_radio_label(): void
     {

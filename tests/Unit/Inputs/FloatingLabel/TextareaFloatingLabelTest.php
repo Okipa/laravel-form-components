@@ -7,12 +7,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class TextareaFloatingLabelTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_globally_set_textarea_floating_label_mode_from_config(): void
     {

@@ -24,7 +24,7 @@ class ButtonLinkTitleTest extends TestCase
     /** @test */
     public function it_can_set_button_link_custom_title(): void
     {
-        $html = $this->renderComponent(Link::class, attributes: ['title' => 'Test title']);
+        $html = $this->renderComponent(componentClass: Link::class, attributes: ['title' => 'Test title']);
         self::assertStringContainsString('title="Test title"', $html);
     }
 }

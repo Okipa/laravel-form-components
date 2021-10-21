@@ -8,6 +8,7 @@
     $errorMessage = $getErrorMessage($errors);
     $multipleMode = (bool) $attributes->filter(fn($value, $key) => $key === 'multiple')->first();
     $validationClass = $getValidationClass($errors);
+    $isWired = $componentIsWired();
 @endphp
 <div @class(['form-floating' => $displayFloatingLabel, 'mb-3' => $marginBottom])>
     @if(($prepend || $append) && ! $displayFloatingLabel)
@@ -21,8 +22,9 @@
             <x-form::partials.addon :addon="$prepend"/>
         @endif
         <select {{ $attributes->merge([
+            'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding() ? null : $name,
             'id' => $id,
-            'name' => $name . ($multipleMode ? '[]' : null),
+            'name' => $isWired ? null : $name . ($multipleMode ? '[]' : null),
             'class' => 'form-select' . ($validationClass ? ' ' . $validationClass : null),
             'placeholder' => $placeholder,
             'aria-describedby' => $caption ? $id . '-caption' : null,
@@ -31,7 +33,7 @@
                 <option value="" selected disabled hidden>{{ $placeholder }}</option>
             @endif
             @foreach($options as $value => $label)
-                <option value="{{ $value }}"{!! $isSelected($name, $value) ? ' selected="selected"' : null !!}>{{ $label }}</option>
+                <option value="{{ $value }}"{!! $isSelected($name, $value) && ! $isWired ? ' selected="selected"' : null !!}>{{ $label }}</option>
             @endforeach
         </select>
         @if(! $prepend && ! $append && $displayFloatingLabel)

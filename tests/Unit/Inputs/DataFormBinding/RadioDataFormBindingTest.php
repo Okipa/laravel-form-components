@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataBindings;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataFormBinding;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\MessageBag;
@@ -9,14 +9,8 @@ use Okipa\LaravelFormComponents\Components\Radio;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class RadioDataBindingTest extends TestCase
+class RadioDataFormBindingTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_retrieve_radio_checked_status_from_direct_bound_model(): void
     {
@@ -150,7 +144,8 @@ class RadioDataBindingTest extends TestCase
         $errors->put('component_error_bag', $componentMessageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
-        app(FormBinder::class)->bindNewErrorBag('global_error_bag');
+        $this->executeWebMiddlewareGroup();
+        app(FormBinder::class)->bindErrorBag('global_error_bag');
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
             'group' => [1 => 'Male', 2 => 'Female'],

@@ -9,12 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class TextareaValidationSuccessTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_globally_set_display_textarea_validation_success(): void
     {
@@ -34,6 +28,7 @@ class TextareaValidationSuccessTest extends TestCase
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
+        $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
             'displayValidationSuccess' => true,
@@ -48,6 +43,7 @@ class TextareaValidationSuccessTest extends TestCase
         $messageBag = app(MessageBag::class)->add('other_field', 'Error test');
         $errors = app(ViewErrorBag::class)->put('default', $messageBag);
         session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
         $this->executeWebMiddlewareGroup();
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',

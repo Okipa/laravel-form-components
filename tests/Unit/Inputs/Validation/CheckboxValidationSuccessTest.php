@@ -9,12 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class CheckboxValidationSuccessTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_globally_set_display_checkbox_validation_success(): void
     {

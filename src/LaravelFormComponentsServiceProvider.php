@@ -34,10 +34,17 @@ class LaravelFormComponentsServiceProvider extends ServiceProvider
             return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->unbindLastDataBatch() ?>';
         });
         Blade::directive('errorbag', function ($errorBagKey) {
-            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->bindNewErrorBag(' . $errorBagKey . ') ?>';
+            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->bindErrorBag(' . $errorBagKey . ') ?>';
         });
         Blade::directive('enderrorbag', function () {
             return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->unbindErrorBag() ?>';
+        });
+        Blade::directive('wire', function ($livewireModifier) {
+            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->bindNewLivewireModifier('
+                . $livewireModifier . ') ?>';
+        });
+        Blade::directive('endwire', function () {
+            return '<?php app(Okipa\LaravelFormComponents\FormBinder::class)->unbindLastLivewireModifier() ?>';
         });
     }
 

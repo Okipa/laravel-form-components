@@ -8,12 +8,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class ToggleSwitchCheckedTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_set_toggle_switch_checked_and_override_bound_model_value(): void
     {

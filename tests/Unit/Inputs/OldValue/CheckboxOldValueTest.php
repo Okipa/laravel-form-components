@@ -8,12 +8,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class CheckboxOldValueTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_retrieve_checkbox_old_checked(): void
     {

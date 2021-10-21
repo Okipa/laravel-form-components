@@ -8,12 +8,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class RadioNameTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->executeWebMiddlewareGroup();
-    }
-
     /** @test */
     public function it_can_set_radio_name(): void
     {
