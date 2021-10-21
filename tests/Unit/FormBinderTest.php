@@ -42,12 +42,22 @@ class FormBinderTest extends TestCase
     }
 
     /** @test */
+    public function it_can_retrieve_current_bound_livewire_modifier_when_several_are_bound(): void
+    {
+        app(FormBinder::class)->bindNewLivewireModifier('lazy');
+        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
+        self::assertSame('debounce.150ms', app(FormBinder::class)->getBoundLivewireModifer());
+        app(FormBinder::class)->unbindLastLivewireModifier();
+        self::assertSame('lazy', app(FormBinder::class)->getBoundLivewireModifer());
+    }
+
+    /** @test */
     public function it_can_bind_and_unbind_livewire_modifier_from_directive(): void
     {
         view()->addNamespace('laravel-form-components', 'tests/views');
         $formBinder = $this->mock(FormBinder::class);
-        $formBinder->shouldReceive('bindLivewireModifier')->once()->with('debounce.150ms');
-        $formBinder->shouldReceive('unbindLivewireModifier')->once();
+        $formBinder->shouldReceive('bindNewLivewireModifier')->once()->with('debounce.150ms');
+        $formBinder->shouldReceive('unbindLastLivewireModifier')->once();
         view('laravel-form-components::livewire-modifier-binding-directive')->toHtml();
     }
 }

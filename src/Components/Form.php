@@ -15,7 +15,7 @@ class Form extends AbstractComponent
     ) {
         app(FormBinder::class)->bindNewDataBatch($bind);
         app(FormBinder::class)->bindErrorBag($errorBag);
-        app(FormBinder::class)->bindLivewireModifier($wire);
+        app(FormBinder::class)->bindNewLivewireModifier($wire);
         $this->method = strtoupper($method);
         parent::__construct();
     }

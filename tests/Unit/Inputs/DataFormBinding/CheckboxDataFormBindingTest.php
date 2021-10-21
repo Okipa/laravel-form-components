@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataBindings;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataFormBinding;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\MessageBag;
@@ -9,7 +9,7 @@ use Okipa\LaravelFormComponents\Components\Checkbox;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class CheckboxDataBindingTest extends TestCase
+class CheckboxDataFormBindingTest extends TestCase
 {
     /** @test */
     public function it_can_retrieve_checkbox_checked_status_from_direct_bound_model(): void

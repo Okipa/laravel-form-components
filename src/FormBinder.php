@@ -9,7 +9,7 @@ class FormBinder
     public function __construct(
         protected array $boundDataBatches = [],
         protected string|null $errorBagKey = null,
-        protected string|null $livewireModifier = null,
+        protected array $livewireModifiers = [],
     ) {
         //
     }
@@ -44,18 +44,18 @@ class FormBinder
         $this->errorBagKey = null;
     }
 
-    public function bindLivewireModifier($livewireModifier = 'default'): void
+    public function bindNewLivewireModifier(string|null $livewireModifier): void
     {
-        $this->livewireModifier = $livewireModifier;
+        $this->livewireModifiers[] = $livewireModifier;
     }
 
     public function getBoundLivewireModifer(): string|null
     {
-        return $this->livewireModifier;
+        return Arr::last($this->livewireModifiers);
     }
 
-    public function unbindLivewireModifier(): void
+    public function unbindLastLivewireModifier(): void
     {
-        $this->livewireModifier = null;
+        array_pop($this->livewireModifiers);
     }
 }

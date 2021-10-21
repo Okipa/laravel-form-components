@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataBindings;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataFormBinding;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\MessageBag;
@@ -11,7 +11,7 @@ use Okipa\LaravelFormComponents\Components\ToggleSwitch;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class ToggleSwitchDataBindingTest extends TestCase
+class ToggleSwitchDataFormBindingTest extends TestCase
 {
     /** @test */
     public function it_can_retrieve_toggle_switch_checked_status_from_direct_bound_model(): void

@@ -61,7 +61,7 @@ Just call the components you need in your views and let this package take care o
 
 And get this component displayed:
 
-<screenshot>
+<ToDo:screenshot>
 
 ## Table of Contents
 
@@ -89,6 +89,7 @@ And get this component displayed:
   * [Handle validation statuses and errors](#handle-validation-statuses-and-errors)
   * [Add captions](#add-captions)
   * [Activate multilingual mode](#activate-multilingual-mode)
+  * [Plug with livewire](#plug-with-livewire)
 * [Testing](#testing)
 * [Changelog](#changelog)
 * [Contributing](#contributing)
@@ -390,6 +391,48 @@ Activate multilingual mode on `input` and `textarea` components to benefit from 
 ```Blade
 <x-form::input name="name" :locales="['fr', 'en']"/>
 <x-form::textarea name="description" :locales="['fr', 'en']"/>
+```
+
+### Plug with Livewire
+
+Our form components are Livewire-compatible.
+
+Instead of defining a `wire:model` HTML attribute on each component you want to wire as you would do without this package, here you'll just have to define a `wire="<optional-modifier>"` HTML attribute to make this work.
+
+Each wired input component will use its own `name` attribute and convert it to a valid `wire:model="<name>"` one.
+
+```Blade
+<x-form::form wire:submit.prevent="submit">
+    <x-form::input name="name"/> {{-- Is not wired --}}
+    <x-form::input type="email" name="email" wire/> {{-- Will bind the value from the Livewire component `$email` property with no defined Livewire modifier --}}
+    <x-form::input name="description" wire="lazy"/> {{-- Will bind the value from the Livewire component `$description` property with the the `lazy` Livewire modifier --}}
+</x-form::form>
+```
+
+Following the same logic, you also can wire input components directly from the form they are contained into.
+
+```Blade
+<x-form::form wire:submit.prevent="submit" wire>
+    <x-form::input type="email" name="email"/> {{-- Will bind the value from the Livewire component `$email` property with no defined Livewire modifier --}}
+    <x-form::input name="description" wire="lazy"/> {{-- Will bind the value from the Livewire component `$description` property with the the `lazy` Livewire modifier --}}
+    <x-form::submit/>
+</x-form::form>
+```
+
+For specific use case, you also can use the `@wire($modifier)` and the `@endwire` Blade directives to wire a group of components with a specific Livewire modifier.
+
+```Blade
+<x-form::form wire:submit.prevent="submit" wire="lazy">
+    <x-form::input name="first_name"/> {{-- Will bind the value from the Livewire component `$first_name` property with the `lazy` Livewire modifier --}}
+    @wire('debounce.150ms')
+        <x-form::input name="last_name"/> {{-- Will bind the value from the Livewire component `$last_name` property with the `debounce.150ms` Livewire modifier --}}
+    @endbind
+    @wire(null)
+        <x-form::input type="email" name="email"/> {{-- Will bind the value from the Livewire component `$email` property with no defined Livewire modifier --}}
+        <x-form::input name="description" wire="lazy"/> {{-- Will bind the value from the Livewire component `$description` property with the the `lazy` Livewire modifier --}}
+    @endbind
+    <x-form::submit/>
+</x-form::form>
 ```
 
 ## Testing

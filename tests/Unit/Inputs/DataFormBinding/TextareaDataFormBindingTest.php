@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataBinding;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataFormBinding;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\MessageBag;
@@ -9,7 +9,7 @@ use Okipa\LaravelFormComponents\Components\Textarea;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class TextareaDataBindingTest extends TestCase
+class TextareaDataFormBindingTest extends TestCase
 {
     /** @test */
     public function it_can_retrieve_textarea_value_from_direct_bound_model(): void

@@ -55,10 +55,10 @@ class FormTest extends TestCase
         $formBinder = $this->mock(FormBinder::class);
         $formBinder->shouldReceive('bindNewDataBatch')->once()->with(['test']);
         $formBinder->shouldReceive('bindErrorBag')->once()->with('error_bag_test');
-        $formBinder->shouldReceive('bindLivewireModifier')->once()->with('debounce.150ms');
+        $formBinder->shouldReceive('bindNewLivewireModifier')->once()->with('debounce.150ms');
         $formBinder->shouldReceive('unbindLastDataBatch')->once();
         $formBinder->shouldReceive('unbindErrorBag')->once();
-        $formBinder->shouldReceive('unbindLivewireModifier')->once();
+        $formBinder->shouldReceive('unbindLastLivewireModifier')->once();
         $this->renderComponent(Form::class, [
             'bind' => ['test'],
             'errorBag' => 'error_bag_test',

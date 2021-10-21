@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataBinding;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataFormBinding;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\MessageBag;
@@ -9,7 +9,7 @@ use Okipa\LaravelFormComponents\Components\Select;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class SelectDataBindingTest extends TestCase
+class SelectDataFormBindingTest extends TestCase
 {
     /** @test */
     public function it_can_retrieve_select_selected_option_in_single_mode_from_direct_bound_model(): void

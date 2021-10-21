@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataBinding;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataFormBinding;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\MessageBag;
@@ -9,7 +9,7 @@ use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class InputDataBindingTest extends TestCase
+class InputDataFormBindingTest extends TestCase
 {
     /** @test */
     public function it_can_retrieve_input_value_from_direct_bound_model(): void
