@@ -395,7 +395,7 @@ Activate multilingual mode on `input` and `textarea` components to benefit from 
 
 ### Plug with Livewire
 
-Our form components are Livewire-compatible.
+Form and input components are Livewire-compatible.
 
 Instead of defining a `wire:model` HTML attribute on each component you want to wire as you would do without this package, here you'll just have to define a `wire="<optional-modifier>"` HTML attribute to make this work.
 
@@ -403,9 +403,10 @@ Each wired input component will use its own `name` attribute and convert it to a
 
 ```Blade
 <x-form::form wire:submit.prevent="submit">
-    <x-form::input name="name"/> {{-- Is not wired --}}
+    <x-form::input name="name"/> {{-- Will not be wired --}}
     <x-form::input type="email" name="email" wire/> {{-- Will bind the value from the Livewire component `$email` property with no defined Livewire modifier --}}
     <x-form::input name="description" wire="lazy"/> {{-- Will bind the value from the Livewire component `$description` property with the the `lazy` Livewire modifier --}}
+    <x-form::submit/>
 </x-form::form>
 ```
 

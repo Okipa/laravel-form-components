@@ -46,7 +46,7 @@ class FormBinder
 
     public function bindNewLivewireModifier(string|null $livewireModifier): void
     {
-        $this->livewireModifiers[] = $livewireModifier;
+        $this->livewireModifiers[] = $livewireModifier ?: '';
     }
 
     public function getBoundLivewireModifer(): string|null

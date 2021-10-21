@@ -1,19 +1,16 @@
 @foreach($locales as $locale)
-    @props([
-        'id' => $getId($locale) ?: $getDefaultId($type, $locale),
-        'label' => $getLabel($locale),
-        'displayFloatingLabel' => $shouldDisplayFloatingLabel(),
-        'placeholder' => $getPlaceholder($getLabel($locale), $locale),
-        'value' => $getValue($locale),
-        'prepend' => $getPrepend($locale),
-        'append' => $getAppend($locale),
-        'errorMessage' => $getErrorMessage($errors, $locale),
-        'validationClass' => $getValidationClass($errors, $locale),
-        'formLivewireModifier' => app(Okipa\LaravelFormComponents\FormBinder::class)->getBoundLivewireModifer(),
-        'componentLivewireModelModifier' => $attributes->has('wire') && ! $attributes->get('wire') ? '' : $attributes->get('wire'),
-        'hasNormalLivewireModelBinding' => $attributes->whereStartsWith('wire:model')->first(),
-        'isWired' => $formLivewireModifier || $hasNormalLivewireModelBinding || $componentLivewireModelModifier,
-    ])
+    @php
+        $id = $getId($locale) ?: $getDefaultId($type, $locale);
+        $label = $getLabel($locale);
+        $displayFloatingLabel = $shouldDisplayFloatingLabel();
+        $placeholder = $getPlaceholder($label, $locale);
+        $value = $getValue($locale);
+        $prepend = $getPrepend($locale);
+        $append = $getAppend($locale);
+        $errorMessage = $getErrorMessage($errors, $locale);
+        $validationClass = $getValidationClass($errors, $locale);
+        $isWired = $componentIsWired();
+    @endphp
     <div @class(['d-none' => $type === 'hidden', 'form-floating' => $displayFloatingLabel, 'mb-3' => $marginBottom])>
         @if(($prepend || $append) && ! $displayFloatingLabel)
             <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
@@ -26,8 +23,7 @@
                 <x-form::partials.addon :addon="$prepend"/>
             @endif
             <input {{ $attributes->except('wire')->merge([
-                // Set $getLivewireModifier method in a trait
-                'wire:model.' . ($componentLivewireModelModifier ?? $formLivewireModifier) => $hasNormalLivewireModelBinding
+                'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding()
                     ? null
                     : ($locale ? $name . '.' . $locale : $name),
                 'id' => $id,
