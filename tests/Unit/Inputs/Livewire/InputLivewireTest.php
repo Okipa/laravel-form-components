@@ -3,13 +3,12 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireFormBinding;
 
 use Okipa\LaravelFormComponents\Components\Input;
-use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class InputLivewireTest extends TestCase
 {
     /** @test */
-    public function it_can_remove_name_html_attribute_when_wired(): void
+    public function it_can_remove_input_name_html_attribute_when_wired(): void
     {
         $html = $this->renderComponent(
             componentClass: Input::class,
@@ -20,7 +19,7 @@ class InputLivewireTest extends TestCase
     }
 
     /** @test */
-    public function it_can_remove_value_html_attribute_when_wired(): void
+    public function it_can_remove_input_value_html_attribute_when_wired(): void
     {
         $html = $this->renderComponent(
             componentClass: Input::class,
@@ -31,7 +30,7 @@ class InputLivewireTest extends TestCase
     }
 
     /** @test */
-    public function it_can_define_livewire_modifier_from_name(): void
+    public function it_can_define_input_livewire_modifier_from_name(): void
     {
         $html = $this->renderComponent(
             componentClass: Input::class,
@@ -42,7 +41,7 @@ class InputLivewireTest extends TestCase
     }
 
     /** @test */
-    public function it_can_define_livewire_modifier_from_livewire_normal_binding(): void
+    public function it_can_define_input_livewire_modifier_from_livewire_normal_binding(): void
     {
         $html = $this->renderComponent(
             componentClass: Input::class,

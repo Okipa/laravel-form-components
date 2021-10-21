@@ -4,6 +4,7 @@ namespace Okipa\LaravelFormComponents\Components;
 
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 use Okipa\LaravelFormComponents\Components\Traits\CanBeChecked;
+use Okipa\LaravelFormComponents\Components\Traits\CanBeWired;
 use Okipa\LaravelFormComponents\Components\Traits\HasId;
 use Okipa\LaravelFormComponents\Components\Traits\HasLabel;
 use Okipa\LaravelFormComponents\Components\Traits\HasName;
@@ -16,6 +17,7 @@ class ToggleSwitch extends AbstractComponent
     use HasLabel;
     use HasValidation;
     use CanBeChecked;
+    use CanBeWired;
 
     /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(

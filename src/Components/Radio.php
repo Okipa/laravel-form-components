@@ -3,6 +3,7 @@
 namespace Okipa\LaravelFormComponents\Components;
 
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
+use Okipa\LaravelFormComponents\Components\Traits\CanBeWired;
 use Okipa\LaravelFormComponents\Components\Traits\HasId;
 use Okipa\LaravelFormComponents\Components\Traits\HasName;
 use Okipa\LaravelFormComponents\Components\Traits\HasValidation;
@@ -13,6 +14,7 @@ class Radio extends AbstractComponent
     use HasId;
     use HasName;
     use HasValidation;
+    use CanBeWired;
 
     /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(

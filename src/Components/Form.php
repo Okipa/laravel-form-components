@@ -9,9 +9,9 @@ class Form extends AbstractComponent
 {
     public function __construct(
         public string $method = 'GET',
-        public array|object|null $bind = null,
-        public string|null $errorBag = null,
-        public string|null $wire = null
+        array|object|null $bind = null,
+        string|null $errorBag = null,
+        string|null $wire = null
     ) {
         app(FormBinder::class)->bindNewDataBatch($bind);
         app(FormBinder::class)->bindErrorBag($errorBag);

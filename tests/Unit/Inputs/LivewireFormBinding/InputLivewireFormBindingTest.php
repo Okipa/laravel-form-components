@@ -33,7 +33,7 @@ class InputLivewireFormBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_override_global_modifier_with_another_global_null_modifier(): void
+    public function it_can_override_input_global_modifier_with_another_global_null_modifier(): void
     {
         app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
         $html = $this->renderComponent(

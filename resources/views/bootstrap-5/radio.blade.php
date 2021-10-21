@@ -5,15 +5,17 @@
         $checked = $getChecked($value);
         $errorMessage = $getErrorMessage($errors);
         $validationClass = $getValidationClass($errors);
+        $isWired = $componentIsWired();
     @endphp
     <div @class(['form-check', 'mb-3' => $marginBottom])>
         <input {{ $attributes->merge([
+            'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding() ? null : $name,
             'id' => $radioId,
             'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),
-            'name' => $name,
+            'name' => $isWired ? null : $name,
             'value' => $value,
             'aria-describedby' => $caption ? $captionId . '-caption' : null,
-            'checked' => $checked
+            'checked' => $isWired ? null : $checked
         ]) }} type="radio">
         <x-form::partials.label :id="$radioId" class="form-check-label" :label="$label"/>
     </div>

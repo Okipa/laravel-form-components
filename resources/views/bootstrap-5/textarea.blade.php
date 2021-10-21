@@ -9,6 +9,7 @@
         $append = $getAppend($locale);
         $errorMessage = $getErrorMessage($errors, $locale);
         $validationClass = $getValidationClass($errors, $locale);
+        $isWired = $componentIsWired();
     @endphp
     <div @class(['form-floating' => $displayFloatingLabel, 'mb-3' => $marginBottom])>
         @if(($prepend || $append) && ! $displayFloatingLabel)
@@ -22,13 +23,16 @@
                 <x-form::partials.addon :addon="$prepend"/>
             @endif
             <textarea {{ $attributes->merge([
+                'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding()
+                    ? null
+                    : ($locale ? $name . '.' . $locale : $name),
                 'id' => $id,
                 'class' => 'form-control' . ($validationClass ? ' ' . $validationClass : null),
-                'name' => $locale ? $name . '[' . $locale . ']' : $name,
+                'name' => $isWired ? null : ($locale ? $name . '[' . $locale . ']' : $name),
                 'placeholder' => $placeholder,
                 'data-locale' => $locale,
                 'aria-describedby' => $caption ? $id . '-caption' : null,
-            ])}}>{{ $value }}</textarea>
+            ])}}>{{ $isWired ? null : $value }}</textarea>
             @if(! $prepend && ! $append && $displayFloatingLabel)
                 <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
             @endif
