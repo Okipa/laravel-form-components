@@ -6,7 +6,7 @@
     $validationClass = $getValidationClass($errors);
     $isWired = $componentIsWired();
 @endphp
-<div @class(['form-check', 'mb-3' => $marginBottom])>
+<div @class(['form-check', 'form-check-inline' => $inline, 'mb-3' => $marginBottom])>
     <input {{ $attributes->merge([
         'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding() ? null : $name,
         'id' => $id,

@@ -179,16 +179,18 @@ Easily switch between single and multiple mode, this package takes care about co
 <x-form::select name="hobbies" :hidePlaceholder="true" :options="$options" :selected="[2, 3]" multiple/> {{-- The name will be converted to hobbies[] --}}
 ```
 
-### Checkbox, Switch and Radio
+### Checkboxes, Toggle switches and Radios
 
-Checkbox, radio and toggle switch components are available for you to use.
+Checkbox, toggle switch and radio components are available for you to use.
 
-Because radio inputs are never used alone, you'll have to declare a required `group` attribute when using them, providing a value/label associative array from which the radio fields will be generated.
+Because radio inputs are never used alone, you'll have to declare a required `group` attribute when using them, awaiting a value/label associative array from which the radio fields will be generated.
+
+If you want to display these input components inline, just define an `inline` attribute.
 
 ```Blade
-<x-form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male"/>
 <x-form::checkbox name="newsletter_subscription" :checked="true"/>
 <x-form::switch name="active" :checked="false"/>
+<x-form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male" inline/> {{-- Two radio inline radio components will be generated --}}
 ```
 
 ### Buttons

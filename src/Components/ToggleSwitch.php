@@ -30,7 +30,8 @@ class ToggleSwitch extends AbstractComponent
         protected bool|null $displayValidationSuccess = null,
         protected bool|null $displayValidationFailure = null,
         protected string|null $errorBag = null,
-        public bool $marginBottom = true
+        public bool $marginBottom = true,
+        public bool $inline = false
     ) {
         $this->displayValidationSuccess = $this->shouldDisplayValidationSuccess();
         $this->displayValidationFailure = $this->shouldDisplayValidationFailure();
