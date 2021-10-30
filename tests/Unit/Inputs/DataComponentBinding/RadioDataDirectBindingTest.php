@@ -76,7 +76,6 @@ class RadioDataDirectBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_radio_checked_status_from_component_bound_int_in_group_mode(): void
     {
-        // Should work with string against int
         $bind = app(User::class)->forceFill(['gender' => '1']);
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',

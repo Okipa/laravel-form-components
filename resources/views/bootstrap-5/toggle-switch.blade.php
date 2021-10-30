@@ -8,7 +8,7 @@
 @endphp
 <div @class(['form-check', 'form-switch', 'form-check-inline' => $inline, 'mb-3' => $marginBottom])>
     <input {{ $attributes->merge([
-        'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding() ? null : $name,
+        'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasStandardLivewireModelBinding() ? $name : null,
         'id' => $id,
         'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),
         'name' => $isWired ? null : $name,

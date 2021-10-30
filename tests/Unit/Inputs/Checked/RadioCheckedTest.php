@@ -17,7 +17,6 @@ class RadioCheckedTest extends TestCase
             'name' => 'gender',
             'group' => [1 => 'Male', 2 => 'Female'],
             'bind' => $user,
-            // Should work with string against int
             'checked' => '2',
         ]);
         self::assertStringContainsString(' value="2" checked="checked"', $html);

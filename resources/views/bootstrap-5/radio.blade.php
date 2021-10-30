@@ -15,7 +15,7 @@
         @endphp
         <div @class(['form-check', 'form-check-inline' => $inline])>
             <input {{ $attributes->merge([
-                'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding() ? null : $name,
+                'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasStandardLivewireModelBinding() ? $name : null,
                 'id' => $radioId,
                 'class' => 'form-check-input',
                 'name' => $isWired ? null : $name,
