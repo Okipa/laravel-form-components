@@ -183,7 +183,7 @@ Easily switch between single and multiple mode, this package takes care about co
 
 Checkbox, radio and toggle switch components are available for you to use.
 
-When declaring a radio, you'll have to declare a `group` attribute, providing an value/label associative array from which the radio fields will be generated.
+Because radio inputs are never used alone, you'll have to declare a required `group` attribute when using them, providing a value/label associative array from which the radio fields will be generated.
 
 ```Blade
 <x-form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male"/>
