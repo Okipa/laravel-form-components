@@ -6,7 +6,7 @@ use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 
 class Label extends AbstractComponent
 {
-    public function __construct(public string $id, public string|null $label)
+    public function __construct(public string|null $label, public string|null $id = null)
     {
         parent::__construct();
     }

@@ -73,9 +73,9 @@ And get this component displayed:
   * [Input](#input-and-textarea)
   * [Textarea](#input-and-textarea)
   * [Select](#select)
-  * [Checkbox](#checkbox-switch-and-radio)
-  * [Switch](#checkbox-switch-and-radio)
-  * [Radio](#checkbox-switch-and-radio)
+  * [Checkbox](#checkboxes-toggle-switches-and-radios)
+  * [Switch](#checkboxes-toggle-switches-and-radios)
+  * [Radio](#checkboxes-toggle-switches-and-radios)
   * [Submit](#buttons)
   * [Button](#buttons)
 * [How to](#how-to)
@@ -185,12 +185,16 @@ Checkbox, toggle switch and radio components are available for you to use.
 
 Because radio inputs are never used alone, you'll have to declare a required `group` attribute when using them, awaiting a value/label associative array from which the radio fields will be generated.
 
+Regarding checkbox and toggle switch inputs, you can use them in single or in group mode. To use them with in group mode, you'll have to declare an (optional) `group` attribute too.
+
 If you want to display these input components inline, just define an `inline` attribute.
 
 ```Blade
-<x-form::checkbox name="newsletter_subscription" :checked="true"/>
-<x-form::switch name="active" :checked="false"/>
-<x-form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male" inline/> {{-- Two radio inline radio components will be generated --}}
+<x-form::checkbox name="newsletter_subscription" :checked="true"/> {{-- 1 checkbox generated --}}
+<x-form::checkbox name="hobbies" :group="[1 => 'Sport', 2 => 'Cinema']" :checked="2"/> {{-- 2 checkboxes generated --}}
+<x-form::switch name="active" :checked="false" inline/> {{-- 1 toggle switch generated with inline mode --}}
+<x-form::switch name="hobbies" :group="['sport' => 'Sport', 'cinema" => 'Cinema']" :checked="sport"/> {{-- 2 toggle switches generated --}}
+<x-form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male" inline/> {{-- 2 radio radio generated with inline mode --}}
 ```
 
 ### Buttons

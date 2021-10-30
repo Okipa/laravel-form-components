@@ -8,7 +8,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class RadioLivewireTest extends TestCase
 {
     /** @test */
-    public function it_can_remove_radio_name_html_attribute_when_wired(): void
+    public function it_can_remove_radio_name_html_attribute_when_wired_in_group_mode(): void
     {
         $html = $this->renderComponent(
             componentClass: Radio::class,
@@ -18,11 +18,11 @@ class RadioLivewireTest extends TestCase
             ],
             attributes: ['wire:model.lazy' => 'gender']
         );
-        self::assertStringNotContainsString('name="gender"', $html);
+        self::assertStringNotContainsString(' name="gender"', $html);
     }
 
     /** @test */
-    public function it_can_define_radio_livewire_modifier_from_name(): void
+    public function it_can_define_radio_livewire_modifier_from_name_in_group_mode(): void
     {
         $html = $this->renderComponent(
             componentClass: Radio::class,
@@ -32,11 +32,11 @@ class RadioLivewireTest extends TestCase
             ],
             attributes: ['wire' => 'lazy']
         );
-        self::assertStringContainsString('wire:model.lazy="gender"', $html);
+        self::assertEquals(2, substr_count($html, ' wire:model.lazy="gender"'));
     }
 
     /** @test */
-    public function it_can_define_radio_livewire_modifier_from_livewire_normal_binding(): void
+    public function it_can_define_radio_livewire_modifier_from_livewire_normal_binding_in_group_mode(): void
     {
         $html = $this->renderComponent(
             componentClass: Radio::class,
@@ -46,6 +46,6 @@ class RadioLivewireTest extends TestCase
             ],
             attributes: ['wire:model.lazy' => 'gender']
         );
-        self::assertStringContainsString('wire:model.lazy="gender"', $html);
+        self::assertEquals(2, substr_count($html, ' wire:model.lazy="gender"'));
     }
 }

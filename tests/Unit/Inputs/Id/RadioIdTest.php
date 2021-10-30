@@ -8,7 +8,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class RadioIdTest extends TestCase
 {
     /** @test */
-    public function it_can_setup_radio_default_id_when_none_is_defined(): void
+    public function it_can_setup_radio_default_id_when_none_is_defined_in_group_mode(): void
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
@@ -21,7 +21,7 @@ class RadioIdTest extends TestCase
     }
 
     /** @test */
-    public function it_can_setup_radio_default_id_with_array_name_when_none_is_defined(): void
+    public function it_can_setup_radio_default_id_with_array_name_when_none_is_defined_in_group_mode(): void
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender[0]',
@@ -34,7 +34,7 @@ class RadioIdTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_radio_id(): void
+    public function it_can_set_radio_id_in_group_mode(): void
     {
         $html = $this->renderComponent(Radio::class, [
             'id' => 'test-id',

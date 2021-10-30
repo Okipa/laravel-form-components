@@ -10,7 +10,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class RadioOldValueTest extends TestCase
 {
     /** @test */
-    public function it_can_retrieve_radio_old_checked(): void
+    public function it_can_retrieve_radio_old_checked_status_in_group_mode(): void
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
@@ -25,7 +25,7 @@ class RadioOldValueTest extends TestCase
     }
 
     /** @test */
-    public function it_can_retrieve_radio_old_checked_with_array_name(): void
+    public function it_can_retrieve_radio_old_checked_status_with_array_name_in_group_mode(): void
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',

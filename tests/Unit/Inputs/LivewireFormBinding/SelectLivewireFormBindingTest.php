@@ -9,7 +9,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class SelectLivewireFormBindingTest extends TestCase
 {
     /** @test */
-    public function it_can_override_select_global_livewire_modifier_binding_from_component_livewire_modifier(): void
+    public function it_can_override_select_form_livewire_modifier_binding_from_component_livewire_modifier(): void
     {
         app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
         $html = $this->renderComponent(
@@ -24,7 +24,7 @@ class SelectLivewireFormBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_override_select_global_livewire_modifier_binding_from_component_livewire_null_modifier(): void
+    public function it_can_override_select_form_livewire_modifier_binding_from_component_livewire_null_modifier(): void
     {
         app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
         $html = $this->renderComponent(
@@ -39,7 +39,7 @@ class SelectLivewireFormBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_override_select_global_modifier_with_another_global_null_modifier(): void
+    public function it_can_override_select_form_modifier_with_another_form_null_modifier(): void
     {
         app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
         $html = $this->renderComponent(

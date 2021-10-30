@@ -8,7 +8,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class ToggleSwitchOldValueTest extends TestCase
 {
     /** @test */
-    public function it_can_retrieve_toggle_switch_old_checked(): void
+    public function it_can_retrieve_toggle_switch_old_checked_status(): void
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
@@ -23,7 +23,7 @@ class ToggleSwitchOldValueTest extends TestCase
     }
 
     /** @test */
-    public function it_can_retrieve_toggle_switch_old_checked_with_array_name(): void
+    public function it_can_retrieve_toggle_switch_old_checked_status_with_array_name(): void
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',

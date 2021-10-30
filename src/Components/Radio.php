@@ -5,6 +5,7 @@ namespace Okipa\LaravelFormComponents\Components;
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 use Okipa\LaravelFormComponents\Components\Traits\CanBeWired;
 use Okipa\LaravelFormComponents\Components\Traits\HasId;
+use Okipa\LaravelFormComponents\Components\Traits\HasLabel;
 use Okipa\LaravelFormComponents\Components\Traits\HasName;
 use Okipa\LaravelFormComponents\Components\Traits\HasValidation;
 use Okipa\LaravelFormComponents\FormBinder;
@@ -13,6 +14,7 @@ class Radio extends AbstractComponent
 {
     use HasId;
     use HasName;
+    use HasLabel;
     use HasValidation;
     use CanBeWired;
 

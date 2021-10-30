@@ -8,23 +8,23 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class RadioMarginBottomTest extends TestCase
 {
     /** @test */
-    public function it_can_enable_radio_margin_bottom_by_default(): void
+    public function it_can_enable_radio_group_margin_bottom_by_default_in_group_mode(): void
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
-        self::assertStringContainsString('mb-3', $html);
+        self::assertEquals(1, substr_count($html, '<div class="mb-3">'));
     }
 
     /** @test */
-    public function it_can_disable_radio_margin_bottom(): void
+    public function it_can_disable_radio_group_margin_bottom_in_group_mode(): void
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],
             'marginBottom' => false,
         ]);
-        self::assertStringNotContainsString('mb-3', $html);
+        self::assertStringNotContainsString('<div class="mb-3">', $html);
     }
 }

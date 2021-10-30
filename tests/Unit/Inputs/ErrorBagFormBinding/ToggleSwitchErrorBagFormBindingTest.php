@@ -11,7 +11,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class ToggleSwitchErrorBagFormBindingTest extends TestCase
 {
     /** @test */
-    public function it_can_override_toggle_switch_global_error_bag_binding_from_component_error_bag(): void
+    public function it_can_override_toggle_switch_form_error_bag_binding_from_component_error_bag(): void
     {
         config()->set('form-components.display_validation_failure', true);
         $globalMessageBag = app(MessageBag::class)->add('active', 'Global error test');

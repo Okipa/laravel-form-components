@@ -9,7 +9,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class CheckboxOldValueTest extends TestCase
 {
     /** @test */
-    public function it_can_retrieve_checkbox_old_checked(): void
+    public function it_can_retrieve_checkbox_old_checked_status(): void
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
@@ -21,7 +21,7 @@ class CheckboxOldValueTest extends TestCase
     }
 
     /** @test */
-    public function it_can_retrieve_checkbox_old_checked_with_array_name(): void
+    public function it_can_retrieve_checkbox_old_checked_status_with_array_name(): void
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',

@@ -28,7 +28,7 @@ class RadioValidationFailureTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_radio_validation_failure_when_allowed(): void
+    public function it_can_display_group_radio_validation_failure_when_allowed_in_group_mode(): void
     {
         config()->set('form-components.display_validation_failure', false);
         $messageBag = app(MessageBag::class)->add('gender', 'Error test');
@@ -40,8 +40,8 @@ class RadioValidationFailureTest extends TestCase
             'group' => ['female' => 'Female', 'male' => 'Male'],
             'displayValidationFailure' => true,
         ]);
-        self::assertStringContainsString(' is-invalid', $html);
-        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+        self::assertEquals(1, substr_count($html, ' is-invalid'));
+        self::assertEquals(1, substr_count($html, '<div class="invalid-feedback">Error test</div>'));
     }
 
     /** @test */

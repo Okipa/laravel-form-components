@@ -10,7 +10,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class RadioCheckedTest extends TestCase
 {
     /** @test */
-    public function it_can_set_radio_checked_from_int_and_override_bound_model_value(): void
+    public function it_can_set_radio_checked_from_int_and_override_bound_model_value_in_group_mode(): void
     {
         $user = app(User::class)->forceFill(['gender' => 1]);
         $html = $this->renderComponent(Radio::class, [
@@ -24,7 +24,7 @@ class RadioCheckedTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_radio_checked_from_string_and_override_bound_model_value(): void
+    public function it_can_set_radio_checked_from_string_and_override_bound_model_value_in_group_mode(): void
     {
         $user = app(User::class)->forceFill(['gender' => 'female']);
         $html = $this->renderComponent(Radio::class, [
