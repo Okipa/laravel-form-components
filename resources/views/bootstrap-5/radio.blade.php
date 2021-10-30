@@ -2,7 +2,9 @@
     $validationClass = $getValidationClass($errors);
 @endphp
 <div @class(['mb-3' => $marginBottom, $validationClass => $validationClass])>
-    <x-form::partials.label class="form-label" :label="$getLabel()"/>
+    <div>
+        <x-form::partials.label class="form-label" :label="$getLabel()"/>
+    </div>
     @foreach($group as $value => $label)
         @php
             $radioId = $getId(suffix: $value) ?: $getDefaultId(prefix: 'radio', suffix: $value);

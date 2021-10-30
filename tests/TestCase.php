@@ -15,6 +15,7 @@ class TestCase extends Orchestra
 
     protected function executeWebMiddlewareGroup(): void
     {
+        // Hack in order to provide the $error variable in views.
         $this->app['router']->get('test', ['middleware' => 'web']);
         $this->call('GET', 'test');
     }
