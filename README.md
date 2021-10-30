@@ -54,8 +54,8 @@ Just call the components you need in your views and let this package take care o
     <x-form::select name="technologies" :options="[1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire']" multiple/>
     <x-form::checkbox name="hobbies" :group="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']"/>
     <x-form::radio name="gender" :group="[1 => 'Male', 2 => 'Female']"/>
-    <x-form::switch name="active"/>
-    <x-form::submit/>
+    <x-form::toggle-switch name="active"/>
+    <x-form::button.submit/>
 </x-form:form>
 ```
 
