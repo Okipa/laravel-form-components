@@ -5,11 +5,11 @@
     <div>
         <x-form::partials.label class="form-label" :label="$getLabel()"/>
     </div>
-    @foreach($group as $value => $label)
+    @foreach($group as $groupValue => $groupLabel)
         @php
-            $radioId = $getId(suffix: $value) ?: $getDefaultId(prefix: 'radio', suffix: $value);
+            $radioId = $getId(suffix: $groupValue) ?: $getDefaultId(prefix: 'radio', suffix: $groupValue);
             $captionId = $getId() ?: $getDefaultId('radio');
-            $checked = $getChecked($value);
+            $checked = $getGroupModeCheckedStatus($groupValue);
             $errorMessage = $getErrorMessage($errors);
             $isWired = $componentIsWired();
         @endphp
@@ -19,11 +19,11 @@
                 'id' => $radioId,
                 'class' => 'form-check-input',
                 'name' => $isWired ? null : $name,
-                'value' => $value,
+                'value' => $groupValue,
                 'aria-describedby' => $caption ? $captionId . '-caption' : null,
                 'checked' => $isWired ? null : $checked
             ]) }} type="radio">
-            <x-form::partials.label :id="$radioId" class="form-check-label" :label="$label"/>
+            <x-form::partials.label :id="$radioId" class="form-check-label" :label="$groupLabel"/>
         </div>
     @endforeach
     <x-form::partials.caption :inputId="$captionId" :caption="$caption"/>

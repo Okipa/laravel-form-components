@@ -3,8 +3,6 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataComponentBinding;
 
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\MessageBag;
-use Illuminate\Support\ViewErrorBag;
 use Okipa\LaravelFormComponents\Components\Select;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
@@ -134,13 +132,13 @@ class SelectDataComponentBindingTest extends TestCase
     /** @test */
     public function it_can_override_select_form_data_binding_from_component_bound_data(): void
     {
-        $globallyBoundModel = app(User::class)->forceFill(['hobby_id' => 1]);
-        $directBoundModel = app(User::class)->forceFill(['hobby_id' => 2]);
-        app(FormBinder::class)->bindNewDataBatch($globallyBoundModel);
+        $formBoundModel = app(User::class)->forceFill(['hobby_id' => 1]);
+        $componentBoundModel = app(User::class)->forceFill(['hobby_id' => 2]);
+        app(FormBinder::class)->bindNewDataBatch($formBoundModel);
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
             'options' => [1 => 'Music', 2 => 'Travels', 3 => 'Movies', 4 => 'Literature'],
-            'bind' => $directBoundModel,
+            'bind' => $componentBoundModel,
         ]);
         self::assertStringContainsString('<option value="1">Music</option>', $html);
         self::assertStringContainsString('<option value="2" selected="selected">Travels</option>', $html);

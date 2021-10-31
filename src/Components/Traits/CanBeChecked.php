@@ -17,16 +17,16 @@ trait CanBeChecked
         return $this->checked ?? (bool) data_get($dataBatch, $this->name);
     }
 
-    public function getGroupModeCheckedStatus(int|string $value)
+    public function getGroupModeCheckedStatus(int|string $groupValue): bool
     {
 //        if (old($this->name)) {
 //            return (string) old($this->name) === (string) $value;
 //        }
         if ($this->checked) {
-            return in_array((string) $value, array_map('strval', $this->checked), true);
+            return in_array((string) $groupValue, array_map('strval', $this->checked), true);
         }
         $dataBatch = $this->bind ?: app(FormBinder::class)->getBoundDataBatch();
 
-        return (string) data_get($dataBatch, $this->name) === (string) $value;
+        return in_array((string) $groupValue, array_map('strval', data_get($dataBatch, $this->name, [])), true);
     }
 }

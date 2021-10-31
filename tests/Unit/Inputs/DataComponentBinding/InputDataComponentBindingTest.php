@@ -3,8 +3,6 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataComponentBinding;
 
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\MessageBag;
-use Illuminate\Support\ViewErrorBag;
 use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
@@ -46,11 +44,11 @@ class InputDataComponentBindingTest extends TestCase
     /** @test */
     public function it_can_override_input_form_data_binding_from_component_bound_data(): void
     {
-        $globallyBoundModel = app(User::class)->forceFill(['first_name' => 'Test first name globally bound']);
-        $directBoundModel = app(User::class)->forceFill(['first_name' => 'Test first name directly bound']);
-        app(FormBinder::class)->bindNewDataBatch($globallyBoundModel);
-        $component = app(Input::class, ['name' => 'first_name', 'bind' => $directBoundModel]);
-        self::assertEquals($directBoundModel->first_name, $component->getValue());
+        $formBoundModel = app(User::class)->forceFill(['first_name' => 'Test first name globally bound']);
+        $componentBoundModel = app(User::class)->forceFill(['first_name' => 'Test first name directly bound']);
+        app(FormBinder::class)->bindNewDataBatch($formBoundModel);
+        $component = app(Input::class, ['name' => 'first_name', 'bind' => $componentBoundModel]);
+        self::assertEquals($componentBoundModel->first_name, $component->getValue());
     }
 
     /** @test */

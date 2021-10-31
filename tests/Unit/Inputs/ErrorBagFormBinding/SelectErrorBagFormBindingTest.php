@@ -14,13 +14,13 @@ class SelectErrorBagFormBindingTest extends TestCase
     public function it_can_override_select_form_error_bag_binding_from_component_error_bag(): void
     {
         config()->set('form-components.display_validation_failure', true);
-        $globalMessageBag = app(MessageBag::class)->add('hobby_id', 'Global error test');
+        $globalMessageBag = app(MessageBag::class)->add('hobby_id', 'Form error test');
         $componentMessageBag = app(MessageBag::class)->add('hobby_id', 'Component error test');
-        $errors = app(ViewErrorBag::class)->put('global_error_bag', $globalMessageBag);
+        $errors = app(ViewErrorBag::class)->put('form_error_bag', $globalMessageBag);
         $errors->put('component_error_bag', $componentMessageBag);
         session()->put(compact('errors'));
         $this->executeWebMiddlewareGroup();
-        app(FormBinder::class)->bindErrorBag('global_error_bag');
+        app(FormBinder::class)->bindErrorBag('form_error_bag');
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
             'options' => [1 => 'Music', 2 => 'Travels', 3 => 'Movies', 4 => 'Literature'],

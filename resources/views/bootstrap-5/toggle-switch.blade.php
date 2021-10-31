@@ -1,7 +1,7 @@
 @php
     $id = $getId() ?: $getDefaultId('toggle-switch');
     $label = $getLabel();
-    $checked = $getChecked();
+    $checked = $getSingleModeCheckedStatus();
     $errorMessage = $getErrorMessage($errors);
     $validationClass = $getValidationClass($errors);
     $isWired = $componentIsWired();
