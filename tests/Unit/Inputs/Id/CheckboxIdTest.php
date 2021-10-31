@@ -76,7 +76,7 @@ class CheckboxIdTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_checkboxes_id_in_group_mode(): void
+    public function it_can_set_checkboxes_ids_in_group_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, [
             'name' => 'technologies',
