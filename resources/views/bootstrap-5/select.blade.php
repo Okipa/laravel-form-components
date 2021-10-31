@@ -22,7 +22,7 @@
             <x-form::partials.addon :addon="$prepend"/>
         @endif
         <select {{ $attributes->merge([
-            'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding() ? null : $name,
+            'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasStandardLivewireModelBinding()? $name : null,
             'id' => $id,
             'name' => $isWired ? null : $name . ($multipleMode ? '[]' : null),
             'class' => 'form-select' . ($validationClass ? ' ' . $validationClass : null),

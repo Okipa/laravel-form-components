@@ -44,10 +44,10 @@ class ToggleSwitchDataComponentBindingTest extends TestCase
     /** @test */
     public function it_can_override_toggle_switch_form_data_binding_from_component_bound_data(): void
     {
-        $globallyBoundModel = app(User::class)->forceFill(['active' => false]);
-        $directBoundModel = app(User::class)->forceFill(['active' => true]);
-        app(FormBinder::class)->bindNewDataBatch($globallyBoundModel);
-        $component = app(ToggleSwitch::class, ['name' => 'active', 'bind' => $directBoundModel]);
-        self::assertEquals($directBoundModel->active, $component->getChecked());
+        $formBoundModel = app(User::class)->forceFill(['active' => false]);
+        $componentBoundModel = app(User::class)->forceFill(['active' => true]);
+        app(FormBinder::class)->bindNewDataBatch($formBoundModel);
+        $component = app(ToggleSwitch::class, ['name' => 'active', 'bind' => $componentBoundModel]);
+        self::assertEquals($componentBoundModel->active, $component->getSingleModeCheckedStatus());
     }
 }

@@ -15,7 +15,7 @@ class InputLivewireTest extends TestCase
             componentData: ['name' => 'first_name'],
             attributes: ['wire:model.lazy' => 'first_name']
         );
-        self::assertStringNotContainsString('name="first_name"', $html);
+        self::assertStringNotContainsString('name="', $html);
     }
 
     /** @test */
@@ -27,6 +27,16 @@ class InputLivewireTest extends TestCase
             attributes: ['wire' => 'lazy']
         );
         self::assertStringNotContainsString('value="', $html);
+    }
+
+    /** @test */
+    public function it_cant_define_input_livewire_modifier_by_default(): void
+    {
+        $html = $this->renderComponent(
+            componentClass: Input::class,
+            componentData: ['name' => 'first_name'],
+        );
+        self::assertStringNotContainsString('wire:model', $html);
     }
 
     /** @test */

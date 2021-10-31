@@ -3,8 +3,6 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\DataComponentBinding;
 
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\MessageBag;
-use Illuminate\Support\ViewErrorBag;
 use Okipa\LaravelFormComponents\Components\Textarea;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
@@ -46,11 +44,11 @@ class TextareaDataComponentBindingTest extends TestCase
     /** @test */
     public function it_can_override_textarea_form_data_binding_from_component_bound_data(): void
     {
-        $globallyBoundModel = app(User::class)->forceFill(['description' => 'Test description bound']);
-        $directBoundModel = app(User::class)->forceFill(['description' => 'Test description component']);
-        app(FormBinder::class)->bindNewDataBatch($globallyBoundModel);
-        $component = app(Textarea::class, ['name' => 'description', 'bind' => $directBoundModel]);
-        self::assertEquals($directBoundModel->description, $component->getValue());
+        $formBoundModel = app(User::class)->forceFill(['description' => 'Test description bound']);
+        $componentBoundModel = app(User::class)->forceFill(['description' => 'Test description component']);
+        app(FormBinder::class)->bindNewDataBatch($formBoundModel);
+        $component = app(Textarea::class, ['name' => 'description', 'bind' => $componentBoundModel]);
+        self::assertEquals($componentBoundModel->description, $component->getValue());
     }
 
     /** @test */

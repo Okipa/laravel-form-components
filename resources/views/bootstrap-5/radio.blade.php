@@ -1,29 +1,29 @@
 @php
     $validationClass = $getValidationClass($errors);
+    $errorMessage = $getErrorMessage($errors);
+    $captionId = $getId() ?: $getDefaultId('radio');
+    $isWired = $componentIsWired();
 @endphp
 <div @class(['mb-3' => $marginBottom, $validationClass => $validationClass])>
     <div>
         <x-form::partials.label class="form-label" :label="$getLabel()"/>
     </div>
-    @foreach($group as $value => $label)
+    @foreach($group as $groupValue => $groupLabel)
         @php
-            $radioId = $getId(suffix: $value) ?: $getDefaultId(prefix: 'radio', suffix: $value);
-            $captionId = $getId() ?: $getDefaultId('radio');
-            $checked = $getChecked($value);
-            $errorMessage = $getErrorMessage($errors);
-            $isWired = $componentIsWired();
+            $radioId = $getId(suffix: $groupValue) ?: $getDefaultId(prefix: 'radio', suffix: $groupValue);
+            $checked = $getGroupModeCheckedStatus($groupValue);
         @endphp
         <div @class(['form-check', 'form-check-inline' => $inline])>
             <input {{ $attributes->merge([
-                'wire:model' . $getComponentLivewireModifier() => $hasStandardLivewireModelBinding() ? null : $name,
+                'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasStandardLivewireModelBinding() ? $name : null,
                 'id' => $radioId,
                 'class' => 'form-check-input',
                 'name' => $isWired ? null : $name,
-                'value' => $value,
+                'value' => $groupValue,
                 'aria-describedby' => $caption ? $captionId . '-caption' : null,
                 'checked' => $isWired ? null : $checked
             ]) }} type="radio">
-            <x-form::partials.label :id="$radioId" class="form-check-label" :label="$label"/>
+            <x-form::partials.label :id="$radioId" class="form-check-label" :label="$groupLabel"/>
         </div>
     @endforeach
     <x-form::partials.caption :inputId="$captionId" :caption="$caption"/>

@@ -38,7 +38,7 @@ class Radio extends AbstractComponent
         parent::__construct();
     }
 
-    public function getChecked(int|string $value): bool
+    public function getGroupModeCheckedStatus(int|string $value): bool
     {
         if (old($this->name)) {
             return (string) old($this->name) === (string) $value;

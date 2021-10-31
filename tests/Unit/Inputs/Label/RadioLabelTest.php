@@ -14,7 +14,10 @@ class RadioLabelTest extends TestCase
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
-        self::assertStringContainsString('<label class="form-label">validation.attributes.gender</label>', $html);
+        self::assertEquals(
+            1,
+            substr_count($html, '<label class="form-label">validation.attributes.gender</label>')
+        );
     }
 
     /** @test */

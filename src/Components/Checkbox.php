@@ -22,10 +22,11 @@ class Checkbox extends AbstractComponent
     /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(
         public string $name,
+        public array $group = [null],
         protected string|null $id = null,
         protected array|object|null $bind = null,
         protected string|false|null $label = null,
-        protected bool|null $checked = null,
+        protected bool|array|null $checked = null,
         public string|null $caption = null,
         protected bool|null $displayValidationSuccess = null,
         protected bool|null $displayValidationFailure = null,
