@@ -51,7 +51,7 @@ class CheckboxLabelTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_radio_labels_in_group_mode(): void
+    public function it_can_set_checkboxes_labels_in_group_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, [
             'name' => 'technologies',
