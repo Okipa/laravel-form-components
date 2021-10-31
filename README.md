@@ -171,7 +171,7 @@ Auto generate options by providing an associative value/label array.
 
 HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option: a selected, disabled and hidden option that is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
 
-Easily switch between single and multiple mode, this package takes care about converting the name into an array name if it has not been manually added.
+In multiple mode, this package will take care about converting the name into an array name, so you don't to add it manually.
 
 ```Blade
 @php($options = [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'])
@@ -185,7 +185,9 @@ Checkbox, toggle switch and radio components are available for you to use.
 
 Because radio inputs are never used alone, you'll have to declare a required `group` attribute when using them, awaiting a value/label associative array from which the radio fields will be generated.
 
-Regarding checkbox and toggle switch inputs, you can use them in single or in group mode. To use them in group mode, you'll have to declare an (optional) `group` attribute too. Their name will automatically be converted into array name.
+Regarding checkbox and toggle switch inputs, you will be able to use them in single or in group mode. To use them in group mode, you'll have to declare a `group` attribute too.
+
+In group mode, this package will take care about converting the name into array names, so you don't have to add it manually.
 
 If you want to display these input components inline, just define an `inline` attribute.
 
