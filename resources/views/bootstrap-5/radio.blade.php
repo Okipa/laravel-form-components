@@ -1,5 +1,8 @@
 @php
     $validationClass = $getValidationClass($errors);
+    $errorMessage = $getErrorMessage($errors);
+    $captionId = $getId() ?: $getDefaultId('radio');
+    $isWired = $componentIsWired();
 @endphp
 <div @class(['mb-3' => $marginBottom, $validationClass => $validationClass])>
     <div>
@@ -8,10 +11,7 @@
     @foreach($group as $groupValue => $groupLabel)
         @php
             $radioId = $getId(suffix: $groupValue) ?: $getDefaultId(prefix: 'radio', suffix: $groupValue);
-            $captionId = $getId() ?: $getDefaultId('radio');
             $checked = $getGroupModeCheckedStatus($groupValue);
-            $errorMessage = $getErrorMessage($errors);
-            $isWired = $componentIsWired();
         @endphp
         <div @class(['form-check', 'form-check-inline' => $inline])>
             <input {{ $attributes->merge([

@@ -34,4 +34,37 @@ class CheckboxLabelTest extends TestCase
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'label' => false]);
         self::assertStringNotContainsString('<label', $html);
     }
+
+    /** @test */
+    public function it_can_set_checkboxes_group_label_in_group_mode(): void
+    {
+        $html = $this->renderComponent(Checkbox::class, [
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
+        ]);
+        self::assertStringContainsString('<label class="form-label">validation.attributes.technologies</label>', $html);
+    }
+
+    /** @test */
+    public function it_can_set_radio_labels_in_group_mode(): void
+    {
+        $html = $this->renderComponent(Checkbox::class, [
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
+        ]);
+        self::assertStringContainsString(' class="form-check-label">Laravel</label>', $html);
+        self::assertStringContainsString(' class="form-check-label">Bootstrap</label>', $html);
+        self::assertStringContainsString(' class="form-check-label">Tailwind</label>', $html);
+        self::assertStringContainsString(' class="form-check-label">Livewire</label>', $html);
+    }
 }

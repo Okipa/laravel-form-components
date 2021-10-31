@@ -19,9 +19,9 @@ trait CanBeChecked
 
     public function getGroupModeCheckedStatus(int|string $groupValue): bool
     {
-//        if (old($this->name)) {
-//            return (string) old($this->name) === (string) $value;
-//        }
+        if (old($this->name)) {
+            return in_array((string) $groupValue, array_map('strval', old($this->name)), true);
+        }
         if ($this->checked) {
             return in_array((string) $groupValue, array_map('strval', $this->checked), true);
         }

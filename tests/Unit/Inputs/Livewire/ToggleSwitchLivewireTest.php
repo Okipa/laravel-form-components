@@ -15,7 +15,7 @@ class ToggleSwitchLivewireTest extends TestCase
             componentData: ['name' => 'active'],
             attributes: ['wire:model.lazy' => 'active']
         );
-        self::assertStringNotContainsString('name="active"', $html);
+        self::assertStringNotContainsString('name="', $html);
     }
 
     /** @test */
@@ -27,6 +27,16 @@ class ToggleSwitchLivewireTest extends TestCase
             attributes: ['wire' => 'lazy']
         );
         self::assertStringNotContainsString('value="', $html);
+    }
+
+    /** @test */
+    public function it_cant_define_checkbox_livewire_modifier_by_default(): void
+    {
+        $html = $this->renderComponent(
+            componentClass: ToggleSwitch::class,
+            componentData: ['name' => 'active'],
+        );
+        self::assertStringNotContainsString('wire:model', $html);
     }
 
     /** @test */

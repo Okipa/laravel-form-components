@@ -18,7 +18,20 @@ class SelectLivewireTest extends TestCase
             ],
             attributes: ['wire:model.lazy' => 'hobby_id']
         );
-        self::assertStringNotContainsString('name="hobby_id"', $html);
+        self::assertStringNotContainsString('name="', $html);
+    }
+
+    /** @test */
+    public function it_cant_define_select_livewire_modifier_by_default(): void
+    {
+        $html = $this->renderComponent(
+            componentClass: Select::class,
+            componentData: [
+                'name' => 'hobby_id',
+                'options' => [],
+            ],
+        );
+        self::assertStringNotContainsString('wire:model', $html);
     }
 
     /** @test */

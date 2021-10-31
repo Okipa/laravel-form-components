@@ -19,17 +19,22 @@ class CheckboxIdTest extends TestCase
     public function it_can_setup_checkboxes_default_id_when_none_is_defined_in_group_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
         ]);
-        self::assertStringContainsString(' id="checkbox-hobbies-1"', $html);
-        self::assertStringContainsString(' for="checkbox-hobbies-1"', $html);
-        self::assertStringContainsString(' id="checkbox-hobbies-2"', $html);
-        self::assertStringContainsString(' for="checkbox-hobbies-2"', $html);
-        self::assertStringContainsString(' id="checkbox-hobbies-3"', $html);
-        self::assertStringContainsString(' for="checkbox-hobbies-3"', $html);
-        self::assertStringContainsString(' id="checkbox-hobbies-4"', $html);
-        self::assertStringContainsString(' for="checkbox-hobbies-4"', $html);
+        self::assertStringContainsString(' id="checkbox-technologies-laravel"', $html);
+        self::assertStringContainsString(' for="checkbox-technologies-laravel"', $html);
+        self::assertStringContainsString(' id="checkbox-technologies-bootstrap"', $html);
+        self::assertStringContainsString(' for="checkbox-technologies-bootstrap"', $html);
+        self::assertStringContainsString(' id="checkbox-technologies-tailwind"', $html);
+        self::assertStringContainsString(' for="checkbox-technologies-tailwind"', $html);
+        self::assertStringContainsString(' id="checkbox-technologies-livewire"', $html);
+        self::assertStringContainsString(' for="checkbox-technologies-livewire"', $html);
     }
 
     /** @test */
@@ -44,17 +49,22 @@ class CheckboxIdTest extends TestCase
     public function it_can_setup_checkboxes_default_id_with_array_name_when_none_is_defined_in_group_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies[0]',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies[0]',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
         ]);
-        self::assertStringContainsString(' id="checkbox-hobbies-0-1"', $html);
-        self::assertStringContainsString(' for="checkbox-hobbies-0-1"', $html);
-        self::assertStringContainsString(' id="checkbox-hobbies-0-2"', $html);
-        self::assertStringContainsString(' for="checkbox-hobbies-0-2"', $html);
-        self::assertStringContainsString(' id="checkbox-hobbies-0-3"', $html);
-        self::assertStringContainsString(' for="checkbox-hobbies-0-3"', $html);
-        self::assertStringContainsString(' id="checkbox-hobbies-0-4"', $html);
-        self::assertStringContainsString(' for="checkbox-hobbies-0-4"', $html);
+        self::assertStringContainsString(' id="checkbox-technologies-0-laravel"', $html);
+        self::assertStringContainsString(' for="checkbox-technologies-0-laravel"', $html);
+        self::assertStringContainsString(' id="checkbox-technologies-0-bootstrap"', $html);
+        self::assertStringContainsString(' for="checkbox-technologies-0-bootstrap"', $html);
+        self::assertStringContainsString(' id="checkbox-technologies-0-tailwind"', $html);
+        self::assertStringContainsString(' for="checkbox-technologies-0-tailwind"', $html);
+        self::assertStringContainsString(' id="checkbox-technologies-0-livewire"', $html);
+        self::assertStringContainsString(' for="checkbox-technologies-0-livewire"', $html);
     }
 
     /** @test */
@@ -69,17 +79,22 @@ class CheckboxIdTest extends TestCase
     public function it_can_set_checkboxes_id_in_group_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
             'id' => 'test-id',
         ]);
-        self::assertStringContainsString(' id="test-id-1"', $html);
-        self::assertStringContainsString(' for="test-id-1"', $html);
-        self::assertStringContainsString(' id="test-id-2"', $html);
-        self::assertStringContainsString(' for="test-id-2"', $html);
-        self::assertStringContainsString(' id="test-id-3"', $html);
-        self::assertStringContainsString(' for="test-id-3"', $html);
-        self::assertStringContainsString(' id="test-id-4"', $html);
-        self::assertStringContainsString(' for="test-id-4"', $html);
+        self::assertStringContainsString(' id="test-id-laravel"', $html);
+        self::assertStringContainsString(' for="test-id-laravel"', $html);
+        self::assertStringContainsString(' id="test-id-bootstrap"', $html);
+        self::assertStringContainsString(' for="test-id-bootstrap"', $html);
+        self::assertStringContainsString(' id="test-id-tailwind"', $html);
+        self::assertStringContainsString(' for="test-id-tailwind"', $html);
+        self::assertStringContainsString(' id="test-id-livewire"', $html);
+        self::assertStringContainsString(' for="test-id-livewire"', $html);
     }
 }

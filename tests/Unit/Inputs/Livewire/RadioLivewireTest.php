@@ -18,7 +18,20 @@ class RadioLivewireTest extends TestCase
             ],
             attributes: ['wire:model.lazy' => 'gender']
         );
-        self::assertStringNotContainsString(' name="gender"', $html);
+        self::assertStringNotContainsString(' name="', $html);
+    }
+
+    /** @test */
+    public function it_cant_define_radio_livewire_modifier_by_default_in_group_mode(): void
+    {
+        $html = $this->renderComponent(
+            componentClass: Radio::class,
+            componentData: [
+                'name' => 'gender',
+                'group' => [1 => 'Male', 2 => 'Female'],
+            ],
+        );
+        self::assertStringNotContainsString('wire:model', $html);
     }
 
     /** @test */

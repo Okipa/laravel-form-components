@@ -21,25 +21,25 @@ class CheckboxCheckedTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_checkboxes_checked_from_int_and_override_bound_model_value_in_group_mode(): void
+    public function it_can_set_checkboxes_checked_status_from_int_and_override_bound_model_value_in_group_mode(): void
     {
-        $user = app(User::class)->forceFill(['hobbies' => [1, 4]]);
+        $user = app(User::class)->forceFill(['technologies' => [1, 4]]);
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
+            'name' => 'technologies',
             'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
             'bind' => $user,
             'checked' => ['2', 3],
         ]);
-        self::assertStringContainsString(' name="hobbies[2]" checked="checked"', $html);
-        self::assertStringContainsString(' name="hobbies[3]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[2]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[3]" checked="checked"', $html);
     }
 
     /** @test */
-    public function it_can_set_checkboxes_checked_from_string_and_override_bound_model_value_in_group_mode(): void
+    public function it_can_set_checkboxes_checked_status_from_string_and_override_bound_model_value_in_group_mode(): void
     {
-        $user = app(User::class)->forceFill(['hobbies' => ['laravel', 'tailwind']]);
+        $user = app(User::class)->forceFill(['technologies' => ['laravel', 'tailwind']]);
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
+            'name' => 'technologies',
             'group' => [
                 'laravel' => 'Laravel',
                 'bootstrap' => 'Bootstrap',
@@ -49,8 +49,8 @@ class CheckboxCheckedTest extends TestCase
             'bind' => $user,
             'checked' => ['bootstrap', 'livewire'],
         ]);
-        self::assertStringContainsString(' name="hobbies[bootstrap]" checked="checked"', $html);
-        self::assertStringContainsString(' name="hobbies[livewire]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[bootstrap]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
     }
 
     /** @test */
@@ -68,10 +68,15 @@ class CheckboxCheckedTest extends TestCase
     /** @test */
     public function it_can_set_checkboxes_unchecked_and_override_bound_model_value_in_group_mode(): void
     {
-        $user = app(User::class)->forceFill(['hobbies' => [1, 4]]);
+        $user = app(User::class)->forceFill(['technologies' => ['laravel', 'livewire']]);
         $html = $this->renderComponent(Checkbox::class, [
             'name' => 'active',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
             'bind' => $user,
             'checked' => [],
         ]);

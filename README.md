@@ -51,8 +51,8 @@ Just call the components you need in your views and let this package take care o
     <x-form::input name="name"/>
     <x-form::input type="email" name="email"/>
     <x-form::textarea name="biography" :locale="['fr', 'en]"/>
-    <x-form::select name="technologies" :options="[1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire']" multiple/>
-    <x-form::checkbox name="hobbies" :group="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']"/>
+    <x-form::select name="hobbies" :options="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']" multiple/>
+    <x-form::checkbox name="technologies" :group="[1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire']"/>
     <x-form::radio name="gender" :group="[1 => 'Male', 2 => 'Female']"/>
     <x-form::toggle-switch name="active"/>
     <x-form::button.submit/>
@@ -175,7 +175,7 @@ Easily switch between single and multiple mode, this package takes care about co
 
 ```Blade
 @php($options = [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'])
-<x-form::select name="hobbies" placeholder="What is your hobby prefered hobby?" :options="$options" selected="1"/>
+<x-form::select name="hobby" placeholder="What is your hobby prefered hobby?" :options="$options" selected="1"/>
 <x-form::select name="hobbies" :hidePlaceholder="true" :options="$options" :selected="[2, 3]" multiple/> {{-- The name will be converted to hobbies[] --}}
 ```
 
@@ -185,16 +185,16 @@ Checkbox, toggle switch and radio components are available for you to use.
 
 Because radio inputs are never used alone, you'll have to declare a required `group` attribute when using them, awaiting a value/label associative array from which the radio fields will be generated.
 
-Regarding checkbox and toggle switch inputs, you can use them in single or in group mode. To use them with in group mode, you'll have to declare an (optional) `group` attribute too.
+Regarding checkbox and toggle switch inputs, you can use them in single or in group mode. To use them in group mode, you'll have to declare an (optional) `group` attribute too. Their name will automatically be converted into array name.
 
 If you want to display these input components inline, just define an `inline` attribute.
 
 ```Blade
-<x-form::checkbox name="newsletter_subscription" :checked="true"/> {{-- 1 checkbox generated --}}
-<x-form::checkbox name="hobbies" :group="[1 => 'Sport', 2 => 'Cinema']" :checked="2"/> {{-- 2 checkboxes generated --}}
-<x-form::switch name="active" :checked="false" inline/> {{-- 1 toggle switch generated with inline mode --}}
-<x-form::switch name="hobbies" :group="['sport' => 'Sport', 'cinema" => 'Cinema']" :checked="sport"/> {{-- 2 toggle switches generated --}}
-<x-form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male" inline/> {{-- 2 radio radio generated with inline mode --}}
+<x-form::checkbox name="newsletter_subscription" :checked="true"/> {{-- 1 generated checkbox --}}
+<x-form::checkbox name="technologies" :group="['laravel' => 'Laravel', 'bootstrap' => 'Bootstrap']" :checked="laravel"/> {{-- 2 generated checkboxes --}}
+<x-form::switch name="active" :checked="false" inline/> {{-- 1 generated toggle switch with inline mode --}}
+<x-form::switch name="technologies" :group="['tailwind' => 'Tailwind', 'livewire" => 'Livewire']" :checked="livewire"/> {{-- 2 generated toggle switches --}}
+<x-form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male" inline/> {{-- 2 generated radios with inline mode --}}
 ```
 
 ### Buttons

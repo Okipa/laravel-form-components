@@ -20,14 +20,19 @@ class CheckboxDataComponentBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_checkboxes_checked_status_from_component_bound_model_in_group_mode(): void
     {
-        $user = app(User::class)->forceFill(['hobbies' => [1, 4]]);
+        $user = app(User::class)->forceFill(['technologies' => ['laravel', 'livewire']]);
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
             'bind' => $user,
         ]);
-        self::assertStringContainsString(' name="hobbies[1]" checked="checked"', $html);
-        self::assertStringContainsString(' name="hobbies[4]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
     }
 
     /** @test */
@@ -41,14 +46,19 @@ class CheckboxDataComponentBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_checkboxes_checked_status_from_component_bound_array_in_group_mode(): void
     {
-        $user = ['hobbies' => [1, 4]];
+        $user = ['technologies' => ['laravel', 'livewire']];
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
             'bind' => $user,
         ]);
-        self::assertStringContainsString(' name="hobbies[1]" checked="checked"', $html);
-        self::assertStringContainsString(' name="hobbies[4]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
     }
 
     /** @test */
@@ -62,14 +72,19 @@ class CheckboxDataComponentBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_checkboxes_checked_status_from_component_bound_collection_in_group_mode(): void
     {
-        $user = collect(['hobbies' => [1, 4]]);
+        $user = collect(['technologies' => ['laravel', 'livewire']]);
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
             'bind' => $user,
         ]);
-        self::assertStringContainsString(' name="hobbies[1]" checked="checked"', $html);
-        self::assertStringContainsString(' name="hobbies[4]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
     }
 
     /** @test */
@@ -83,14 +98,19 @@ class CheckboxDataComponentBindingTest extends TestCase
     /** @test */
     public function it_can_retrieve_checkboxes_checked_status_from_component_bound_object_in_group_mode(): void
     {
-        $user = (object) ['hobbies' => [1, 4]];
+        $user = (object) ['technologies' => ['laravel', 'livewire']];
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
             'bind' => $user,
         ]);
-        self::assertStringContainsString(' name="hobbies[1]" checked="checked"', $html);
-        self::assertStringContainsString(' name="hobbies[4]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
     }
 
     /** @test */
@@ -104,17 +124,35 @@ class CheckboxDataComponentBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_override_checkbox_form_data_binding_from_component_bound_data_in_group_mode(): void
+    public function it_can_override_checkboxes_form_data_binding_from_component_bound_data_in_group_mode(): void
     {
-        $formBoundModel = app(User::class)->forceFill(['hobbies' => [1, 4]]);
-        $componentBoundModel = app(User::class)->forceFill(['hobbies' => [2, 3]]);
+        $formBoundModel = app(User::class)->forceFill(['technologies' => ['laravel', 'livewire']]);
+        $componentBoundModel = app(User::class)->forceFill(['technologies' => ['bootstrap', 'tailwind']]);
         app(FormBinder::class)->bindNewDataBatch($formBoundModel);
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
             'bind' => $componentBoundModel,
         ]);
-        self::assertStringContainsString(' name="hobbies[2]" checked="checked"', $html);
-        self::assertStringContainsString(' name="hobbies[3]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[bootstrap]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[tailwind]" checked="checked"', $html);
+    }
+
+    /** @test */
+    public function it_can_retrieve_checkboxes_checked_status_from_component_bound_int_in_group_mode(): void
+    {
+        $bind = app(User::class)->forceFill(['technologies' => ['1', 4]]);
+        $html = $this->renderComponent(Checkbox::class, [
+            'name' => 'technologies',
+            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'bind' => $bind,
+        ]);
+        self::assertStringContainsString(' name="technologies[1]" checked="checked"', $html);
+        self::assertStringContainsString(' name="technologies[4]" checked="checked"', $html);
     }
 }

@@ -20,17 +20,22 @@ class CheckboxCaptionTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_radio_group_caption_in_group_mode(): void
+    public function it_can_set_checkboxes_group_caption_in_group_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, [
-            'name' => 'hobbies',
-            'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
             'caption' => 'Test caption',
         ]);
-        self::assertEquals(4, substr_count($html, ' aria-describedby="checkbox-hobbies-caption"'));
+        self::assertEquals(4, substr_count($html, ' aria-describedby="checkbox-technologies-caption"'));
         self::assertEquals(
             1,
-            substr_count($html, '<div id="checkbox-hobbies-caption" class="form-text">Test caption</div>')
+            substr_count($html, '<div id="checkbox-technologies-caption" class="form-text">Test caption</div>')
         );
     }
 }
