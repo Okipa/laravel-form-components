@@ -50,12 +50,13 @@ Just call the components you need in your views and let this package take care o
     <x-form::input type="file" name="avatar" caption="Accepted types: jpg, png and webp."/>
     <x-form::input name="name"/>
     <x-form::input type="email" name="email"/>
-    <x-form::textarea name="biography" :locale="['fr', 'en]"/>
+    <x-form::textarea name="biography" :locales="['fr', 'en']"/>
     <x-form::select name="hobbies" :options="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']" multiple/>
-    <x-form::checkbox name="technologies" :group="[1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire']"/>
-    <x-form::radio name="gender" :group="[1 => 'Male', 2 => 'Female']"/>
+    <x-form::checkbox name="technologies" :group="[1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire']" inline/>
+    <x-form::radio name="gender" :group="[1 => 'Male', 2 => 'Female']" inline/>
     <x-form::toggle-switch name="active"/>
     <x-form::button.submit/>
+    <x-form::button.link class="btn-secondary ms-3">{{ __('Cancel') }}</x-form::button.link>
 </x-form:form>
 ```
 
