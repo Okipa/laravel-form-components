@@ -8,24 +8,27 @@ trait CanBeWired
 {
     public function componentIsWired(): bool
     {
-        return $this->getFormLivewireModifier()
-            || $this->hasStandardLivewireModelBinding()
-            || $this->getComponentLivewireModifier();
+        return $this->hasFormLivewireBinding()
+            || $this->hasComponentNativeLivewireModelBinding()
+            || $this->hasComponentPackageLivewireBinding();
     }
 
-    protected function getFormLivewireModifier(): string
+    protected function hasFormLivewireBinding(): bool
     {
-        $formLivewireModifier = app(FormBinder::class)->getBoundLivewireModifer();
-
-        return $formLivewireModifier ? '.' . $formLivewireModifier : '';
+        return null !== app(FormBinder::class)->getBoundLivewireModifer();
     }
 
-    public function hasStandardLivewireModelBinding(): bool
+    public function hasComponentNativeLivewireModelBinding(): bool
     {
         return (bool) $this->attributes->whereStartsWith('wire:model')->first();
     }
 
-    public function getComponentLivewireModifier()
+    protected function hasComponentPackageLivewireBinding(): bool
+    {
+        return $this->attributes->has('wire');
+    }
+
+    public function getComponentLivewireModifier(): string
     {
         $hasComponentLivewireModelModifier = $this->attributes->has('wire');
         $componentLivewireModelModifierAttribute = $this->attributes->get('wire');
@@ -34,5 +37,12 @@ trait CanBeWired
             : '';
 
         return $hasComponentLivewireModelModifier ? $componentLivewireModelModifier : $this->getFormLivewireModifier();
+    }
+
+    protected function getFormLivewireModifier(): string
+    {
+        $formLivewireModifier = app(FormBinder::class)->getBoundLivewireModifer();
+
+        return $formLivewireModifier ? '.' . $formLivewireModifier : '';
     }
 }
