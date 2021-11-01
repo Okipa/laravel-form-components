@@ -32,8 +32,8 @@ class ToggleSwitchDataComponentBindingTest extends TestCase
             ],
             'bind' => $user,
         ]);
-        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
+        self::assertStringContainsString(' value="laravel" checked="checked"', $html);
+        self::assertStringContainsString(' value="livewire" checked="checked"', $html);
     }
 
     /** @test */
@@ -58,8 +58,8 @@ class ToggleSwitchDataComponentBindingTest extends TestCase
             ],
             'bind' => $user,
         ]);
-        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
+        self::assertStringContainsString(' value="laravel" checked="checked"', $html);
+        self::assertStringContainsString(' value="livewire" checked="checked"', $html);
     }
 
     /** @test */
@@ -84,8 +84,8 @@ class ToggleSwitchDataComponentBindingTest extends TestCase
             ],
             'bind' => $user,
         ]);
-        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
+        self::assertStringContainsString(' value="laravel" checked="checked"', $html);
+        self::assertStringContainsString(' value="livewire" checked="checked"', $html);
     }
 
     /** @test */
@@ -110,8 +110,8 @@ class ToggleSwitchDataComponentBindingTest extends TestCase
             ],
             'bind' => $user,
         ]);
-        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
+        self::assertStringContainsString(' value="laravel" checked="checked"', $html);
+        self::assertStringContainsString(' value="livewire" checked="checked"', $html);
     }
 
     /** @test */
@@ -140,8 +140,8 @@ class ToggleSwitchDataComponentBindingTest extends TestCase
             ],
             'bind' => $componentBoundModel,
         ]);
-        self::assertStringContainsString(' name="technologies[bootstrap]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[tailwind]" checked="checked"', $html);
+        self::assertStringContainsString(' value="bootstrap" checked="checked"', $html);
+        self::assertStringContainsString(' value="tailwind" checked="checked"', $html);
     }
 
     /** @test */
@@ -153,7 +153,7 @@ class ToggleSwitchDataComponentBindingTest extends TestCase
             'group' => [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'],
             'bind' => $bind,
         ]);
-        self::assertStringContainsString(' name="technologies[1]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[4]" checked="checked"', $html);
+        self::assertStringContainsString(' value="1" checked="checked"', $html);
+        self::assertStringContainsString(' value="4" checked="checked"', $html);
     }
 }

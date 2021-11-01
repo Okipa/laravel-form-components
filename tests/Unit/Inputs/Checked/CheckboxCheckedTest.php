@@ -30,8 +30,8 @@ class CheckboxCheckedTest extends TestCase
             'bind' => $user,
             'checked' => ['2', 3],
         ]);
-        self::assertStringContainsString(' name="technologies[2]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[3]" checked="checked"', $html);
+        self::assertStringContainsString(' value="2" checked="checked"', $html);
+        self::assertStringContainsString(' value="3" checked="checked"', $html);
     }
 
     /** @test */
@@ -49,8 +49,8 @@ class CheckboxCheckedTest extends TestCase
             'bind' => $user,
             'checked' => ['bootstrap', 'livewire'],
         ]);
-        self::assertStringContainsString(' name="technologies[bootstrap]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
+        self::assertStringContainsString(' value="bootstrap" checked="checked"', $html);
+        self::assertStringContainsString(' value="livewire" checked="checked"', $html);
     }
 
     /** @test */

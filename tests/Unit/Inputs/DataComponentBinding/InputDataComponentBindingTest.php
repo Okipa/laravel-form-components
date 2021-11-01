@@ -65,8 +65,8 @@ class InputDataComponentBindingTest extends TestCase
             'bind' => $bind,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertStringContainsString('value="Test first name FR"', $html);
-        self::assertStringContainsString('value="Test first name EN"', $html);
+        self::assertStringContainsString(' value="Test first name FR"', $html);
+        self::assertStringContainsString(' value="Test first name EN"', $html);
     }
 
     /** @test */
@@ -78,8 +78,8 @@ class InputDataComponentBindingTest extends TestCase
             'bind' => $bind,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertStringContainsString('value="Test first name FR"', $html);
-        self::assertStringContainsString('value="Test first name EN"', $html);
+        self::assertStringContainsString(' value="Test first name FR"', $html);
+        self::assertStringContainsString(' value="Test first name EN"', $html);
     }
 
     /** @test */
@@ -91,8 +91,8 @@ class InputDataComponentBindingTest extends TestCase
             'bind' => $bind,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertStringContainsString('value="Test first name FR"', $html);
-        self::assertStringContainsString('value="Test first name EN"', $html);
+        self::assertStringContainsString(' value="Test first name FR"', $html);
+        self::assertStringContainsString(' value="Test first name EN"', $html);
     }
 
     /** @test */
@@ -104,8 +104,8 @@ class InputDataComponentBindingTest extends TestCase
             'bind' => $bind,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertStringContainsString('value="Test first name FR"', $html);
-        self::assertStringContainsString('value="Test first name EN"', $html);
+        self::assertStringContainsString(' value="Test first name FR"', $html);
+        self::assertStringContainsString(' value="Test first name EN"', $html);
     }
 
     /** @test */
@@ -117,8 +117,8 @@ class InputDataComponentBindingTest extends TestCase
             'bind' => $bind,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertStringContainsString('value="Test first name FR"', $html);
-        self::assertStringContainsString('value=""', $html);
+        self::assertStringContainsString(' value="Test first name FR"', $html);
+        self::assertStringContainsString(' value=""', $html);
     }
 
     /** @test */
@@ -130,8 +130,8 @@ class InputDataComponentBindingTest extends TestCase
             'bind' => $bind,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertStringContainsString('value="Test first name FR"', $html);
-        self::assertStringContainsString('value=""', $html);
+        self::assertStringContainsString(' value="Test first name FR"', $html);
+        self::assertStringContainsString(' value=""', $html);
     }
 
     /** @test */
@@ -143,8 +143,8 @@ class InputDataComponentBindingTest extends TestCase
             'bind' => $bind,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertStringContainsString('value="Test first name FR"', $html);
-        self::assertStringContainsString('value=""', $html);
+        self::assertStringContainsString(' value="Test first name FR"', $html);
+        self::assertStringContainsString(' value=""', $html);
     }
 
     /** @test */
@@ -156,7 +156,7 @@ class InputDataComponentBindingTest extends TestCase
             'bind' => $bind,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertStringContainsString('value="Test first name FR"', $html);
-        self::assertStringContainsString('value=""', $html);
+        self::assertStringContainsString(' value="Test first name FR"', $html);
+        self::assertStringContainsString(' value=""', $html);
     }
 }

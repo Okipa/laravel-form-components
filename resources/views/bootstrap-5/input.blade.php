@@ -30,8 +30,8 @@
                 'name' => $isWired ? null : ($locale ? $name . '[' . $locale . ']' : $name),
                 'placeholder' => $placeholder,
                 'data-locale' => $locale,
-                'aria-describedby' => $caption ? $id . '-caption' : null,
                 'value' => $isWired ? null : ($value ?? ''),
+                'aria-describedby' => $caption ? $id . '-caption' : null,
             ]) }}/>
             @if(! $prepend && ! $append && $displayFloatingLabel)
                 <x-form::partials.label :id="$id" class="form-label" :label="$label"/>

@@ -39,8 +39,8 @@ class ToggleSwitchOldValueTest extends TestCase
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertStringContainsString(' name="technologies[laravel]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[livewire]" checked="checked"', $html);
+        self::assertStringContainsString(' value="laravel" checked="checked"', $html);
+        self::assertStringContainsString(' value="livewire" checked="checked"', $html);
     }
 
     /** @test */
@@ -75,7 +75,7 @@ class ToggleSwitchOldValueTest extends TestCase
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertStringContainsString(' name="technologies[0][laravel]" checked="checked"', $html);
-        self::assertStringContainsString(' name="technologies[0][livewire]" checked="checked"', $html);
+        self::assertStringContainsString(' value="laravel" checked="checked"', $html);
+        self::assertStringContainsString(' value="livewire" checked="checked"', $html);
     }
 }

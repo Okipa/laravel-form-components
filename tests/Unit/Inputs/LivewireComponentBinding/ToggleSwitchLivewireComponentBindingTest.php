@@ -27,7 +27,7 @@ class ToggleSwitchLivewireComponentBindingTest extends TestCase
             componentData: ['name' => 'active'],
             attributes: ['wire' => 'lazy']
         );
-        self::assertStringNotContainsString('value="', $html);
+        self::assertStringNotContainsString(' value="', $html);
     }
 
     /** @test */
