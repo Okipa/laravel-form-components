@@ -26,6 +26,6 @@ class ToggleSwitchNameTest extends TestCase
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertEquals(4, substr_count($html, ' name="technologies"'));
+        self::assertEquals(4, substr_count($html, ' name="technologies[]"'));
     }
 }
