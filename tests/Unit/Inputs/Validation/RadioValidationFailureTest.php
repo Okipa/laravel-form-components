@@ -41,7 +41,7 @@ class RadioValidationFailureTest extends TestCase
             'displayValidationFailure' => true,
         ]);
         self::assertEquals(1, substr_count($html, ' is-invalid'));
-        self::assertEquals(1, substr_count($html, '<div class="invalid-feedback">Error test</div>'));
+        self::assertEquals(1, substr_count($html, '<div class="invalid-feedback d-block">Error test</div>'));
     }
 
     /** @test */
@@ -75,7 +75,7 @@ class RadioValidationFailureTest extends TestCase
             'displayValidationFailure' => true,
         ]);
         self::assertStringContainsString(' is-invalid', $html);
-        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+        self::assertStringContainsString('<div class="invalid-feedback d-block">Error test</div>', $html);
     }
 
     /** @test */
@@ -93,6 +93,6 @@ class RadioValidationFailureTest extends TestCase
             'errorBag' => 'test_error_bag',
         ]);
         self::assertStringContainsString(' is-invalid', $html);
-        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+        self::assertStringContainsString('<div class="invalid-feedback d-block">Error test</div>', $html);
     }
 }

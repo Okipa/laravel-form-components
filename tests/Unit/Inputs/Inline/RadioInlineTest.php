@@ -8,7 +8,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class RadioInlineTest extends TestCase
 {
     /** @test */
-    public function it_can_set_radio_vertical_mode_by_default_in_group_mode(): void
+    public function it_can_set_radio_stacked_mode_by_default_in_group_mode(): void
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',
@@ -18,7 +18,7 @@ class RadioInlineTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_radio_inline_mode_in_group_mode(): void
+    public function it_can_set_radio_inlined_mode_in_group_mode(): void
     {
         $html = $this->renderComponent(Radio::class, [
             'name' => 'gender',

@@ -8,7 +8,7 @@
     $isWired = $componentIsWired();
 @endphp
 @if($groupMode)
-    <div @class(['mb-3' => $marginBottom, $validationClass => $validationClass])>
+    <div @class(['mb-3' => $marginBottom])>
         <div>
             <x-form::partials.label class="form-label" :label="$getLabel()"/>
         </div>
@@ -24,7 +24,7 @@
         <input {{ $attributes->merge([
             'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? $name : null,
             'id' => $id,
-            'class' => 'form-check-input' . ($validationClass && ! $groupMode ? ' ' . $validationClass : null),
+            'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),
             'name' => $isWired ? null : $name . ($groupMode ? '['. $groupValue .']' : null),
             'aria-describedby' => $caption ? ($groupMode && $caption ? $captionId : $id) . '-caption' : null,
             'checked' => $isWired ? null : $checked
@@ -38,7 +38,7 @@
 @endforeach
 @if($groupMode)
     <x-form::partials.caption :inputId="$groupMode && $caption ? $captionId : $id" :caption="$caption"/>
-    <x-form::partials.error-message :message="$errorMessage"/>
+    <x-form::partials.error-message class="d-block" :message="$errorMessage"/>
 @endif
 @if($groupMode)
     </div>

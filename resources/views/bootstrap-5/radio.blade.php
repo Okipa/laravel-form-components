@@ -27,5 +27,5 @@
         </div>
     @endforeach
     <x-form::partials.caption :inputId="$captionId" :caption="$caption"/>
-    <x-form::partials.error-message :message="$errorMessage"/>
+    <x-form::partials.error-message class="d-block" :message="$errorMessage"/>
 </div>
