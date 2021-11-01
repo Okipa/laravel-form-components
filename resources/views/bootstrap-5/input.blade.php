@@ -23,7 +23,7 @@
                 <x-form::partials.addon :addon="$prepend"/>
             @endif
             <input {{ $attributes->except('wire')->merge([
-                'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasStandardLivewireModelBinding() ? ($locale ? $name . '.' . $locale : $name) : null,
+                'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? ($locale ? $name . '.' . $locale : $name) : null,
                 'id' => $id,
                 'class' => 'form-control' . ($validationClass ? ' ' . $validationClass : null),
                 'type' => $type,

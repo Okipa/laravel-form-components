@@ -15,7 +15,7 @@ class CheckboxMarginBottomTest extends TestCase
     }
 
     /** @test */
-    public function it_can_enable_radio_group_margin_bottom_by_default_in_group_mode(): void
+    public function it_can_enable_checkboxes_group_margin_bottom_by_default_in_group_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, [
             'name' => 'technologies',
@@ -37,7 +37,7 @@ class CheckboxMarginBottomTest extends TestCase
     }
 
     /** @test */
-    public function it_can_disable_radio_group_margin_bottom_in_group_mode(): void
+    public function it_can_disable_checkboxes_group_margin_bottom_in_group_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, [
             'name' => 'technologies',

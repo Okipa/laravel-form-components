@@ -1,11 +1,12 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireFormBinding;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireComponentBinding;
 
 use Okipa\LaravelFormComponents\Components\Input;
+use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class InputLivewireTest extends TestCase
+class InputLivewireComponentBindingTest extends TestCase
 {
     /** @test */
     public function it_can_remove_input_name_html_attribute_when_wired(): void
@@ -59,5 +60,29 @@ class InputLivewireTest extends TestCase
             attributes: ['wire:model.lazy' => 'first_name']
         );
         self::assertStringContainsString('wire:model.lazy="first_name"', $html);
+    }
+
+    /** @test */
+    public function it_can_override_input_form_livewire_modifier_binding_from_component_livewire_modifier(): void
+    {
+        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
+        $html = $this->renderComponent(
+            componentClass: Input::class,
+            componentData: ['name' => 'first_name'],
+            attributes: ['wire' => 'lazy']
+        );
+        self::assertStringContainsString('wire:model.lazy="first_name"', $html);
+    }
+
+    /** @test */
+    public function it_can_override_input_form_livewire_modifier_binding_from_component_livewire_null_modifier(): void
+    {
+        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
+        $html = $this->renderComponent(
+            componentClass: Input::class,
+            componentData: ['name' => 'first_name'],
+            attributes: ['wire' => null]
+        );
+        self::assertStringContainsString('wire:model="first_name"', $html);
     }
 }

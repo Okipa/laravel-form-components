@@ -27,4 +27,28 @@ class ToggleSwitchErrorBagFormBindingTest extends TestCase
         ]);
         self::assertStringContainsString('<div class="invalid-feedback">Component error test</div>', $html);
     }
+
+    /** @test */
+    public function it_can_override_toggle_switches_form_error_bag_binding_from_component_error_bag_in_group_mode(): void
+    {
+        config()->set('form-components.display_validation_failure', true);
+        $globalMessageBag = app(MessageBag::class)->add('technologies', 'Form error test');
+        $componentMessageBag = app(MessageBag::class)->add('technologies', 'Component error test');
+        $errors = app(ViewErrorBag::class)->put('form_error_bag', $globalMessageBag);
+        $errors->put('component_error_bag', $componentMessageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        app(FormBinder::class)->bindErrorBag('form_error_bag');
+        $html = $this->renderComponent(ToggleSwitch::class, [
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
+            'errorBag' => 'component_error_bag',
+        ]);
+        self::assertStringContainsString('<div class="invalid-feedback">Component error test</div>', $html);
+    }
 }
