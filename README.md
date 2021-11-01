@@ -1,5 +1,5 @@
-![Laravel Form Components](/docs/laravel-form-components.png)
-<p align="center">
+![Laravel Form Components illustration](/docs/laravel-form-components.png)
+<p style="text-align: center;">
     <a href="https://github.com/Okipa/laravel-form-components/releases" title="Latest Stable Version">
         <img src="https://img.shields.io/github/release/Okipa/laravel-form-components.svg?style=flat-square" alt="Latest Stable Version">
     </a>
@@ -23,8 +23,7 @@ Save time and take advantage of a set of dynamical, ready-to-use and fully custo
 
 Components are Livewire compatible and can be used with the following UI frameworks:
 * Bootstrap 5
-* Bootstrap 4 (coming soon, help welcomed)
-* TailwindCSS 2 (coming soon, help welcomed)
+* TailwindCSS 2 (upcoming feature)
 
 Found this package helpful? Please consider supporting my work!
 
@@ -46,23 +45,28 @@ Found this package helpful? Please consider supporting my work!
 Just call the components you need in your views and let this package take care of the HTML generation time-consuming part.
 
 ```blade
-<x-form::form method="PUT" :action="route('user.update', $user)" :bind="$user">
-    <x-form::input type="file" name="avatar" caption="Accepted types: jpg, png and webp."/>
-    <x-form::input name="name"/>
-    <x-form::input type="email" name="email"/>
-    <x-form::textarea name="biography" :locales="['fr', 'en']"/>
-    <x-form::select name="hobbies" :options="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']" multiple/>
-    <x-form::checkbox name="technologies" :group="[1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire']" inline/>
-    <x-form::radio name="gender" :group="[1 => 'Male', 2 => 'Female']" inline/>
-    <x-form::toggle-switch name="active"/>
-    <x-form::button.submit/>
-    <x-form::button.link class="btn-secondary ms-3">{{ __('Cancel') }}</x-form::button.link>
+<x-form::form class="row" method="PUT" :action="route('user.update', $user)" :bind="$user">
+    <div class="col-md-6">
+        <x-form::input name="name"/>
+        <x-form::input type="email" name="email"/>
+        <x-form::textarea name="biography" :locales="['fr', 'en']"/>
+    </div>
+    <div class="col-md-6">
+        <x-form::select name="hobbies" :options="[1 => 'Sport', 2 => 'Cinema', 3 => 'Literature', 4 => 'Travel']" caption="Select your favorite hobbies." multiple/>
+        <x-form::checkbox name="technologies" :group="[1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire']" inline/>
+        <x-form::radio name="gender" :group="[1 => 'Male', 2 => 'Female']" inline/>
+        <x-form::toggle-switch name="active"/>
+    </div>
+    <div class="col-12 mt-2">
+        <x-form::button.link class="btn-secondary me-3">{{ __('Cancel') }}</x-form::button.link>
+        <x-form::button.submit/>
+    </div>
 </x-form:form>
 ```
 
-And get this component displayed:
+And get these components displayed:
 
-<ToDo:screenshot>
+![Laravel Form Components screenshot](/docs/screenshot.png)
 
 ## Table of Contents
 
@@ -77,8 +81,7 @@ And get this component displayed:
   * [Checkbox](#checkboxes-toggle-switches-and-radios)
   * [Switch](#checkboxes-toggle-switches-and-radios)
   * [Radio](#checkboxes-toggle-switches-and-radios)
-  * [Submit](#buttons)
-  * [Button](#buttons)
+  * [Buttons](#buttons)
 * [How to](#how-to)
   * [Deal with attributes and classes](#deal-with-attributes-and-classes)
   * [Set id](#set-id)
