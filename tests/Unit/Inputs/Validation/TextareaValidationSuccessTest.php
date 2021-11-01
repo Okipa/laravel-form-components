@@ -49,6 +49,6 @@ class TextareaValidationSuccessTest extends TestCase
             'name' => 'description',
             'displayValidationSuccess' => false,
         ]);
-        self::assertStringNotContainsString(' is-valid', $html);
+        self::assertStringNotContainsString('is-valid', $html);
     }
 }

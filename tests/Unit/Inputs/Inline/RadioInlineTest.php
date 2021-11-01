@@ -14,7 +14,7 @@ class RadioInlineTest extends TestCase
             'name' => 'gender',
             'group' => [1 => 'Male', 2 => 'Female'],
         ]);
-        self::assertStringNotContainsString(' class="form-check form-check-inline', $html);
+        self::assertStringNotContainsString('class="form-check form-check-inline', $html);
     }
 
     /** @test */

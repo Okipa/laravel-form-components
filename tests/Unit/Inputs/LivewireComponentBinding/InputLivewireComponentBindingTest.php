@@ -27,7 +27,7 @@ class InputLivewireComponentBindingTest extends TestCase
             componentData: ['name' => 'first_name'],
             attributes: ['wire' => 'lazy']
         );
-        self::assertStringNotContainsString(' value="', $html);
+        self::assertStringNotContainsString('value="', $html);
     }
 
     /** @test */

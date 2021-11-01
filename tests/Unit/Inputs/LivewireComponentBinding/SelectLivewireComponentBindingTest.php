@@ -46,7 +46,7 @@ class SelectLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire' => 'lazy']
         );
-        self::assertStringContainsString('wire:model.lazy="hobby_id"', $html);
+        self::assertStringContainsString(' wire:model.lazy="hobby_id"', $html);
     }
 
     /** @test */
@@ -60,7 +60,7 @@ class SelectLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire:model.lazy' => 'hobby_id']
         );
-        self::assertStringContainsString('wire:model.lazy="hobby_id"', $html);
+        self::assertStringContainsString(' wire:model.lazy="hobby_id"', $html);
     }
 
     /** @test */
@@ -75,7 +75,7 @@ class SelectLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire' => 'lazy']
         );
-        self::assertStringContainsString('wire:model.lazy="hobby_id"', $html);
+        self::assertStringContainsString(' wire:model.lazy="hobby_id"', $html);
     }
 
     /** @test */
@@ -90,6 +90,6 @@ class SelectLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire' => null]
         );
-        self::assertStringContainsString('wire:model="hobby_id"', $html);
+        self::assertStringContainsString(' wire:model="hobby_id"', $html);
     }
 }

@@ -27,7 +27,7 @@ class TextareaLivewireComponentBindingTest extends TestCase
             componentData: ['name' => 'description'],
             attributes: ['wire' => 'lazy']
         );
-        self::assertStringNotContainsString(' value="', $html);
+        self::assertStringNotContainsString('value="', $html);
     }
 
     /** @test */

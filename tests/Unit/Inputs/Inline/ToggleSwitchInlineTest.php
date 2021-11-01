@@ -11,7 +11,7 @@ class ToggleSwitchInlineTest extends TestCase
     public function it_can_set_toggle_switch_stacked_mode_by_default(): void
     {
         $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active']);
-        self::assertStringNotContainsString(' class="form-check form-switch form-check-inline', $html);
+        self::assertStringNotContainsString('class="form-check form-switch form-check-inline', $html);
     }
 
     /** @test */
@@ -26,7 +26,7 @@ class ToggleSwitchInlineTest extends TestCase
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertStringNotContainsString(' class="form-check form-check-inline', $html);
+        self::assertStringNotContainsString('class="form-check form-check-inline', $html);
     }
 
     /** @test */

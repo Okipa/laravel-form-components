@@ -47,6 +47,6 @@ class InputValidationSuccessTest extends TestCase
             'name' => 'first_name',
             'displayValidationSuccess' => false,
         ]);
-        self::assertStringNotContainsString(' is-valid', $html);
+        self::assertStringNotContainsString('is-valid', $html);
     }
 }
