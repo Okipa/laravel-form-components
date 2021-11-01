@@ -16,18 +16,18 @@ class TextareaLivewireFormBindingTest extends TestCase
             componentClass: Textarea::class,
             componentData: ['name' => 'description'],
         );
-        self::assertStringContainsString('wire:model.debounce.150ms="description"', $html);
+        self::assertStringContainsString(' wire:model.debounce.150ms="description"', $html);
         app(FormBinder::class)->bindNewLivewireModifier(null);
         $html = $this->renderComponent(
             componentClass: Textarea::class,
             componentData: ['name' => 'description'],
         );
-        self::assertStringContainsString('wire:model="description"', $html);
+        self::assertStringContainsString(' wire:model="description"', $html);
         app(FormBinder::class)->unbindLastLivewireModifier();
         $html = $this->renderComponent(
             componentClass: Textarea::class,
             componentData: ['name' => 'description'],
         );
-        self::assertStringContainsString('wire:model.debounce.150ms="description"', $html);
+        self::assertStringContainsString(' wire:model.debounce.150ms="description"', $html);
     }
 }

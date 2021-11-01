@@ -19,7 +19,7 @@ class RadioLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire:model.lazy' => 'gender']
         );
-        self::assertStringNotContainsString(' name="', $html);
+        self::assertStringNotContainsString('name="', $html);
     }
 
     /** @test */

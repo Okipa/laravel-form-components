@@ -70,7 +70,7 @@ class CheckboxValidationFailureTest extends TestCase
             'name' => 'active',
             'displayValidationFailure' => false,
         ]);
-        self::assertStringNotContainsString(' is-invalid', $html);
+        self::assertStringNotContainsString('is-invalid', $html);
         self::assertStringNotContainsString('<div class="invalid-feedback">Error test</div>', $html);
     }
 

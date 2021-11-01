@@ -62,7 +62,7 @@ class CheckboxCheckedTest extends TestCase
             'bind' => $user,
             'checked' => false,
         ]);
-        self::assertStringNotContainsString(' checked="checked"', $html);
+        self::assertStringNotContainsString('checked="checked"', $html);
     }
 
     /** @test */
@@ -80,6 +80,6 @@ class CheckboxCheckedTest extends TestCase
             'bind' => $user,
             'checked' => [],
         ]);
-        self::assertStringNotContainsString(' checked="checked"', $html);
+        self::assertStringNotContainsString('checked="checked"', $html);
     }
 }
