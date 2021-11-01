@@ -49,6 +49,6 @@ class SelectValidationSuccessTest extends TestCase
             'options' => [],
             'displayValidationSuccess' => false,
         ]);
-        self::assertStringNotContainsString(' is-valid', $html);
+        self::assertStringNotContainsString('is-valid', $html);
     }
 }

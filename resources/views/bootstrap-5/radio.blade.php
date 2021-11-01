@@ -20,8 +20,8 @@
                 'class' => 'form-check-input',
                 'name' => $isWired ? null : $name,
                 'value' => $groupValue,
+                'checked' => $isWired ? null : $checked,
                 'aria-describedby' => $caption ? $captionId . '-caption' : null,
-                'checked' => $isWired ? null : $checked
             ]) }} type="radio">
             <x-form::partials.label :id="$radioId" class="form-check-label" :label="$groupLabel"/>
         </div>

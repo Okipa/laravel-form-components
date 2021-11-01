@@ -11,7 +11,7 @@ class CheckboxInlineTest extends TestCase
     public function it_can_set_checkbox_stacked_mode_by_default(): void
     {
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
-        self::assertStringNotContainsString(' class="form-check form-check-inline', $html);
+        self::assertStringNotContainsString('class="form-check form-check-inline', $html);
     }
 
     /** @test */
@@ -26,7 +26,7 @@ class CheckboxInlineTest extends TestCase
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertStringNotContainsString(' class="form-check form-check-inline', $html);
+        self::assertStringNotContainsString('class="form-check form-check-inline', $html);
     }
 
     /** @test */

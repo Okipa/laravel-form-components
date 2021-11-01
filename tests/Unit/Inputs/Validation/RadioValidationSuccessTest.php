@@ -56,6 +56,6 @@ class RadioValidationSuccessTest extends TestCase
             'group' => ['female' => 'Female', 'male' => 'Male'],
             'displayValidationSuccess' => false,
         ]);
-        self::assertStringNotContainsString(' is-valid', $html);
+        self::assertStringNotContainsString('is-valid', $html);
     }
 }

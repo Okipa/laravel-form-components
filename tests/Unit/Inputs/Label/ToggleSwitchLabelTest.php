@@ -47,7 +47,10 @@ class ToggleSwitchLabelTest extends TestCase
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertStringContainsString('<label class="form-label">validation.attributes.technologies</label>', $html);
+        self::assertEquals(
+            1,
+            substr_count($html, '<label class="form-label">validation.attributes.technologies</label>')
+        );
     }
 
     /** @test */

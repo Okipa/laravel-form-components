@@ -26,9 +26,6 @@ class CheckboxNameTest extends TestCase
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertStringContainsString(' name="technologies[laravel]"', $html);
-        self::assertStringContainsString(' name="technologies[bootstrap]"', $html);
-        self::assertStringContainsString(' name="technologies[tailwind]"', $html);
-        self::assertStringContainsString(' name="technologies[livewire]"', $html);
+        self::assertEquals(4, substr_count($html, ' name="technologies"'));
     }
 }

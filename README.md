@@ -188,8 +188,6 @@ Because radio inputs are never used alone, you'll have to declare a required `gr
 
 Regarding checkbox and toggle switch inputs, you will be able to use them in single or in group mode. To use them in group mode, you'll have to declare a `group` attribute too.
 
-In group mode, this package will take care about converting the name into array names, so you don't have to add it manually.
-
 If you want to display these input components inline, just define an `inline` attribute.
 
 ```Blade
