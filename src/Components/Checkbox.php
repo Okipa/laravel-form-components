@@ -32,7 +32,8 @@ class Checkbox extends AbstractComponent
         protected bool|null $displayValidationFailure = null,
         protected string|null $errorBag = null,
         public bool $marginBottom = true,
-        public bool $inline = false
+        public bool $inline = false,
+        public bool $toggleSwitch = false
     ) {
         $this->displayValidationSuccess = $this->shouldDisplayValidationSuccess();
         $this->displayValidationFailure = $this->shouldDisplayValidationFailure();

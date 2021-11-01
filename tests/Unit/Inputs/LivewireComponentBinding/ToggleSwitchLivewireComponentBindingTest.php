@@ -1,11 +1,12 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireFormBinding;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireComponentBinding;
 
 use Okipa\LaravelFormComponents\Components\ToggleSwitch;
+use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class ToggleSwitchLivewireTest extends TestCase
+class ToggleSwitchLivewireComponentBindingTest extends TestCase
 {
     /** @test */
     public function it_can_remove_toggle_switch_name_html_attribute_when_wired(): void
@@ -59,5 +60,29 @@ class ToggleSwitchLivewireTest extends TestCase
             attributes: ['wire:model.lazy' => 'active']
         );
         self::assertStringContainsString('wire:model.lazy="active"', $html);
+    }
+
+    /** @test */
+    public function it_can_override_toggle_switch_form_livewire_modifier_binding_from_component_livewire_modifier(): void
+    {
+        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
+        $html = $this->renderComponent(
+            componentClass: ToggleSwitch::class,
+            componentData: ['name' => 'active'],
+            attributes: ['wire' => 'lazy']
+        );
+        self::assertStringContainsString('wire:model.lazy="active"', $html);
+    }
+
+    /** @test */
+    public function it_can_override_toggle_switch_form_livewire_modifier_binding_from_component_livewire_null_modifier(): void
+    {
+        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
+        $html = $this->renderComponent(
+            componentClass: ToggleSwitch::class,
+            componentData: ['name' => 'active'],
+            attributes: ['wire' => null]
+        );
+        self::assertStringContainsString('wire:model="active"', $html);
     }
 }

@@ -44,8 +44,8 @@ class CheckboxErrorBagFormBindingTest extends TestCase
                 'tailwind' => 'Tailwind',
                 'livewire' => 'Livewire',
             ],
-            'errorBag' => 'component_error_bag'
+            'errorBag' => 'component_error_bag',
         ]);
-        self::assertStringContainsString('<div class="invalid-feedback">Component error test</div>', $html);
+        self::assertStringContainsString('<div class="invalid-feedback d-block">Component error test</div>', $html);
     }
 }

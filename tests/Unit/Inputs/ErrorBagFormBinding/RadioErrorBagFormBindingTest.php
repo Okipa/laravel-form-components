@@ -26,6 +26,6 @@ class RadioErrorBagFormBindingTest extends TestCase
             'group' => [1 => 'Male', 2 => 'Female'],
             'errorBag' => 'component_error_bag',
         ]);
-        self::assertStringContainsString('<div class="invalid-feedback">Component error test</div>', $html);
+        self::assertStringContainsString('<div class="invalid-feedback d-block">Component error test</div>', $html);
     }
 }

@@ -15,7 +15,7 @@
         @endphp
         <div @class(['form-check', 'form-check-inline' => $inline])>
             <input {{ $attributes->merge([
-                'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasStandardLivewireModelBinding() ? $name : null,
+                'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? $name : null,
                 'id' => $radioId,
                 'class' => 'form-check-input',
                 'name' => $isWired ? null : $name,
@@ -27,5 +27,5 @@
         </div>
     @endforeach
     <x-form::partials.caption :inputId="$captionId" :caption="$caption"/>
-    <x-form::partials.error-message :message="$errorMessage"/>
+    <x-form::partials.error-message class="d-block" :message="$errorMessage"/>
 </div>

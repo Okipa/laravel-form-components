@@ -9,31 +9,7 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class ToggleSwitchLivewireFormBindingTest extends TestCase
 {
     /** @test */
-    public function it_can_override_toggle_switch_form_livewire_modifier_binding_from_component_livewire_modifier(): void
-    {
-        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
-        $html = $this->renderComponent(
-            componentClass: ToggleSwitch::class,
-            componentData: ['name' => 'active'],
-            attributes: ['wire' => 'lazy']
-        );
-        self::assertStringContainsString('wire:model.lazy="active"', $html);
-    }
-
-    /** @test */
-    public function it_can_override_toggle_switch_form_livewire_modifier_binding_from_component_livewire_null_modifier(): void
-    {
-        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
-        $html = $this->renderComponent(
-            componentClass: ToggleSwitch::class,
-            componentData: ['name' => 'active'],
-            attributes: ['wire' => null]
-        );
-        self::assertStringContainsString('wire:model="active"', $html);
-    }
-
-    /** @test */
-    public function it_can_override_toggle_switch_form_modifier_with_another_form_null_modifier(): void
+    public function it_can_override_toggle_switch_form_modifier_from_another_form_null_modifier(): void
     {
         app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
         $html = $this->renderComponent(

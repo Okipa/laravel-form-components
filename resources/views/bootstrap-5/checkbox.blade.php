@@ -1,7 +1,7 @@
 @php
     $groupMode = (bool) array_filter($group);
     if($groupMode && $caption) {
-        $captionId = $getId() ?: $getDefaultId('checkbox');
+        $captionId = $getId() ?: $getDefaultId($toggleSwitch ? 'toggle-switch' : 'checkbox');
     }
     $errorMessage = $getErrorMessage($errors);
     $validationClass = $getValidationClass($errors);
@@ -16,13 +16,13 @@
 @foreach($group as $groupValue => $groupLabel)
     @php
         $id = $getId(suffix: $groupMode ? $groupValue : null)
-            ?: $getDefaultId(prefix: 'checkbox', suffix: $groupMode ? $groupValue : null);
+            ?: $getDefaultId(prefix: $toggleSwitch ? 'toggle-switch' : 'checkbox', suffix: $groupMode ? $groupValue : null);
         $label = $groupMode ? $groupLabel : $getLabel();
         $checked = $groupMode ? $getGroupModeCheckedStatus($groupValue) : $getSingleModeCheckedStatus();
     @endphp
-    <div @class(['form-check', 'form-check-inline' => $inline, 'mb-3' => $groupMode ? null : $marginBottom])>
+    <div @class(['form-check', 'form-switch' => $toggleSwitch, 'form-check-inline' => $inline, 'mb-3' => $groupMode ? null : $marginBottom])>
         <input {{ $attributes->merge([
-            'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasStandardLivewireModelBinding() ? $name : null,
+            'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? $name : null,
             'id' => $id,
             'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),
             'name' => $isWired ? null : $name . ($groupMode ? '['. $groupValue .']' : null),

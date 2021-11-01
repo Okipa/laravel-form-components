@@ -1,11 +1,12 @@
 <?php
 
-namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireFormBinding;
+namespace Okipa\LaravelFormComponents\Tests\Unit\Inputs\LivewireComponentBinding;
 
 use Okipa\LaravelFormComponents\Components\Checkbox;
+use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
-class CheckboxLivewireTest extends TestCase
+class CheckboxLivewireComponentBindingTest extends TestCase
 {
     /** @test */
     public function it_can_remove_checkbox_name_html_attribute_when_wired(): void
@@ -59,5 +60,29 @@ class CheckboxLivewireTest extends TestCase
             attributes: ['wire:model.lazy' => 'active']
         );
         self::assertStringContainsString('wire:model.lazy="active"', $html);
+    }
+
+    /** @test */
+    public function it_can_override_checkbox_form_livewire_modifier_binding_from_component_livewire_modifier(): void
+    {
+        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
+        $html = $this->renderComponent(
+            componentClass: Checkbox::class,
+            componentData: ['name' => 'active'],
+            attributes: ['wire' => 'lazy']
+        );
+        self::assertStringContainsString('wire:model.lazy="active"', $html);
+    }
+
+    /** @test */
+    public function it_can_override_checkbox_form_livewire_modifier_binding_from_component_livewire_null_modifier(): void
+    {
+        app(FormBinder::class)->bindNewLivewireModifier('debounce.150ms');
+        $html = $this->renderComponent(
+            componentClass: Checkbox::class,
+            componentData: ['name' => 'active'],
+            attributes: ['wire' => null]
+        );
+        self::assertStringContainsString('wire:model="active"', $html);
     }
 }
