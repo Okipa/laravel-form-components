@@ -46,7 +46,7 @@ Found this package helpful? Please consider supporting my work!
 Just call the components you need in your views and let this package take care of the HTML generation time-consuming part.
 
 ```blade
-<x-form::form method="POST" :action="route('user.update', $user)" :bind="$user">
+<x-form::form method="PUT" :action="route('user.update', $user)" :bind="$user">
     <x-form::input type="file" name="avatar" caption="Accepted types: jpg, png and webp."/>
     <x-form::input name="name"/>
     <x-form::input type="email" name="email"/>

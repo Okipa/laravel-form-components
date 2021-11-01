@@ -37,6 +37,28 @@ class ToggleSwitchValidationFailureTest extends TestCase
     }
 
     /** @test */
+    public function it_can_display_group_toggle_switches_validation_failure_when_allowed_in_group_mode(): void
+    {
+        config()->set('form-components.display_validation_failure', false);
+        $messageBag = app(MessageBag::class)->add('technologies', 'Error test');
+        $errors = app(ViewErrorBag::class)->put('default', $messageBag);
+        session()->put(compact('errors'));
+        $this->executeWebMiddlewareGroup();
+        $html = $this->renderComponent(ToggleSwitch::class, [
+            'name' => 'technologies',
+            'group' => [
+                'laravel' => 'Laravel',
+                'bootstrap' => 'Bootstrap',
+                'tailwind' => 'Tailwind',
+                'livewire' => 'Livewire',
+            ],
+            'displayValidationFailure' => true,
+        ]);
+        self::assertEquals(4, substr_count($html, ' is-invalid'));
+        self::assertEquals(1, substr_count($html, '<div class="invalid-feedback d-block">Error test</div>'));
+    }
+
+    /** @test */
     public function it_cant_display_toggle_switch_validation_failure_when_disallowed(): void
     {
         config()->set('form-components.display_validation_failure', true);
