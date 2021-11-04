@@ -30,6 +30,6 @@ trait HasOptions
             return $oldValue;
         }
 
-        return array_key_exists($this->name, old()) ? '' : null;
+        return array_key_exists($this->name, old(default: [])) ? '' : null;
     }
 }
