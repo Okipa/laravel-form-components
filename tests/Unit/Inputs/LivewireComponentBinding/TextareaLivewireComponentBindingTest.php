@@ -14,7 +14,7 @@ class TextareaLivewireComponentBindingTest extends TestCase
         $html = $this->renderComponent(
             componentClass: Textarea::class,
             componentData: ['name' => 'description'],
-            attributes: ['wire:model.lazy' => 'description']
+            attributes: ['wire' => 'lazy']
         );
         self::assertStringNotContainsString('name="', $html);
     }
@@ -52,7 +52,7 @@ class TextareaLivewireComponentBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_define_textarea_livewire_modifier_from_livewire_normal_binding(): void
+    public function it_can_define_textarea_livewire_modifier_from_livewire_native_binding(): void
     {
         $html = $this->renderComponent(
             componentClass: Textarea::class,
@@ -81,7 +81,7 @@ class TextareaLivewireComponentBindingTest extends TestCase
         $html = $this->renderComponent(
             componentClass: Textarea::class,
             componentData: ['name' => 'description'],
-            attributes: ['wire' => null]
+            attributes: ['wire' => true]
         );
         self::assertStringContainsString('wire:model="description"', $html);
     }

@@ -14,7 +14,7 @@ class ToggleSwitchLivewireComponentBindingTest extends TestCase
         $html = $this->renderComponent(
             componentClass: ToggleSwitch::class,
             componentData: ['name' => 'active'],
-            attributes: ['wire:model.lazy' => 'active']
+            attributes: ['wire' => 'lazy']
         );
         self::assertStringNotContainsString('name="', $html);
     }
@@ -52,7 +52,7 @@ class ToggleSwitchLivewireComponentBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_define_toggle_switch_livewire_modifier_from_livewire_normal_binding(): void
+    public function it_can_define_toggle_switch_livewire_modifier_from_livewire_native_binding(): void
     {
         $html = $this->renderComponent(
             componentClass: ToggleSwitch::class,
@@ -81,7 +81,7 @@ class ToggleSwitchLivewireComponentBindingTest extends TestCase
         $html = $this->renderComponent(
             componentClass: ToggleSwitch::class,
             componentData: ['name' => 'active'],
-            attributes: ['wire' => null]
+            attributes: ['wire' => true]
         );
         self::assertStringContainsString('wire:model="active"', $html);
     }

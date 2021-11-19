@@ -17,7 +17,7 @@ class SelectLivewireComponentBindingTest extends TestCase
                 'name' => 'hobby_id',
                 'options' => [],
             ],
-            attributes: ['wire:model.lazy' => 'hobby_id']
+            attributes: ['wire' => 'lazy']
         );
         self::assertStringNotContainsString('name="', $html);
     }
@@ -50,7 +50,7 @@ class SelectLivewireComponentBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_define_select_livewire_modifier_from_livewire_normal_binding(): void
+    public function it_can_define_select_livewire_modifier_from_livewire_native_binding(): void
     {
         $html = $this->renderComponent(
             componentClass: Select::class,
@@ -88,7 +88,7 @@ class SelectLivewireComponentBindingTest extends TestCase
                 'name' => 'hobby_id',
                 'options' => [],
             ],
-            attributes: ['wire' => null]
+            attributes: ['wire' => true]
         );
         self::assertStringContainsString(' wire:model="hobby_id"', $html);
     }

@@ -14,7 +14,7 @@ class InputLivewireComponentBindingTest extends TestCase
         $html = $this->renderComponent(
             componentClass: Input::class,
             componentData: ['name' => 'first_name'],
-            attributes: ['wire:model.lazy' => 'first_name']
+            attributes: ['wire' => 'lazy']
         );
         self::assertStringNotContainsString('name="', $html);
     }
@@ -52,7 +52,7 @@ class InputLivewireComponentBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_define_input_livewire_modifier_from_livewire_normal_binding(): void
+    public function it_can_define_input_livewire_modifier_from_livewire_native_binding(): void
     {
         $html = $this->renderComponent(
             componentClass: Input::class,
@@ -81,7 +81,7 @@ class InputLivewireComponentBindingTest extends TestCase
         $html = $this->renderComponent(
             componentClass: Input::class,
             componentData: ['name' => 'first_name'],
-            attributes: ['wire' => null]
+            attributes: ['wire' => true]
         );
         self::assertStringContainsString('wire:model="first_name"', $html);
     }

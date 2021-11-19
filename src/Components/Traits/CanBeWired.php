@@ -31,7 +31,9 @@ trait CanBeWired
     public function getComponentLivewireModifier(): string
     {
         $hasComponentLivewireModelModifier = $this->attributes->has('wire');
-        $componentLivewireModelModifierAttribute = $this->attributes->get('wire');
+        $componentLivewireModelModifierAttribute = $this->attributes->get('wire') === true
+            ? ''
+            : $this->attributes->get('wire');
         $componentLivewireModelModifier = $componentLivewireModelModifierAttribute
             ? '.' . $componentLivewireModelModifierAttribute
             : '';

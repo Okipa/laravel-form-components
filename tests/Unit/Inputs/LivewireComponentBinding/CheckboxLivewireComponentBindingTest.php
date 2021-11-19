@@ -14,7 +14,7 @@ class CheckboxLivewireComponentBindingTest extends TestCase
         $html = $this->renderComponent(
             componentClass: Checkbox::class,
             componentData: ['name' => 'active'],
-            attributes: ['wire:model.lazy' => 'active']
+            attributes: ['wire' => 'lazy']
         );
         self::assertStringNotContainsString('name="', $html);
     }
@@ -52,7 +52,7 @@ class CheckboxLivewireComponentBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_define_checkbox_livewire_modifier_from_livewire_normal_binding(): void
+    public function it_can_define_checkbox_livewire_modifier_from_livewire_native_binding(): void
     {
         $html = $this->renderComponent(
             componentClass: Checkbox::class,
@@ -81,7 +81,7 @@ class CheckboxLivewireComponentBindingTest extends TestCase
         $html = $this->renderComponent(
             componentClass: Checkbox::class,
             componentData: ['name' => 'active'],
-            attributes: ['wire' => null]
+            attributes: ['wire' => true]
         );
         self::assertStringContainsString('wire:model="active"', $html);
     }

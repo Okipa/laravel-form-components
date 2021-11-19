@@ -17,7 +17,7 @@ class RadioLivewireComponentBindingTest extends TestCase
                 'name' => 'gender',
                 'group' => [1 => 'Male', 2 => 'Female'],
             ],
-            attributes: ['wire:model.lazy' => 'gender']
+            attributes: ['wire' => 'lazy']
         );
         self::assertStringNotContainsString('name="', $html);
     }
@@ -50,7 +50,7 @@ class RadioLivewireComponentBindingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_define_radio_livewire_modifier_from_livewire_normal_binding_in_group_mode(): void
+    public function it_can_define_radio_livewire_modifier_from_livewire_native_binding_in_group_mode(): void
     {
         $html = $this->renderComponent(
             componentClass: Radio::class,
@@ -88,7 +88,7 @@ class RadioLivewireComponentBindingTest extends TestCase
                 'name' => 'gender',
                 'group' => [1 => 'Male', 2 => 'Female'],
             ],
-            attributes: ['wire' => null]
+            attributes: ['wire' => true]
         );
         self::assertEquals(2, substr_count($html, ' wire:model="gender"'));
     }
