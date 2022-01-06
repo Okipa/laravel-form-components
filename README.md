@@ -180,7 +180,7 @@ In multiple mode, this package will take care about converting the name into an 
 ```Blade
 @php($options = [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'])
 <x-form::select name="hobby" placeholder="What is your hobby prefered hobby?" :options="$options" selected="1"/>
-<x-form::select name="hobbies" :hidePlaceholder="true" :options="$options" :selected="[2, 3]" multiple/> {{-- The name will be converted to hobbies[] --}}
+<x-form::select name="hobbies" :showPlaceholderOption="true" :options="$options" :selected="[2, 3]" multiple/> {{-- The name will be converted to hobbies[] and placeholder can be selected for having null value --}}
 ```
 
 ### Checkboxes, Toggle switches and Radios

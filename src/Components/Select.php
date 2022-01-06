@@ -42,7 +42,8 @@ class Select extends AbstractComponent
         protected bool|null $displayValidationSuccess = null,
         protected bool|null $displayValidationFailure = null,
         protected string|null $errorBag = null,
-        public bool $marginBottom = true
+        public bool $marginBottom = true,
+        protected bool|null $showPlaceholderOption = null
     ) {
         parent::__construct();
     }

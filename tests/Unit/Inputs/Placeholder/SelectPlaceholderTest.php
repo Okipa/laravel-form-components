@@ -79,4 +79,19 @@ class SelectPlaceholderTest extends TestCase
             $html
         );
     }
+
+    /** @test */
+    public function it_can_see_select_placeholder(): void
+    {
+        $html = $this->renderComponent(Select::class, [
+            'name' => 'hobby_id',
+            'options' => [],
+            'placeholder' => 'Test placeholder',
+            'showPlaceholderOption' => true
+        ]);
+        self::assertStringContainsString(
+            '<option value="" selected>Test placeholder</option>',
+            $html
+        );
+    }
 }
