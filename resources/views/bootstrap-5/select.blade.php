@@ -30,7 +30,7 @@
             'aria-describedby' => $caption ? $id . '-caption' : null,
         ]) }}>
             @if($placeholder)
-                <option value="" selected disabled hidden>{{ $placeholder }}</option>
+                <option value="" selected{!! $allowPlaceholderToBeSelected ? null : ' disabled hidden' !!}>{{ $placeholder }}</option>
             @endif
             @foreach($options as $value => $label)
                 <option value="{{ $value }}"{!! $isSelected($name, $value) && ! $isWired ? ' selected="selected"' : null !!}>{{ $label }}</option>

@@ -173,14 +173,16 @@ Set select components in your forms.
 
 Auto generate options by providing an associative value/label array.
 
-HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option: a selected, disabled and hidden option that is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
+HTML select elements natively don't accept placeholder attributes, however the select component allows you to handle a placeholder-like option is prepended to the other ones. This placeholder will behave [as for the other components](#manage-label-and-placeholder).
+
+By default, this select placeholder option is selected, disabled and hidden. However, you'll be able to allow it to be selected in case you need to set a `nullable` field for example. To do that, just add the `allowPlaceholderToBeSelected` attribute to your component.
 
 In multiple mode, this package will take care about converting the name into an array name, so you don't have to add it manually.
 
 ```Blade
 @php($options = [1 => 'Laravel', 2 => 'Bootstrap', 3 => 'Tailwind', 4 => 'Livewire'])
 <x-form::select name="hobby" placeholder="What is your hobby prefered hobby?" :options="$options" selected="1"/>
-<x-form::select name="hobbies" :hidePlaceholder="true" :options="$options" :selected="[2, 3]" multiple/> {{-- The name will be converted to hobbies[] --}}
+<x-form::select name="hobbies" :options="$options" :selected="[2, 3]" allowPlaceholderToBeSelected multiple/> {{-- You'll be able to selected the placeholder and the name will be converted to hobbies[] --}}
 ```
 
 ### Checkboxes, Toggle switches and Radios

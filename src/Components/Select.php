@@ -35,6 +35,7 @@ class Select extends AbstractComponent
         protected string|false|null $label = null,
         protected bool|null $floatingLabel = null,
         protected string|false|null $placeholder = null,
+        public bool $allowPlaceholderToBeSelected = false,
         protected string|Closure|null $prepend = null,
         protected string|Closure|null $append = null,
         protected int|string|array|null $selected = null,

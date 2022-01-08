@@ -79,4 +79,18 @@ class SelectPlaceholderTest extends TestCase
             $html
         );
     }
+
+    /** @test */
+    public function it_can_allow_to_select_placeholder(): void
+    {
+        $html = $this->renderComponent(Select::class, [
+            'name' => 'hobby_id',
+            'options' => [],
+            'allowPlaceholderToBeSelected' => true,
+        ]);
+        self::assertStringContainsString(
+            '<option value="" selected>validation.attributes.hobby_id</option>',
+            $html
+        );
+    }
 }
