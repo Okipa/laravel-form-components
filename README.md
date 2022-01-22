@@ -17,8 +17,6 @@
     </a>
 </p>
 
-**PACKAGE IN BETA-TEST**  
-
 Save time and take advantage of a set of dynamical, ready-to-use and fully customizable form components.
 
 Components are Livewire compatible and can be used with the following UI frameworks:
