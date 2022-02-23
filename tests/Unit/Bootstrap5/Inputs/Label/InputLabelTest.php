@@ -49,4 +49,11 @@ class InputLabelTest extends TestCase
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'label' => false]);
         self::assertStringNotContainsString('<label', $html);
     }
+
+    /** @test */
+    public function it_can_set_input_file_label_class(): void
+    {
+        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'type' => 'file']);
+        self::assertStringContainsString('<label for="file-first-name" class="form-label">', $html);
+    }
 }
