@@ -26,8 +26,8 @@
         <select {{ $attributes->merge([
             'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding()? $name : null,
             'id' => $id,
-            'name' => $isWired ? null : $name . ($multipleMode ? '[]' : null),
             'class' => 'custom-select' . ($validationClass ? ' ' . $validationClass : null),
+            'name' => $isWired ? null : $name . ($multipleMode ? '[]' : null),
             'placeholder' => $placeholder,
             'aria-describedby' => $caption ? $id . '-caption' : null,
         ]) }}>
