@@ -11,7 +11,7 @@ class SelectMarginBottomTest extends TestCase
     public function it_can_enable_select_margin_bottom_by_default(): void
     {
         $html = $this->renderComponent(Select::class, ['name' => 'hobby_id', 'options' => []]);
-        self::assertStringContainsString('mb-3', $html);
+        self::assertStringContainsString('<div class="mb-3">', $html);
     }
 
     /** @test */
@@ -22,6 +22,6 @@ class SelectMarginBottomTest extends TestCase
             'options' => [],
             'marginBottom' => false,
         ]);
-        self::assertStringNotContainsString('mb-3', $html);
+        self::assertStringNotContainsString('<div class="mb-3">', $html);
     }
 }

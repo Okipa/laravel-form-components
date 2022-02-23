@@ -11,13 +11,20 @@ class InputMarginBottomTest extends TestCase
     public function it_can_enable_input_margin_bottom_by_default(): void
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name']);
-        self::assertStringContainsString('mb-3', $html);
+        self::assertStringContainsString('<div class="mb-3">', $html);
+    }
+
+    /** @test */
+    public function it_can_enable_input_file_margin_bottom_by_default(): void
+    {
+        $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'type' => 'file']);
+        self::assertStringContainsString('<div class="mb-3">', $html);
     }
 
     /** @test */
     public function it_can_disable_input_margin_bottom(): void
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'marginBottom' => false]);
-        self::assertStringNotContainsString('mb-3', $html);
+        self::assertStringNotContainsString('<div class="mb-3">', $html);
     }
 }
