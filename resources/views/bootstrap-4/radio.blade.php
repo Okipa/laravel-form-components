@@ -13,7 +13,7 @@
             $radioId = $getId(suffix: $groupValue) ?: $getDefaultId(prefix: 'radio', suffix: $groupValue);
             $checked = $getGroupModeCheckedStatus($groupValue);
         @endphp
-        <div @class(['custom-check', 'form-check-inline' => $inline])>
+        <div @class(['form-check', 'form-check-inline' => $inline])>
             <input {{ $attributes->merge([
                 'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? $name : null,
                 'id' => $radioId,

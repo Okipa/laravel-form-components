@@ -10,7 +10,7 @@ class ToggleSwitchInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Boo
     public function it_can_set_toggle_switch_stacked_mode_by_default(): void
     {
         $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active']);
-        self::assertStringNotContainsString('class="custom-check custom-switch form-check-inline', $html);
+        self::assertStringNotContainsString('class="custom-control custom-switch form-check-inline', $html);
     }
 
     /** @test */
@@ -25,14 +25,14 @@ class ToggleSwitchInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Boo
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertStringNotContainsString('class="custom-check custom-switch form-check-inline', $html);
+        self::assertStringNotContainsString('class="custom-control custom-switch form-check-inline', $html);
     }
 
     /** @test */
     public function it_can_set_toggle_switch_inlined_mode(): void
     {
         $html = $this->renderComponent(ToggleSwitch::class, ['name' => 'active', 'inline' => true]);
-        self::assertStringContainsString(' class="custom-check custom-switch form-check-inline', $html);
+        self::assertStringContainsString(' class="custom-control custom-switch form-check-inline', $html);
     }
 
     /** @test */
@@ -48,6 +48,6 @@ class ToggleSwitchInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Boo
             ],
             'inline' => true
         ]);
-        self::assertEquals(4, substr_count($html, ' class="custom-check custom-switch form-check-inline'));
+        self::assertEquals(4, substr_count($html, ' class="custom-control custom-switch form-check-inline'));
     }
 }
