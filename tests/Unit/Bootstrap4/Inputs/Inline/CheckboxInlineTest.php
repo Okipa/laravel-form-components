@@ -10,7 +10,7 @@ class CheckboxInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstr
     public function it_can_set_checkbox_stacked_mode_by_default(): void
     {
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
-        self::assertStringNotContainsString('class="custom-check form-check-inline', $html);
+        self::assertStringNotContainsString('class="form-check form-check-inline', $html);
     }
 
     /** @test */
@@ -25,14 +25,14 @@ class CheckboxInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstr
                 'livewire' => 'Livewire',
             ],
         ]);
-        self::assertStringNotContainsString('class="custom-check form-check-inline', $html);
+        self::assertStringNotContainsString('class="form-check form-check-inline', $html);
     }
 
     /** @test */
     public function it_can_set_checkbox_inlined_mode(): void
     {
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'inline' => true]);
-        self::assertStringContainsString(' class="custom-check form-check-inline', $html);
+        self::assertStringContainsString(' class="form-check form-check-inline', $html);
     }
 
     /** @test */
@@ -48,6 +48,6 @@ class CheckboxInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstr
             ],
             'inline' => true
         ]);
-        self::assertEquals(4, substr_count($html, ' class="custom-check form-check-inline'));
+        self::assertEquals(4, substr_count($html, ' class="form-check form-check-inline'));
     }
 }

@@ -8,6 +8,6 @@ class ToggleSwitch extends Checkbox
     {
         $this->toggleSwitch = true;
 
-        return 'checkbox';
+        return 'toggle-switch';
     }
 }

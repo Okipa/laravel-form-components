@@ -20,17 +20,17 @@
         $label = $groupMode ? $groupLabel : $getLabel();
         $checked = $groupMode ? $getGroupModeCheckedStatus($groupValue) : $getSingleModeCheckedStatus();
     @endphp
-    <div @class(['form-check', 'form-check-inline' => $inline, 'mb-3' => $groupMode ? null : $marginBottom])>
+    <div @class(['custom-control custom-switch', 'form-check-inline' => $inline, 'mb-3' => $groupMode ? null : $marginBottom])>
         <input {{ $attributes->merge([
             'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? $name : null,
             'id' => $id,
-            'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),
+            'class' => 'custom-control-input' . ($validationClass ? ' ' . $validationClass : null),
             'name' => $isWired ? null : $name . ($groupMode ? '[]' : null),
             'value' => $groupMode ? $groupValue : null,
             'checked' => $isWired ? null : $checked,
             'aria-describedby' => $caption ? ($groupMode && $caption ? $captionId : $id) . '-caption' : null,
         ]) }} type="checkbox">
-        <x-form::partials.label :id="$id" class="form-check-label" :label="$label"/>
+        <x-form::partials.label :id="$id" class="custom-control-label" :label="$label"/>
         @if(! $groupMode)
             <x-form::partials.caption :inputId="$id" :caption="$caption"/>
             <x-form::partials.error-message :message="$errorMessage"/>
