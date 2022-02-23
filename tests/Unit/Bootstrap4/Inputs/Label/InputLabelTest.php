@@ -11,5 +11,8 @@ class InputLabelTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'type' => 'file']);
         self::assertStringContainsString('<label for="file-first-name" class="custom-file-label">', $html);
+        $labelPosition = strrpos($html, '<label');
+        $inputPosition = strrpos($html, '<input');
+        self::assertLessThan($labelPosition, $inputPosition);
     }
 }

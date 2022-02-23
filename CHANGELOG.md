@@ -4,7 +4,8 @@ All notable changes to this package will be documented in this file.
 
 ## [1.0.2](https://github.com/Okipa/laravel-form-components/compare/1.0.1...1.0.2)
 
-* Fixed Bootstrap4 input file classes
+* Fixed Bootstrap4 file input
+* Fixed Bootstrap4 caption partial
 
 ## [1.0.1](https://github.com/Okipa/laravel-form-components/compare/1.0.0...1.0.1)
 

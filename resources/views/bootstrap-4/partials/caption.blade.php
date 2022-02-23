@@ -1,6 +1,6 @@
 @if($caption)
-    <div {{ $attributes->merge([
+    <small {{ $attributes->merge([
         'id' => $inputId . '-caption',
-        'class' => 'form-text',
-    ]) }}>{!! $caption !!}</div>
+        'class' => 'form-text text-muted',
+    ]) }}>{!! $caption !!}</small>
 @endif
