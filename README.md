@@ -33,7 +33,7 @@ Found this package helpful? Please consider supporting my work!
 
 | Laravel | Livewire | PHP | Package |
 |---|---|---|---|
-| ^8.0&#124;^9.0 | ^2.0 | ^8.0&#124;^8.1 | ^1.0 |
+| ^8.0 &#124; ^9.0 | ^2.0 | ^8.0 &#124; ^8.1 | ^1.0 |
 
 ## Upgrade guide
 
