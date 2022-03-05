@@ -199,8 +199,8 @@ If you want to display these input components inline, just define an `inline` at
 ```Blade
 <x:form::checkbox name="newsletter_subscription" :checked="true"/> {{-- 1 generated checkbox --}}
 <x:form::checkbox name="technologies" :group="['laravel' => 'Laravel', 'bootstrap' => 'Bootstrap']" :checked="laravel"/> {{-- 2 generated checkboxes --}}
-<x:form::switch name="active" :checked="false" inline/> {{-- 1 generated toggle switch with inline mode --}}
-<x:form::switch name="technologies" :group="['tailwind' => 'Tailwind', 'livewire" => 'Livewire']" :checked="livewire"/> {{-- 2 generated toggle switches --}}
+<x:form::toggle-switch name="active" :checked="false" inline/> {{-- 1 generated toggle switch with inline mode --}}
+<x:form::toggle-switch name="technologies" :group="['tailwind' => 'Tailwind', 'livewire" => 'Livewire']" :checked="livewire"/> {{-- 2 generated toggle switches --}}
 <x:form::radio name="gender" :group="['female' => 'Female', 'male' => 'Male']" :checked="male" inline/> {{-- 2 generated radios with inline mode --}}
 ```
 
