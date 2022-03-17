@@ -13,7 +13,6 @@ class InputLabelTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\
         $this->assertSeeHtmlInOrder($html, [
             '<label for="file-first-name" class="form-label">',
             '<input',
-            '<label for="file-first-name" class="custom-file-label">',
         ]);
     }
 }

@@ -39,7 +39,7 @@
                     'aria-describedby' => $caption ? $id . '-caption' : null,
                 ]) }}/>
             @if(! $prepend && ! $append && ($displayFloatingLabel || $type === 'file'))
-                <x-form::partials.label :id="$id" :class="$type === 'file' ? 'custom-file-label' : 'form-label'" :label="$label"/>
+                <x-form::partials.label :id="$id" :class="$type === 'file' ? 'custom-file-label' : 'form-label'" :label="$placeholder"/>
             @endif
             @if($type === 'file')
                 </div>
