@@ -6,7 +6,6 @@ use Okipa\LaravelFormComponents\Components\Input;
 
 class InputPlaceholderTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\Inputs\Placeholder\InputPlaceholderTest
 {
-
     /** @test */
     public function it_can_set_input_file_placeholder(): void
     {
