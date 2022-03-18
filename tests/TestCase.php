@@ -4,6 +4,7 @@ namespace Okipa\LaravelFormComponents\Tests;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use Illuminate\Testing\Constraints\SeeInOrder;
 use Okipa\LaravelFormComponents\LaravelFormComponentsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -51,5 +52,10 @@ class TestCase extends Orchestra
         $input->withAttributes($attributes);
 
         return $input->render()->with(array_merge($input->data(), $viewData))->render();
+    }
+
+    protected function assertSeeHtmlInOrder(string $html, array $values): void
+    {
+        self::assertTrue((new SeeInOrder($html))->matches($values));
     }
 }

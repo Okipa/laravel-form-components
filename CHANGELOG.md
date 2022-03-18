@@ -2,6 +2,11 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.0.3](https://github.com/Okipa/laravel-form-components/compare/1.0.2...1.0.3)
+
+* Fixed Bootstrap4 file input missing label
+* Transformed Bootstrap4 file input custom label to behave as a placeholder
+
 ## [1.0.2](https://github.com/Okipa/laravel-form-components/compare/1.0.1...1.0.2)
 
 2022-02-23
