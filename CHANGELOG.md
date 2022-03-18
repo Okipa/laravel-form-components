@@ -2,7 +2,15 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.0.4](https://github.com/Okipa/laravel-form-components/compare/1.0.3...1.0.4)
+
+2022-03-18
+
+* Fixed inputs in order to let them generate the `name` attribute even if they are wired
+
 ## [1.0.3](https://github.com/Okipa/laravel-form-components/compare/1.0.2...1.0.3)
+
+2022-03-17
 
 * Fixed Bootstrap4 file input missing label
 * Transformed Bootstrap4 file input custom label to behave as a placeholder
