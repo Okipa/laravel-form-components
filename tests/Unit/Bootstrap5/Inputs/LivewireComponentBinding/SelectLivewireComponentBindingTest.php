@@ -9,20 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class SelectLivewireComponentBindingTest extends TestCase
 {
     /** @test */
-    public function it_can_remove_select_name_html_attribute_when_wired(): void
-    {
-        $html = $this->renderComponent(
-            componentClass: Select::class,
-            componentData: [
-                'name' => 'hobby_id',
-                'options' => [],
-            ],
-            attributes: ['wire' => 'lazy']
-        );
-        self::assertStringNotContainsString('name="', $html);
-    }
-
-    /** @test */
     public function it_cant_define_select_livewire_modifier_by_default(): void
     {
         $html = $this->renderComponent(

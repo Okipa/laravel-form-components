@@ -9,17 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class TextareaLivewireComponentBindingTest extends TestCase
 {
     /** @test */
-    public function it_can_remove_textarea_name_html_attribute_when_wired(): void
-    {
-        $html = $this->renderComponent(
-            componentClass: Textarea::class,
-            componentData: ['name' => 'description'],
-            attributes: ['wire' => 'lazy']
-        );
-        self::assertStringNotContainsString('name="', $html);
-    }
-
-    /** @test */
     public function it_can_remove_textarea_value_html_attribute_when_wired(): void
     {
         $html = $this->renderComponent(

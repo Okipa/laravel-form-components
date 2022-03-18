@@ -25,7 +25,7 @@
             'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? $name : null,
             'id' => $id,
             'class' => 'form-check-input' . ($validationClass ? ' ' . $validationClass : null),
-            'name' => $isWired ? null : $name . ($groupMode ? '[]' : null),
+            'name' => $name . ($groupMode ? '[]' : null),
             'value' => $groupMode ? $groupValue : null,
             'checked' => $isWired ? null : $checked,
             'aria-describedby' => $caption ? ($groupMode && $caption ? $captionId : $id) . '-caption' : null,
