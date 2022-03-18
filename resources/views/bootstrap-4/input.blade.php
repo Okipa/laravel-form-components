@@ -32,7 +32,7 @@
                     'id' => $id,
                     'class' => ($type === 'file' ? 'custom-file-input' : 'form-control') . ($validationClass ? ' ' . $validationClass : null),
                     'type' => $type,
-                    'name' => $isWired ? null : ($locale ? $name . '[' . $locale . ']' : $name),
+                    'name' => $locale ? $name . '[' . $locale . ']' : $name,
                     'placeholder' => $placeholder,
                     'data-locale' => $locale,
                     'value' => $isWired ? null : ($value ?? ''),
