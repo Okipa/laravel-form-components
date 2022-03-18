@@ -9,17 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class InputLivewireComponentBindingTest extends TestCase
 {
     /** @test */
-    public function it_can_remove_input_name_html_attribute_when_wired(): void
-    {
-        $html = $this->renderComponent(
-            componentClass: Input::class,
-            componentData: ['name' => 'first_name'],
-            attributes: ['wire' => 'lazy']
-        );
-        self::assertStringNotContainsString('name="', $html);
-    }
-
-    /** @test */
     public function it_can_remove_input_value_html_attribute_when_wired(): void
     {
         $html = $this->renderComponent(
