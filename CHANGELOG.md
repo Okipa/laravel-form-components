@@ -7,7 +7,7 @@ All notable changes to this package will be documented in this file.
 2022-03-18
 
 * Fixed remaining input components without `name` attributes when they were wired
-
+ 
 ## [1.0.4](https://github.com/Okipa/laravel-form-components/compare/1.0.3...1.0.4)
 
 2022-03-18
