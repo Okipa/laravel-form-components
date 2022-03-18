@@ -9,17 +9,6 @@ use Okipa\LaravelFormComponents\Tests\TestCase;
 class ToggleSwitchLivewireComponentBindingTest extends TestCase
 {
     /** @test */
-    public function it_can_remove_toggle_switch_name_html_attribute_when_wired(): void
-    {
-        $html = $this->renderComponent(
-            componentClass: ToggleSwitch::class,
-            componentData: ['name' => 'active'],
-            attributes: ['wire' => 'lazy']
-        );
-        self::assertStringNotContainsString('name="', $html);
-    }
-
-    /** @test */
     public function it_can_remove_toggle_switch_value_html_attribute_when_wired(): void
     {
         $html = $this->renderComponent(

@@ -28,7 +28,7 @@
                 'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? ($locale ? $name . '.' . $locale : $name) : null,
                 'id' => $id,
                 'class' => 'form-control' . ($validationClass ? ' ' . $validationClass : null),
-                'name' => $isWired ? null : ($locale ? $name . '[' . $locale . ']' : $name),
+                'name' => $locale ? $name . '[' . $locale . ']' : $name,
                 'placeholder' => $placeholder,
                 'data-locale' => $locale,
                 'aria-describedby' => $caption ? $id . '-caption' : null,
