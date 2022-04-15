@@ -10,10 +10,9 @@ class InputCaptionTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap
     public function it_can_set_input_caption(): void
     {
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'caption' => 'Test caption']);
-        self::assertStringContainsString(' aria-describedby="text-first-name-caption"', $html);
-        self::assertStringContainsString(
-            '<small id="text-first-name-caption" class="form-text text-muted">Test caption</small>',
-            $html
-        );
+        $this->assertSeeHtmlInOrder($html, [
+            ' aria-describedby="text-first-name-caption"',
+            '<small id="text-first-name-caption" class="form-text text-muted">Test caption</small>'
+        ]);
     }
 }

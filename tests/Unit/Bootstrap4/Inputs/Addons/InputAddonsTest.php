@@ -11,11 +11,11 @@ class InputAddonsTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'prepend' => 'Test prepend']);
-        self::assertStringContainsString('<div class="input-group-prepend">', $html);
-        self::assertStringContainsString('<span class="input-group-text">Test prepend</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<input');
-        self::assertLessThan($inputPosition, $addonPosition);
+        $this->assertSeeHtmlInOrder($html, [
+            '<div class="input-group-prepend">',
+            '<span class="input-group-text">Test prepend</span>',
+            '<input'
+        ]);
     }
 
     /** @test */
@@ -23,10 +23,10 @@ class InputAddonsTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'append' => 'Test append']);
-        self::assertStringContainsString('<div class="input-group-append">', $html);
-        self::assertStringContainsString('<span class="input-group-text">Test append</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<input');
-        self::assertLessThan($addonPosition, $inputPosition);
+        $this->assertSeeHtmlInOrder($html, [
+            '<input',
+            '<div class="input-group-append">',
+            '<span class="input-group-text">Test append</span>',
+        ]);
     }
 }

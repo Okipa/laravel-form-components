@@ -25,10 +25,10 @@ class InputAddonsTest extends TestCase
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'prepend' => 'Test prepend']);
-        self::assertStringContainsString('<label', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, '<div class="input-group">');
-        self::assertLessThan($inputGroupPosition, $labelPosition);
+        $this->assertSeeHtmlInOrder($html, [
+            '<label',
+            '<div class="input-group">'
+        ]);
     }
 
     /** @test */
@@ -36,10 +36,10 @@ class InputAddonsTest extends TestCase
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'append' => 'Test append']);
-        self::assertStringContainsString('<label', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, '<div class="input-group">');
-        self::assertLessThan($inputGroupPosition, $labelPosition);
+        $this->assertSeeHtmlInOrder($html, [
+            '<label',
+            '<div class="input-group">'
+        ]);
     }
 
     /** @test */
@@ -47,10 +47,10 @@ class InputAddonsTest extends TestCase
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'prepend' => 'Test prepend']);
-        self::assertStringContainsString('<span class="input-group-text">Test prepend</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<input');
-        self::assertLessThan($inputPosition, $addonPosition);
+        $this->assertSeeHtmlInOrder($html, [
+            '<span class="input-group-text">Test prepend</span>',
+            '<input'
+        ]);
     }
 
     /** @test */
@@ -73,8 +73,10 @@ class InputAddonsTest extends TestCase
             'locales' => ['fr', 'en'],
             'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
         ]);
-        self::assertStringContainsString('Test prepend fr', $html);
-        self::assertStringContainsString('Test prepend en', $html);
+        $this->assertSeeHtmlInOrder($html, [
+            'Test prepend fr',
+            'Test prepend en'
+        ]);
     }
 
     /** @test */
@@ -82,10 +84,10 @@ class InputAddonsTest extends TestCase
     {
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'append' => 'Test append']);
-        self::assertStringContainsString('<span class="input-group-text">Test append</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<input');
-        self::assertLessThan($addonPosition, $inputPosition);
+        $this->assertSeeHtmlInOrder($html, [
+            '<input',
+            '<span class="input-group-text">Test append</span>',
+        ]);
     }
 
     /** @test */
@@ -108,7 +110,9 @@ class InputAddonsTest extends TestCase
             'locales' => ['fr', 'en'],
             'append' => fn(string $locale) => 'Test append ' . $locale,
         ]);
-        self::assertStringContainsString('Test append fr', $html);
-        self::assertStringContainsString('Test append en', $html);
+        $this->assertSeeHtmlInOrder($html, [
+            'Test append fr',
+            'Test append en'
+        ]);
     }
 }

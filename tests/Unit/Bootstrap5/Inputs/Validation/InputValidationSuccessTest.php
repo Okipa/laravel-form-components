@@ -32,7 +32,10 @@ class InputValidationSuccessTest extends TestCase
             'name' => 'first_name',
             'displayValidationSuccess' => true,
         ]);
-        self::assertStringContainsString(' is-valid', $html);
+        $this->assertSeeHtmlInOrder($html, [
+            '<input',
+            ' class="form-control is-valid"',
+        ]);
     }
 
     /** @test */
@@ -47,6 +50,6 @@ class InputValidationSuccessTest extends TestCase
             'name' => 'first_name',
             'displayValidationSuccess' => false,
         ]);
-        self::assertStringNotContainsString('is-valid', $html);
+        $this->assertDontSeeHtml($html, ['is-valid']);
     }
 }

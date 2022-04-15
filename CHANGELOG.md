@@ -2,6 +2,15 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.0.6](https://github.com/Okipa/laravel-form-components/compare/1.0.5...1.0.6)
+
+2022-04-15
+
+* Fixed Bootstrap 4 input file input validation class wrong positioning:
+  * `is-valid` and `is-invalid` classes are now added to the `custom-file` div without addon declaration
+  * `is-valid` and `is-invalid` classes are now added to the `input-group` div with addon declaration
+* Fixed Bootstrap 4 input caption and error message positioning: they are now positioned under input group div in order to be displayed correctly
+
 ## [1.0.5](https://github.com/Okipa/laravel-form-components/compare/1.0.4...1.0.5)
 
 2022-03-18
@@ -18,21 +27,21 @@ All notable changes to this package will be documented in this file.
 
 2022-03-17
 
-* Fixed Bootstrap4 file input missing label
-* Transformed Bootstrap4 file input custom label to behave as a placeholder
+* Fixed Bootstrap 4 file input missing label
+* Transformed Bootstrap 4 file input custom label to behave as a placeholder
 
 ## [1.0.2](https://github.com/Okipa/laravel-form-components/compare/1.0.1...1.0.2)
 
 2022-02-23
 
-* Fixed Bootstrap4 file input
-* Fixed Bootstrap4 caption partial
+* Fixed Bootstrap 4 file input
+* Fixed Bootstrap 4 caption partial
 
 ## [1.0.1](https://github.com/Okipa/laravel-form-components/compare/1.0.0...1.0.1)
 
 2022-02-23
 
-* Fixed Bootstrap4 toggle-switch classes
+* Fixed Bootstrap 4 toggle-switch classes
 
 ## [1.0.0](https://github.com/Okipa/laravel-form-components/releases/tag/1.0.0)
 
