@@ -14,7 +14,7 @@
     <div @class(['d-none' => $type === 'hidden', 'form-floating' => $displayFloatingLabel, 'mb-3' => $marginBottom])>
         @if(($prepend || $append) && ! $displayFloatingLabel)
             <x-form::partials.label :id="$id"  class="form-label" :label="$label"/>
-            <div class="input-group">
+            <div @class(['input-group', $validationClass => $type === 'file' && $validationClass])>
         @endif
             @if(! $prepend && ! $append && ! $displayFloatingLabel)
                 <x-form::partials.label :id="$id" class="form-label" :label="$label"/>
@@ -25,7 +25,7 @@
                 </div>
             @endif
             @if($type === 'file')
-                <div @class(['custom-file', $validationClass => (bool) $validationClass])>
+                <div @class(['custom-file', $validationClass => ! $prepend && ! $append && $validationClass])>
             @endif
                 <input {{ $attributes->except('wire')->merge([
                     'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? ($locale ? $name . '.' . $locale : $name) : null,
