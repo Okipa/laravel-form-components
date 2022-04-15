@@ -6,7 +6,9 @@ All notable changes to this package will be documented in this file.
 
 2022-04-15
 
-* Fixed Bootstrap 4 input file input validation class wrong positioning: `is-valid` and `is-invalid` classes are now added to the `custom-file` div
+* Fixed Bootstrap 4 input file input validation class wrong positioning:
+  * `is-valid` and `is-invalid` classes are now added to the `custom-file` div without addon declaration
+  * `is-valid` and `is-invalid` classes are now added to the `input-group` div with addon declaration
 * Fixed Bootstrap 4 input caption and error message positioning: they are now positioned under input group div in order to be displayed correctly
 
 ## [1.0.5](https://github.com/Okipa/laravel-form-components/compare/1.0.4...1.0.5)
