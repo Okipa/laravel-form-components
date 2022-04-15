@@ -56,6 +56,13 @@ class TestCase extends Orchestra
 
     protected function assertSeeHtmlInOrder(string $html, array $values): void
     {
-        self::assertTrue((new SeeInOrder($html))->matches($values));
+        self::assertThat($values, new SeeInOrder($html));
+    }
+
+    protected function assertDontSeeHtml(string $html, array $values): void
+    {
+        foreach ($values as $value) {
+            self::assertStringNotContainsString((string) $value, $html);
+        }
     }
 }

@@ -25,12 +25,12 @@
                 </div>
             @endif
             @if($type === 'file')
-                <div class="custom-file">
+                <div @class(['custom-file', $validationClass => (bool) $validationClass])>
             @endif
                 <input {{ $attributes->except('wire')->merge([
                     'wire:model' . $getComponentLivewireModifier() => $isWired && ! $hasComponentNativeLivewireModelBinding() ? ($locale ? $name . '.' . $locale : $name) : null,
                     'id' => $id,
-                    'class' => ($type === 'file' ? 'custom-file-input' : 'form-control') . ($validationClass ? ' ' . $validationClass : null),
+                    'class' => $type === 'file' ? 'custom-file-input' : 'form-control' . ($validationClass ? ' ' . $validationClass : null),
                     'type' => $type,
                     'name' => $locale ? $name . '[' . $locale . ']' : $name,
                     'placeholder' => $placeholder,
@@ -38,7 +38,7 @@
                     'value' => $isWired ? null : ($value ?? ''),
                     'aria-describedby' => $caption ? $id . '-caption' : null,
                 ]) }}/>
-            @if(! $prepend && ! $append && ($displayFloatingLabel || $type === 'file'))
+            @if($type === 'file' || (! $prepend && ! $append && $displayFloatingLabel))
                 <x-form::partials.label :id="$id"
                                         :class="$type === 'file' ? 'custom-file-label' : 'form-label'"
                                         :label="$type === 'file' ? $placeholder : $label"/>
@@ -51,10 +51,10 @@
                     <x-form::partials.addon :addon="$append"/>
                 </div>
             @endif
-            <x-form::partials.caption :inputId="$id" :caption="$caption"/>
-            <x-form::partials.error-message :message="$errorMessage"/>
         @if(($prepend || $append) && ! $displayFloatingLabel)
             </div>
         @endif
+        <x-form::partials.caption :inputId="$id" :caption="$caption"/>
+        <x-form::partials.error-message :message="$errorMessage"/>
     </div>
 @endforeach

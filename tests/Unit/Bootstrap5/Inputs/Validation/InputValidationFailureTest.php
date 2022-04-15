@@ -32,8 +32,11 @@ class InputValidationFailureTest extends TestCase
             'name' => 'first_name',
             'displayValidationFailure' => true,
         ]);
-        self::assertStringContainsString(' is-invalid', $html);
-        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+        $this->assertSeeHtmlInOrder($html, [
+            '<input',
+            ' class="form-control is-invalid"',
+            '<div class="invalid-feedback">Error test</div>',
+        ]);
     }
 
     /** @test */
@@ -49,15 +52,16 @@ class InputValidationFailureTest extends TestCase
             'displayValidationFailure' => true,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertEquals(2, substr_count($html, ' is-invalid'));
-        self::assertStringContainsString(
+        $this->assertSeeHtmlInOrder($html, [
+            '<input',
+            ' class="',
+            ' is-invalid',
             '<div class="invalid-feedback">Test validation.attributes.first_name (FR) error message.</div>',
-            $html
-        );
-        self::assertStringContainsString(
+            '<input',
+            ' class="',
+            ' is-invalid',
             '<div class="invalid-feedback">Test validation.attributes.first_name (EN) error message.</div>',
-            $html
-        );
+        ]);
     }
 
     /** @test */
@@ -72,8 +76,10 @@ class InputValidationFailureTest extends TestCase
             'name' => 'first_name',
             'displayValidationFailure' => false,
         ]);
-        self::assertStringNotContainsString('is-invalid', $html);
-        self::assertStringNotContainsString('<div class="invalid-feedback">Error test</div>', $html);
+        $this->assertDontSeeHtml($html, [
+            'is-invalid',
+            '<div class="invalid-feedback">Error test</div>',
+        ]);
     }
 
     /** @test */
@@ -88,8 +94,12 @@ class InputValidationFailureTest extends TestCase
             'name' => 'first_name[0]',
             'displayValidationFailure' => true,
         ]);
-        self::assertStringContainsString(' is-invalid', $html);
-        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+        $this->assertSeeHtmlInOrder($html, [
+            '<input',
+            ' class="',
+            ' is-invalid',
+            '<div class="invalid-feedback">Error test</div>',
+        ]);
     }
 
     /** @test */
@@ -105,7 +115,11 @@ class InputValidationFailureTest extends TestCase
             'displayValidationFailure' => true,
             'errorBag' => 'test_error_bag',
         ]);
-        self::assertStringContainsString(' is-invalid', $html);
-        self::assertStringContainsString('<div class="invalid-feedback">Error test</div>', $html);
+        $this->assertSeeHtmlInOrder($html, [
+            '<input',
+            ' class="',
+            ' is-invalid',
+            '<div class="invalid-feedback">Error test</div>',
+        ]);
     }
 }
