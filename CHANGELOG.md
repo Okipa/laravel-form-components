@@ -4,7 +4,7 @@ All notable changes to this package will be documented in this file.
 
 ## [1.0.7](https://github.com/Okipa/laravel-form-components/compare/1.0.6...1.0.7)
 
-XXXX-XX-XX
+2022-08-01
 
 * Replaced `phpcs/phpcbf` by `laravel/pint`
 
