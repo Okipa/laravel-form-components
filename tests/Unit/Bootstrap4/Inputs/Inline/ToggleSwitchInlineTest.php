@@ -46,7 +46,7 @@ class ToggleSwitchInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Boo
                 'tailwind' => 'Tailwind',
                 'livewire' => 'Livewire',
             ],
-            'inline' => true
+            'inline' => true,
         ]);
         self::assertEquals(4, substr_count($html, ' class="custom-control custom-switch form-check-inline'));
     }

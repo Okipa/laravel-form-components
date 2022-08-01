@@ -47,7 +47,7 @@ class ToggleSwitchInlineTest extends TestCase
                 'tailwind' => 'Tailwind',
                 'livewire' => 'Livewire',
             ],
-            'inline' => true
+            'inline' => true,
         ]);
         self::assertEquals(4, substr_count($html, ' class="form-check form-switch form-check-inline'));
     }

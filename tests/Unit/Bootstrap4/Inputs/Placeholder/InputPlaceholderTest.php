@@ -12,7 +12,7 @@ class InputPlaceholderTest extends \Okipa\LaravelFormComponents\Tests\Unit\Boots
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'type' => 'file',
-            'placeholder' => 'Test placeholder'
+            'placeholder' => 'Test placeholder',
         ]);
         $this->assertSeeHtmlInOrder($html, [
             '<input',

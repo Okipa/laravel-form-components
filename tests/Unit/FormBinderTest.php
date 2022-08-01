@@ -3,7 +3,6 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit;
 
 use Illuminate\Foundation\Auth\User;
-use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\FormBinder;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 

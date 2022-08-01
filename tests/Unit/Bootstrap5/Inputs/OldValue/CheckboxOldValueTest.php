@@ -3,7 +3,6 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\Inputs\OldValue;
 
 use Okipa\LaravelFormComponents\Components\Checkbox;
-use Okipa\LaravelFormComponents\Components\ToggleSwitch;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class CheckboxOldValueTest extends TestCase
@@ -13,7 +12,7 @@ class CheckboxOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['active' => true])->flash(),
+            'uses' => fn () => request()->merge(['active' => true])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active']);
@@ -25,7 +24,7 @@ class CheckboxOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['technologies' => ['laravel', 'livewire']])->flash(),
+            'uses' => fn () => request()->merge(['technologies' => ['laravel', 'livewire']])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Checkbox::class, [
@@ -46,7 +45,7 @@ class CheckboxOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['active[0]' => true])->flash(),
+            'uses' => fn () => request()->merge(['active[0]' => true])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active[0]']);
@@ -58,7 +57,7 @@ class CheckboxOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['technologies[0]' => ['laravel', 'livewire']])->flash(),
+            'uses' => fn () => request()->merge(['technologies[0]' => ['laravel', 'livewire']])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Checkbox::class, [

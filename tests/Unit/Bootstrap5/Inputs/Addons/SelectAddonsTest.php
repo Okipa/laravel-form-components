@@ -73,7 +73,7 @@ class SelectAddonsTest extends TestCase
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
             'options' => [],
-            'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
+            'prepend' => fn (string $locale) => 'Test prepend ' . $locale,
         ]);
         self::assertStringContainsString('Test prepend ' . app()->getLocale(), $html);
     }
@@ -100,7 +100,7 @@ class SelectAddonsTest extends TestCase
         $html = $this->renderComponent(Select::class, [
             'name' => 'hobby_id',
             'options' => [],
-            'append' => fn(string $locale) => 'Test append ' . $locale,
+            'append' => fn (string $locale) => 'Test append ' . $locale,
         ]);
         self::assertStringContainsString('Test append ' . app()->getLocale(), $html);
     }

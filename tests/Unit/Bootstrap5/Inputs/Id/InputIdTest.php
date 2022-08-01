@@ -3,7 +3,6 @@
 namespace Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\Inputs\Id;
 
 use Okipa\LaravelFormComponents\Components\Input;
-use Okipa\LaravelFormComponents\Components\Textarea;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class InputIdTest extends TestCase

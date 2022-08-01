@@ -12,7 +12,7 @@ class InputOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['first_name' => 'Test old first name'])->flash(),
+            'uses' => fn () => request()->merge(['first_name' => 'Test old first name'])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Input::class, [
@@ -27,7 +27,7 @@ class InputOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['first_name[0]' => 'Test old first name'])->flash(),
+            'uses' => fn () => request()->merge(['first_name[0]' => 'Test old first name'])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Input::class, [
@@ -42,7 +42,7 @@ class InputOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['first_name' => null])->flash(),
+            'uses' => fn () => request()->merge(['first_name' => null])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Input::class, [
@@ -57,7 +57,7 @@ class InputOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge([
+            'uses' => fn () => request()->merge([
                 'first_name' => [
                     'fr' => 'Test old first name FR',
                     'en' => 'Test old first name EN',
@@ -68,7 +68,7 @@ class InputOldValueTest extends TestCase
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'locales' => ['fr', 'en'],
-            'value' => fn(string $locale) => 'Test value ' . $locale,
+            'value' => fn (string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString(' value="Test old first name FR"', $html);
         self::assertStringContainsString(' value="Test old first name EN"', $html);
@@ -78,7 +78,7 @@ class InputOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge([
+            'uses' => fn () => request()->merge([
                 'first_name' => [
                     'fr' => 'Test old first name FR',
                     'en' => null,
@@ -89,7 +89,7 @@ class InputOldValueTest extends TestCase
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'locales' => ['fr', 'en'],
-            'value' => fn(string $locale) => 'Test value ' . $locale,
+            'value' => fn (string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString(' value="Test old first name FR"', $html);
         self::assertStringContainsString(' value=""', $html);

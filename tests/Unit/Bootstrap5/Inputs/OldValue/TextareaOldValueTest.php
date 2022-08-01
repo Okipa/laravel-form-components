@@ -12,7 +12,7 @@ class TextareaOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['description' => 'Test old description'])->flash(),
+            'uses' => fn () => request()->merge(['description' => 'Test old description'])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Textarea::class, [
@@ -27,7 +27,7 @@ class TextareaOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['description[0]' => 'Test old description'])->flash(),
+            'uses' => fn () => request()->merge(['description[0]' => 'Test old description'])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Textarea::class, [
@@ -42,7 +42,7 @@ class TextareaOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['description' => null])->flash(),
+            'uses' => fn () => request()->merge(['description' => null])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Textarea::class, [
@@ -57,7 +57,7 @@ class TextareaOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge([
+            'uses' => fn () => request()->merge([
                 'description' => [
                     'fr' => 'Test old description FR',
                     'en' => 'Test old description EN',
@@ -68,7 +68,7 @@ class TextareaOldValueTest extends TestCase
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
             'locales' => ['fr', 'en'],
-            'value' => fn(string $locale) => 'Test value ' . $locale,
+            'value' => fn (string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString('>Test old description FR</textarea>', $html);
         self::assertStringContainsString('>Test old description EN</textarea>', $html);
@@ -78,7 +78,7 @@ class TextareaOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge([
+            'uses' => fn () => request()->merge([
                 'description' => [
                     'fr' => 'Test old description FR',
                     'en' => null,
@@ -89,7 +89,7 @@ class TextareaOldValueTest extends TestCase
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
             'locales' => ['fr', 'en'],
-            'value' => fn(string $locale) => 'Test value ' . $locale,
+            'value' => fn (string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString('>Test old description FR</textarea>', $html);
         self::assertStringContainsString('></textarea>', $html);

@@ -3,7 +3,6 @@
 namespace Okipa\LaravelFormComponents\Components;
 
 use Closure;
-use Illuminate\Database\Eloquent\Model;
 use Okipa\LaravelFormComponents\Components\Abstracts\AbstractComponent;
 use Okipa\LaravelFormComponents\Components\Traits\CanBeWired;
 use Okipa\LaravelFormComponents\Components\Traits\HasAddon;

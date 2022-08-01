@@ -27,7 +27,7 @@ class InputAddonsTest extends TestCase
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'prepend' => 'Test prepend']);
         $this->assertSeeHtmlInOrder($html, [
             '<label',
-            '<div class="input-group">'
+            '<div class="input-group">',
         ]);
     }
 
@@ -38,7 +38,7 @@ class InputAddonsTest extends TestCase
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'append' => 'Test append']);
         $this->assertSeeHtmlInOrder($html, [
             '<label',
-            '<div class="input-group">'
+            '<div class="input-group">',
         ]);
     }
 
@@ -49,7 +49,7 @@ class InputAddonsTest extends TestCase
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'prepend' => 'Test prepend']);
         $this->assertSeeHtmlInOrder($html, [
             '<span class="input-group-text">Test prepend</span>',
-            '<input'
+            '<input',
         ]);
     }
 
@@ -59,7 +59,7 @@ class InputAddonsTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
-            'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
+            'prepend' => fn (string $locale) => 'Test prepend ' . $locale,
         ]);
         self::assertStringContainsString('Test prepend ' . app()->getLocale(), $html);
     }
@@ -71,11 +71,11 @@ class InputAddonsTest extends TestCase
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'locales' => ['fr', 'en'],
-            'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
+            'prepend' => fn (string $locale) => 'Test prepend ' . $locale,
         ]);
         $this->assertSeeHtmlInOrder($html, [
             'Test prepend fr',
-            'Test prepend en'
+            'Test prepend en',
         ]);
     }
 
@@ -96,7 +96,7 @@ class InputAddonsTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
-            'append' => fn(string $locale) => 'Test append ' . $locale,
+            'append' => fn (string $locale) => 'Test append ' . $locale,
         ]);
         self::assertStringContainsString('Test append ' . app()->getLocale(), $html);
     }
@@ -108,11 +108,11 @@ class InputAddonsTest extends TestCase
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'locales' => ['fr', 'en'],
-            'append' => fn(string $locale) => 'Test append ' . $locale,
+            'append' => fn (string $locale) => 'Test append ' . $locale,
         ]);
         $this->assertSeeHtmlInOrder($html, [
             'Test append fr',
-            'Test append en'
+            'Test append en',
         ]);
     }
 }
