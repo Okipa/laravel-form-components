@@ -51,6 +51,6 @@ class LaravelFormComponentsServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/form-components.php', 'form-components');
-        $this->app->singleton(FormBinder::class, fn() => new FormBinder());
+        $this->app->singleton(FormBinder::class, fn () => new FormBinder());
     }
 }

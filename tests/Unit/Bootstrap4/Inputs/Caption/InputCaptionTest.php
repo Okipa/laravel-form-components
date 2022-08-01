@@ -12,7 +12,7 @@ class InputCaptionTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'caption' => 'Test caption']);
         $this->assertSeeHtmlInOrder($html, [
             ' aria-describedby="text-first-name-caption"',
-            '<small id="text-first-name-caption" class="form-text text-muted">Test caption</small>'
+            '<small id="text-first-name-caption" class="form-text text-muted">Test caption</small>',
         ]);
     }
 }

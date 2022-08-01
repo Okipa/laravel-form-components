@@ -12,7 +12,7 @@ class ToggleSwitchOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['active' => true])->flash(),
+            'uses' => fn () => request()->merge(['active' => true])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(ToggleSwitch::class, [
@@ -27,7 +27,7 @@ class ToggleSwitchOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['technologies' => ['laravel', 'livewire']])->flash(),
+            'uses' => fn () => request()->merge(['technologies' => ['laravel', 'livewire']])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(ToggleSwitch::class, [
@@ -48,7 +48,7 @@ class ToggleSwitchOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['active[0]' => true])->flash(),
+            'uses' => fn () => request()->merge(['active[0]' => true])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(ToggleSwitch::class, [
@@ -63,7 +63,7 @@ class ToggleSwitchOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['technologies[0]' => ['laravel', 'livewire']])->flash(),
+            'uses' => fn () => request()->merge(['technologies[0]' => ['laravel', 'livewire']])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(ToggleSwitch::class, [

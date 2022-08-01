@@ -4,7 +4,6 @@ namespace Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\Inputs\Value;
 
 use Illuminate\Foundation\Auth\User;
 use Okipa\LaravelFormComponents\Components\Input;
-use Okipa\LaravelFormComponents\Components\Textarea;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class InputValueTest extends TestCase
@@ -47,7 +46,7 @@ class InputValueTest extends TestCase
     {
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
-            'value' => fn(string $locale) => 'Test value ' . $locale,
+            'value' => fn (string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString(' value="Test value ' . app()->getLocale() . '"', $html);
     }
@@ -58,7 +57,7 @@ class InputValueTest extends TestCase
         $html = $this->renderComponent(Input::class, [
             'name' => 'first_name',
             'locales' => ['fr', 'en'],
-            'value' => fn(string $locale) => 'Test value ' . $locale,
+            'value' => fn (string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString(' value="Test value fr"', $html);
         self::assertStringContainsString(' value="Test value en"', $html);

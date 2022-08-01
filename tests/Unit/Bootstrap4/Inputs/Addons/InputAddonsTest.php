@@ -14,7 +14,7 @@ class InputAddonsTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5
         $this->assertSeeHtmlInOrder($html, [
             '<div class="input-group-prepend">',
             '<span class="input-group-text">Test prepend</span>',
-            '<input'
+            '<input',
         ]);
     }
 

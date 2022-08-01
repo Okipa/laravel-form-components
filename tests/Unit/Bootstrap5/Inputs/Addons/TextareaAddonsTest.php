@@ -59,7 +59,7 @@ class TextareaAddonsTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
-            'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
+            'prepend' => fn (string $locale) => 'Test prepend ' . $locale,
         ]);
         self::assertStringContainsString('Test prepend ' . app()->getLocale(), $html);
     }
@@ -71,7 +71,7 @@ class TextareaAddonsTest extends TestCase
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
             'locales' => ['fr', 'en'],
-            'prepend' => fn(string $locale) => 'Test prepend ' . $locale,
+            'prepend' => fn (string $locale) => 'Test prepend ' . $locale,
         ]);
         self::assertStringContainsString('Test prepend fr', $html);
         self::assertStringContainsString('Test prepend en', $html);
@@ -94,7 +94,7 @@ class TextareaAddonsTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
-            'append' => fn(string $locale) => 'Test append ' . $locale,
+            'append' => fn (string $locale) => 'Test append ' . $locale,
         ]);
         self::assertStringContainsString('Test append ' . app()->getLocale(), $html);
     }
@@ -106,7 +106,7 @@ class TextareaAddonsTest extends TestCase
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
             'locales' => ['fr', 'en'],
-            'append' => fn(string $locale) => 'Test append ' . $locale,
+            'append' => fn (string $locale) => 'Test append ' . $locale,
         ]);
         self::assertStringContainsString('Test append fr', $html);
         self::assertStringContainsString('Test append en', $html);

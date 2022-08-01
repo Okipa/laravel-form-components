@@ -12,7 +12,7 @@ class SelectOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['hobby_id' => 2])->flash(),
+            'uses' => fn () => request()->merge(['hobby_id' => 2])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Select::class, [
@@ -30,7 +30,7 @@ class SelectOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['hobby_id[0]' => 2])->flash(),
+            'uses' => fn () => request()->merge(['hobby_id[0]' => 2])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Select::class, [
@@ -48,7 +48,7 @@ class SelectOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['hobby_ids' => [1, 2]])->flash(),
+            'uses' => fn () => request()->merge(['hobby_ids' => [1, 2]])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Select::class, [
@@ -66,7 +66,7 @@ class SelectOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['hobby_id' => null])->flash(),
+            'uses' => fn () => request()->merge(['hobby_id' => null])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Select::class, [

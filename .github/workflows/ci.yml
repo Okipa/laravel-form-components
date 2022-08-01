@@ -50,7 +50,7 @@ jobs:
 
       # Lower PHP and laravel versions.
 
-      - name: PHPUnit
+      - name: PHPUnit without code coverage
         if: matrix.php != '8.1' || matrix.laravel != '9.*'
         run: vendor/bin/testbench package:test --parallel --no-coverage
 
@@ -59,11 +59,11 @@ jobs:
       - name: Code analysis
         if: matrix.php == '8.1' && matrix.laravel == '9.*'
         run: |
-          vendor/bin/phpcs
+          vendor/bin/pint --test -vvv
           vendor/bin/phpmd config,src,tests text phpmd.xml
           vendor/bin/phpstan analyse
 
-      - name: PHPUnit + Code coverage
+      - name: PHPUnit with code coverage
         if: matrix.php == '8.1' && matrix.laravel == '9.*'
         run: |
           mkdir -p build/logs

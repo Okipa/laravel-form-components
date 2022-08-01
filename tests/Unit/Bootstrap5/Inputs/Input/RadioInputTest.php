@@ -2,8 +2,6 @@
 
 namespace Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\Inputs\Input;
 
-use Okipa\LaravelFormComponents\Components\Checkbox;
-use Okipa\LaravelFormComponents\Components\Input;
 use Okipa\LaravelFormComponents\Components\Radio;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 

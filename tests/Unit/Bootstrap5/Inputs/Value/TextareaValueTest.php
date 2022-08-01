@@ -46,7 +46,7 @@ class TextareaValueTest extends TestCase
     {
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
-            'value' => fn(string $locale) => 'Test value ' . $locale,
+            'value' => fn (string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString('>Test value ' . app()->getLocale() . '</textarea>', $html);
     }
@@ -57,7 +57,7 @@ class TextareaValueTest extends TestCase
         $html = $this->renderComponent(Textarea::class, [
             'name' => 'description',
             'locales' => ['fr', 'en'],
-            'value' => fn(string $locale) => 'Test value ' . $locale,
+            'value' => fn (string $locale) => 'Test value ' . $locale,
         ]);
         self::assertStringContainsString('>Test value fr</textarea>', $html);
         self::assertStringContainsString('>Test value en</textarea>', $html);

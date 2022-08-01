@@ -2,9 +2,7 @@
 
 namespace Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\Inputs\OldValue;
 
-use Okipa\LaravelFormComponents\Components\Checkbox;
 use Okipa\LaravelFormComponents\Components\Radio;
-use Okipa\LaravelFormComponents\Components\ToggleSwitch;
 use Okipa\LaravelFormComponents\Tests\TestCase;
 
 class RadioOldValueTest extends TestCase
@@ -14,7 +12,7 @@ class RadioOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['gender' => 'female'])->flash(),
+            'uses' => fn () => request()->merge(['gender' => 'female'])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Radio::class, [
@@ -29,7 +27,7 @@ class RadioOldValueTest extends TestCase
     {
         $this->app['router']->get('test', [
             'middleware' => 'web',
-            'uses' => fn() => request()->merge(['gender[0]' => 'female'])->flash(),
+            'uses' => fn () => request()->merge(['gender[0]' => 'female'])->flash(),
         ]);
         $this->call('GET', 'test');
         $html = $this->renderComponent(Radio::class, [
