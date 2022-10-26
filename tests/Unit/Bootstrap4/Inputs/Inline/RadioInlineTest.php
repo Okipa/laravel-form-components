@@ -13,7 +13,7 @@ class RadioInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5
             'name' => 'gender',
             'group' => [1 => 'Male', 2 => 'Female'],
         ]);
-        self::assertStringNotContainsString('class="form-check form-check-inline', $html);
+        self::assertStringNotContainsString('class="custom-control custom-radio custom-control-inline', $html);
     }
 
     /** @test */
@@ -24,6 +24,6 @@ class RadioInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5
             'group' => [1 => 'Male', 2 => 'Female'],
             'inline' => true,
         ]);
-        self::assertEquals(2, substr_count($html, ' class="form-check form-check-inline'));
+        self::assertEquals(2, substr_count($html, ' class="custom-control custom-radio custom-control-inline'));
     }
 }
