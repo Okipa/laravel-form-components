@@ -2,6 +2,12 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.0.8](https://github.com/Okipa/laravel-form-components/compare/1.0.7...1.0.8)
+
+2022-10-27
+
+* Improved CI
+
 ## [1.0.7](https://github.com/Okipa/laravel-form-components/compare/1.0.6...1.0.7)
 
 2022-08-01
