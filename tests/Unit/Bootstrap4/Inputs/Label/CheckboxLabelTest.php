@@ -6,7 +6,6 @@ use Okipa\LaravelFormComponents\Components\Checkbox;
 
 class CheckboxLabelTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5\Inputs\Label\CheckboxLabelTest
 {
-
     /** @test */
     public function it_can_setup_checkbox_default_label_when_none_is_defined(): void
     {
@@ -27,6 +26,7 @@ class CheckboxLabelTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstra
         $html = $this->renderComponent(Checkbox::class, ['name' => 'active', 'label' => 'Test label']);
         self::assertStringContainsString(' class="custom-control-label">Test label</label>', $html);
     }
+
     /** @test */
     public function it_can_set_checkboxes_labels_in_group_mode(): void
     {
