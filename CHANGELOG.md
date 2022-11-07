@@ -6,8 +6,8 @@ All notable changes to this package will be documented in this file.
 
 2022-11-07
 
-* Fixed Bootstrap 4 checkbox & radio wrong classes
-* Fix Bootstrap 4 caption and error message positioning that caused displaying issue when declaring an input group
+* Fixed Bootstrap 4 checkbox & radio wrong classes by @Balsakup in https://github.com/Okipa/laravel-form-components/pull/22
+* Fix Bootstrap 4 caption and error message positioning that caused displaying issue when declaring an input group by @Balsakup (first contribution) in https://github.com/Okipa/laravel-form-components/pull/21
 
 ## [1.0.8](https://github.com/Okipa/laravel-form-components/compare/1.0.7...1.0.8)
 
