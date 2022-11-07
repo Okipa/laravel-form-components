@@ -43,6 +43,8 @@
                                         :class="$type === 'file' ? 'custom-file-label' : 'form-label'"
                                         :label="$type === 'file' ? $placeholder : $label"/>
             @endif
+                <x-form::partials.caption :inputId="$id" :caption="$caption"/>
+                <x-form::partials.error-message :message="$errorMessage"/>
             @if($type === 'file')
                 </div>
             @endif
@@ -54,7 +56,5 @@
         @if(($prepend || $append) && ! $displayFloatingLabel)
             </div>
         @endif
-        <x-form::partials.caption :inputId="$id" :caption="$caption"/>
-        <x-form::partials.error-message :message="$errorMessage"/>
     </div>
 @endforeach
