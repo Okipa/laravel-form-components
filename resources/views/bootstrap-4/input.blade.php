@@ -38,13 +38,13 @@
                     'value' => $isWired ? null : ($value ?? ''),
                     'aria-describedby' => $caption ? $id . '-caption' : null,
                 ]) }}/>
-                <x-form::partials.caption :inputId="$id" :caption="$caption"/>
-                <x-form::partials.error-message :message="$errorMessage"/>
             @if($type === 'file' || (! $prepend && ! $append && $displayFloatingLabel))
                 <x-form::partials.label :id="$id"
                                         :class="$type === 'file' ? 'custom-file-label' : 'form-label'"
                                         :label="$type === 'file' ? $placeholder : $label"/>
             @endif
+                <x-form::partials.caption :inputId="$id" :caption="$caption"/>
+                <x-form::partials.error-message :message="$errorMessage"/>
             @if($type === 'file')
                 </div>
             @endif
