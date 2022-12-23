@@ -27,7 +27,7 @@ class FormBinderTest extends TestCase
         $formBinder = $this->mock(FormBinder::class);
         $formBinder->shouldReceive('bindNewDataBatch')->once()->with(['test']);
         $formBinder->shouldReceive('unbindLastDataBatch')->once();
-        view('laravel-form-components::data-binding-directive')->toHtml();
+        view('laravel-form-components::data-binding-directive')->render();
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class FormBinderTest extends TestCase
         $formBinder = $this->mock(FormBinder::class);
         $formBinder->shouldReceive('bindErrorBag')->once()->with('error_bag_test');
         $formBinder->shouldReceive('unbindErrorBag')->once();
-        view('laravel-form-components::error-bag-binding-directive')->toHtml();
+        view('laravel-form-components::error-bag-binding-directive')->render();
     }
 
     /** @test */
@@ -57,6 +57,6 @@ class FormBinderTest extends TestCase
         $formBinder = $this->mock(FormBinder::class);
         $formBinder->shouldReceive('bindNewLivewireModifier')->once()->with('debounce.150ms');
         $formBinder->shouldReceive('unbindLastLivewireModifier')->once();
-        view('laravel-form-components::livewire-modifier-binding-directive')->toHtml();
+        view('laravel-form-components::livewire-modifier-binding-directive')->render();
     }
 }
