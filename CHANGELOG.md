@@ -2,6 +2,14 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.2.0](https://github.com/Okipa/laravel-form-components/compare/1.1.0...1.2.0)
+
+2023-01-21
+
+* Locked PHP versions to 8.1 and 8.2
+* Dropped Laravel 8 support
+* Added Laravel 10 support
+
 ## [1.1.0](https://github.com/Okipa/laravel-form-components/compare/1.0.9...1.1.0)
 
 2022-12-23
