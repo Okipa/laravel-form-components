@@ -7,7 +7,7 @@
         <img src="https://img.shields.io/packagist/dt/okipa/laravel-form-components.svg?style=flat-square" alt="Total Downloads">
     </a>
     <a href="https://github.com/Okipa/laravel-form-components/actions" title="Build Status">
-        <img src="https://github.com/Okipa/laravel-form-components/workflows/CI/badge.svg" alt="Build Status">
+        <img src="https://github.com/Okipa/laravel-form-components/actions/workflows/ci.yml/badge.svg" alt="Build Status">
     </a>
     <a href="https://coveralls.io/github/Okipa/laravel-form-components?branch=main" title="Coverage Status">
         <img src="https://coveralls.io/repos/github/Okipa/laravel-form-components/badge.svg?branch=main" alt="Coverage Status">
