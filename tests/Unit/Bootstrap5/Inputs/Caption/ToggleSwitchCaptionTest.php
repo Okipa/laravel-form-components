@@ -31,10 +31,10 @@ class ToggleSwitchCaptionTest extends TestCase
             ],
             'caption' => 'Test caption',
         ]);
-        self::assertEquals(4, substr_count($html, ' aria-describedby="toggle-switch-technologies-caption"'));
+        self::assertEquals(4, mb_substr_count($html, ' aria-describedby="toggle-switch-technologies-caption"'));
         self::assertEquals(
             1,
-            substr_count($html, '<div id="toggle-switch-technologies-caption" class="form-text">Test caption</div>')
+            mb_substr_count($html, '<div id="toggle-switch-technologies-caption" class="form-text">Test caption</div>')
         );
     }
 }

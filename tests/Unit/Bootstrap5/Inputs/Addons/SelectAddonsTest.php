@@ -31,8 +31,8 @@ class SelectAddonsTest extends TestCase
             'options' => [],
         ]);
         self::assertStringContainsString('<label', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, '<div class="input-group">');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputGroupPosition = mb_strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 
@@ -46,8 +46,8 @@ class SelectAddonsTest extends TestCase
             'options' => [],
         ]);
         self::assertStringContainsString('<label', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, '<div class="input-group">');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputGroupPosition = mb_strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 
@@ -61,8 +61,8 @@ class SelectAddonsTest extends TestCase
             'prepend' => 'Test prepend',
         ]);
         self::assertStringContainsString('<span class="input-group-text">Test prepend</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<select');
+        $addonPosition = mb_strrpos($html, 'input-group-text');
+        $inputPosition = mb_strrpos($html, '<select');
         self::assertLessThan($inputPosition, $addonPosition);
     }
 
@@ -88,8 +88,8 @@ class SelectAddonsTest extends TestCase
             'append' => 'Test append',
         ]);
         self::assertStringContainsString('<span class="input-group-text">Test append</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<select');
+        $addonPosition = mb_strrpos($html, 'input-group-text');
+        $inputPosition = mb_strrpos($html, '<select');
         self::assertLessThan($addonPosition, $inputPosition);
     }
 

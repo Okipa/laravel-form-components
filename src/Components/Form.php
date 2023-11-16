@@ -23,7 +23,7 @@ class Form extends Component
         if ($wire) {
             app(FormBinder::class)->bindNewLivewireModifier($wire === '1' ? null : $wire);
         }
-        $this->method = strtoupper($method);
+        $this->method = mb_strtoupper($method);
     }
 
     public function render(): View

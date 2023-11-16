@@ -16,15 +16,15 @@ use Okipa\LaravelFormComponents\Components\Traits\HasValue;
 
 class Input extends AbstractComponent
 {
-    use HasId;
-    use HasName;
-    use HasLabel;
-    use HasFloatingLabel;
-    use HasValue;
-    use HasPlaceholder;
-    use HasAddon;
-    use HasValidation;
     use CanBeWired;
+    use HasAddon;
+    use HasFloatingLabel;
+    use HasId;
+    use HasLabel;
+    use HasName;
+    use HasPlaceholder;
+    use HasValidation;
+    use HasValue;
 
     /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(

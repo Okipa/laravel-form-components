@@ -10,7 +10,7 @@ trait HasPlaceholder
             return null;
         }
         if ($this->placeholder) {
-            return $this->placeholder . ($locale ? ' (' . strtoupper($locale) . ')' : '');
+            return $this->placeholder . ($locale ? ' (' . mb_strtoupper($locale) . ')' : '');
         }
 
         return $label ?: $this->getNameTranslationFromValidation($locale);

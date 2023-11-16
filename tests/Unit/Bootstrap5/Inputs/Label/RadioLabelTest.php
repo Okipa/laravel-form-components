@@ -16,7 +16,7 @@ class RadioLabelTest extends TestCase
         ]);
         self::assertEquals(
             1,
-            substr_count($html, '<label class="form-label">validation.attributes.gender</label>')
+            mb_substr_count($html, '<label class="form-label">validation.attributes.gender</label>')
         );
     }
 

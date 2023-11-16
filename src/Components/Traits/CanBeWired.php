@@ -15,7 +15,7 @@ trait CanBeWired
 
     protected function hasFormLivewireBinding(): bool
     {
-        return null !== app(FormBinder::class)->getBoundLivewireModifer();
+        return app(FormBinder::class)->getBoundLivewireModifer() !== null;
     }
 
     public function hasComponentNativeLivewireModelBinding(): bool

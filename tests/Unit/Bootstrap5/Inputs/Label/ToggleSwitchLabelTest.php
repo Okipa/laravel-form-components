@@ -49,7 +49,7 @@ class ToggleSwitchLabelTest extends TestCase
         ]);
         self::assertEquals(
             1,
-            substr_count($html, '<label class="form-label">validation.attributes.technologies</label>')
+            mb_substr_count($html, '<label class="form-label">validation.attributes.technologies</label>')
         );
     }
 

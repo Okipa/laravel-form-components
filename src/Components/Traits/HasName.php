@@ -4,15 +4,15 @@ namespace Okipa\LaravelFormComponents\Components\Traits;
 
 trait HasName
 {
-    protected function getNameTranslationFromValidation(string|null $locale = null): string
+    protected function getNameTranslationFromValidation(string $locale = null): string
     {
         return __('validation.attributes.' . $this->getNameWithoutArrayNotation())
-            . ($locale ? ' (' . strtoupper($locale) . ')' : '');
+            . ($locale ? ' (' . mb_strtoupper($locale) . ')' : '');
     }
 
     protected function getNameWithoutArrayNotation(): string
     {
-        return strstr($this->name, '[', true) ?: $this->name;
+        return mb_strstr($this->name, '[', true) ?: $this->name;
     }
 
     protected function getNameWithArrayNotationConvertedInto(string $notation = '.'): string

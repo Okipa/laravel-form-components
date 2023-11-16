@@ -48,6 +48,6 @@ class ToggleSwitchInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Boo
             ],
             'inline' => true,
         ]);
-        self::assertEquals(4, substr_count($html, ' class="custom-control custom-switch form-check-inline'));
+        self::assertEquals(4, mb_substr_count($html, ' class="custom-control custom-switch form-check-inline'));
     }
 }

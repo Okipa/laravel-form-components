@@ -14,6 +14,6 @@ class RadioNameTest extends TestCase
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
-        self::assertEquals(2, substr_count($html, ' name="gender"'));
+        self::assertEquals(2, mb_substr_count($html, ' name="gender"'));
     }
 }

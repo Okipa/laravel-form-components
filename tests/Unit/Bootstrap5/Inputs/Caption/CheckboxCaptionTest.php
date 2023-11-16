@@ -31,10 +31,10 @@ class CheckboxCaptionTest extends TestCase
             ],
             'caption' => 'Test caption',
         ]);
-        self::assertEquals(4, substr_count($html, ' aria-describedby="checkbox-technologies-caption"'));
+        self::assertEquals(4, mb_substr_count($html, ' aria-describedby="checkbox-technologies-caption"'));
         self::assertEquals(
             1,
-            substr_count($html, '<div id="checkbox-technologies-caption" class="form-text">Test caption</div>')
+            mb_substr_count($html, '<div id="checkbox-technologies-caption" class="form-text">Test caption</div>')
         );
     }
 }

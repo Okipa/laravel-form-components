@@ -17,8 +17,8 @@ class SelectAddonsTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap
         ]);
         self::assertStringContainsString('<div class="input-group-prepend">', $html);
         self::assertStringContainsString('<span class="input-group-text">Test prepend</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<select');
+        $addonPosition = mb_strrpos($html, 'input-group-text');
+        $inputPosition = mb_strrpos($html, '<select');
         self::assertLessThan($inputPosition, $addonPosition);
     }
 
@@ -33,8 +33,8 @@ class SelectAddonsTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap
         ]);
         self::assertStringContainsString('<div class="input-group-append">', $html);
         self::assertStringContainsString('<span class="input-group-text">Test append</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<select');
+        $addonPosition = mb_strrpos($html, 'input-group-text');
+        $inputPosition = mb_strrpos($html, '<select');
         self::assertLessThan($addonPosition, $inputPosition);
     }
 }

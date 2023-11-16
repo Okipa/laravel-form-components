@@ -8,7 +8,7 @@ use Okipa\LaravelFormComponents\FormBinder;
 
 trait HasValidation
 {
-    public function getValidationClass(ViewErrorBag $errors, string|null $locale = null): string|null
+    public function getValidationClass(ViewErrorBag $errors, string $locale = null): string|null
     {
         $errorBag = $this->getErrorBag($errors);
         if ($errorBag->isEmpty()) {
@@ -47,7 +47,7 @@ trait HasValidation
         return $this->displayValidationSuccess ?? config('form-components.display_validation_success', true);
     }
 
-    public function getErrorMessage(ViewErrorBag $errors, string|null $locale = null): string|null
+    public function getErrorMessage(ViewErrorBag $errors, string $locale = null): string|null
     {
         if (! $this->shouldDisplayValidationFailure()) {
             return null;
@@ -59,7 +59,7 @@ trait HasValidation
 
             return $rawMessage ? str_replace(
                 str_replace('_', ' ', $this->name) . '.' . $locale,
-                __('validation.attributes.' . $this->name) . ' (' . strtoupper($locale) . ')',
+                __('validation.attributes.' . $this->name) . ' (' . mb_strtoupper($locale) . ')',
                 $rawMessage
             ) : null;
         }

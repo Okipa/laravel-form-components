@@ -49,7 +49,7 @@ class TextareaValidationFailureTest extends TestCase
             'displayValidationFailure' => true,
             'locales' => ['fr', 'en'],
         ]);
-        self::assertEquals(2, substr_count($html, ' is-invalid'));
+        self::assertEquals(2, mb_substr_count($html, ' is-invalid'));
         self::assertStringContainsString(
             '<div class="invalid-feedback">Test validation.attributes.description (FR) error message.</div>',
             $html

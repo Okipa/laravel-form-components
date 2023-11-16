@@ -30,10 +30,10 @@ class CheckboxCaptionTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootst
             ],
             'caption' => 'Test caption',
         ]);
-        self::assertEquals(4, substr_count($html, ' aria-describedby="checkbox-technologies-caption"'));
+        self::assertEquals(4, mb_substr_count($html, ' aria-describedby="checkbox-technologies-caption"'));
         self::assertEquals(
             1,
-            substr_count($html, '<small id="checkbox-technologies-caption" class="form-text text-muted">Test caption</small>')
+            mb_substr_count($html, '<small id="checkbox-technologies-caption" class="form-text text-muted">Test caption</small>')
         );
     }
 }

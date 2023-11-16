@@ -49,6 +49,6 @@ class ToggleSwitchInlineTest extends TestCase
             ],
             'inline' => true,
         ]);
-        self::assertEquals(4, substr_count($html, ' class="form-check form-switch form-check-inline'));
+        self::assertEquals(4, mb_substr_count($html, ' class="form-check form-switch form-check-inline'));
     }
 }

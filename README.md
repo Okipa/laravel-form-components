@@ -22,7 +22,7 @@ Save time and take advantage of a set of dynamical, ready-to-use and fully custo
 Components are Livewire compatible and can be used with the following UI frameworks:
 * Bootstrap 5
 * Bootstrap 4
-* TailwindCSS 2 (upcoming feature)
+* TailwindCSS 3 (upcoming feature)
 
 Found this package helpful? Please consider supporting my work!
 

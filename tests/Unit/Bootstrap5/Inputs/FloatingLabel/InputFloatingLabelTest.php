@@ -24,8 +24,8 @@ class InputFloatingLabelTest extends TestCase
         config()->set('form-components.floating_label', true);
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'floatingLabel' => false]);
         self::assertStringNotContainsString('form-floating ', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputPosition = strrpos($html, '<input');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputPosition = mb_strrpos($html, '<input');
         self::assertLessThan($inputPosition, $labelPosition);
     }
 
@@ -35,8 +35,8 @@ class InputFloatingLabelTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Input::class, ['name' => 'first_name', 'floatingLabel' => true]);
         self::assertStringContainsString('form-floating ', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputPosition = strrpos($html, '<input');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputPosition = mb_strrpos($html, '<input');
         self::assertLessThan($labelPosition, $inputPosition);
     }
 }

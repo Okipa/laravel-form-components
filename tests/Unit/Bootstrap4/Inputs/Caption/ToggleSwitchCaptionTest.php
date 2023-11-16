@@ -30,10 +30,10 @@ class ToggleSwitchCaptionTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bo
             ],
             'caption' => 'Test caption',
         ]);
-        self::assertEquals(4, substr_count($html, ' aria-describedby="toggle-switch-technologies-caption"'));
+        self::assertEquals(4, mb_substr_count($html, ' aria-describedby="toggle-switch-technologies-caption"'));
         self::assertEquals(
             1,
-            substr_count($html, '<small id="toggle-switch-technologies-caption" class="form-text text-muted">Test caption</small>')
+            mb_substr_count($html, '<small id="toggle-switch-technologies-caption" class="form-text text-muted">Test caption</small>')
         );
     }
 }

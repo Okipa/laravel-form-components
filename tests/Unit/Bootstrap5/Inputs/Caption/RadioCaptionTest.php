@@ -15,10 +15,10 @@ class RadioCaptionTest extends TestCase
             'group' => [1 => 'Male', 2 => 'Female'],
             'caption' => 'Test caption',
         ]);
-        self::assertEquals(2, substr_count($html, ' aria-describedby="radio-gender-caption"'));
+        self::assertEquals(2, mb_substr_count($html, ' aria-describedby="radio-gender-caption"'));
         self::assertEquals(
             1,
-            substr_count($html, '<div id="radio-gender-caption" class="form-text">Test caption</div>')
+            mb_substr_count($html, '<div id="radio-gender-caption" class="form-text">Test caption</div>')
         );
     }
 }

@@ -12,11 +12,11 @@ use Okipa\LaravelFormComponents\FormBinder;
 
 class Radio extends AbstractComponent
 {
-    use HasId;
-    use HasName;
-    use HasLabel;
-    use HasValidation;
     use CanBeWired;
+    use HasId;
+    use HasLabel;
+    use HasName;
+    use HasValidation;
 
     /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(

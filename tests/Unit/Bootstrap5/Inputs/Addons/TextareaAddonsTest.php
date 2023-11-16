@@ -26,8 +26,8 @@ class TextareaAddonsTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'prepend' => 'Test prepend']);
         self::assertStringContainsString('<label', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, '<div class="input-group">');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputGroupPosition = mb_strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 
@@ -37,8 +37,8 @@ class TextareaAddonsTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'append' => 'Test append']);
         self::assertStringContainsString('<label', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputGroupPosition = strrpos($html, '<div class="input-group">');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputGroupPosition = mb_strrpos($html, '<div class="input-group">');
         self::assertLessThan($inputGroupPosition, $labelPosition);
     }
 
@@ -48,8 +48,8 @@ class TextareaAddonsTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'prepend' => 'Test prepend']);
         self::assertStringContainsString('<span class="input-group-text">Test prepend</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<textarea');
+        $addonPosition = mb_strrpos($html, 'input-group-text');
+        $inputPosition = mb_strrpos($html, '<textarea');
         self::assertLessThan($inputPosition, $addonPosition);
     }
 
@@ -83,8 +83,8 @@ class TextareaAddonsTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'append' => 'Test append']);
         self::assertStringContainsString('<span class="input-group-text">Test append</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<textarea');
+        $addonPosition = mb_strrpos($html, 'input-group-text');
+        $inputPosition = mb_strrpos($html, '<textarea');
         self::assertLessThan($addonPosition, $inputPosition);
     }
 

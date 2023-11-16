@@ -24,6 +24,6 @@ class RadioInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstrap5
             'group' => [1 => 'Male', 2 => 'Female'],
             'inline' => true,
         ]);
-        self::assertEquals(2, substr_count($html, ' class="custom-control custom-radio custom-control-inline'));
+        self::assertEquals(2, mb_substr_count($html, ' class="custom-control custom-radio custom-control-inline'));
     }
 }

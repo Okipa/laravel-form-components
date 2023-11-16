@@ -24,8 +24,8 @@ class TextareaFloatingLabelTest extends TestCase
         config()->set('form-components.floating_label', true);
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'floatingLabel' => false]);
         self::assertStringNotContainsString('form-floating ', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputPosition = strrpos($html, '<textarea');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputPosition = mb_strrpos($html, '<textarea');
         self::assertLessThan($inputPosition, $labelPosition);
     }
 
@@ -35,8 +35,8 @@ class TextareaFloatingLabelTest extends TestCase
         config()->set('form-components.floating_label', false);
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'floatingLabel' => true]);
         self::assertStringContainsString('form-floating ', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputPosition = strrpos($html, '<textarea');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputPosition = mb_strrpos($html, '<textarea');
         self::assertLessThan($labelPosition, $inputPosition);
     }
 }

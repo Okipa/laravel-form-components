@@ -28,8 +28,8 @@ class SelectFloatingLabelTest extends TestCase
             'floatingLabel' => false,
         ]);
         self::assertStringNotContainsString('form-floating ', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputPosition = strrpos($html, '<select');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputPosition = mb_strrpos($html, '<select');
         self::assertLessThan($inputPosition, $labelPosition);
     }
 
@@ -43,8 +43,8 @@ class SelectFloatingLabelTest extends TestCase
             'floatingLabel' => true,
         ]);
         self::assertStringContainsString('form-floating ', $html);
-        $labelPosition = strrpos($html, '<label');
-        $inputPosition = strrpos($html, '<select');
+        $labelPosition = mb_strrpos($html, '<label');
+        $inputPosition = mb_strrpos($html, '<select');
         self::assertLessThan($labelPosition, $inputPosition);
     }
 }

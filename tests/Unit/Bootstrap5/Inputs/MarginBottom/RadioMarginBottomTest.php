@@ -14,7 +14,7 @@ class RadioMarginBottomTest extends TestCase
             'name' => 'gender',
             'group' => ['female' => 'Female', 'male' => 'Male'],
         ]);
-        self::assertEquals(1, substr_count($html, '<div class="mb-3">'));
+        self::assertEquals(1, mb_substr_count($html, '<div class="mb-3">'));
     }
 
     /** @test */

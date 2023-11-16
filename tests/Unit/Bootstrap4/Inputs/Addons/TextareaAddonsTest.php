@@ -13,8 +13,8 @@ class TextareaAddonsTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstr
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'prepend' => 'Test prepend']);
         self::assertStringContainsString('<div class="input-group-prepend">', $html);
         self::assertStringContainsString('<span class="input-group-text">Test prepend</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<textarea');
+        $addonPosition = mb_strrpos($html, 'input-group-text');
+        $inputPosition = mb_strrpos($html, '<textarea');
         self::assertLessThan($inputPosition, $addonPosition);
     }
 
@@ -25,8 +25,8 @@ class TextareaAddonsTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstr
         $html = $this->renderComponent(Textarea::class, ['name' => 'description', 'append' => 'Test append']);
         self::assertStringContainsString('<div class="input-group-append">', $html);
         self::assertStringContainsString('<span class="input-group-text">Test append</span>', $html);
-        $addonPosition = strrpos($html, 'input-group-text');
-        $inputPosition = strrpos($html, '<textarea');
+        $addonPosition = mb_strrpos($html, 'input-group-text');
+        $inputPosition = mb_strrpos($html, '<textarea');
         self::assertLessThan($addonPosition, $inputPosition);
     }
 }

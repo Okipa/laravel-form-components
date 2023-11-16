@@ -19,7 +19,7 @@ class RadioLivewireFormBindingTest extends TestCase
                 'group' => [1 => 'Male', 2 => 'Female'],
             ],
         );
-        self::assertEquals(2, substr_count($html, ' wire:model.debounce.150ms="gender"'));
+        self::assertEquals(2, mb_substr_count($html, ' wire:model.debounce.150ms="gender"'));
         app(FormBinder::class)->bindNewLivewireModifier(null);
         $html = $this->renderComponent(
             componentClass: Radio::class,
@@ -28,7 +28,7 @@ class RadioLivewireFormBindingTest extends TestCase
                 'group' => [1 => 'Male', 2 => 'Female'],
             ],
         );
-        self::assertEquals(2, substr_count($html, ' wire:model="gender"'));
+        self::assertEquals(2, mb_substr_count($html, ' wire:model="gender"'));
         app(FormBinder::class)->unbindLastLivewireModifier();
         $html = $this->renderComponent(
             componentClass: Radio::class,
@@ -37,6 +37,6 @@ class RadioLivewireFormBindingTest extends TestCase
                 'group' => [1 => 'Male', 2 => 'Female'],
             ],
         );
-        self::assertEquals(2, substr_count($html, ' wire:model.debounce.150ms="gender"'));
+        self::assertEquals(2, mb_substr_count($html, ' wire:model.debounce.150ms="gender"'));
     }
 }

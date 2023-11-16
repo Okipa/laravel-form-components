@@ -25,6 +25,6 @@ class RadioInlineTest extends TestCase
             'group' => [1 => 'Male', 2 => 'Female'],
             'inline' => true,
         ]);
-        self::assertEquals(2, substr_count($html, ' class="form-check form-check-inline'));
+        self::assertEquals(2, mb_substr_count($html, ' class="form-check form-check-inline'));
     }
 }

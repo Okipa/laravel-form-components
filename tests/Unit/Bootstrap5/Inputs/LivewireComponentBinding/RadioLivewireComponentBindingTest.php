@@ -32,7 +32,7 @@ class RadioLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire' => 'lazy']
         );
-        self::assertEquals(2, substr_count($html, ' wire:model.lazy="gender"'));
+        self::assertEquals(2, mb_substr_count($html, ' wire:model.lazy="gender"'));
     }
 
     /** @test */
@@ -46,7 +46,7 @@ class RadioLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire:model.lazy' => 'gender']
         );
-        self::assertEquals(2, substr_count($html, ' wire:model.lazy="gender"'));
+        self::assertEquals(2, mb_substr_count($html, ' wire:model.lazy="gender"'));
     }
 
     /** @test */
@@ -61,7 +61,7 @@ class RadioLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire' => 'lazy']
         );
-        self::assertEquals(2, substr_count($html, ' wire:model.lazy="gender"'));
+        self::assertEquals(2, mb_substr_count($html, ' wire:model.lazy="gender"'));
     }
 
     /** @test */
@@ -76,6 +76,6 @@ class RadioLivewireComponentBindingTest extends TestCase
             ],
             attributes: ['wire' => true]
         );
-        self::assertEquals(2, substr_count($html, ' wire:model="gender"'));
+        self::assertEquals(2, mb_substr_count($html, ' wire:model="gender"'));
     }
 }

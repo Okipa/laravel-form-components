@@ -39,8 +39,8 @@ class RadioValidationFailureTest extends TestCase
             'group' => ['female' => 'Female', 'male' => 'Male'],
             'displayValidationFailure' => true,
         ]);
-        self::assertEquals(1, substr_count($html, ' is-invalid'));
-        self::assertEquals(1, substr_count($html, '<div class="invalid-feedback d-block">Error test</div>'));
+        self::assertEquals(1, mb_substr_count($html, ' is-invalid'));
+        self::assertEquals(1, mb_substr_count($html, '<div class="invalid-feedback d-block">Error test</div>'));
     }
 
     /** @test */

@@ -53,7 +53,7 @@ class CheckboxValidationSuccessTest extends TestCase
             ],
             'displayValidationSuccess' => true,
         ]);
-        self::assertEquals(4, substr_count($html, ' is-valid'));
+        self::assertEquals(4, mb_substr_count($html, ' is-valid'));
     }
 
     /** @test */

@@ -48,6 +48,6 @@ class CheckboxInlineTest extends \Okipa\LaravelFormComponents\Tests\Unit\Bootstr
             ],
             'inline' => true,
         ]);
-        self::assertEquals(4, substr_count($html, ' class="custom-control custom-checkbox custom-control-inline'));
+        self::assertEquals(4, mb_substr_count($html, ' class="custom-control custom-checkbox custom-control-inline'));
     }
 }

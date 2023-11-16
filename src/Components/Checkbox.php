@@ -12,12 +12,12 @@ use Okipa\LaravelFormComponents\Components\Traits\HasValidation;
 
 class Checkbox extends AbstractComponent
 {
-    use HasId;
-    use HasName;
-    use HasLabel;
-    use HasValidation;
     use CanBeChecked;
     use CanBeWired;
+    use HasId;
+    use HasLabel;
+    use HasName;
+    use HasValidation;
 
     /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(

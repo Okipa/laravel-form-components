@@ -54,8 +54,8 @@ class CheckboxValidationFailureTest extends TestCase
             ],
             'displayValidationFailure' => true,
         ]);
-        self::assertEquals(4, substr_count($html, ' is-invalid'));
-        self::assertEquals(1, substr_count($html, '<div class="invalid-feedback d-block">Error test</div>'));
+        self::assertEquals(4, mb_substr_count($html, ' is-invalid'));
+        self::assertEquals(1, mb_substr_count($html, '<div class="invalid-feedback d-block">Error test</div>'));
     }
 
     /** @test */

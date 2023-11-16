@@ -39,7 +39,7 @@ class RadioValidationSuccessTest extends TestCase
             'group' => ['female' => 'Female', 'male' => 'Male'],
             'displayValidationSuccess' => true,
         ]);
-        self::assertEquals(1, substr_count($html, ' is-valid'));
+        self::assertEquals(1, mb_substr_count($html, ' is-valid'));
     }
 
     /** @test */

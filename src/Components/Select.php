@@ -16,15 +16,15 @@ use Okipa\LaravelFormComponents\Components\Traits\HasValidation;
 
 class Select extends AbstractComponent
 {
-    use HasId;
-    use HasName;
-    use HasLabel;
-    use HasFloatingLabel;
-    use HasPlaceholder;
-    use HasAddon;
-    use HasOptions;
-    use HasValidation;
     use CanBeWired;
+    use HasAddon;
+    use HasFloatingLabel;
+    use HasId;
+    use HasLabel;
+    use HasName;
+    use HasOptions;
+    use HasPlaceholder;
+    use HasValidation;
 
     /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(
